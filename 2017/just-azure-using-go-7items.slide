@@ -1,0 +1,206 @@
+Just Azure Using Go (7 items)
+JAZUG 7周年総会 - Lightning Talks
+9 Sep 2017
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* 本資料について
+
+「Azureの方々に少しでもGoを知って頂こう！」とLTに申し込みましたが、諸事情により当日は参加できなくなりました。情報共有で資料だけでもと公開させて頂きます。
+
+タイトルの「Just Azure Using Go」は英文としては誤っていますが「まさにAzureはGoを使っています」を意図しており、略して「JAZUG」となっております。また「7周年総会」ということで、発表内容を「7項目」としています。
+
+内容としては「AzureでのGoの使い処 / 使われ処」をダイジェストで紹介しています。
+
+* Ryuji Iwata
+
+.image just-azure-using-go-7items/img/qt_luigi250.png 300 300
+
+Google+
+
+.link https://plus.google.com/+RyujiIwata +RyujiIwata
+
+Twitter
+
+.link http://twitter.com/qt_luigi @qt_luigi
+
+* My Azure Activity
+
+Go に関する Microsoft Azure Blog の日本語訳
+
+.link https://github.com/qt-luigi/azure-blog-jp
+
+Azure SDK for Go (v8.0.1-beta) の各READMEを日本語訳（更新せねば...）
+
+.link https://github.com/qt-luigi/azure-sdk-for-go-docs-jp
+
+Azure SDK for Go にコントリビュート（Fix typoですが...）
+
+.link https://github.com/Azure/azure-sdk-for-go/commits?author=qt-luigi
+
+* 1. Go
+
+* The Go Programming Language
+
+Goはオープンソースのプログラミング言語であり、シンプルで信頼性の高い効率的なソフトウェアを簡単に構築できます。
+
+.caption Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.
+
+.link https://golang.org/
+
+* 主な特徴
+
+- 静的型付けコンパイラー言語
+- ガーベジコレクターを内臓した実行バイナリーを生成
+
+- マルチプラットフォーム、クロスコンパイル
+- 平行処理、速いコンパイル、シンプルな文法
+- 標準での豊富なツール＆ライブラリー
+
+など
+
+* 作成できるもの
+
+- CLIツール、アプリやサービス（Webを含む）
+- 共有ライブラリー（Linux）、プラグイン
+- モバイル（Android / iOS）、組み込み系
+
+など
+
+* 2. App Service
+
+* Azure App Service
+
+Goでは「Web Apps」が利用可能。
+
+作成したWebアプリ（exeファイル）をデプロイ＆稼働。
+
+.link https://azure.microsoft.com/ja-jp/services/app-service/
+
+* 3. Database Service
+
+* Azure Database for MySQL / PostgreSQL
+
+Goからはデータベースサーバーとして利用可能。
+
+.link https://azure.microsoft.com/ja-jp/services/mysql/
+
+.link https://azure.microsoft.com/ja-jp/services/postgresql/
+
+* Azure Cosmos DB
+
+Goからは「MongoDB API」で利用可能。
+
+.link https://azure.microsoft.com/ja-jp/services/cosmos-db/
+
+* 4. Container Service
+
+* Docker
+
+オープンソースのコンテナープラットフォーム
+
+.link https://www.docker.com/
+
+* Kubertenes (k8s)
+
+オープンソースのコンテナーオーケストレーター
+
+.link https://kubernetes.io/
+
+* Draft
+
+Webアプリをk8sクラスターにCIでデプロイできるオープンソースのツール
+
+- 対応言語：Node.js, Go, Java, Python, PHP, Ruby
+
+.link https://github.com/Azure/draft
+
+* Azure Container Service (ACS) Engine
+
+ACSにデプロイするためのARMテンプレートを生成するオープンソースのツール
+
+- Azureポータルからも作成できるが細かな設定ができない。
+
+.link https://github.com/Azure/acs-engine
+
+* 全てGo製
+
+コンテナー分野においてはGoやOSSが活躍中！q@w@p
+
+- ACS自体がオープンソースの活用を謳っている。
+
+* 5. Azure SDK
+
+* Azure SDK for Go
+
+現在はベータ版であり、2018年のパブリックプレビューを目指している。
+
+.link https://github.com/Azure/azure-sdk-for-go
+
+* 6. Others
+
+* 求人情報
+
+米国Microsoft社にて、AzureサービスへのGoの求人がチラホラと。
+
+Software Engineer II：
+
+- コンテナーサービス
+
+.link https://careers.microsoft.com/jobdetails.aspx?jid=290815
+
+- SDKやツール
+
+.link https://careers.microsoft.com/jobdetails.aspx?jid=303493
+
+* Most Valuable Professional
+
+唯一、ピュアGoで取得可能？
+
+Award Category：
+
+- Microsoft Azure
+
+Contribution Areas：
+
+- SDK support on Azure (.NET, Node.js, Java, PHP, Python, GO, Ruby)
+
+.link https://mvp.microsoft.com/ja-jp/pages/mvp-award-update
+
+* 7. Appendix: Documents
+
+* Database Service
+
+Azure Database for MySQL: Go 言語を使用した接続とデータの照会
+
+.link https://docs.microsoft.com/ja-jp/azure/mysql/connect-go
+
+Azure Database for PostgreSQL: Go 言語を使用した接続とデータの照会
+
+.link https://docs.microsoft.com/ja-jp/azure/postgresql/connect-go
+
+Azure Cosmos DB: Golang と Azure Portal による MongoDB API コンソール アプリの構築
+
+.link https://docs.microsoft.com/ja-jp/azure/cosmos-db/create-mongodb-golang
+
+* Container Service
+
+Kubernetes を伴う Azure Container Service のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+
+.link https://docs.microsoft.com/ja-jp/azure/container-service/kubernetes/
+
+Azure Container Service と Azure Container Registry で Draft を使用して、アプリケーションを構築し Kubernetes にデプロイする
+
+.link https://docs.microsoft.com/ja-jp/azure/container-service/kubernetes/container-service-draft-up
+
+* Azure SDK for Go
+
+Our journey on building the Go SDK for Azure
+
+.link https://azure.microsoft.com/ja-jp/blog/our-journey-on-building-the-go-sdk-for-azure/
+
+日本語訳：Azure用のGo SDKの構築に関する私たちの旅
+
+.link https://github.com/qt-luigi/azure-blog-jp/blob/master/20170126.md
