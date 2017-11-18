@@ -1,0 +1,687 @@
+Go言語のご紹介 2017
+GDG DevFest Shikoku 2017 
+18 Nov 2017
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image introduction-of-go-2017/img/qt_luigi250.png 300 300
+
+Google+
+
+.link https://plus.google.com/+RyujiIwata +RyujiIwata
+
+Twitter
+
+.link http://twitter.com/qt_luigi @qt_luigi
+
+* Golang JP - Community - Google+
+
+.link https://plus.google.com/communities/107075098212007233819
+
+.image introduction-of-go-2017/img/golang_jp.png 500 888
+
+* GCPUG Okayama
+
+.link https://plus.google.com/communities/115366422273280046817
+
+.image introduction-of-go-2017/img/gcpug_okym.png 500 888
+
+* お品書き
+
+- Go言語とは？
+- Goで作れるモノ
+- Goで作られたモノ
+- Goを使っている企業
+- Hello, 世界！
+- 安全でシンプルな文法
+- はじめよう！
+
+* Go言語とは？
+
+* The Go Programming Language
+
+Goはオープンソースのプログラミング言語であり、シンプルで信頼性の高い効率的なソフトウェアを簡単に構築できます。
+
+.link https://golang.org/
+
+.image introduction-of-go-2017/img/golang_org.png 422 751
+
+* Gopher（ゴーファー）
+
+1. 公式マスコットキャラクター（Renee Frenchさん著：CC BY 3.0）
+2. Goを書く人
+
+.image introduction-of-go-2017/img/go_gopher.png 461 820
+
+* ヒストリー (1/2)
+
+2007年9月25日
+
+- Rob PikeがRobert GriesemerとKen ThompsonにGoのアイデアを伝える。
+
+.link https://commandcenter.blogspot.jp/2017/09/go-ten-years-and-climbing.html
+
+2009年11月10日
+
+- オープンソースプロジェクトとして公開される。
+- Goの誕生日とされている。
+
+.link https://blog.golang.org/8years
+
+2012年3月28日
+
+- Go 1がメジャーリリースされる。
+- コントリビューターの尽力でwindowsにも対応。
+- 企業でも採用の動きが出始める。
+
+* ヒストリー (2/2)
+
+2015年8月19日
+
+- Go 1.5がリリースされる。
+- Cで書かれていたがセルフホスティングされる。
+
+2017年7月13日
+
+- GopherCon 2017にてRuss CoxがGo 2の提案募集の開始を告知。
+
+.link https://blog.golang.org/toward-go2
+
+2017年10月25日
+
+- 最新版のGo 1.9.2がリリースされる。
+
+* バージョン
+
+現在は2月と8月にリリースされている。
+
+- Go 1.10は2018年2月にリリースの予定。
+
+.link https://tip.golang.org/doc/go1.10
+
+Go 1ではソースコードでの上位互換を保証している。
+
+- 最新版にて旧版のソースコードを修正なしでコンパイル可能。
+
+.link https://golang.org/doc/go1compat
+
+Go 2の目標：「生産規模」や「開発規模」を拡大できるように *Goを修正する*。
+
+- 大きな機能の追加や変更はあっても数個。
+- Go 1からスマートに移行できるように準備していく。
+
+* コンパイル言語
+
+強い静的型付け言語
+
+- 強い型付け：暗黙の型変換を許さない。
+- 静的型付け：プログラムの実行前に型を決める。
+
+実行バイナリーを生成
+
+- Windowsでいうexeファイル。
+
+コンパイルが速い。
+
+- Goが開発された要因の一つ。
+
+クロスコンパイルが可能。
+
+- 例）Raspberry Piだと非力なので代わりにmacでコンパイル。
+
+* ガーベジコレクション
+
+Goでは継続的に改良が進められている機能。
+
+いままで（〜Go 1.9）
+
+- 停止時間を短く（低レイテンシー化）
+
+これから（Go 1.10〜）
+
+- 処理時間を長く（高スループット化）
+
+* 並行処理
+
+CSP (Communicating Sequential Processes) モデルベース。
+
+共有メモリー方式ではなく「メッセージパッシング」方式。
+
+軽量のため多数のゴルーチン（並行処理）を実行可能。
+
+* 並行処理（構成要素とコード例）
+
+channel：ゴルーチン間の通信
+関数：ゴルーチンの処理
+go文：ゴルーチンの実行
+select文：ゴルーチンの同期化
+
+  // chanを生成
+  ch := make(chan int)
+  
+  // goroutineを10個起動
+  for i := 0; i < 10; i++ {
+          go func(n int) {
+                  n++
+                  ch <- n
+          }(i)
+  }
+  
+  // chanを10回受信して表示
+  for i := 0; i < 10; i++ {
+          val := <-ch
+          fmt.Println(val)
+  }
+
+* cgo
+
+Cで書かれたコードをGoから呼び出す。
+
+メリット
+
+- Cの資産を流用できる。
+- Cからでしか使えない機能を利用できる。
+
+デメリット
+
+- コンパイルに時間がかかる。
+- ガーベジコレクションが使えない。
+
+.link https://golang.org/cmd/cgo/
+
+* ツールチェインが充実
+
+標準
+
+- go get：パッケージ取得＆インストール
+- go doc：コードからリファレンスを作成
+- go fmt：コードフォーマッター
+- go vet：コードチェッカー
+- go test：ユニットテスト
+- go tool pprof：プロファイリング
+
+サードパーティー
+
+- gocode：コード補完
+- delve：デバッガー
+
+* その他
+
+最新技術に適用しやすい。
+
+- HTTP/2、gPRC、暗号化、など。
+
+エラーメッセージが見やすい。
+
+など。
+
+* Goで作れるモノ
+
+* 標準 (1/2)
+
+コマンドライン
+
+- ツール
+- アプリケーション
+- サービス
+- サーバー
+- システム
+- プラットフォーム
+
+* 標準 (2/2)
+
+共有ライブラリー
+
+- Linux：soファイル
+- macOS：dylibファイル
+- Windows：dllファイル（Go 1.10〜）
+
+プラグイン
+
+- Goで書かれた共有ライブラリーを呼び出す。
+- 現時点ではLinuxのみ対応。
+
+* Goプロジェクトがサポート
+
+モバイルアプリ
+
+- Android
+- iOS
+
+.link https://github.com/golang/mobile
+
+App Engine
+
+- Google Cloud PlatformのWebアプリケーションPaaS環境。
+- Goアプリは起動や処理が速いため待ち時間も課金額も少ない。
+
+.link https://github.com/golang/appengine
+
+* サードパーティー
+
+GopherJS
+
+- GoのコードをピュアJavaScriptに変換するコンパイラー。
+
+.link https://github.com/gopherjs/gopherjs
+
+Gobot
+
+- ロボティクス＆IoTフレームワーク。
+
+.link https://gobot.io/
+
+* パブリッククラウドサービス
+
+各社にてSDKが提供されている。
+
+Amazon Web Services
+
+- AWS SDK for Go
+
+Microsoft Azure
+
+- Azure SDK for Go（ベータ）
+
+Google Cloud Platform
+
+- Cloud SDK for Go
+
+* Goで作られたモノ
+
+* ツール／クライアント
+
+ツール
+
+- peco（インタラクティブフィルタリング）
+- vegeta（HTTP負荷テスト）
+
+クライアント
+
+- hub（GitHubのCLIクライアント）
+- usacloud（さくらクラウドのCLIクライアント）
+- Mackerel-agent（Mackerelのエージェント）
+
+* アプリ／サービス
+
+アプリ
+
+- Hugo（サイトジェネレーター）
+- Vuls（Linux/FreeBSD脆弱性検知）
+
+サービス
+
+- Gogs, Gitea（Gitサーバー）
+- Drone（CIプラットフォーム）
+
+* コンテナー／サーバー
+
+コンテナー
+
+- Docker（コンテナープラットフォーム）
+- CoreOS, RancherOS（コンテナーOS）
+- Kubernetes（コンテナーオーケストレーション）
+
+サーバー
+
+- Terraform, Juju（構成管理システム）
+- Prometheus（モニタリングシステム）
+
+* その他
+
+その他
+
+- InfluxDB（時系列データベース）
+- Packer（マシンイメージ構築）
+
+* Goを使っている企業
+
+* Google
+
+dl.google.com
+
+- ダウンロードサイト
+
+Vitess
+
+- MySQLバランサー（YouTubeで使用）
+
+.link http://vitess.io/
+
+Seesaw
+
+- LVSベースのロードバランサー
+
+* 海外
+
+SoundCloud
+
+- Prometheus（モニタリングシステム）の開発元
+
+New York Times
+
+- Gizmo（マイクロサービスツールキット）
+
+.link https://github.com/golang/go/wiki/GoUsers
+
+* 国内
+
+去年今年あたりで私が見聞きしている方々の企業の例（他多数！）
+サービス（REST APIサーバー、マイクロサービス、など）やツールなどで。
+
+- Gunosy
+- Mercari
+- Eureka
+- Hatena
+- DeNA
+- CyberAgent
+- Yahoo! Japan
+- Nulab
+- Souzoh
+
+* Hello, 世界！
+
+* hello.go
+
+  package main
+
+  import “fmt”
+
+  func main() {
+          fmt.Println("Hello, 世界！")
+  }
+
+* ソースファイル
+
+- ファイル名は小文字
+- ファイル拡張子は「.go」
+- 文字コードは「UTF-8」
+
+* パッケージ
+
+- package文は必須
+- パッケージ名は小文字
+- デフォルトパッケージは「main」
+- 外部パッケージはimport文で指定
+
+* 関数
+
+- 関数の定義は「func」
+- main()関数はエントリーポイント
+- 処理を記述する部分の開き波括弧「{」はfunc文と同一行
+
+* 書き方
+
+- インデントはタブ文字
+- 文の最後のセミコロン「;」は省略可能
+- 外部パッケージの大文字で始まっている関数を呼び出せる
+
+* 安全でシンプルな文法
+
+* 判定文
+
+if文のみ（三項演算子なし）
+
+  // 標準エラーにエラーメッセージを出力して終了
+  if err != nil {
+          fmt.Fprintln(os.Stderr, err)
+          os.Exit(1)
+  }
+
+条件式の前に文を記述できる。
+
+  // execute()の結果を正、負、０で表示
+  if cd := execute(); cd > 0 {
+          fmt.Println("正")
+  } else if cd < 0 {
+          fmt.Println("負")
+  } else {
+          fmt.Println("０")
+  }
+
+* 反復文
+
+for文のみ（while文なし）
+
+  // 0から9まで、繰り返す
+  for i := 0; i < 10; i++ {
+          execute(i)
+  }
+
+条件式の前に文を記述できる。
+range式で添字と値を取得できる。
+
+  // execute()の結果内容を出力
+  for slc := execute(); i, v := range slc {
+          fmt.Println("Index:", i, "Value:", v)
+  }
+
+* switch文
+
+文を記述できる。
+
+case句は処理が完了したら終了する。
+
+- 他言語にてbreak文の書き忘れで発生する不具合を回避
+
+流したい場合は明示的にfallthroughを記述する。
+
+  switch cd := execute(i); cd {
+  case 1:
+          fmt.Println("正")
+  case -1:
+          fmt.Println("負")
+          fallthrough
+  default:
+          fmt.Println("０")
+  }
+
+* 関数 (1/2)
+
+多値を返却できる。
+
+  // 引数自身を加算、乗算した結果を返却
+  func plusMulti(i int) (int, int) {
+          return i + i, i * i
+  }
+
+戻り値に名前をつけられる。
+
+  // 引数自身を加算、乗算した結果を返却
+  func plusMulti(i int) (pls, mlt int) {
+          pls = i + i
+          mlt = i * i
+          return
+  }
+
+* 関数 (2/2)
+
+ファーストクラス。
+
+  // 変数に格納
+  var prc = plusMulti
+
+  // 関数の引数に渡せる
+  r, err := calc(plusMulti)
+
+無名関数。
+
+  // 無名関数はfunc()で記述
+  pls, mlt := func(i int) (int, int) {
+          return i + i, i * i
+  }(3)
+
+他に、クロージャー、ダッグタイピング、など
+
+* defer文
+
+関数を抜けた後に実行する関数を指定できる。
+複数実行した場合はスタック処理される。
+
+  // 本関数が終了した後、ファイルをクローズ
+  func read(filename stirng) error {
+          file, err := os.Open(filename)
+          if err != nil {
+                  return err
+          }
+          defer file.Close()
+          ...
+  }
+
+Apple社が開発したSwiftにも2から採用。
+
+* 例外なし
+
+エラー時はerror型の値を生成する。
+
+  func proccess(i int) (int, error) {
+          if v := check(i); v <= 0 {
+                  return 0, errors.New("execite error")
+          }
+          return v, nil
+  }
+
+明示的にエラーを判定して責任を持って処理するのがGoの作法。
+
+  // process()の結果がエラーなら終了
+  val, err := proccess(os.Args[1])
+  if err != nil {
+          fmt.Fprintln(os.Stderr, err)
+          os.Exit(1)
+  }
+  execute(val)
+
+* なしと言えば
+
+型の継承はなし。
+
+- 重くなるため採用しなかった。
+
+*今のところ* ジェネリックなし。
+
+- 型システムと実行時の複雑さを解決する方法が見つかれば採用も。
+
+デフォルトでのポインター演算なし。
+
+- わかる人が明示的にunsafeパッケージをインポートして使用する。
+
+* その他に
+
+未使用のパッケージや変数が存在する場合、コンパイル時にエラーになる。
+
+変数を宣言したらゼロ値で初期化される。
+
+- 文字列:””、数値:0, 0.0、論理:false、参照：nil
+
+* はじめよう！
+
+* 一先ずWebブラウザーにて
+
+The Go Playground
+
+- 公式サイト。コードを記述＆実行できる。
+- 書いたコード（ページ）をURLで共有できる。
+
+.link https://play.golang.org/
+
+A Tour of Go
+
+- 公式サイト。Goの文法を学習できる入門サイト。
+
+.link https://tour.golang.org/welcome/1
+
+* インストールしてじっくりと
+
+各種パッケージ管理
+
+- apt-get(Linux), homebrew(macOS) など
+- 最新バージョンが取得できないタイミングあり。
+
+公式サイトのインストーラー
+
+- 過去から最新までを取得できる！
+
+* インストールできるOS（Go 1.9.2 時点）
+
+公式インストールバイナリーが用意されているOS
+
+- FreeBSD 9.3 以降
+- Linux 2.6.23 以降
+- macOS 10.8 以降
+- Windows XP SP2 以降
+
+ソースコードからインストールできるOS
+
+- Dragonfly BSD, NetBSD, OpenBSD, Plan 9, Solaris
+
+.link https://golang.org/doc/install
+
+* Goに対応しているエディター
+
+対応：プラグインや拡張機能が用意されている。
+
+テキストエディター
+
+- Vim, Emacs, Atom, Sublime Text, Visual Studio Code
+
+統合開発環境
+
+- Eclipse, NetBeans, IntelliJ IDEA, Komodo IDE
+
+統合開発環境（Go専用）
+
+- LiteIDE, GoLand
+
+.link https://golang.org/doc/editors.html
+
+* 書籍
+
+私の所感ですが「A Tour of Go」の後に書籍でGoを学習する際の読み進め順の一例。
+
+CLIで行くなら
+　改定2版 基礎からわかるGo言語
+　スターティングGo言語
+　‎プログラミング言語Go
+　みんなのGo言語
+　‎Goならわかるシステムプログラミング
+
+Webで行くなら
+　Go言語入門
+　‎Goプログラミング実践入門
+　Go言語によるWebアプリケーション開発
+　‎Real World HTTP
+
+.link https://plus.google.com/+RyujiIwata/posts/BN6QbBDTfyX
+
+* イベント（世界）
+
+Go Release Party
+
+- GoチームがGoリリース時に開催を促すGoイベント。
+- 先の1.9では有志Gopherにて、東京、岡山、静岡、沖縄が開催。
+
+GopherCon
+
+- 世界各地で開催されるGoイベント。
+- Goチームが協賛したりする。
+
+Women Who Go
+
+- 女性Gopherを対象したGoイベント。
+- 日本ではTokyoがある。
+
+* イベント（日本）
+
+Go Cenference
+
+- 日本最大のGoイベント。
+- 東京で年1,2回開催される。
+- ゲストスピーカーとしてGoチームやGoに関わるGopherが登壇。
+
+その他、有志のGopherやGoを採用している企業が主催するイベントが多数。
+
+- 特に東京は数も多く活発。
