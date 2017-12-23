@@ -1,0 +1,487 @@
+GoでOSSにコントリビュートした話
+合同勉強会 in 大都会岡山 -2017 Winter-
+23 Sep 2017
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image go-oss-contribute/img/qt_luigi250.png 300 300
+
+Google+
+
+.link https://plus.google.com/+RyujiIwata +RyujiIwata
+
+Twitter
+
+.link http://twitter.com/qt_luigi @qt_luigi
+
+* Golang JP - Community - Google+
+
+.link https://plus.google.com/communities/107075098212007233819
+
+.image go-oss-contribute/img/golangjp.png 500 888
+
+* GCPUG Okayama
+
+.link https://plus.google.com/communities/115366422273280046817
+
+.image go-oss-contribute/img/gcpug_okayama.png 500 888
+
+* Open Source Software (OSS)へのcontribute (貢献,参加)を後押し！
+
+お品書き
+
+1. コントリビューションの実例
+
+- はじめの一歩を踏み出しやすいように
+- 私のケースをGo紹介 (Azure, Go, Mackerel)
+
+2. コントリビューションの手順
+
+- 作業前に準備すること
+- 作業として行うこと
+
+* 1. コントリビューションの実例
+
+* Azure
+
+* Azure SDK for Go
+
+Microsoft社のパブリッククラウドサービス「Azure」のGo向けSDK (ベータ)
+
+.link https://github.com/Azure/azure-sdk-for-go
+
+.image go-oss-contribute/img/example/azure/sdkgo/intro.png 461 820
+
+* Commits
+
+2017年の1月に1件コミット
+
+.link https://github.com/Azure/azure-sdk-for-go/commits?author=qt-luigi
+
+.image go-oss-contribute/img/example/azure/sdkgo/commits.png 461 820
+
+* Fix typo (#512)
+
+タイプミスを修正（whit -> with：2ヶ所）
+
+.link https://github.com/Azure/azure-sdk-for-go/commit/c6270e342baaafc437176d9f5604faea3738b681 github.com/Azure/azure-sdk-for-go/commit/c6270e3
+
+.image go-oss-contribute/img/example/azure/sdkgo/commit.png 461 820
+
+* いつ見つけたの？
+
+Azure SDK for Goの日本語情報を増やそうとREADME.mdを日本語訳していた時
+
+.link https://github.com/qt-luigi/azure-sdk-for-go-docs-jp
+
+.image go-oss-contribute/img/example/azure/sdkgo/found.png 461 820
+
+* 公式ブログにリリース記事が掲載されるまでに成長！
+
+2017年12月20日にv12.0.0-betaが公開。私の修正箇所(当時8.0.1-beta)の掲載も継続中。
+
+.link https://azure.microsoft.com/ja-jp/updates/azure-sdk-for-go-v1200-preview/
+
+.image go-oss-contribute/img/example/azure/sdkgo/result.png 461 820
+
+* MicrosoftDocs/azure-docs.ja-jp
+
+Azureの公式サイトの日本語ドキュメント
+
+.link https://github.com/MicrosoftDocs/azure-docs.ja-jp
+
+.image go-oss-contribute/img/example/azure/docjp/intro.png 461 820
+
+* Commits
+
+2017年の3月と4月に計2件コミット
+
+.link https://github.com/MicrosoftDocs/azure-docs.ja-jp/commits?author=qt-luigi
+
+.image go-oss-contribute/img/example/azure/docjp/commits.png 461 820
+
+* Change Golang to Go
+
+Goチームで利用が推奨されている言葉に修正（Golang -> Go）
+
+.link https://github.com/MicrosoftDocs/azure-docs.ja-jp/commit/e2f5f6cdd5212e1608909a1e2fe53e24f8a9fce2 github.com/MicrosoftDocs/azure-docs.ja-jp/commit/e2f5f6
+
+.image go-oss-contribute/img/example/azure/docjp/commit_1.png 461 820
+
+* fix section title. I think it reverse.
+
+セクションのタイトルが逆転していたのを指摘（概要 <-> 詳細）
+
+.link https://github.com/MicrosoftDocs/azure-docs.ja-jp/commit/affe25482c54fc663f1e1e6eb63da3c13d0ccdc5 github.com/MicrosoftDocs/azure-docs.ja-jp/commit/affe25
+
+.image go-oss-contribute/img/example/azure/docjp/commit_2.png 461 820
+
+* いつ見つけたの？
+
+Goに関するAzureの公式ドキュメントを集めていた時
+
+.link https://www.google.co.jp/search?q=microsoft+azure+golang
+
+.image go-oss-contribute/img/example/azure/docjp/found.png 461 820
+
+* 修正したファイルは一新
+
+もう存在しません...思い出として。
+
+.link https://github.com/MicrosoftDocs/azure-docs.ja-jp/tree/live/articles/container-service
+
+.image go-oss-contribute/img/example/azure/docjp/result.png 461 820
+
+* Go
+
+* The Go programming language
+
+シンプルで信頼性の高い効率的なソフトウェアを簡単に構築できる開発言語
+
+.link https://github.com/golang/go
+
+.image go-oss-contribute/img/example/go/intro.png 461 820
+
+* Commits
+
+2017年の8月と11月に計3件コミット
+
+.link https://github.com/golang/go/commits?author=qt-luigi
+
+.image go-oss-contribute/img/example/go/commits.png 461 820
+
+* doc/go1.9: fix typo in Moved GOROOT
+
+タイプミスを修正（overriden -> overridden）
+
+.link https://github.com/golang/go/commit/b1dc2c28a59d7fd6c3cd6d8b1b2e5e562de5f414 github.com/golang/go/commit/b1dc2c2
+
+.image go-oss-contribute/img/example/go/aug/commit_1.png 461 820
+
+* doc/go1.9: fix typo in crypto/x509 of "Minor changes to the library".
+
+タイプミスを修正（DSN -> DNS）
+
+.link https://github.com/golang/go/commit/b3a17812867ad746fb13fbede06e9055fb17c2fb github.com/golang/go/commit/b3a1781
+
+.image go-oss-contribute/img/example/go/aug/commit_2.png 461 820
+
+* いつ見つけたの？
+
+Go 1.9 Release Party in 岡山用にドラフト版リリースノートを日本語訳していた時
+
+.link https://github.com/qt-luigi/talks/blob/master/2017/go-1.9-release-notes.slide
+
+.image go-oss-contribute/img/example/go/aug/found.png 461 820
+
+* Go 1.9 Release Notes
+
+一週間後（8月24日）の正式リリースに間に合いました！q@w@p
+
+.link https://golang.org/doc/go1.9
+
+.image go-oss-contribute/img/example/go/aug/result.png 461 820
+
+* doc: fix a sentence position.
+
+HTMLタグの入れ子違いを指摘（<p><pre></pre></p> -> <pre></pre><p></p>）
+
+.link https://github.com/golang/go/commit/c52e26e323def3b48f7cb1ef4d3012f207def9f4 github.com/golang/go/commit/c52e26
+
+.image go-oss-contribute/img/example/go/nov/commit.png 461 820
+
+* いつ見つけたの？
+
+本スライドを作成するためにGoでのコントリビュート手順を見直していた時
+
+.link https://golang.org/doc/
+
+.image go-oss-contribute/img/example/go/nov/found.png 461 820
+
+* キレイに整いました！
+
+「This will place ...」文が正しい位置に (2018年2月のGo 1.10に反映予定)
+
+.link https://beta.golang.org/doc/
+
+.image go-oss-contribute/img/example/go/nov/result.png 461 820
+
+* Mackerel
+
+* mackerel-agent-plugins
+
+はてな社のサーバー監視サービス「Mackerel」のエージェント(Go製)用プラグイン
+
+.link https://github.com/mackerelio/mackerel-agent-plugins
+
+.image go-oss-contribute/img/example/mackerel/intro.png 461 820
+
+* Commits
+
+2017年の12月に計2件コミット
+
+.link https://github.com/mackerelio/mackerel-agent-plugins/commits?author=qt-luigi
+
+.image go-oss-contribute/img/example/mackerel/commits.png 461 820
+
+* add that close the response body
+
+レスポンスBodyの閉じ忘れを指摘（defer resp.Body.Close()）
+
+.link https://github.com/mackerelio/mackerel-agent-plugins/commit/cff687601a7730014d245870deab67f1fd107367 github.com/mackerelio/mackerel-agent-plugins/commit/cff687
+
+.image go-oss-contribute/img/example/mackerel/commit_1.png 461 820
+
+* add defer to closing the response body, and change position it.
+
+レスポンスBodyを閉じる処理の実行タイミング(defer)と呼び出し位置を修正
+
+.link https://github.com/mackerelio/mackerel-agent-plugins/commit/c4e6ce4ecefd65d46383f9ce35ba247a867135bb github.com/mackerelio/mackerel-agent-plugins/commit/c4e6ce
+
+.image go-oss-contribute/img/example/mackerel/commit_2.png 461 820
+
+* いつ見つけたの？
+
+そーだい@Mackerel CREさんのMackerelプラグインAdvent Calendar 2017を見ていた時
+
+.link http://soudai.hatenablog.com/entry/mackerel-plugin-linux
+
+.image go-oss-contribute/img/example/mackerel/found.png 461 820
+
+* 無事リリースされました！
+
+2017年12月12日にv0.40.0でリリースされました。
+
+.link https://github.com/mackerelio/mackerel-agent-plugins/releases/tag/v0.40.0
+
+.image go-oss-contribute/img/example/mackerel/result.png 461 820
+
+* まとめ
+
+* いずれも小さいけれど
+
+タイプミスは意外と多いので、練習用としてまずはそこからでよいかと。
+
+- コミットコメントは「Fix typo」で大丈夫。
+- 誤りを正すことで、書き手と読み手の両方が救われる。
+
+技術者としてはコード変更でコントリビュートして行きたいところ(^^;)
+
+自分の好きなOSSにコントリビュートした＆できた達成感は格別！
+
+.link https://golang.org/CONTRIBUTORS
+
+* 2. コントリビューションの手順
+
+* 作業の流れ
+
+事前作業
+
+- ガイドラインを読む
+- アカウントを取得
+- ライセンスに同意
+
+編集作業
+
+- コードの取得
+- コードの変更
+- コードの反映＆通知
+- コードのレビュー
+
+* プロジェクトパターン
+
+以降、各プロジェクトを次のパターンとして読み進めて頂ければ理解しやすいかと。
+
+[Mackerel]
+
+- 通常のGitHubパターン
+
+[Azure]
+
+- 制約付きのGitHubパターン
+
+[Go]
+
+- GitHub以外のパターン
+
+* 事前作業
+
+* ガイドラインを読む
+
+そのプロジェクトにコントリビューションするための道しるべ。*必読*。
+
+[Mackerel] How to contribute
+
+.link https://github.com/mackerelio/mackerel-agent-plugins/blob/master/CONTRIBUTING.md
+
+- GitHub上のプロジェクトでは CONTRIBUTING.md がその役割を担う。
+
+[Azure] Open Source Contribution Guidelines
+
+.link https://azure.github.io/guidelines/
+
+[Go] Contribution Guide
+
+.link https://golang.org/doc/contribute.html
+
+* アカウントを取得
+
+コードを管理したりレビューしたりするサービスへのログインに必要。
+
+[Mackerel] [Azure] GitHubアカウント
+
+.link https://github.com/
+
+[Go] Googleアカウント
+
+.link https://www.google.com/accounts/NewAccount
+
+* ライセンスに同意
+
+Contribution License Agreement (CLA) の場合、同意していないとマージされない。
+
+[Mackerel] Apache License 2.0
+
+.link https://github.com/mackerelio/mackerel-agent-plugins/blob/master/LICENSE
+
+- GitHub上のプロジェクトでは LICENSE がその役割を担う。
+
+[Azure] Azure Contribution License Agreement
+
+.link https://cla.azure.com/
+
+- 軽微な変更と判断された場合、CLAなしでもマージされる。
+
+[Go] Google CLA
+
+.link https://cla.developers.google.com/about
+
+* 二種類のCLA
+
+法人CLA
+
+- 雇用主の同意を得て、コントリビュート活動を行う。
+- 上司の方の署名も必要になるので、普段から良好な関係作りを。
+
+個人CLA
+
+- 雇用主に関係なく個人として、コントリビュート活動を行う。
+- フリーランスの方なども、こちらに。
+
+※ 他に、OSS運営会社の社員向けCLA、なども存在。
+
+* 編集作業
+
+* コードの取得
+
+リモートリポジトリーからgit cloneする。
+
+[Mackerel] Mackerel · GitHub
+
+.link https://github.com/mackerelio
+
+- 自分のGitHubへフォークしたmasterブランチを取得。
+- git checkout -b <branchname> にて作業ブランチを作成＆移動して作業。
+
+[Azure] Microsoft Azure · GitHub
+
+.link https://github.com/Azure
+
+- 自分のGitHubへフォークしたdevブランチを取得。
+
+* コードの取得
+
+[Go] go - Git at Google
+
+.link https://go.googlesource.com/go
+
+- リモートリポジトリーから直接取得（GitHubはミラーサイト）
+
+.image go-oss-contribute/img/contribute/google_git.png 399 710
+
+* コードの変更
+
+コーディング
+
+- 愛用のエディターや統合開発環境 (IDE) でコードを変更。
+- 対象ファイルの文字コードに注意 (GoはUTF-8のみ)
+
+テスト
+
+- ガイドラインなどで指定されている手順に従って実施。
+
+* コードの反映＆通知
+
+変更内容をリモートリポジトリーに反映して通知。
+git addによるコードのステージングまでは同じ。
+
+[Mackerel]
+
+- git commitでコミット。
+- git push origin <branchname> で自分のGitHubの作業ブランチに反映。
+- 自分のGitHubの作業ブランチから本家へPull Requestで通知。
+
+[Azure]
+
+- git commitでコミット。
+- git push origin dev で自分のGitHubのdevブランチに反映。
+- 自分のGitHubのdevブランチから本家へPull Requestで通知。
+
+* コードの反映＆通知
+
+[Go]
+
+- git change（拡張コマンド）でブランチ作成＆コミット。
+- git mail（拡張コマンド）で本家に反映＆通知。
+
+* コードのレビュー
+
+レビューワーによるコードチェック。
+指摘があればコードを修正して反映＆通知。
+問題なければコミッターにてmasterブランチにマージ。
+
+[Mackerel] GitHub
+
+.link https://github.com/mackerelio
+
+[Azure] GitHub
+
+.link https://github.com/Azure
+
+* コードのレビュー
+
+[Go] Gerrit
+
+.link https://go-review.googlesource.com/
+
+.image go-oss-contribute/img/contribute/gerrit.png 461 820
+
+* まとめ
+
+* 世界に発信できるコードを書こう！
+
+個人的には、いろいろ学べました。
+
+- ソーシャルコーディングの流れ
+- Gitやコードホスティングサービスの使い方
+
+英語力の必要性を実感することに。
+
+- コミットやレビューのコメントは英語で読み書き。
+- 日本発のプロジェクトでも英語でないと受け付けられないことも。
+
+自分の好きなOSSの中の人とやりとりできるワクドキ感は格別！
+
+- 中の人は忙しいので、慌てず＆焦らず。
+
+* 日本発のプロジェクトでも英語でないと受け付けられない例
+
+えーのう@Mackerel CREさんの場合
+
+.link https://github.com/mackerelio/mackerel-agent-plugins/issues/270
+
+.image go-oss-contribute/img/contribute/non_japanese.png 461 820
