@@ -1,0 +1,188 @@
+Goでモバイル開発：Android編
+Android Bazaar&Conference, Diverse 2018 UDON県 - Lightning Talks
+3 Feb 2018
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image gomobile-android/img/qt_luigi250.png 300 300
+
+Google+
+
+.link https://plus.google.com/+RyujiIwata +RyujiIwata
+
+Twitter
+
+.link http://twitter.com/qt_luigi @qt_luigi
+
+* Goとは？
+
+* The Go Programming Language
+
+オープンソースの汎用プログラミング言語。
+
+ガーベジコレクターを搭載した強い静的型付けのコンパイル言語。
+
+マルチプラットフォームでクロスコンパイルが可能。
+
+.link https://golang.org
+
+* Goとモバイル対応の歴史
+
+2012年3月
+
+- Go 1リリース。
+
+2014年12月
+
+- Go 1.4にて、Androidに対応。
+
+2015年8月
+
+- Go 1.5にて、iOSに対応。
+
+2018年2月
+
+- Go 1.10リリース予定。
+
+* Goでモバイル開発するために必要なもの
+
+* gomobile
+
+Goでモバイル開発するための準標準パッケージ。 
+
+- *実験的サポート*
+
+.link https://github.com/golang/mobile
+
+* Go
+
+Go 1.7以上（macOS Sierra以降：1.7.4以上）
+
+- ドキュメントは1.5以上のままだが、ソースコードはGo 1.7以上に変更済み。
+
+.link https://golang.org/dl
+
+* 開発できるアプリケーション形式
+
+* SDKアプリケーション
+
+SDKを使ってGoでコーディングした処理をJava/Obj-Cから呼び出す。
+
+UIまわりはSDKで作成し、内部処理をGoで開発する。
+
+バインディングするためパフォーマンスはその分低下。
+
+Goの部分はソースコードレベルでAndroid/iOSで共用できる。
+
+* ネイティブアプリケーション
+
+Androidの場合はNDKを使ってGoだけでコーディングする。
+
+UIまわりから内部処理まで全てGoで開発する。
+
+OpenGL ES 2や実験的にOpenALをサポート。
+
+ネイティブのためパフォーマンスはそれなりに良い(はず)。
+
+* 実例アプリケーション「ivy」
+
+大きな桁数でも計算できる計算機（Android/iOS）
+
+.link https://play.google.com/store/apps/details?id=org.golang.ivy
+
+.image gomobile-android/img/ivy_googleplay.png 460 820
+
+* Android開発について
+
+* 対応状況
+
+アーキテクチャー
+
+- arm, arm64, 386, amd64 (MIPS 未対応)
+
+Android SDK
+
+- API 15 (Android 4.0.3) 以上。
+
+Android NDK
+
+- r16bに対応。
+
+* SDK開発において
+
+Java
+
+- バージョン 7以上。
+
+Reverse bindings 機能
+
+- GoのコードからJavaのコードを呼び出せる。
+
+  import "Java/java/lang/System"
+  
+  t := System.CurrentTimeMillis()
+
+* 開発環境
+
+Android Studioで開発可能
+
+- gomobile用のプラグインあり。
+
+.link https://plugins.gradle.org/plugin/org.golang.mobile.bind
+
+Android Studioを使わない場合
+
+- 環境変数「ANDROID_HOME」にてAndroid SDKへのパスの設定が必要。
+
+* セットアップ＆ビルド
+
+* macOSの場合
+
+事前にXcode Command Line Toolsをインストール
+
+  $ xcode-select --install
+
+私事：2018年1月にXcodeがないと実行できない不具合を修正＆コミット
+
+.link https://github.com/golang/mobile/commit/125c52
+
+* インストール
+
+gomobileツール＆パッケージをインストール
+
+  $ go get golang.org/x/mobile/cmd/gomobile
+
+* 初期化
+
+環境にあわせて必要なツールチェインがインストールされる。
+
+  $ gomobile init -v -ndk /hoge/android-ndk-r16b
+
+[NDK開発]
+
+- -ndkオプションにてAndroid NDKへのパスの指定が必要。
+
+* SDKのビルド
+
+ソースコードを「bind」指定でコンパイル。
+
+  $ gomobile bind -target=android パッケージ名
+
+作成された.aarファイルをライブラリーとして使用する。
+
+* ネイティブのビルド
+
+ソースコードを「build」指定でコンパイル。
+
+  $ gomobile build -target=android パッケージ名
+
+作成された.apkファイルを動作させる。
+
+モバイル端末に直接インストール可能 (要：adbコマンド)
+
+ 　$ gomobile install パッケージ名
+ 

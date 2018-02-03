@@ -1,5 +1,9 @@
 # Talks
 
+## 2018
+
+- [Goでモバイル開発：Android編](https://talks.godoc.org/github.com/qt-luigi/talks/2018/gomobile-android.slide) in [Android Bazaar&Conference, Diverse 2018 UDON県](https://connpass.com/event/69135/)
+
 ## 2017
 
 - [GoでOSSにコントリビュートした話](https://talks.godoc.org/github.com/qt-luigi/talks/2017/go-oss-contribute.slide) in [合同勉強会 in 大都会岡山 -2017 Winter-](https://gbdaitokai.connpass.com/event/58025/)
