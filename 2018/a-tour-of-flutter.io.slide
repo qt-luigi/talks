@@ -1,0 +1,267 @@
+
+A Tour of Flutter.io
+Flutter Meetup Osaka #1
+23 Jun 2018
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image a-tour-of-flutter.io/img/qt_luigi250.png 300 300
+
+Google+
+
+.link https://plus.google.com/+RyujiIwata +RyujiIwata
+
+Twitter
+
+.link http://twitter.com/qt_luigi @qt_luigi
+
+* Flutter JP (Google+ Community)
+
+.link https://plus.google.com/communities/101822628763858843669
+
+.image a-tour-of-flutter.io/img/flutterjp/googleplus.png 500 888
+
+* Flutter Japan User Group (connpass.com)
+
+.link https://flutter-jp.connpass.com/
+
+.image a-tour-of-flutter.io/img/flutterjp/connpass.png 500 888
+
+* 本資料について
+
+公式サイト「Flutter.io」の見出し項目を日本語化（翻訳や意訳）して補足説明を加えた形になっています。
+
+タイトルの通り、はじめのうちに広大な公式サイト「Flutter.io」を効率良く巡るための「ガイドブック」としての役割が果たせたら幸いです。
+
+Happy Fluttering!
+
+* Flutter.io
+
+* 特徴
+
+読みやすい
+
+- 英語だが、文法や単語がシンプル。
+- 同じ言い回しが多いので、読めば読むほどに。
+
+理解しやすい
+
+- 文章だけでなくコードや図が豊富。
+- 説明していることがわかりやすい。
+
+直しやすい
+
+- ページの右上に"Edit Source"と"File issue"のリンクが常設。
+- クリックすると該当のGitHubページへ遷移。
+
+* トップページ
+
+.image a-tour-of-flutter.io/img/flutter.io.png 500 888
+
+* ヘッダー
+
+主要コンテンツへのリンク
+
+- ドキュメント、ショーケース、GitHub、パッケージ、サポート
+
+サイト内の検索欄
+
+- Googleカスタムサーチを使用。
+
+* ヘッダー（ショーケース）
+
+- 各企業が作成したFlutterアプリを紹介。
+
+.image a-tour-of-flutter.io/img/showcase.png 500 888
+
+* ヘッドライン
+
+トップニュースおよび関連記事へのリンク。
+
+最近はリリース情報の場合が多い。
+
+- Jun 20：Announcing Flutter Release Preview 1
+
+.link https://medium.com/flutter-io/flutter-release-preview-1-943a9b6ee65a
+
+- May 7：Ready for Production Apps: Flutter Beta 3
+
+.link https://developers.googleblog.com/2018/05/ready-for-production-apps-flutter-beta-3.html
+
+- Apr 10：Announcing Flutter beta 2
+
+.link https://medium.com/flutter-io/https-medium-com-flutter-io-announcing-flutters-beta-2-c85ba1557d5e
+
+* フッター（関連リンク）
+
+- メーリングリスト（flutter-dev@）
+- twitter（@flutterio）
+- github（github.com/flutter/）
+- 利用規約
+- プライバシーポリシー
+- 社区中文资源（中国用サイト）
+
+* フッター（ライセンス情報）
+
+サイトコンテンツ
+
+- Creative Commons Attribution 4.0 International License (CC BY 4.0)
+
+コードサンプル
+
+- BSD License
+
+* [参考] Flutter資産のライセンス
+
+ロゴ画像、など
+
+- Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)
+
+.link https://github.com/flutter/identity-assets
+
+例）ロゴ画像を加工してイベントサイトに使用する、など
+
+.image a-tour-of-flutter.io/img/flutterjp_osaka.png 270 660
+
+* ボディ
+
+Flutterの特徴が紹介されている。
+
+- 美しいネイティブモバイルアプリを構築
+- 高速開発（ホットリロード）
+- 表現力が豊かで美しいUI（マテリアルデザイン）
+- モダンなリアクティブフレームワーク
+- ネイティブの機能とSDKにアクセス可能
+- 統合アプリケーション開発
+- 始めるのは簡単、今日から試そう。
+
+* 主要コンテンツ
+
+* ここでの「主要コンテンツ」とは？
+
+公式サイト「Flutter.io」のトップページ以外に表示される左側の項目一覧です。
+
+.image a-tour-of-flutter.io/img/contents_list.png 500 888
+
+* 基本的には「上から下へ」
+
+Get started
+
+- Flutterを始める時に。
+
+Build UIs
+
+- ユーザーインターフェースを開発する時に。
+
+Use device and SDK APIs
+
+- パッケージやプラグインを使ったりそれ自身を開発する時に。
+
+Development and tools
+
+- より効率的に開発を進めて行く時に。
+
+More details
+
+- Flutter本体を知りたい時に。
+
+* Get started
+
+Flutterを始める時に。
+
+- 1: Flutterのインストール（Windows, macOS, Linux）
+- 2: エディターの設定（Android Studio, Visual Studio Code）
+- 3: 雛形アプリで動作確認
+- 4: 最初のアプリを書いてみる
+- 5: 次に学ぶこと
+
+* Build UIs (1/3)
+
+ユーザーインターフェースを開発する時に。
+
+ウィジェット
+
+- ウィジェットの解説
+- ウィジェットのカタログ
+
+サンプル集
+
+- クックブック
+- サンプルアプリのカタログ
+- コードラボ
+
+* Build UIs (2/3)
+
+チュートリアル
+
+- レイアウト構造
+- インタラクティブ機能
+
+各デベロッパー向け
+
+- Web
+- Android
+- iOS
+- React Native
+
+* Build UIs (3/3)
+
+- ジェスチャー
+- アニメーション
+- ボックスの制約
+- アセット（リソース）と画像
+- 国際化対応（表示言語）
+- アクセサビリティ
+
+* Use device and SDK APIs
+
+パッケージやプラグインを使ったりそれ自身を開発する時に。
+
+- パッケージの使い方
+- パッケージやプラグインの開発
+
+- 各OS機能にアクセス
+- JSONと永続化（情報やデータの保存）
+
+* Development and tools (1/2)
+
+より効率的に開発を進めて行く時に。
+
+- IDEの使い方
+- ホットリロードの使い方
+
+- アプリのテスト方法
+- アプリのデバッグ方法
+
+- パフォーマンス測定
+- ウィジェット構造を観察する方法
+
+* Development and tools (2/2)
+
+- Androidアプリのリリース準備
+- iOSアプリのリリース準備
+
+- Fastlaneを使った継続的開発
+- Flutter本体のアップグレード
+- コードフォーマット
+
+* More details
+
+Flutter本体を知りたい時に。
+
+- よくある質問（FAQ）
+- Flutterの技術概要
+
+スライド
+
+- Flutterの概要説明
+- アーキテクチャー図
+
+YouTube
+
+- フレームワークの層（レイヤー）の設計 
+- レンダリングの流れ（パイプライン）
