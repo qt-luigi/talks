@@ -1,5 +1,5 @@
 Go入門ハンズオン [01:基礎編]
-Golang 勉強会 in Kagawa
+香川Go言語勉強会
 8 Sep 2018
 
 Ryuji Iwata
@@ -573,7 +573,7 @@ go build -o 実行バイナリー名 ファイル名
 
 - 指定した名前の実行バイナリー「typing」が生成される。
 
-* 完成！q@wp@p
+* 完成！q@w@p
 
     $ ./typing
     golang
