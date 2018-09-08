@@ -1,0 +1,465 @@
+Go入門ハンズオン [02:ファイル編]
+Golang 勉強会 in Kagawa
+8 Sep 2018
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji IWATA
+
+.image go-intro-hands-on/img/qt_luigi250.png
+
+Google+
+
+.link https://plus.google.com/+RyujiIwata +RyujiIwata
+
+Twitter
+
+.link http://twitter.com/qt_luigi/ @qt_luigi
+
+* 何を作るの？
+
+* ファイルの中身を標準出力しよう！q@w@p
+
+  $ ./gocat
+  invaild args
+
+  $ ./gocat example.txt
+  golang
+  hands-on
+  in
+  kagawa
+
+* 基本仕様
+
+引数が１つでない場合、エラーを出力します。
+
+  $ ./gocat
+  invaild args
+
+  $ ./gocat example.exe test.txt
+  invaild args
+
+第１引数に指定されたファイルが存在しない場合、エラーを出力します。
+
+  $ ./gocat test.txt
+  stat test.txt: no such file or directory
+
+第１引数に指定されたファイルが存在する場合、中身を出力します。
+
+  $ ./gocat example.txt
+  golang
+  hands-on
+  in
+  kagawa
+
+* 書き方を学ぼう！
+
+* 正常に処理されることを前提とした書き方 (1/2)
+
+  package main
+
+  import (
+      "bufio"
+      "fmt"
+      "os"
+  )
+
+  func main() {
+      filename := "example.txt"
+
+      f, _ := os.Open(filename)
+
+      scan := bufio.NewScanner(f)
+      for scan.Scan() {
+          text := scan.Text()
+          fmt.Println(text)
+      }
+  }
+
+* 正常に処理されることを前提とした書き方 (2/2)
+
+読み込みモードでファイルを開くにはos.Open()を使用。
+
+ファイルの中身をスキャンするScanner構造体を生成。
+
+Scanner構造体を使ってファイルの中身を１行すつ順番に取得。
+
+* エラーのハンドリングを意識した書き方
+
+  func main() {
+      filename := "example.txt"
+
+      f, err := os.Open(filename)
+      // ファイルをオープンする時に発生したエラーのハンドリング
+      if err != nil {
+          return
+      }
+      // ファイルをクローズする
+      // defer文で指定された関数は自関数の終了時に実行される
+      defer f.Close()
+
+      scan := bufio.NewScanner(f)
+      for scan.Scan() {
+          text := scan.Text()
+          fmt.Println(text)
+      }
+      // スキャン中に発生したエラーのハンドリング
+      if err := scan.Err(); err != nil {
+          return
+      }
+  }
+
+* コマンドラインツールとしてのエラー時の振る舞い (1/2)
+
+  func main() {
+      filename := "example.txt"
+
+      f, err := os.Open(filename)
+      if err != nil {
+          fmt.Fprintln(os.Stderr, err)
+          os.Exit(1)
+      }
+      // exitされるとdefer文で指定した関数は実行されない！
+      defer f.Close()
+
+      scan := bufio.NewScanner(f)
+      for scan.Scan() {
+          text := scan.Text()
+          fmt.Println(text)
+      }
+      if err := scan.Err(); err != nil {
+          fmt.Fprintln(os.Stderr, err)
+          os.Exit(1)
+      }
+  }
+
+* コマンドラインツールとしてのエラー時の振る舞い (2/2)
+
+エラー時のメッセージは標準エラー（os.Stderr）に出力。
+
+エラー時のExitステータスは0以外を返す。
+
+- 正常終了時のExitステータスは0。
+
+実行結果
+
+  $ mv example.txt example.org 
+  $ go run f03.go
+  open example.txt: no such file or directory
+  exit status 1
+
+Exitステータス
+
+- go runで実行した時は出力される（「exit status 1」）
+- 実行バイナリーで実行した時は出力されない。
+
+* ファイル名を引数で指定する
+
+  func main() {
+      fmt.Printnln(os.Args, len(os.Args))
+      filename := os.Args[1]
+
+- 引数はos.Argsを使って好きな場所やタイミングで取得できる。
+- string型のスライスで取得でき、１番目の値は「フルパス指定の自分」
+
+  $ go run f04.go 123 abc
+  [/var/folders/6v/s3wcz6l17m7dp71jbszs9m3w0000gn/T/go-build078946616/b001/exe/f04 123 abc] 3
+  open 123: no such file or directory
+  exit status 1
+
+- go run コマンドの実態は、実行バイナリーを生成→実行→破棄している。
+
+* 課題１
+
+指定された引数が１つ以外の場合は、次の処理を行うように、書き換えてください。
+
+- エラーメッセージ「invalid args」を標準エラーに出力する。
+- Exitステータスで1を返して終了する。
+
+* 解答１
+
+  func main() {
+      if len(os.Args) != 2 {
+          fmt.Fprintln(os.Stderr, "invaild args")
+          os.Exit(1)
+      }
+      filename := os.Args[1]
+
+実行結果
+
+  $ go run f05.go
+  invaild args
+  exit status 1
+
+  $ go run f05.go example.txt test.txt
+  invaild args
+  exit status 1
+
+  $ go run f05.go example.txt
+  golang
+  hands-on
+  in
+  kagawa
+
+* 指定されたファイル名の存在をチェック
+
+  func main() {
+      if len(os.Args) != 2 {
+          fmt.Fprintln(os.Stderr, "invaild args")
+          os.Exit(1)
+      }
+      filename := os.Args[1]
+
+      if _, err := os.Stat(filename); err != nil {
+          fmt.Fprintln(os.Stderr, err)
+          os.Exit(1)
+      }
+    
+
+- os.Stat()でファイルの存在を確認。
+
+* 関数を作ってみよう！
+
+* 現在までのソースコード (1/2)
+
+    package main
+
+    import (
+        "bufio"
+        "fmt"
+        "os"
+    )
+
+    func main() {
+        // 引数の数をチェック
+        if len(os.Args) != 2 {
+            fmt.Fprintln(os.Stderr, "invaild args")
+            os.Exit(1)
+        }
+
+        filename := os.Args[1]
+
+        // ファイルの存在をチェック
+        if _, err := os.Stat(filename); err != nil {
+            fmt.Fprintln(os.Stderr, err)
+            os.Exit(1)
+        }
+
+    // この行は資料中のコードの見た目を整えるためのダミー文です q@w@p
+
+* 現在までのソースコード (2/2)
+
+    // この行は資料中のコードの見た目を整えるためのダミー文です q@w@p
+
+        // ファイルをオープン
+        f, err := os.Open(filename)
+        if err != nil {
+            fmt.Fprintln(os.Stderr, err)
+            os.Exit(1)
+        }
+        // exitされるとdefer文で指定した関数は実行されない！
+        defer f.Close()
+
+        // ファイルの中身をスキャンして１行ずつ出力
+        scan := bufio.NewScanner(f)
+        for scan.Scan() {
+            text := scan.Text()
+            fmt.Println(text)
+        }
+        if err := scan.Err(); err != nil {
+            fmt.Fprintln(os.Stderr, err)
+            os.Exit(1)
+        }
+    }
+
+* どこを関数にするの？
+
+「現在までのソースコード (2/2)」の部分を、指定されたファイル名の中身を出力するoutput()関数として切り出します。
+
+関数名：output
+引数：名前はfilenameでstring型。
+戻り値：なし
+
+* 呼び出し元のmain()関数
+
+    package main
+
+    import (
+        "bufio"
+        "fmt"
+        "os"
+    )
+
+    func main() {
+        if len(os.Args) != 2 {
+            fmt.Fprintln(os.Stderr, "invaild args")
+            os.Exit(1)
+        }
+        filename := os.Args[1]
+        if _, err := os.Stat(filename); err != nil {
+            fmt.Fprintln(os.Stderr, err)
+            os.Exit(1)
+        }
+
+        // 指定されたファイル名の中身を出力
+        output(filename)
+    }
+
+* 切り出したoutput()関数
+
+    func output(filename string) {
+        f, err := os.Open(filename)
+        if err != nil {
+            fmt.Fprintln(os.Stderr, err)
+            os.Exit(1)
+        }
+        // exitされるとdefer文で指定した関数は実行されない！
+        defer f.Close()
+
+        scan := bufio.NewScanner(f)
+        for scan.Scan() {
+            text := scan.Text()
+            fmt.Println(text)
+        }
+        if err := scan.Err(); err != nil {
+            fmt.Fprintln(os.Stderr, err)
+            os.Exit(1)
+        }
+    }
+
+* コマンドラインツールのお作法
+
+Exit処理は、なるべくエントリーポイントで行うようにする。
+
+- 関数内からos.Exit()が消えたことで、どこからでも何回でも呼び出せるようになる。
+
+エラーメッセージの出力も、なるべくエントリーポイントで行うようにする。
+
+- 関数内ではエラーを出力せず、呼び出し元に通知（返す）ようにする。
+
+* 課題２
+
+output()関数を次のように書き換えてください。
+
+１．関数は戻り値としてerror型を返すようにする。
+
+    func output(filename string) error {
+
+２．エラーメッセージを出力してExitしていた部分は、errを返すようにする。
+
+        if err != nil {
+            return err
+        }
+
+３．最後まで処理が流れた場合、正常終了となりerrはないのでnilを返す。
+
+        return nil
+
+* 解答２
+
+    func output(filename string) error {
+        f, err := os.Open(filename)
+        if err != nil {
+            return err
+        }
+        // exitされないのでdefer文で指定した関数は最後に実行される！q@w@p
+        defer f.Close()
+
+        scan := bufio.NewScanner(f)
+        for scan.Scan() {
+            text := scan.Text()
+            fmt.Println(text)
+        }
+        if err := scan.Err(); err != nil {
+            return err
+        }
+
+        return nil
+    }
+
+* 課題３
+
+main()関数にて、output()関数の呼び出し部分を次のように書き換えてください。
+
+１．output()関数の実行結果がエラーの場合、
+
+- エラーを標準エラーに出力してください。
+- Exitステータスで1を返して終了してください。
+
+* 解答３
+
+	if err := output(filename); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+
+* 課題４
+
+output()関数を次のように書き換えてください。
+
+１．関数は戻り値としてstring型のスライスとerror型を返すようにする。
+
+    func output(filename string) ([]string, error) {
+
+- 戻り値が複数の場合はカンマで区切って丸カッコで囲みます。
+
+２．ファイルの中身を出力するをやめて、スライスに詰めて返してください。
+
+変数名：texts
+型：string型のスライス
+
+３．return文で２つの値を返してください。
+
+    return texts, err
+
+１番目：ファイルの中身を詰めたスライス（エラー時：nil、正常終了時：texts）
+２番目：エラー型（エラー時：err、正常終了時：nil）
+
+* 解答４
+
+    func output(filename string) ([]string, error) {
+        f, err := os.Open(filename)
+        if err != nil {
+            return nil, err
+        }
+        // exitされないのでdefer文で指定した関数は最後に実行される！q@w@p
+        defer f.Close()
+
+        var texts []string
+        scan := bufio.NewScanner(f)
+        for scan.Scan() {
+            text := scan.Text()
+            texts = append(texts, text)
+        }
+        if err := scan.Err(); err != nil {
+            return nil, err
+        }
+
+        return texts, nil
+    }
+
+* 課題５
+
+main()関数にて、output()関数の呼び出し部分を次のように書き換えてください。
+
+１．output()関数の実行結果がエラーの場合、
+
+- エラーを標準エラーに出力してください。
+- Exitステータスで1を返して終了してください。
+
+２．output()関数の実行結果が正常終了の場合、
+
+- スライスの内容を１件ずつ標準出力してください。
+
+* 解答５
+
+    if texts, err := output(filename); err != nil {
+        fmt.Fprintln(os.Stderr, err)
+        os.Exit(1)
+    } else {
+        for _, text := range texts {
+            fmt.Println(text)
+        }
+    }
