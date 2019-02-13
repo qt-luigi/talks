@@ -1,5 +1,9 @@
 # Talks
 
+## 2019
+
+- [Goでコマンドラインツールを作ってプロダクション投入した話](https://talks.godoc.org/github.com/qt-luigi/talks/2019/go-cli-production.slide) in [Okayama.go#1+Fukuoka.go](https://okayamago.connpass.com/event/112138/)
+
 ## 2018
 
 - [Go入門ハンズオン [01:基礎編]](https://talks.godoc.org/github.com/qt-luigi/talks/2018/go-intro-hands-on-01-basic.slide) in [香川Go言語勉強会](https://gdgshikoku.connpass.com/event/99115/)
