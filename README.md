@@ -2,6 +2,7 @@
 
 ## 2019
 
+- [GAE/Goの概要説明とデプロイデモ](https://talks.godoc.org/github.com/qt-luigi/talks/2019/gae-go-intro-demo.slide) in [GCPUG KAGAWA #1](https://gcpug-kagawa.connpass.com/event/104083/)
 - [Goでコマンドラインツールを作ってプロダクション投入した話](https://talks.godoc.org/github.com/qt-luigi/talks/2019/go-cli-production.slide) in [Okayama.go#1+Fukuoka.go](https://okayamago.connpass.com/event/112138/)
 
 ## 2018
