@@ -1,0 +1,988 @@
+Golang JP Google+ Community Survey Results
+Go Conference 2019 Spring
+18 May 2019
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image survey-results/img/qt_luigi250.png 300 300
+
+Twitter
+
+.link http://twitter.com/qt_luigi @qt_luigi
+
+* Golang JP Google+ Community
+
+.link https://plus.google.com/communities/107075098212007233819
+
+.image survey-results/img/golangjp.png 500 888
+
+* Golang JP Google+ Community
+
+活動期間
+
+- 2012年12月9日 〜 2019年4月2日 (約6年4ヶ月)
+
+参加メンバー
+
+- 1,574名
+
+当時の日本向けGoコミュニティ
+
+- 328名 (2019/5/5時点) - [[http://lingr.com/room/golang/][Go言語 – Lingr]]
+- 783名  (2019/5/5時点) - [[https://gophers.slack.com/messages/C061Z2R43/][japan | Gophers Slack]]
+- 1,414名 (2019/2/11時点) - [[https://twitter.com/golangjp][@golangjp | Twitter]]
+
+の中でも、参加者数は日本最大。
+
+: --------------------------------------------------
+: Survey Results
+: --------------------------------------------------
+
+* Survey Results
+
+* 調査内容
+
+管理者権限にて2019年4月3日にコミュニティの最終バックアップを取得。
+
+バックアップした全951件(54名)の投稿をもとに集計。
+
+- 年代別トピックス
+- イベントコミュニティ
+
+* 年別投稿数
+
+.image survey-results/img/graph/post.png 527 975
+
+: --------------------------------------------------
+: 年代別トピックス
+: --------------------------------------------------
+
+* 年代別トピックス
+
+* 2012年 (Go 1.0)
+
+* 2012年 (Go 1.0)
+
+本コミュニティ
+
+- 12月9日 : オーナーのYoshifumi YAMAGUCHI氏にて開始。
+
+YAMAGUCHI氏の投稿
+
+- 「作るだけ作ってみましたー」
+- html/templateで色々試してみた結果をGo Playgoundにてシェア。
+- MySQLクラスター「vitess」がYouTubeにて本番稼働中であることを紹介。
+- Goのワークスペース管理コマンド「genv」を作成中でありアイデアを募集。
+
+OGAWA氏の投稿
+
+- 「自社の会議室で、まずは少人数でチュートリアルでも」
+
+: --------------------------------------------------
+: 2013年 (Go 1.1, 1.2)
+: --------------------------------------------------
+
+* 2013年 (Go 1.1, 1.2)
+
+* 2013年 (Go 1.1, 1.2)
+
+Go 1.1
+
+- Dave Cheney氏 :「[[https://dave.cheney.net/2013/05/21/go-11-performance-improvements][Go 1.1 performance improvements]]」[ [[https://dave.cheney.net/2013/05/25/go-11-performance-improvements-part-2][part 2]] ] [ [[https://dave.cheney.net/2013/05/28/go-11-performance-improvements-part-3][part 3]] ]
+
+* 2013年 (Go 1.1, 1.2)
+
+公式リポジトリー
+
+- 準パッケージ「golang.org/x/text」に日本語エンコーディングが追加。
+
+GitHub (golang)
+
+- キャッシュ ライブラリー「[[https://github.com/golang/groupcache][groupcache]]」
+
+Github
+
+- コマンドライン オプション パーサー「[[https://github.com/jessevdk/go-flags][go-flags]]」
+
+* 2013年 (Go 1.1, 1.2)
+
+開発環境
+
+- Windows 向け IDE「[[https://www.zeusedit.com/languages/go.html][Zeus IDE]]」
+- Eclipse プラグイン「[[https://goclipse.github.io/][GoClipse]]」
+- Go IDE「[[http://liteide.org/][LiteIDE]]」
+
+* 2013年 (Go 1.1, 1.2)
+
+コンテナー
+
+- Linux コンテナー「[[https://www.docker.com/][Docker]]」
+- 仮想 マシン イメージ 作成「[[https://www.packer.io/][Packer]]」
+
+* 2013年 (Go 1.1, 1.2)
+
+国内企業
+
+- KLab : 社内勉強会「豪快にGo会」開催
+
+* 2013年 (Go 1.1, 1.2)
+
+話題
+
+- 海外にてパッケージのバージョニング問題
+- QiitaにてGoのAdvent Calendarを開始
+
+* 2013年 (Go 1.1, 1.2)
+
+オンライン
+
+- 学習 :「CodeIQ」にGoの問題が登場
+
+* 2013年 (Go 1.1, 1.2)
+
+コミュニティ
+
+- 1月19日 : スタートGo#1 (GDG名古屋)
+- 4月13日 : Go Conference 2013 Spring (東京)
+- 4月24日 : Go研 (東京)
+- 10月27日 : Golang Cafe (岡山)
+
+* 2013年 (Go 1.1, 1.2)
+
+イベント
+
+- 「Google I/O 2013」でのGoセッションの紹介。
+
+: --------------------------------------------------
+: 2014年 (Go 1.3, 1.4)
+: --------------------------------------------------
+
+* 2014年 (Go 1.3, 1.4)
+
+* 2014年 (Go 1.3, 1.4)
+
+Goチーム
+
+- 公式ブログ : Goが5歳に！「[[https://blog.golang.org/5years][Half a decade with Go]]」
+- 公式ブログ : Gopher誕生秘話「[[https://blog.golang.org/gopher][The Go Gopher]]」
+- 公式ブログ : 準パッケージ「context」「[[https://blog.golang.org/context][Go Concurrency Patterns: Context]]」
+- 公式資料 : 「Go Playground」の内側を解説「[[https://talks.golang.org/2014/playground.slide#1][Inside the Go playground]]」
+
+* 2014年 (Go 1.3, 1.4)
+
+Go 1.4
+
+- go mobileによるAndroidアプリ作成。
+
+* 2014年 (Go 1.3, 1.4)
+
+GitHub (golang)
+
+- Go ミラー リポジトリー「[[https://github.com/golang/go][go]]」
+
+GitHub
+
+- Disney : 社内向けと思われるGoトレーニング資料が一瞬公開に。
+
+* 2014年 (Go 1.3, 1.4)
+
+Goサンプル集サイト
+
+- [[https://gobyexample.com/][Go by Example]]
+- [[https://github.com/golang-samples][Golang Samples]]
+
+* 2014年 (Go 1.3, 1.4)
+
+Go情報収集サイト
+
+- Twitter収集「Goes (Articles relating to Golang)」 (サービス終了)
+- 各サイト収集「[[http://goz.hexacosa.net/][goz (go's news site)]]」 (サービス継続中)
+
+* 2014年 (Go 1.3, 1.4)
+
+Goノウハウ
+
+- Rui Ueyama氏 : [[https://qiita.com/ruiu][ruiu - Qiita]]
+
+* 2014年 (Go 1.3, 1.4)
+
+国内企業
+
+- パシフィックポーター : ヘアサロン予約管理システム「かんざし」でGoの求人
+- ピクシブ : Go製の広告配信サーバの事例紹介
+
+* 2014年 (Go 1.3, 1.4)
+
+話題
+
+- コードレビュー ([[https://github.com/golang/go/wiki/CodeReviewComments][CodeReviewComments]])
+- 文字列の連結＆操作 (コスト高)
+- エラーハンドリング
+- Go本体を魔改造
+- Goで作成された不正プログラムが登場
+- [[https://postd.cc/why-go-is-not-good/][Go言語がダメな理由]]
+
+* 2014年 (Go 1.3, 1.4)
+
+Gopher
+
+- Takuya Ueda氏 : ベクター形式やLINEスタンプの画像を作成＆公開 ([[https://qiita.com/tenntenn/items/05704c8600040a4f6748][URL]])
+- 個人でのTシャツ販売
+
+* 2014年 (Go 1.3, 1.4)
+
+オンライン
+
+- 記事 : [[https://gihyo.jp/dev/column/newyear/2014/pronama-lang-prospect?page=3][プロ生ちゃんが聞く！ 2014年のプログラミング言語動向：新春特別企画｜gihyo.jp … 技術評論社]]
+
+* 2014年 (Go 1.3, 1.4)
+
+雑誌
+
+- 日経ソフトウエア 2014年2月号 : 特集1「プログラミング大予測」
+- 日経ソフトウエア 2014年5月号 : 特集2「今年ブレークする4言語」
+- WEB+DB PRESS Vol.82 : 特集2「はじめてのGo」
+
+* 2014年 (Go 1.3, 1.4)
+
+イベント
+
+- Google : 秋のコンサートでアカペラグループが「Let it Go」の替え歌で「[[www.youtube.com/watch?v=LJvEIjRBSDA][Write in Go (Fall 2014)]]」を披露。
+- connpass : 「[[https://connpass.com/category/Go%E8%A8%80%E8%AA%9E/][Go言語]]」のカテゴリーが登場。
+
+: --------------------------------------------------
+: 2015年 (Go 1.5)
+: --------------------------------------------------
+
+* 2015年 (Go 1.5)
+
+* 2015年 (Go 1.5)
+
+技術キーワード
+
+- gRPC
+
+* 2015年 (Go 1.5)
+
+Go 1.5
+
+- セルフホスティング : Go本体のコンパイルにGo 1.4が必要。
+
+Go 1.6
+
+- HTTP/2
+
+A Tour of Go
+
+- 日本語版が更新
+
+* 2015年 (Go 1.5)
+
+GitHub (Google)
+
+- 実験的 Go クロス プラットフォーム UI ライブラリー「[[https://github.com/google/gxui][gxui]]」
+
+GitHub
+
+- 日本語形態素解析器「[[https://github.com/ikawaha/kagome][kagome]]」
+- Go コード JavaScript 変換 コンパイラー「[[https://github.com/gopherjs/gopherjs][GopherJS]]」
+
+* 2015年 (Go 1.5)
+
+開発環境
+
+- Microsoft社からコード エディター「[[https://code.visualstudio.com/][Visual Studio Code]]」
+
+* 2015年 (Go 1.5)
+
+クラウド
+
+- 「Azure App Service」でGoが実験的サポート
+- 「AWS SDK for Go」が正式リリース
+- 「GAE/Go」が一般提供
+
+* 2015年 (Go 1.5)
+
+逆引きサイト
+
+- [[https://ashitani.jp/golangtips/][逆引きGolang]]
+- [[http://www.openspc2.org/reibun/Go/1.1.1/][Go言語 例文辞典 (MacOS X) [Go lang sample] ]]
+
+* 2015年 (Go 1.5)
+
+他の開発言語との絡み
+
+- Python : [[https://blog.filippo.io/building-python-modules-with-go-1-5/][BUILDING PYTHON MODULES WITH GO 1.5]]
+- Perl : [[https://shogo82148.github.io/blog/2015/09/19/faster-perl-test-with-go-lang/][Go言語でPerlのテストを早くする]]
+- Ruby : [[https://udzura.hatenablog.jp/entry/2014/09/18/163715][Go言語からmrubyのDSLを読み込んでよしなに使う]]
+
+* 2015年 (Go 1.5)
+
+プッシュ配信
+
+- メルカリ : [[https://tech.mercari.com/entry/2015/08/11/172206][nginxとGoでつくるメルカリのプッシュ通知システム]]「Gaurun」
+- フェンリル : [[https://blog.fenrir-inc.com/jp/2015/05/boltz-engine-release.html][超高速プッシュ配信エンジン BoltzEngine を本日リリースしました]]
+
+* 2015年 (Go 1.5)
+
+国内企業
+
+- フルネス : 有料研修「Goプログラミング基礎研修」開始。
+
+* 2015年 (Go 1.5)
+
+求人
+
+- Goで社内開発をしたいのでプログラム構造や注意点などを教えて欲しい。
+- [急募] golangを扱えるプログラマーを新規で１人探しています。
+
+* 2015年 (Go 1.5)
+
+ポッドキャスト
+
+- wada.fm : [[https://soundcloud.com/wadafm/ep043][43. Go言語ファーストインプレッション]]
+- CodeLunch.fm : [[https://codelunch.fm/13/][13. 15 Gophers Came From San Francisco]]
+- rebuild.fm : [[http://rebuild.fm/42/][42: When in Golang, Do as the Gophers Do (lestrrat)]]
+
+* 2015年 (Go 1.5)
+
+話題
+
+- Google Codeが閉鎖に。
+- Qiita : Goタグの投稿が1,000件に到達。
+
+* 2015年 (Go 1.5)
+
+Gopher
+
+- Gopherのコスプレ
+- 羊毛でGopherを作成
+
+* 2015年 (Go 1.5)
+
+オンライン
+
+- 雑誌「WEB+DB PRESS Vol.82」の特集2「はじめてのGo」がネットに公開。
+
+* 2015年 (Go 1.5)
+
+書籍
+
+- 改訂2版 基礎からわかる Go言語
+
+* 2015年 (Go 1.5)
+
+イベント
+
+- [[https://dailyportalz.jp/kiji/150203192687/page/2][「CROSS 2015」の「第一回 プログラム言語対抗綱引き」でGoチームが優勝。]]
+
+: --------------------------------------------------
+: 2016年 (Go 1.6, 1.7)
+: --------------------------------------------------
+
+* 2016年 (Go 1.6, 1.7)
+
+* 2016年 (Go 1.6, 1.7)
+
+沸騰キーワード
+
+- GAE/Go
+- エラーハンドリング
+- 正規表現
+
+* 2016年 (Go 1.6, 1.7)
+
+Goチーム
+
+- 公式Wiki : Go 世界規模 イベント「[[https://github.com/golang/go/wiki/Go-1.6-release-party][Go Release Party]]」開始 (1.6から)
+- 公式ブログ : Go 調査「[[https://blog.golang.org/survey2016][Go Survey]]」開始
+
+* 2016年 (Go 1.6, 1.7)
+
+Go 1.7
+
+- コンパイルが速くなった、実行バイナリーのサイズが減った、など。
+- context パッケージ、SSA (Static Single Assignment)、サブテスト、など。
+
+* 2016年 (Go 1.6, 1.7)
+
+GitHub (Google)
+
+- Linux 仮想 サーバー ベース ロード バランサー「[[https://github.com/google/seesaw][Seesaw v2]]」
+
+GitHub (企業)
+
+- The New York Times : マイクロ サービス ツールキット「[[https://github.com/nytimes/gizmo][Gizmo]]」
+- Future Architect : Linux/FreeBSD 向け 脆弱性 スキャナー「[[https://github.com/future-architect/vuls][Vuls]]」
+- LINE :「[[https://github.com/line/line-bot-sdk-go][LINE Messaging API SDK for Go]]」
+
+GitHub
+
+- ターミナル ベース テキスト エディター「[[https://github.com/zyedidia/micro][micro]]」が一般提供
+- ルーティング プロトコル デーモン「[[https://github.com/coreswitch/zebra][Zebra 2]]」
+
+- レポート 作成 : PDF「[[https://github.com/mikeshimura/goreport][goreport]]」& Excel「[[https://github.com/mikeshimura/goexcel][goexcel]]」
+
+* 2016年 (Go 1.6, 1.7)
+
+国内企業
+
+- KLab : 新卒研修にGoを採用
+- VOYAGE GROUP : 学生向けインターンシップにGoを採用
+
+* 2016年 (Go 1.6, 1.7)
+
+話題
+
+- Doctor Web : Goで書かれたLinux向けトロイの木馬を発見。
+- 他の国内カンファレンスにてGoで発表あり（11月2日 : [[https://mwed.connpass.com/event/42054/][エンジニア勉強会]], 11月5日 : [[https://vimconf.org/2016/][VimConf 2016]], など）
+
+* 2016年 (Go 1.6, 1.7)
+
+オンライン
+
+- 連載 : [[https://ascii.jp/elem/000/001/235/1235262/][Goならわかるシステムプログラミング]] (全20回)
+- 連載 : [[https://thinkit.co.jp/series/6029][基礎からしっかり学ぶGo言語]] (全3回?)
+
+- 学習 : 富士通ラーニングメディアにGoの基本コース(英語)が登場
+
+* 2016年 (Go 1.6, 1.7)
+
+書籍
+
+- Go言語によるWebアプリケーション開発 (原書:Go Programming Blueprints)
+- スターティングGo言語
+- Go言語入門
+- プログラミング言語Go (原書:The Go Programming Language)
+- みんなのGo言語
+
+雑誌
+
+- WEB+DB PRESS Vol.95 : 特集2「Goによる平行処理」
+
+* 2016年 (Go 1.6, 1.7)
+
+コミュニティ
+
+- 「[[https://womenwhogo-tokyo.connpass.com/][Women Who Go Tokyo]]」発足。
+
+: --------------------------------------------------
+: 2017年 (Go 1.8, 1.9)
+: --------------------------------------------------
+
+* 2017年 (Go 1.8, 1.9)
+
+* 2017年 (Go 1.8, 1.9)
+
+技術キーワード
+
+- Functional Option Pattern
+
+沸騰キーワード
+
+- Generics
+- Diagnostics
+
+* 2017年 (Go 1.8, 1.9)
+
+Goチーム
+
+- 公式ブログ : Go 2に向けて「[[https://blog.golang.org/toward-go2][Toward Go 2]]」
+- Rob Pike氏 : Go創設10周年「[[https://commandcenter.blogspot.com/2017/09/go-ten-years-and-climbing.html][Go: Ten years and climbing]]」
+
+* 2017年 (Go 1.8, 1.9)
+
+GitHub (golang)
+
+- Go パッケージ 依存 管理 ツール「[[https://github.com/golang/dep][dep]]」
+
+Git at Google
+
+- LLVM ベース Go コンパイラ「[[https://go.googlesource.com/gollvm/][gollvm]]」
+
+* 2017年 (Go 1.8, 1.9)
+
+開発環境
+
+- JetBrains社の「[[https://www.jetbrains.com/go/][GoLand]]」が製品化。
+
+* 2017年 (Go 1.8, 1.9)
+
+国内企業
+
+- Yahoo! JAPAN : Go製 分散 オブジェクト ストレージ「Dragon」紹介
+- メルカリ ソウゾウ : 社内勉強会「エキスパートGo」開催
+- サイバーエージェント : イベント「CA.go」開催
+- セールスフォース・ドットコム : ベータ公開した「Heroku CI」でGoもサポート
+
+* 2017年 (Go 1.8, 1.9)
+
+話題
+
+- TIOBE Software : Goが2016年のプログラミング言語アワードを受賞。
+
+* 2017年 (Go 1.8, 1.9)
+
+Gopher
+
+- ゴーファー 着せ替え サイト「[[https://gopherize.me/][Gopherize.me]]」
+
+* 2017年 (Go 1.8, 1.9)
+
+書籍
+
+- Goプログラミング実践入門 (原書:Go Web Programming)
+- Goならわかるシステムプログラミング (原書:同名Web連載)
+- プログラミング経験者がGo言語を本格的に勉強する前に読むための本 (Kindle)
+
+* 2017年 (Go 1.8, 1.9)
+
+コミュニティ (中継)
+
+- 4月13日 : [[https://shinjukugo.connpass.com/event/52929/][Shinjuku.go #1 〜大阪と中継でつないでカジュアルトーク〜]]
+
+: --------------------------------------------------
+: 2018年 (Go 1.10, 1.11)
+: --------------------------------------------------
+
+* 2018年 (Go 1.10, 1.11)
+
+* 2018年 (Go 1.10, 1.11)
+
+技術キーワード
+
+- クリーン アーキテクチャー
+
+* 2018年 (Go 1.10, 1.11)
+
+Goチーム
+
+- 公式ブログ : Go ブランド ガイドライン「[[https://blog.golang.org/go-brand][Go's New Brand]]」
+- Russ Cox氏 : Go バージョニング「[[https://research.swtch.com/vgo][Go & Versioning]]」
+
+* 2018年 (Go 1.10, 1.11)
+
+Github (Google)
+
+- コンテナー ランタイム サンドボックス「[[https://github.com/google/gvisor][gVisor]]」
+- Go クラウド 開発 キット「[[https://github.com/google/go-cloud][Go Cloud]]」
+
+GitHub
+
+- Go デバッガー「[[https://github.com/go-delve/delve][delve]]」がメジャー バージョン 1.0に到達。
+
+* 2018年 (Go 1.10, 1.11)
+
+クラウド
+
+- 「[[https://aws.amazon.com/jp/about-aws/whats-new/2018/01/aws-lambda-supports-go/][AWS Lambda]]」がGoをサポート
+- 「[[https://blogs.msdn.microsoft.com/devamm/2018/02/20/build-go-apps-for-azure-with-the-go-sdk-now-generally-available/][Azure SDK for Go]]」が一般提供
+
+* 2018年 (Go 1.10, 1.11)
+
+オンライン
+
+- 書籍 : [[https://www.programming-books.io/essential/go/][Essential Go - a free Go programming book]]
+- 学習サイト : [[https://prog-8.com/languages/go][Go | プログラミングの入門なら基礎から学べるProgate(プロゲート)]]
+
+* 2018年 (Go 1.10, 1.11)
+
+書籍
+
+- Go言語でつくるインタプリタ (原書:Writing An Interpreter In Go)
+- Go言語による並行処理 (原書:Concurrency in Go)
+
+: --------------------------------------------------
+: 2019年 (Go 1.12)
+: --------------------------------------------------
+
+* 2019年 (Go 1.12)
+
+* 2019年 (Go 1.12)
+
+本コミュニティ
+
+- 4月2日 : 一般向けGoogle+と共に終了。
+
+* 2019年 (Go 1.12)
+
+Go 1.13
+
+- 準パッケージ「xerrors」が標準パッケージ「errors」に取り込まれる。
+
+* 2019年 (Go 1.12)
+
+書籍
+
+- 入門Goプログラミング (原書:Get Programming with Go)
+
+* 2019年 (Go 1.12)
+
+コミュニティ (中継)
+
+- 2月12日 : [[https://fukuokago.connpass.com/event/112073/][Fukuoka.go#13+Okayama.go]]
+- 2月15日 : [[https://gocon.connpass.com/event/118022/][Go 1.12 Release Party in Tokyo w/ Fukuoka&Umeda]]
+- 3月23日 : [[https://golangtokyo.connpass.com/event/122263/][golang.tokyo #22+Okayama.go/Sendai.go]]
+
+* 2019年 (Go 1.12)
+
+イベント
+
+- 東京以外で初となる「[[https://fukuoka.gocon.jp/][Go Conference'19 Summer in Fukuoka]]」が7月に開催。
+
+: --------------------------------------------------
+: イベントコミュニティ
+: --------------------------------------------------
+
+* イベントコミュニティ
+
+* イベントコミュニティ一覧 (東京) (1/4)
+
+.image survey-results/img/list/event-tokyo-1.png 554 920
+
+* イベントコミュニティ一覧 (東京) (2/4)
+
+.image survey-results/img/list/event-tokyo-2.png 554 920
+
+* イベントコミュニティ一覧 (東京) (3/4)
+
+.image survey-results/img/list/event-tokyo-3.png 554 920
+
+* イベントコミュニティ一覧 (東京) (4/4)
+
+.image survey-results/img/list/event-tokyo-4.png 89 920
+
+補足
+
+- 開催が早い順に掲載しています。
+
+PDFファイル
+
+.link https://github.com/qt-luigi/talks/tree/master/2019/survey-results/pdf/event-list-tokyo.pdf
+
+* イベントコミュニティ一覧 (東京以外) (1/3)
+
+.image survey-results/img/list/event-other-1.png 554 920
+
+* イベントコミュニティ一覧 (東京以外) (2/3)
+
+.image survey-results/img/list/event-other-2.png 554 920
+
+* イベントコミュニティ一覧 (東京以外) (3/3)
+
+.image survey-results/img/list/event-other-3.png 197 917
+
+補足
+
+- 県コード順に掲載しています。
+
+PDFファイル
+
+.link https://github.com/qt-luigi/talks/tree/master/2019/survey-results/pdf/event-list-other.pdf
+
+* 月別イベント開催数 (全国)
+
+.image survey-results/img/graph/event-all.png 537 917
+
+* 開催数が2桁超えのイベント (開催数が多い順)
+
+88回 Golang Cafe - GDG中国(岡山)
+66回 GAE (Python/Go) もくもく勉強会 in 横浜タネマキ - タネマキGAE(神奈川)
+37回 Women Who Go Tokyo - (東京)
+35回 Akiba.go - (東京)
+27回 横浜Go読書会 - (神奈川)
+24回 golang.tokyo - (東京)
+19回 Go研 - (東京)
+19回 Go読書会 - Letto - (東京)
+15回 Goもくもく会(ごもくかい) - eureka(東京)
+14回 Go Conference - (東京)
+
+* 開催数が2桁超えのイベント (開催数が多い順)
+
+13回 Gunosy.go - (東京)
+13回 Shizuoka.go - (静岡)
+13回 Fukuoka.go - (福岡)
+12回 Akasaka.go - (東京)
+11回 The Go Programming Language 輪読会 - eureka(東京)
+10回 Tokyo Golang Developers - (東京)
+10回 六本木ごーらんち - (東京)
+10回 Gopher道場 - (東京)
+10回 Okinawa.go - (沖縄)
+
+: --------------------------------------------------
+: さいごに
+: --------------------------------------------------
+
+* さいごに
+
+* さいごに
+
+膨大な投稿を調査・集計して、抜粋した形で紹介させて頂きました。
+
+今回の調査結果が、日本のGoの温故知新の資料としてお役に立てれば幸いです。
+
+日本向けGo情報の発信は、Twitterの[[https://twitter.com/golangjp][@golangjp]]に引き継がれています。
+
+準備や条件が整えば、バックアップした投稿は公開する予定です。
+
+引き続き、日本からGoを盛り上げて行きましょう！q@w@p
+
+: --------------------------------------------------
+: 付録
+: --------------------------------------------------
+
+* 付録
+
+* 目次
+
+- Golang JP Google+ Community 情報
+- 年別投稿数
+- 人別投稿数
+- イベント開催数
+- 名前の最後がgoのコミュニティ
+- 私の管理者としての活動内容
+
+* 付録 : Golang JP Google+ Community 情報
+
+* キャッチフレーズ
+
+Go言語に関する情報を共有するコミュニティです。日本語情報、英語情報関係なくGo言語の情報を集めていきましょう！
+
+* 共有カテゴリー
+
+Discussion
+
+- メンバーに問いかけたり意見交換したい話題
+
+Introduction
+
+- メンバーに紹介したり知ってもらいたい話題
+
+Tips and tricks
+
+- Goに関する豆知識やコツ
+
+Event report
+
+- Goに関するイベントの告知や報告
+
+* 運営メンバー
+
+オーナー
+
+- Yoshifumi YAMAGUCHI
+
+管理者
+
+- Ian Lewis
+- Shinichi Ogawa
+- Tetsuhiro Ueda
+- Yoshifumi YAMAGUCHI
+- Yasuhiro MATSUMOTO
+- Ryuji Iwata
+
+* メンバー推移
+
+私が参加した2013年夏ごろは150名ほど。
+
+- 2014年05月27日 - 300名
+- 2014年07月29日 - 400名
+- 2014年10月03日 - 500名
+- 2014年11月30日 - 600名
+- 2015年03月24日 - 700名
+- 2015年08月10日 - 800名
+- 2015年11月29日 - 900名
+
+1,000名に近くにつれ、健全でないアカウントが増加したためカウントを停止。
+程なくしてGoogle社の対応によりそれらのアカウントは除外された。
+
+* 付録 : 年別投稿数
+
+* 年別投稿数
+
+.image survey-results/img/list/post.png 531 662
+
+* 付録 : 人別投稿数
+
+* 4件〜
+
+710 Ryuji Iwata
+63 Yoshifumi YAMAGUCHI
+38 Takuya Ueda
+19 eiko chow
+19 Tetsuya Onuki
+7 Rui Ueyama
+6 Fumitoshi Ukai (鵜飼 文敏)
+6 Fumi Takeuchi (たふみ)
+6 C. C.
+5 Shingo Ishimura
+5 Naoki INADA
+4 Yasuhiro MATSUMOTO
+4 Tam T
+4 Masanobu Shimura
+
+* 2〜3件
+
+3 岡本和樹
+3 Shinichi Ogawa (shin1ogawa)
+3 Saddam H
+2 shozo hatta
+2 jxck jxck
+2 atusi
+2 Yosuke Katsuki
+2 Pravin Mishra
+2 Naoki Matsumoto (nekomatu)
+2 Jiten Palaparthi
+2 Ian Lewis
+2 Design Zaco
+
+* 1件
+
+1 高橋誠二
+1 齋藤毅
+1 横田徹
+1 yoshie nagumo
+1 tengu saruta
+1 Yamashita Katsuji
+1 Terushi Arakawa
+1 Takayuki Shimizukawa
+1 Takashi Yokoyama
+1 Takashi Matsuo (松尾貴史)
+1 Takashi Kawachi
+1 Shinnosuke Sawada
+1 ShepHertz
+1 Sascha Thattil
+
+* 1件
+
+1 Qwentic Consulting Pvt. Ltd.
+1 Nishant Modak
+1 Matthew Romaine
+1 Keiji Yoshida
+1 Iván Corrales Solera
+1 Hiroshi Sakurai
+1 Gouji OCHIAI
+1 Francisco Dalla Rosa Soares
+1 Elena Berezhnaya
+1 Daisuke Nakagome
+1 Ankur Gupta
+1 Aliaksandr Pliutau
+1 Alex Koshykov
+1 Akitoshi Ohta
+
+* 付録 : イベント開催数
+
+* 累積イベント開催数 (全国)
+
+.image survey-results/img/graph/event-accumulation.png 513 968
+
+* 月別イベント開催数 (東京)
+
+.image survey-results/img/graph/event-tokyo.png 537 917
+
+* 月別イベント開催数 (東京以外)
+
+.image survey-results/img/graph/event-other.png 537 917
+
+* 付録 : 名前の最後がgoのコミュニティ
+
+* 東京
+
+地域名
+
+- Akasaka.go - 赤坂@東京都港区
+- Akiba.go - 秋葉原@東京都台東区
+- Gotanda.go - 五反田@東京都品川区
+- Hatchobori.go - 八丁堀@東京都中央区
+- Kyobashi.go - 京橋@東京都中央区
+- Otemachi.go - 大手町@東京都千代田区
+- Shibuya.go - 渋谷@東京都
+- Shinjuku.go - 新宿@東京都
+
+* 東京
+
+建物名
+
+- hikarie.go - 渋谷ヒカリエ@東京都渋谷区
+
+ドットなし
+
+- 大井町go - 大井町@東京都品川区
+
+* 東京以外
+
+地域名
+
+- Sendai.go - 仙台@宮城県
+- Takasaki.go - 高崎@群馬県
+- Kamakura.go - 鎌倉@神奈川県
+- Shizuoka.go - 静岡
+- Anjo.go - 安城@愛知県
+- Umeda.go - 梅田@大阪府
+- Okayama.go - 岡山
+- Fukuoka.go - 福岡
+- Okinawa.go - 沖縄
+
+* 企業
+
+企業
+
+- Gunosy.go - 株式会社Gunosy
+- CA.go - 株式会社サイバーエージェント
+- mercari.go - 株式会社メルカリ
+- LINE.go - LINE株式会社
+- DeNA.go - 株式会社ディー・エヌ・エー
+
+ドットなし
+
+- dwanGo - 株式会社ドワンゴ
+
+* 付録 : 私の管理者としての活動内容
+
+* 経緯
+
+2013年8月25日
+
+- 本コミュニティに初投稿。
+
+2014年4月8日
+
+- 本コミュニティの管理者メンバーに参加。
+
+* 日本向けのGo情報の投稿
+
+情報は手動でネット検索して見つけていた。
+
+心掛けていた点
+
+- 技術や組織や人など、偏りなく公平に紹介する。
+- 成果を知ってもらうため、個人名や会社名を添えて紹介する。
+- 投稿を遅らせることで、他の人が投稿する機会を設ける。
+
+投稿の優先度
+
+- 初登場の人や会社、個人の記事などは優先度を上げた。
+- 各自でアクセスするため、主力サイトの記事は優先度を下げた。
+
+反省点
+
+- 途中から私の投稿ばかりになってしまった。
+
+* Goに関係ない投稿の処分
+
+悪気がなさそうな場合
+
+- 投稿者へ説明して削除してもらうように依頼。
+- それでも削除されない場合は、強制削除。
+
+悪気がありそうな場合
+
+- 見つけ次第、強制削除。
+
+その他
+
+- Google+側でスパム判定された投稿を生かすかどうか、など。
