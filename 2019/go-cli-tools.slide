@@ -170,7 +170,7 @@ fmtパッケージのFprint系の関数を使用して、第1引数に出力先�
 
 * マルチプラットフォームへの意識
 
-* 大きくはUNIX系とWindows系
+* 大きくはUnix系とWindows系
 
 Go本体によって複雑な部分の差分は吸収されている。
 
@@ -186,7 +186,7 @@ Go本体によって複雑な部分の差分は吸収されている。
 
 * 改行コード
 
-- UNIX系 : ¥n
+- Unix系 : ¥n
 - Windows系 : ¥r¥n
 
 runtimeパッケージのGOOS定数にてOSを判断して対応。
@@ -201,14 +201,14 @@ runtimeパッケージのGOOS定数にてOSを判断して対応。
 
 * ファイルのセパレーター
 
-- UNIX系 : /
+- Unix系 : /
 - Windows系 : ¥
 
-filepathパッケージを使うとセパレーターの差分を吸収してくれる。
+filepathパッケージはファイル用であり、セパレーターの差分を吸収してくれる。
 
   filepath.Join(dir, filename)
 
-pathパッケージもあるがセパレーターが「/」固定のためWindows系では注意！
+pathパッケージはURLなどのパス用で「/」固定であり、用途が異なる。
 
 [参考] ブログ「Golang で物理ファイルの操作に path/filepath でなく path を使うと爆発します。」
 
@@ -222,7 +222,7 @@ pathパッケージもあるがセパレーターが「/」固定のためWindow
 
 特定の変数
 
-- UNIX系 : $?
+- Unix系 : $?
 - Windows系 : %ERRORLEVEL%
 
 値
