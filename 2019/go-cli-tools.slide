@@ -1,0 +1,714 @@
+How to Write Go CLI Tools
+Go Conference'19 Summer in Fukuoka
+13 Jul 2019
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image go-cli-tools/img/qt_luigi250.png 300 300
+
+Twitter
+
+.link http://twitter.com/qt_luigi @qt_luigi
+
+* Goとの関わり
+
+Goは2013年の夏から開始。
+
+SNSにて日本のGoやコミュニティの情報を収集・発信。
+
+[成果物] 発表資料「Golang JP Google+ Community Survey Results」
+
+.link https://talks.godoc.org/github.com/qt-luigi/talks/2019/survey-results.slide#1
+
+地元でのGoコミュニティ活動
+
+- [[https://okayamago.connpass.com/][Okayama.go]] の主催
+- [[https://sites.google.com/site/gdgchugokuofficial/sourcereading/golang-cafe][Golang Cafe]] に参加＆まれに開催
+- [[https://okasyspro.connpass.com/][岡山システムプログラミング勉強会]] や [[https://connpass.com/search/?q=%E9%A6%99%E5%B7%9DGo%E8%A8%80%E8%AA%9E][香川Go勉強会]] でGoのお手伝い
+
+Go Conferenceには2014 Autumnから参加中。
+
+- Fukuoka初開催、おめでとうGoざいます！q@w@p
+
+* 職場のGo事情
+
+客先に常駐しており、Go好きであることは認識して頂けている。
+
+.image go-cli-tools/img/tweets.png 233 910
+
+Goでの開発はないが、自分用の小さなCLIツールは書けている。
+
+小さいながら過去2回、Go製コマンド群をプロダクション投入できている。
+
+[成果物] 発表資料「Goでコマンドラインツールを作ってプロダクション投入した話」
+
+.link https://talks.godoc.org/github.com/qt-luigi/talks/2019/go-cli-production.slide#1
+
+* シンプルな機能で実装
+
+* よく言われること
+
+- 仕様を早く理解できる。
+- 実装や修正をしやすい。
+- (複雑なゆえの) 不具合が入りにくい。
+- 実行速度が速い (場合が多い) 。
+
+* 私の場合
+
+職場でGoを使える人がいない。
+
+- 私が不在になるとメンテナンスできない。
+- 他の人が他の開発言語で再実装して対応できるように。
+
+* コマンドは組み合わせて使われる
+
+* ワンライナーでひとまとめにして
+
+例）ファイルから文字列「Go」を含む行を抽出した結果をページャーで閲覧。
+
+  $ cat fukuoka.txt | grep Go | less
+
+- cat：テキストファイルの内容を出力
+- grep：文字列を検索
+- less：ページャー
+
+前のコマンドの処理結果(標準出力)を、後のコマンドが受け取る(標準入力)。
+
+* スクリプトでひとまとめにして
+
+シンプルな機能のコマンドを組み合わせて、複雑な処理を実行する。
+
+例）現在日付をYYYYMMDD形式で取得して、YYYYMMDD.txtファイルがあれば存在メッセージ、なければ空のYYYYMMDD.txtファイルを作成して作成メッセージを出力。
+
+  #!/bin/bash
+    
+  now=$(date '+%Y%m%d')
+  
+  if [ -e ${now}.txt ]; then
+      echo "exist file."
+  else
+      touch ${now}.txt
+      echo "create file."
+  fi
+
+- date：現在日付を取得
+- touch：空ファイルを作成
+- echo：メッセージを出力
+
+* 標準出力と標準エラーを認識
+
+* 出力先
+
+コマンドの実行結果の出力先は、標準で2つ用意されている。
+
+- 標準出力：正常に処理された結果の出力先
+- 標準エラー：エラーとなった結果の出力先
+
+[参考] 入力先としては、標準入力が1つ用意されている。
+
+* 出力先の困まり処
+
+どちらも出力先が画面であることが多いため、違いが認識されにくい。
+
+例）catでファイル内容を出力
+
+  $ cat fukuoka.txt 
+  Go Conference
+  2019 Summer
+  in Fukuoka
+
+  $ cat okayama.txt 
+  cat: okayama.txt: No such file or directory
+
+* 出力先は変更可能
+
+リダイレクト
+
+- >, 1>：標準出力の出力先を変更
+- 2>：標準エラーの出力先を変更
+
+例）出力先をファイルに変更
+
+  $ cat fukuoka.txt > outlog.txt
+  $ cat outlog.txt
+  Go Conference
+  2019 Summer
+  in Fukuoka
+
+  $ cat okayama.txt 2> errlog.txt
+  $ cat errlog.txt
+  cat: okayama.txt: No such file or directory
+
+* 使われ処
+
+- 標準出力 : 画面に出力して、次のコマンドへ渡せるようにしておく。
+- 標準エラー : ファイルに出力して、エラーログとする。
+
+* Goで扱うには
+
+fmtパッケージのFprint系の関数を使用して、第1引数に出力先を設定する。
+
+- 標準出力：os.Stdout
+
+  fmt.Fprintf(os.Stdout, "directory: %s¥n", dir)
+
+- 標準エラー：os.Stderr
+
+  fmt.Fprintln(os.Stderr, err)
+
+[参考] fmtパッケージのPrint系の関数ではos.Stdoutが設定されている。
+
+  func Println(a ...interface{}) (n int, err error) {
+  	return Fprintln(os.Stdout, a...)
+  }
+
+.link https://golang.org/src/fmt/print.go?s=7953:8002#L264
+
+* マルチプラットフォームへの意識
+
+* 大きくはUNIX系とWindows系
+
+Go本体によって複雑な部分の差分は吸収されている。
+
+- ファイルディスクリプター
+- システムコール
+- ファイルシステム
+- 端末機能
+- プロセス
+
+[参考] 書籍「Goならわかるシステムプログラミング」
+
+.link https://www.lambdanote.com/products/go
+
+* 改行コード
+
+- UNIX系 : ¥n
+- Windows系 : ¥r¥n
+
+runtimeパッケージのGOOS定数にてOSを判断して対応。
+
+  func newline() string {
+          if runtime.GOOS == "windows" {
+                  rerturn "¥r¥n"
+          } else {
+                  rerturn "¥n"
+          }
+  }
+
+* ファイルのセパレーター
+
+- UNIX系 : /
+- Windows系 : ¥
+
+filepathパッケージを使うとセパレーターの差分を吸収してくれる。
+
+  filepath.Join(dir, filename)
+
+pathパッケージもあるがセパレーターが「/」固定のためWindows系では注意！
+
+[参考] ブログ「Golang で物理ファイルの操作に path/filepath でなく path を使うと爆発します。」
+
+.link https://mattn.kaoriya.net/software/lang/go/20171024130616.htm
+
+* 終了ステータスの使い分け
+
+* 終了ステータスとは
+
+コマンドの実行結果を表す値で、コマンド終了時に特定の変数に設定される。
+
+特定の変数
+
+- UNIX系 : $?
+- Windows系 : %ERRORLEVEL%
+
+値
+
+- 正常終了 : 0
+- 異常終了 : 1-255
+
+* 困まり処
+
+目に見えないため、実装がお疎かにされやすい。
+
+  $ cat okayama
+  cat: okayama.txt: No such file or directory
+  $
+  $ echo $?
+  $ 1
+
+* 使われ処
+
+スクリプト内にて、コマンド実行後に終了ステータスで処理を分岐する場合、など。
+
+例）countコマンドはファイル内にその文字列が存在したらは0を返す
+
+  #!/bin/bash
+
+  count file.txt Go
+
+  if [ $? = 0 ]; then
+    echo "Exists"
+  else
+    echo "Not exists"
+  fi
+
+* Goで扱うには
+
+osパッケージのExit()関数にて、引数に終了ステータスを設定する。
+
+例）指定された値分、現在日付の月を増減させる（20190713で-3なら20190413）
+
+  func main() {
+          if ln := len(os.Args); ln == 1 {
+                  // 引数なし：正常終了（終了ステータス:0）
+                  fmt.Println(time.Now().Format("20060102"))
+                  os.Exit(0)
+          } else if ln != 2 {
+                  // 引数が2つ以上：エラー（終了ステータス:2）
+                  fmt.Fprintln(os.Stderr, "invalid args count")
+                  os.Exit(2)
+          }
+          n, err := strconv.Atoi(os.Args[1])
+          if err != nil {
+                  // 引数を整数値に変換できない場合：エラー（終了ステータス:1）
+                  fmt.Fprintln(os.Stderr, err)
+                  os.Exit(1)
+          }
+          fmt.Println(time.Now().AddDate(0, n, 0).Format("20060102"))
+          // main()関数が正常終了する時はos.Exit(0)（終了ステータス:0）
+  }
+
+* Goのソースコードは実装のお手本
+
+* 例えば
+
+- コードの書き方
+- 名前の付け方 (パッケージ名、関数名、引数名、変数名、など)、など。
+
+* 私の場合
+
+コマンドの使い方を出力するusageの
+
+  $ go
+  Go is a tool for managing Go source code.
+  ...
+
+- メッセージの出力先は？
+- 終了ステータスは？
+
+goコマンドのソースコードを確認
+
+  func mainUsage() {
+          help.PrintUsage(os.Stderr, base.Go)
+          os.Exit(2)
+  }
+
+.link https://github.com/golang/go/blob/master/src/cmd/go/main.go
+
+* 外部リソースは明示的に解放
+
+* リソースの解放
+
+メモリの解放は、Goのガベージコレクターが面倒を見てくれる。
+
+- 値を参照する時間や範囲が短くなるように実装を心掛ける。
+
+外部リソースは、明示的に解放する必要がある。
+
+- 各リソースのClose()メソッドを呼び出す。
+
+* 基本的にはClose()メソッドはdeferで呼び出す
+
+関数内でのClose()メソッドの呼び忘れを防げる。
+
+コードを書き揃えられるため、書き忘れに気付きやすい。
+
+- リソースの取得、エラー判定、Close()の呼び出し
+
+例）ファイル
+
+  f, err := os.Open(filename)
+  if err != nil {
+          return err
+  }
+  defer f.Close()
+
+* ファイル以外の例
+
+ネットワーク
+
+  resp, err := http.Get(url)
+  if err != nil {
+          return err
+  }
+  defer resp.Body.Close()
+
+データベース（他にConnectionやStatementなども）
+
+  db, err := sql.Open("oci8", "scott/tiger@127.0.0.1:1521/ORAGOKU")
+  if err != nil {
+          return err
+  }
+  defer db.Close()
+
+  rows, err := db.Query("select USERNAME,USERNAME from USER")
+  if err != nil {
+          return err
+  }
+  defer rows.Close()
+
+* Flush()メソッドが伴うClose()メソッドはdeferなしで都度呼び出す
+
+対象となり得る標準パッケージ
+
+- archive
+- compress
+
+エラーなどでFlush()より先にClose()が呼び出されると出力ファイルが中途半端になる。
+
+[参考] Qiita「GO言語のcompressパッケージで陥りがちな罠」
+
+.link https://qiita.com/kchmz/items/65149ac736303238bff6
+
+* deferする処理は関数化
+
+* サンプルプログラム
+
+例）指定したディレクトリー内のファイルから文字列「Go」を含む行を抽出する。
+
+  $ printGoLine /usr/local/go/src
+
+  # Copyright 2012 The Go Authors. All rights reserved.
+  # Copyright 2009 The Go Authors. All rights reserved.
+  :: Copyright 2012 The Go Authors. All rights reserved.
+  # Copyright 2012 The Go Authors. All rights reserved.
+  ...
+  # to be set to a non-empty string, else Go will set a default value
+  # checks performed by Go.  Use $GOROOT to define $GOPATH so that we
+  :: Copyright 2012 The Go Authors. All rights reserved.
+  # Copyright 2012 The Go Authors. All rights reserved.
+
+* 対応前：main()関数
+
+  func main() {
+          if len(os.Args) != 2 {
+                  os.Exit(2)
+          }
+          dir := os.Args[1]
+          if fi, err := os.Stat(dir); err != nil || !fi.IsDir() {
+                  os.Exit(2)
+          }
+          files, err := ioutil.ReadDir(dir)
+          if err != nil {
+                  os.Exit(1)
+          }
+
+          // 処理の呼び出し
+          printGoLine(dir, files)
+  }
+
+* 対応前：printGoLine()関数
+
+  func printGoLine(dir string, files []os.FileInfo) error {
+          for _, file := range files {
+                  if !file.IsDir() {
+                          f, err := os.Open(filepath.Join(dir, file.Name()))
+                          if err != nil {
+                                  return err
+                          }
+                          defer f.Close()
+
+                          scan := bufio.NewScanner(f)
+                          for scan.Scan() {
+                                  if strings.Contains(scan.Text(), "Go") {
+                                          fmt.Println(scan.Text())
+                                  }
+                          }
+                          if err := scan.Err(); err != nil {
+                                  return err
+                          }
+                  }
+          }
+          return nil
+  }
+
+* 問題点と対応策
+
+問題点
+
+- 関数内でループを使って何回もdeferを呼び出している。
+- メモリを消費したりファイルの掴みっぱなしになる。
+
+対応策
+
+- deferのスコープ（ファイルのオープンからクローズまで）を別関数して、
+- 関数単位でdeferを効かすようにして呼び出すことで、蓄積を回避する。
+
+[参考] ブログ「Big Sky :: golang では for ループの中で defer してはいけない。」
+
+.link https://mattn.kaoriya.net/software/lang/go/20151212021608.htm
+
+* 対応後：printGoLine()関数
+
+  func printGoLine(dir, filename string) error {
+          f, err := os.Open(filepath.Join(dir, filename))
+          if err != nil {
+                  return err
+          }
+          defer f.Close()
+
+          scan := bufio.NewScanner(f)
+          for scan.Scan() {
+                  if strings.Contains(scan.Text(), "Go") {
+                          fmt.Println(scan.Text())
+                  }
+          }
+          if err := scan.Err(); err != nil {
+                  return err
+          }
+          return nil
+  }
+
+* 対応後：main()関数
+
+  func main() {
+          if len(os.Args) != 2 {
+                  os.Exit(2)
+          }
+          dir := os.Args[1]
+          if fi, err := os.Stat(dir); err != nil || !fi.IsDir() {
+                  os.Exit(2)
+          }
+          files, err := ioutil.ReadDir(dir)
+          if err != nil {
+                  os.Exit(1)
+          }
+
+          // 処理の呼び出し
+          for _, file := range files {
+                  if !file.IsDir() {
+                          if err := printGoLine(dir, file.Name()); err != nil {
+                                  os.Exit(1)
+                          }
+                  }
+          }
+  }
+
+* パッケージとして
+
+* ファイルの階層
+
+私の場合、mainパッケージをcmdディレクトリー配下に配置するパターンを使用。
+
+  go/src/github.com/qt-luigi/
+  |
+  +--リポジトリー名/
+     +--ファイル1.go
+     +--パッケージ名/
+     |  +--ファイル2.go
+     +--cmd/
+        +--main.go
+        +--コマンド名/
+           +--main.go
+
+- mainパッケージ以外が外部パッケージとして利用可能になる。
+
+  import "github.com/qt-luigi/リポジトリー名"
+
+- mainパッケージは利用可能パッケージのサンプルコードになる。
+
+* 使われ処を意識
+
+忘れがちなのが「goroutineから呼ばれる」ケース。
+
+- 並行処理でも威力を発揮できるように。
+
+動作環境（利用形態）が一気に広がることも、お忘れなく。
+
+- クラウド
+- モバイル (gomobile)
+- 共有ライブラリー (c-shared, plugin)
+- Webブラウザー (wasm, GopherJS)
+
+* エラーの場合
+
+パッケージ内でexitされてしまうと、パッケージ利用者は手も足も出ない。
+
+- os.Exit()
+- log.Fatal()
+
+errorや終了ステータス値を返して、パッケージ利用者にて対応できるようにする。
+
+同様にpanicも本当に必要な時だけにすること。
+
+- panic()
+- log.Panic()
+
+* exitはmain関数に記述
+
+* exitはプログラムを終了させる強力な関数
+
+最初は関数をmainパッケージに書いていたが、途中でモジュール化させる時がある。
+
+もし関数内にexitを書いていると、気付かずに移動させてしまう危険性が生じる。
+
+
+* 対応前：exitがmain関数以外の関数に含まれている場合
+
+  func main() {
+          p := Pow("3")
+          fmt.Println(p)
+  }
+  
+  func Pow(s string) int {
+          i, err := strconv.Atoi(s)
+          if err != nil {
+                  os.Exit(1)
+          }
+          return i * i
+  }
+
+モジュール化したpow()関数が、他のパッケージで利用されると...
+
+- エラーの都度、プログラムが終了してしまう。
+
+* 対応後：exitをmain関数だけに含めている場合
+
+  func main() {
+          p, err := Pow("3")
+          if err != nil {
+                  os.Exit(1)
+          }
+          fmt.Println(p)
+  }
+
+  func Pow(s string) (int, error) {
+          i, err := strconv.Atoi(s)
+          if err != nil {
+                  return 0, err
+          }
+          return i * i, nil
+  }
+
+モジュール化したpow()関数が、他のパッケージで利用されても...
+
+- エラーを判定して、プログラムの終了や続行を実装できる。
+
+* [付録] CLIツール作成時に使ったパッケージ
+
+* CLIツール
+
+引数の取得
+
+- flag (型(), 型Var(), Parse()), os.Args
+
+エラー生成
+
+- errors, fmt.Errorf()
+
+標準入力、出力、エラー操作
+
+- fmt
+
+終了ステータス
+
+- os.Exit()
+
+* 機能
+
+整数値の乱数の取得
+
+- math/rand (Seed(), Intn())
+
+[]stringのソート
+
+- sort (Sort(), Strings(), Reverse())
+
+日時の操作
+
+- time (Now(), Sleep(), Format(), Parse(), AddDate())
+
+文字列の変換、操作
+
+- strconv (Atoi(), Itoa())
+- strings (Contain(), Index(), Join(), Split(), Trim(), ToUpper(), ToLower())
+
+* ファイル
+
+読み書き
+
+- bufio (NewScanner(), Scan(), Text(), Err())
+- io/ioutil (ReadDir(), ReadAll(), ReadFile(), WriteFile()), 
+- os (Open(), Create(), Close(), WriteString())
+- fmt.Fprint()
+
+[成果物] Qiita「Goでテキストファイルを読み書きする時に使う標準パッケージ」
+
+.link https://qiita.com/qt-luigi/items/2c13ad68e7d9f8f8c0f2
+
+* ファイル
+
+コピー
+
+- io.Copy()
+
+情報や操作
+
+- os (Stat(), Name(), ModTime(), IsDir(), Remove())
+- path/filepath (Dir(), Base(), Ext(), Join(), Split())
+
+* ファイル形式
+
+jsonの操作
+
+- encoding/json (Marshal(), Unmarshal())
+
+csvの読み込み
+
+- encoding/csv
+
+zipの作成
+
+- archive/zip
+
+* ネットワーク
+
+HTTPサーバー、Webクライアント
+
+- net/http 
+
+[参考] ブログ「GolangでAPI Clientを実装する」
+
+.link https://deeeet.com/writing/2016/11/01/go-api-client/
+
+電子メール送信
+
+- net/smtp
+
+サンプルCGIアプリケーション
+
+- net/http/cgi
+
+* 外部パッケージ
+
+ORACLEデータベース (標準 : database/sql)
+
+- [[https://github.com/mattn/go-oci8][mattn/go-oci8]]
+
+[成果物] Qiita「go-oci8のセットアップ手順（Linux）」
+
+.link https://qiita.com/qt-luigi/items/fbbe6792a77b493a58f9
+
+画像ファイルのリサイズ、加工 (標準 : image/gif, jpg, png)
+
+- [[https://github.com/nfnt/resize][nfnt/resize]] [開発終了]
+- [[https://github.com/disintegration/gift][disintegration/gift]]
+
+UUIDの生成
+
+- [[https://github.com/google/uuid][google/uuid]]
+- [[https://github.com/rs/xid][rs/xid]]
