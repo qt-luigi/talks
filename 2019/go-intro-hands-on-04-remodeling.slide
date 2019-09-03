@@ -1,0 +1,811 @@
+Go入門ハンズオン [04:改造編]
+はじめてのGo言語教室[改造編](9月)
+7 Sep 2019
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image go-intro-hands-on/img/qt_luigi250.png 300 300
+
+Twitter
+
+.link http://twitter.com/qt_luigi @qt_luigi
+
+* ゲームを改造しよう！
+
+- タイピングゲームの準備
+- 正解数と誤り数を表示
+- 何問中の何問目かを表示
+- 入力時間を測定
+- カウントダウンして始める
+- 問題をシャッフルする
+
+* タイピングゲームの準備
+
+* [基礎編]の成果物
+
+Goで「タイピングゲーム」を作成
+
+- Goプログラムの構成
+- スライス、反復文、判定文、標準入出力
+- プログラム実行のコマンド
+
+* ソースコード (01_basic.go)
+
+  package main
+
+  import "fmt"
+
+  var example = []string{"golang", "hands-on", "in", "kagawa"}
+
+  func main() {
+          var data []string
+          data = example
+
+          for _, v := range data {
+                  fmt.Println(v)
+  
+                  fmt.Print("input : ")
+                  var ans string
+                  fmt.Scanln(&ans)
+  
+                  if v == ans {
+                          fmt.Println("○")
+                  } else {
+                          fmt.Println("×")
+                  }
+          }
+  }
+
+* プログラムの実行
+
+実行バイナリーを作成せずに実行（主に開発時）
+
+  $ go run 01_basic.go
+
+実行バイナリーを作成して実行（主にリリース時）
+
+  $ go build -o typing 01_basic.go
+  $ ./typing 
+
+* 課題１ (01_basic.go)
+
+１−１：
+
+UTF-8対応のコードエディターでソースコードをコーディングしてください。
+
+１−２：
+
+ソースコードをファイル名「01_basic.go」で保存してください。
+
+１−３：
+
+go runコマンドで01_basic.goを実行して、正しく動作することを確認してください。
+
+* 解答１ (01_basic.go)
+
+  $ go run 01_basic.go
+  golang
+  input : golang
+  ○
+  hands-on
+  input : hands-on
+  ○
+  in
+  input : in
+  ○
+  kagawa
+  input : okayama
+  ×
+
+* 正解数と誤り数を表示
+
+* 正解数と誤り数を表示
+
+ゲームの最後に正解数と誤り数を出力する。
+
+  golang
+  input : golang
+  ○
+  hands-on
+  input : hands-on
+  ○
+  in
+  input : in
+  ○
+  kagawa
+  input : okayama
+  ×
+  [正誤] 正解：3, 誤り：1
+
+* 正解数と誤り数をカウントする変数を宣言
+
+正解数の変数をccnt、誤り数の変数をwcntで、それぞれint型で宣言する。
+
+  var ccnt, wcnt int
+
+宣言する位置は？
+
+- 出題が終わるまでカウントするので、問題文のループが始まる前に。
+
+  var ccnt, wcnt int
+  for _, v := range data {
+          ...
+
+* 正解数と誤り数をカウント
+
+正誤の判定文にて、正解ならccntを、誤りならwcntを1つカウントアップする。
+
+  if v == ans {
+          fmt.Println("○")
+          ccnt++
+  } else {
+          fmt.Println("×")
+          wcnt++
+  }
+
+増減値が1の場合はインクリメント演算子(++)とデクリメント演算子(--)が使える。
+
+1以外の場合の例は「ccnt = ccnt + 値」の形になる。
+
+Goは後置(例：変数名++)のみで、前置(例：++変数名)はない。
+
+* カウントした結果を表示
+
+最後にccntを正解数、wcntを誤り数として標準出力する。
+
+  [正誤] 正解：3, 誤り：1
+
+数値を標準出力する時は、フォーマット出力に対応したfmt.Printf()関数を使用する。
+
+フォーマットとして文字列には"%s"、整数値には"%d"が用意されている。
+
+関数名の最後が「ln」でないため、メッセージ文の最後に改行コード"\n"が必要。
+
+  fmt.Printf("[正誤] 正解：%d, 誤り：%d\n", ccnt, wcnt)
+
+* 課題２ (02_seigo.go)
+
+01_basic.goをコピーして02_seigo.goを作成し、編集してください。
+
+２−１：
+
+問題文のループの直前に、次の変数を定義してください。
+
+- 変数名：ccnt(正解数), wcnt(誤り数)、型：int型、値：初期値0
+
+２−２：
+
+正誤の判定文にて、正解ならccnt、誤りならwcntをカウントアップしてください。
+
+２−３：
+
+問題文のループの終了後に、正解数と誤り数を標準出力してください。
+
+  [正誤] 正解：3, 誤り：1
+
+* 解答２ (02_seigo.go)
+
+  func main() {
+          var data []string
+          data = example
+
+          var ccnt, wcnt int
+          for _, v := range data {
+                  fmt.Println(v)
+  
+                  fmt.Print("input : ")
+                  var ans string
+                  fmt.Scanln(&ans)
+  
+                  if v == ans {
+                          fmt.Println("○")
+                          ccnt++
+                  } else {
+                          fmt.Println("×")
+                          wcnt++
+                  }
+          }
+          fmt.Printf("[正誤] 正解：%d, 誤り：%d\n", ccnt, wcnt)
+  }
+
+* 何問中の何問目かを表示
+
+* 何問中の何問目かを表示
+
+問題が出力された時に、その問題が何問中の何問目なのかを出力する。
+
+  [1/4] golang
+  input : golang
+  ○
+  [2/4] hands-on
+  input : hands-on
+  ○
+  [3/4] in
+  input : in
+  ○
+  [4/4] kagawa
+  input : okayama
+  ×
+  [正誤] 正解：3, 誤り：1
+
+* 何問中かを取得
+
+問題文スライスの要素数を、len()組み込み関数で取得する。
+
+  // 問題文スライスの例
+  data := []string{"golang", "hands-on", "in", "kagawa"）
+
+  // この場合、lnの値は4
+  ln := len(data)
+
+記述する位置は？
+
+- 出題中は値が変わらないため、問題文のループが始まる前に。
+
+  ln := len(data)
+  var ccnt, wcnt int
+  for _, v := range data {
+          ...
+
+* 何問目かを取得
+
+スライスをfor文のrangeでループした場合、戻り値は
+
+- 1番目：スライスのインデックス（例：0, 1, 2, 3）
+- 2番目：スライスの値（例："golang", "hands-on", "in", "kagawa"）
+
+となるので、戻り値の1番目を何問目としてし使用すればよい。(ここではi変数)
+
+  for i, v := range data {
+
+インデックスは0から始まるため、何問目とするにはi+1とする必要がある。
+
+* 何問中の何問目かを表示
+
+問題文の出力を、"[何問目/何問中] 問題文"に変更する。
+
+  [1/4] golang
+
+問題文(v)を出力しているfmt.Println()を、
+
+  fmt.Println(v)
+
+何問目(i+1)、何問中(ln)、問題文(v)を出力するように、fmt.Printf()関数で書き換える。
+
+  fmt.Printf("[%d/%d] %s\n", i+1, ln, v)
+
+* 課題３ (03_nanmon.go)
+
+02_seigo.goをコピーして03_nanmon.goを作成し、編集してください。
+
+３−１：
+
+何問中の値として、問題文スライスの要素数をln変数に格納してください。
+
+- 記述する位置は、問題文のループの前？後？
+
+３−２：
+
+何問目の値として、問題文のループにて問題文スライスのインデックスをi変数で取得するように書き換えてください。
+
+３−３：
+
+問題文のループにて、問題文を出力している部分を"[何問目/何問中] 問題文"で出力するように書き換えてください。
+
+* 解答３ (03_nanmon.go)
+
+  func main() {
+          var data []string
+          data = example
+
+          ln := len(data)
+          var ccnt, wcntきじゅつ
+          for i, v := range data {
+                  fmt.Printf("[%d/%d] %s\n", i+1, ln, v)
+  
+                  fmt.Print("input : ")
+                  var ans string
+                  fmt.Scanln(&ans)
+  
+                  if v == ans {
+                          fmt.Println("○")
+                          ccnt++
+                  } else {
+                          fmt.Println("×")
+                          wcnt++
+                  }
+          }
+          fmt.Printf("[正誤] 正解：%d, 誤り：%d\n", ccnt, wcnt)
+  }
+
+* 入力時間を測定
+
+* 入力時間を測定
+
+問題文が表示されてから入力が完了するまでの時間を測定する。
+
+  [1/4] golang
+  input : golang
+  5.458(sec)
+  ○
+  [2/4] hands-on
+  input : hands-on
+  4.976(sec)
+  ○
+  [3/4] in
+  input : in
+  1.679(sec)
+  ○
+  [4/4] kagawa
+  input : okayama
+  1.776(sec)
+  ×
+  [正誤] 正解：3, 誤り：1
+
+* パッケージの追加
+
+Goで時間を扱う場合は、timeパッケージをインポートして使用する。
+
+  import "time"
+
+パッケージが複数の場合、import文を並べて記述することもできるが、
+
+  import "fmt"
+  import "time"
+
+多くの場合はグルーピングする形で記述する。
+
+  import (
+          "fmt"
+          "time"
+  )
+
+* 入力前後の時間を取得
+
+解答の入力を受け付けているfmt.Scanln()関数の前後で、現在時刻を取得する。
+
+入力前の時刻をstm変数、入力後の時刻をetm変数として、現在時刻を格納する。
+
+現在日時はtime.Now()関数で取得する。
+
+  stm := time.Now()
+  fmt.Scanln(&ans)
+  etm := time.Now()
+
+* 経過時間を算出
+
+経過時間は「入力後の時刻 - 入力前の時刻」で算出できる。
+
+取得した時刻はTime型のため、加減算にはメソッド(Add(), Sub()など)を使用する。
+
+  ptm := etm.Sub(stm)
+
+* 経過時間を出力
+
+経過時間を"9.999(sec)"で標準出力する。
+
+Time型のSeconds()メソッドを呼び出すと、秒単位の値をfloat64型で取得できる。
+
+小数値(float32型,float64型)の小数第3位まで出力するフォーマットは"%.3f"となる。
+
+  fmt.Printf("%.3f(sec)\n", ptm.Seconds())
+
+* 課題４ (04_laptime.go)
+
+03_nanmon.goをコピーして04_laptime.goを作成し、編集してください。
+
+４−１：
+
+解答の入力前後で、現在時刻を取得してそれぞれ変数に格納してください。
+
+- 入力前時刻：stm変数、入力後時刻：etm変数
+- 現在時刻を取得するためのパッケージのインポートを忘れずに！
+
+４−２：
+
+経過時間として、入力前後の時間の差を算出してptm変数に格納してください。
+
+４−３：
+
+解答を入力が完了した後に、経過時間を"9.999(sec)"(小数第3位)で出力してください。
+
+* 解答４ (04_laptime.go)
+
+変更部分の抜粋
+
+  fmt.Print("input : ")
+  var ans string
+  stm := time.Now()
+  fmt.Scanln(&ans)
+  etm := time.Now()
+  ptm := etm.Sub(stm)
+  fmt.Printf("%.3f(sec)\n", ptm.Seconds())
+
+* よりGoらしく
+
+現在時刻との差異を取得するtime.Since()関数が用意されている。
+
+これを使うと終了時刻の取得が不要となる。
+
+  fmt.Print("input : ")
+  var ans string
+  stm := time.Now()
+  fmt.Scanln(&ans)
+  ptm := time.Since(stm)
+  fmt.Printf("%.3f(sec)\n", ptm.Seconds())
+
+課題４ー４：
+
+経過時間の算出をtime.Since()関数を使った形に書き換えてください。
+
+* カウントダウンして始める
+
+* カウントダウンして始める
+
+1秒間隔で3, 2, 1とカウントダウン表示してから、1問目を表示する。
+
+  3
+  2
+  1
+  [1/4] golang
+  input : golang
+  3.039(sec)
+  ○
+  [2/4] hands-on
+  input : hands-on
+  3.320(sec)
+  ○
+  [3/4] in
+  input : in
+  0.528(sec)
+  ○
+  [4/4] kagawa
+  input : okayama
+  1.784(sec)
+  ×
+  [正誤] 正解：3, 誤り：1
+
+* 一定間隔で処理を実行する方法
+
+今回はループ内で処理を一定時間スリープさせる方法で実装する。
+
+よりGoらしく：
+
+- time.Ticker型を使用する。
+
+* 決まった範囲の値を降順で表示
+
+これまでに、for文で1, 2, 3の昇順はできている。
+
+この時のfor文は「初期値は1; iが3以下の間; iを+1する」となる。
+
+  for i := 1; i <= 3; i++ {
+          fmt.Printf("%d\n", i)
+  }
+
+今回は、3, 2, 1と降順になるが同様に対応できる。
+
+この時のfor文は「初期値は3; iが1以上の間; iを-1する」となる。
+
+  for i := 3; i >= 1; i-- {
+          fmt.Printf("%d\n", i)
+  }
+
+* 処理を一定時間停止(スリープ)させる
+
+処理を一定時間停止させる場合、time.Sleep()関数を使用する。
+
+秒単位でスリープさせる時は、数値にtime.Secondを掛けたDuration型を使用する。
+
+  time.Sleep(1*time.Second)
+
+今回は1秒間隔のため、time.Secondだけでもよい。
+
+  time.Sleep(time.Second)
+
+* 課題５ (05_countdown.go)
+
+04_laptime.goをコピーして05_countdown.goを作成し、編集してください。
+
+５−１：
+
+インデックス変数をiとして、その値が3, 2, 1となるfor文を追加してください。
+
+- 初期値：3、条件：iが1以上の間、後処理：iを-1する
+
+追加する位置は？
+
+- 問題文スライス処理の後、問題文のループの前
+
+５−２：
+
+追加したfor文にて、1秒間隔でiを改行して出力してください。
+
+* 解答５ (05_countdown.go)
+
+  ...
+  var data []string
+  data = example
+  
+  for i := 3; i >= 1; i-- {
+          fmt.Printf("%d\n", i)
+          time.Sleep(time.Second)
+  }
+  
+  ln := len(data)
+  var ccnt, wcnt int
+  ...
+
+* 問題をシャッフルする
+
+* 問題をシャッフルする
+
+問題文をシャッフルして毎回バラバラの順番に出題する。
+
+  3
+  2
+  1
+  [1/4] in
+  input : in
+  1.264(sec)
+  ○
+  [2/4] hands-on
+  input : hands-on
+  3.439(sec)
+  ○
+  [3/4] golang
+  input : golang
+  2.744(sec)
+  ○
+  [4/4] kagawa
+  input : okayama
+  2.726(sec)
+  ×
+  [正誤] 正解：3, 誤り：1
+
+* 処理の流れ
+
+1. 乱数生成の準備
+
+- パッケージの追加、発生源(シード)の設定、init()関数
+
+2. シャッフル関数の作成
+
+- 問題文をシャッフルする関数の作成
+- シャッフルされたインデックスのスライスを取得
+- スライスの新規作成
+- シャッフル結果を抽出済スライスに設定する実装内容
+- シャッフル結果を格納する抽出済スライスを生成
+- 抽出済スライスにシャッフル結果を設定して返却
+- append()組み込み関数
+
+3. シャッフル関数の呼び出し
+
+* パッケージの追加
+
+出題順をバラバラにするために、乱数を使用する。
+
+Goで乱数を扱う場合は、math/randパッケージをインポートして使用する。
+
+  import (
+          "fmt"
+          "math/rand"
+          "time"
+  )
+
+* 発生源(シード)の設定
+
+乱数を使用する際、発生源(シード)を設定する必要がある。
+
+精度の高い乱数を生成するには、シードは大きくて不規則なものがよい。
+
+シードとして、現在日時をUnixナノ秒で表現した値がよく使われる。
+
+  fmt.Println(time.Now().UnixNano())
+
+  出力結果の例：1567318391791292000
+
+シードはrand.Seed()関数で設定する。
+
+  rand.Seed(time.Now().UnixNano())
+
+記述する位置は？
+
+- 乱数生成の初期化処理のためinit()関数として記述する。
+
+* init()関数
+
+Goでは、プログラム実行にmain()関数が呼び出される。
+
+各パッケージの中にinit()関数があれば、main()関数より前に一度だけ呼び出される。
+
+  func init() {
+          // 最初に各パッケージのinit()関数が呼び出される
+          ...
+  }
+
+  func main() {
+          // 次にmainパッケージのmain()関数が呼び出される
+          ...
+  }
+
+init()関数には、各パッケージでの初期化処理などを記述する。
+
+  func init() {
+          rand.Seed(time.Now().UnixNano())
+  }
+
+* 問題文をシャッフルする関数の作成
+
+問題文スライスをシャッフルする関数を定義する。
+
+- 関数名: shuffle
+- 引数: 取得元スライス(src []string)
+- 戻り値: 抽出済スライス([]string)
+
+  func shuffle(src []string) []string {
+  }
+
+以降の処理は、この関数内に記述していく。
+
+* シャッフルされたインデックスのスライスを取得
+
+rand.Perm()関数にて、取得元スライスの要素数分の乱数スライスを取得する。
+
+  idxs := rand.Perm(len(src))
+
+今回、要素数は4のため、取得範囲は0-3となり、idxsは例として [1, 3, 0, 2] となる。
+
+取得した乱数スライスの各要素値は、取得元スライスのインデックスとして使う。
+
+* スライスの新規作成
+
+スライスはmake()組み込み関数で作成する。
+
+  新しいスライス := make(作成するスライスの型, 要素数)
+
+今回、シャッフル結果を格納する抽出済スライスを生成してdst変数に格納するが、
+
+  dst := make([]string, 要素数)
+
+設定する要素数の値によって、実装内容が[追加]方式と[更新]方式に別れる。
+
+* シャッフル結果を抽出済スライスに設定する実装内容
+
+[追加] 要素数が空(0)の場合、乱数スライスをループして追加していく。
+
+  // 初期値
+  dst:[]
+
+  // 乱数スライスをループして[追加]していった例
+  dst:["hands-on"]
+  dst:["hands-on", "kagawa"]
+  dst:["hands-on", "kagawa", "golang"]
+  dst:["hands-on", "kagawa", "golang", "in"]
+
+[更新] 要素数が問題数(4)の場合、乱数スライスをループして更新していく。
+
+  // 初期値
+  dst:["", "", "", ""]
+
+  // 乱数スライスをループして[更新]していった例
+  dst:["hands-on", "", "", ""]
+  dst:["hands-on", "kagawa", "", ""]
+  dst:["hands-on", "kagawa", "golang", ""]
+  dst:["hands-on", "kagawa", "golang", "in"]
+
+* シャッフル結果を格納する抽出済スライスを生成
+
+[追加] 要素を追加して行くため、要素数を0で生成する。
+
+  // dst:[]
+  dst := make([]string, 0)
+
+[更新] 要素数は変わらないため、取得元スライスの要素数で生成する。
+
+  // dst:["", "", "", ""]
+  dst := make([]string, len(src))
+
+* 抽出済スライスにシャッフル結果を設定して返却
+
+乱数スライスをループして、取得元スライスの値を抽出済スライスに設定する。
+
+乱数スライスの値を取得元スライスのインデックスにして、
+
+[追加] 抽出済スライスに、取得元スライスの値を追加する。
+
+  for _, v := range idxs {
+          dst = append(dst, src[v])
+  }
+
+[更新] 同じインデックスの抽出済スライスに、取得元スライスの値を設定する。
+
+  for i, v := range idxs {
+          dst[i] = src[v]
+  }
+
+最後に抽出済スライスを返却する。
+
+  return dst
+
+* append()組み込み関数
+
+スライスに値を追加する場合、append()組み込み関数を使用する。
+
+  スライス = append(スライス, 値)
+
+戻り値を取得しないとコンパイルエラーになる。
+
+  ○ dst = append(dst, "okayama")
+  × append(dst, "okayama")
+
+  ./main.go:9:14: append(dst, "okayama") evaluated but not used
+
+* シャッフル関数の呼び出し
+
+問題文スライス(example)を直接受け取っていた部分を、
+
+  var data []string
+  data = example
+
+問題文スライスをシャッフル関数に渡してシャッフルした結果を受け取るように変更。
+
+  var data []string
+  data = shuffle(example)
+
+* 課題６ (06_shuffle.go)
+
+05_countdown.goをコピーして06_shuffle.goを作成し、編集してください。
+
+６−１：
+
+問題文スライスの内容をシャッフルするshuffle()関数を作成してください。
+
+６−２：
+
+shuffle()関数を呼び出して、問題文をシャッフルして出題させてください。
+
+６−３：
+
+shuffle()関数の実装方式([追加], [更新])を、もうひとつの方式に変更してください。
+
+* 解答６ (06_shuffle.go)
+
+  ...
+  func init() {
+          rand.Seed(time.Now().UnixNano())
+  }
+
+  func main() {
+          var data []string
+          data = shuffle(example)
+          ...
+  }
+
+* 解答６ (06_shuffle.go)
+
+[追加]
+
+  func shuffle(src []string) []string {
+          idxs := rand.Perm(len(src))
+          dst := make([]string, 0)
+          for _, v := range idxs {
+                  dst = append(dst, src[v])
+          }
+          return dst
+  }
+
+[更新]
+
+  func shuffle(src []string) []string {
+          idxs := rand.Perm(len(src))
+          dst := make([]string, len(src))
+          for i, v := range idxs {
+                  dst[i] = src[v]
+          }
+          return dst
+  }

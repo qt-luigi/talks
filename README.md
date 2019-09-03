@@ -2,6 +2,7 @@
 
 ## 2019
 
+- [Go入門ハンズオン [04:改造編]](https://talks.godoc.org/github.com/qt-luigi/talks/2019/go-intro-hands-on-04-remodeling.slide) in [はじめてのGo言語教室[改造編](9月)](https://gdgshikoku.connpass.com/event/143932/)
 - [How to Write Go CLI Tools](https://talks.godoc.org/github.com/qt-luigi/talks/2019/go-cli-tools.slide) in [Go Conference'19 Summer in Fukuoka](https://fukuokago.connpass.com/event/130797/)
 - [Golang JP Google+ Community Survey Results](https://talks.godoc.org/github.com/qt-luigi/talks/2019/survey-results.slide) in [Go Conference 2019 Spring](https://gocon.connpass.com/event/124530/)
 - [GAE/Goの概要説明とデプロイデモ](https://talks.godoc.org/github.com/qt-luigi/talks/2019/gae-go-intro-demo.slide) in [GCPUG KAGAWA #1](https://gcpug-kagawa.connpass.com/event/104083/)
