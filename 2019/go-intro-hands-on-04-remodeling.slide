@@ -303,7 +303,7 @@ Goは後置(例：変数名++)のみで、前置(例：++変数名)はない。
           data = example
 
           ln := len(data)
-          var ccnt, wcntきじゅつ
+          var ccnt, wcnt
           for i, v := range data {
                   fmt.Printf("[%d/%d] %s\n", i+1, ln, v)
   
