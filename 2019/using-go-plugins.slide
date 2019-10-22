@@ -1,0 +1,193 @@
+Using Go Plugins
+Go Conference 2019 Autumn
+28 Oct 2019
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image using-go-plugins/img/qt_luigi250.png 300 300
+
+Twitter
+
+.link http://twitter.com/qt_luigi @qt_luigi
+
+* Goプラグインとは？
+
+Goで作成された実行バイナリーに対して、機能拡張するための仕組み。
+
+プラグインの実体は動的リンクライブラリーであり、Goで作成できる。
+
+Go 1.8から導入。
+
+- Go 1.8 : linuxに対応
+- Go 1.9 : darwinが追加
+- Go 1.14 : freebsdが追加されるはず（最新リポジトリーには適用済み）
+
+.link https://tip.golang.org/pkg/plugin/#pkg-overview
+
+* 動的リンクライブラリー
+
+Goでは動的リンクライブラリーはc-sharedビルドモードでも作成できる。
+
+  go build -buildmode=c-shared -o cmulti.dll cmulti.go
+
+その特徴は、
+
+- windowsでも.dllファイルとして作成できる。
+- Cパッケージ(cgo)を使用する。
+- C言語ABI(Application Binary Interface)に対応。
+- Go以外のプログラミング言語からも使用できる。
+
+  $ python
+  >>> import ctypes
+  >>> p = ctypes.CDLL("cmulti.dll")
+  >>> p.multi(2, 3)
+  6
+
+* Goプラグインの作成
+
+ソースコードはmainパッケージで作成する。
+
+  package main
+
+init()関数、公開変数、公開関数を記述する。
+
+  func init() {
+  }
+
+  var Mv int
+
+  func Multi(x int) int {
+  }
+
+pluginビルドモードでコンパイルする。
+
+  go build -buildmode=plugin -o multi.so multi.go
+
+* multi.go
+
+  // Plugin package is main.
+  package main
+
+  // Initialization for plugin.
+  func init() {
+          Mv = 1
+  }
+
+  // Mv is one of multiplication variable.
+  var Mv int
+
+  // Multi multiplies Mv and x.
+  func Multi(x int) int {
+          return Mv * x
+  }
+
+* Goプラグインの使用 
+
+pluginパッケージをインポートする。
+
+  import "plugin"
+
+プラグインの読み込み
+
+  p, err := plugin.Open("multi.so")
+
+プラグインのinit()関数の実行
+
+  Mv = 1
+
+プラグインの変数や関数のシンボルを取得
+
+  multi, err := p.Lookup("Multi")
+
+シンボルを経由してプラグインの変数や関数を呼び出す。
+
+  mlt := multi.(func(int) int)(3)
+
+* main.go
+
+  package main
+
+  import "fmt"
+  import "plugin"
+
+  // Skip err handling. q@w@p
+  func main() {
+          // Read plugin file.
+          p, _ := plugin.Open("multi.so")
+          
+          // Set Mv to 2.
+          mv, _ := p.Lookup("Mv")
+          *mv.(*int) = 2
+
+          // Mv multiplied by 3 of x.
+          multi, _ := p.Lookup("Multi")
+          x := 3
+          mlt := multi.(func(int) int)(x)
+          
+          // Output: "2 * 3 = 6"
+          fmt.Printf("%d * %d = %d\n", *mv.(*int), x, mlt)
+  }
+
+* 困った点: バージョン固定
+
+ビルドするGoのバージョンは MAJOR.MINOR.PATCH まで完全に一致していること。
+
+- 使われる側のプラグイン
+- 使う側の実行バイナリー
+
+残念ながら、現時点では改善の見通しは「なし」
+
+.link https://github.com/golang/go/issues/34261#issuecomment-531039514
+
+- 現在の作りはシステムの動的リンカーに依存している。
+- 対応させるにはプラグイン機構の作りの再考が必要。
+
+.link https://github.com/golang/go/issues/32708#issuecomment-504252743
+
+* 使われ処: API Gateway
+
+KrakenD - Open source API Gateway
+
+.link https://www.krakend.io/docs/extending/writing-plugins/
+
+Tyk - API Gateway, API Management Platform, Portal & Analytics
+
+.link https://tyk.io/docs/customise-tyk/plugins/golang-plugins/golang-plugins/
+
+Gloo - The Cloud-Native API Gateway for Kubernetes and more
+
+.link https://gloo.solo.io/dev/writing_auth_plugins/
+
+* 使われ処: Other
+
+plugincreds - Amazon Web Services - Go SDK
+
+.link https://docs.aws.amazon.com/sdk-for-go/api/aws/credentials/plugincreds/
+
+Fission - Serverless Functions for Kubernetes
+
+.link https://docs.fission.io/languages/go/
+
+alpacahq/marketstore: DataFrame Server for Financial Timeseries Data
+
+.link https://github.com/alpacahq/marketstore#plugins
+
+* Go Plugins、使ってみよう！q@w@p
+
+本資料のベースとなった2016年の私のQiita記事。
+
+- Go 1.8のpluginパッケージを試してみる - Qiita
+
+.link https://qiita.com/qt-luigi/items/47a7913145fc747da0c7
+
+森 健太さんの記事「Goのプラグイン機能でソフトウェアに柔軟な拡張性を」
+
+- Software Design 2019年10月号｜技術評論社
+
+.link https://gihyo.jp/magazine/SD/archive/2019/201910
+
+- 本資料作成中に発売されましたが、自力で発表したかったので、あえて読まずに。発表が終わったので読ませて頂きますm(_ _)m
