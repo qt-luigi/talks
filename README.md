@@ -2,6 +2,7 @@
 
 ## 2019
 
+- [GDG Shikoku and me](https://talks.godoc.org/github.com/qt-luigi/talks/2019/gdgshikoku-and-me.slide) in [GDG四国10周年記念 DevFest 四国 2019](https://gdgshikoku.connpass.com/event/152670/)
 - [Using Go Plugins](https://talks.godoc.org/github.com/qt-luigi/talks/2019/using-go-plugins.slide) in [Go Conference 2019 Autumn](https://gocon.connpass.com/event/148602/)
 - [Go入門ハンズオン [04:改造編]](https://talks.godoc.org/github.com/qt-luigi/talks/2019/go-intro-hands-on-04-remodeling.slide) in [はじめてのGo言語教室[改造編]9月](https://gdgshikoku.connpass.com/event/143932/)
 - [How to Write Go CLI Tools](https://talks.godoc.org/github.com/qt-luigi/talks/2019/go-cli-tools.slide) in [Go Conference'19 Summer in Fukuoka](https://fukuokago.connpass.com/event/130797/)

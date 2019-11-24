@@ -1,0 +1,124 @@
+GDG Shikoku and me
+GDG四国10周年記念 DevFest 四国 2019
+23 Nov 2019
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image gdgshikoku-and-me/img/qt_luigi250.png 300 300
+
+Twitter
+
+.link http://twitter.com/qt_luigi @qt_luigi
+
+* GDG四国様 10周年 おめでとうございます！
+
+私が初参加したイベント。
+
+- 2013.05.26 [愛媛] #48 GAE/P Code Lab - GDG Shikoku
+
+.link https://sites.google.com/site/gdgshikoku/news/event0048
+
+50回目のイベントにも参加していた模様。
+
+.image gdgshikoku-and-me/img/gdgshikoku50.png 290 580
+
+* DevFest Shikoku
+
+3年連続で参加中！
+
+2017.11.18 [徳島] DevFest Shikoku 2017
+
+.link https://gdgshikoku.connpass.com/event/68244/
+
+2018.11.03 [徳島] DevFest Shikoku 2018
+
+.link https://gdgshikoku.connpass.com/event/98292/
+
+2019.11.23 [香川] GDG四国10周年記念 DevFest 四国 2019
+
+.link https://gdgshikoku.connpass.com/event/152670/
+
+* 発表
+
+2016.02.27 [香川] Golang 勉強会 in Kagawa
+
+.link https://gdgshikoku.connpass.com/event/26262/
+
+- 発表資料「[[https://www.slideshare.net/qt-luigi/its-gotime][It's Gotime!]]」
+
+2017.11.18 [徳島] DevFest Shikoku 2017
+
+.link https://gdgshikoku.connpass.com/event/68244/
+
+- 発表資料「[[https://speakerdeck.com/qt_luigi/goyan-yu-falsegoshao-jie-2017][Go言語のご紹介 2017]]」
+
+2019.02.16 [香川] GCPUG KAGAWA #1
+
+.link https://gcpug-kagawa.connpass.com/event/104083/
+
+- 発表資料「[[https://www.slideshare.net/qt-luigi/gaego-132087965][GAE/Goの概要説明とデプロイデモ]]」
+
+* ワークショップ
+
+2017.07.15 [香川] GAE/Go 勉強会 in 香川
+
+.link https://connpass.com/event/60150/
+
+- 説明資料「[[https://www.slideshare.net/qt-luigi/goapp-engineweb][GoのApp EngineでWebアプリケーションを構築する]]」
+
+* 香川Go言語[もくもく|わいわい]勉強会
+
+発起人＆主催者は[[https://twitter.com/tyama99999][やました]]さん。
+
+「Goの勉強会を開催したい。まずは初心者向けで。」とのお話しが。
+
+初心者向けのGo入門ハンズオンのテキストを作成＆講師として。
+
+オーガナイザーの[[https://twitter.com/tam_x][Tam]]さんのGo協力でGDG Shikokuイベントに。
+
+2018年9月8日(土)から「香川Go言語勉強会」として始動。
+
+これまでは、主にGo入門ハンズオンともくもく会を実施。
+
+これからは、みんなでわいわいと触っていくことも。
+
+* はじめてのGo言語教室
+
+2019年4月6日(土)の「e-とぴあ未来博2019」でも開催することに。
+
+このときTamさんの命名でイベント名が「はじめてのGo言語教室」に。
+
+これ以降、Go入門ハンズオンの際にはこの名前で開催。
+
+後日オーガナイザーの[[https://twitter.com/ramusara][らむさら]]さんから「愛媛でも開催を！」との声が。
+
+2019年11月9日(土)に愛媛県で「はじめてのGo言語教室 in 愛媛」を開催。
+
+* 開催イベント一覧
+
+2018.09.08 [香川] 香川Go言語勉強会
+2018.11.17 [香川] 香川Go言語勉強会
+
+2019.01.12 [香川] 香川Go言語勉強会 #3
+2019.04.06 [香川] はじめてのGo言語教室
+2019.06.01 [香川] 香川Go言語もくもく会
+2019.07.15 [香川] 香川Go言語もくもく会 #2
+2019.08.12 [香川] はじめてのGo言語教室(8月)
+2019.09.07 [香川] はじめてのGo言語教室[改造編](9月)
+2019.11.03 [香川] 香川Go言語もくもく会 #3+
+2019.11.09 [愛媛] はじめてのGo言語教室 in 愛媛
+
+2019.12.28 [香川] 香川Go言語わいわい会(ゲームを作ろう) #1
+2020.01.04 [香川] 香川Go言語わいわい会(ゲームを作ろう) #2
+
+* GDG Shikoku + me = q@w@p Go〜
+
+引き続き、主にGoで貢献させて頂けられましたら幸いです。
+
+まったりとですがFlutterとGoogle Cloud Platformもやっています。
+
+機会があれば発表したり、ハンズオンしたりするかも！？
