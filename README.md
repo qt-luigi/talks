@@ -3,7 +3,7 @@
 ## 2019
 
 - [Evolving Flutter](https://talks.godoc.org/github.com/qt-luigi/talks/2019/evolving-flutter.slide) in [合同勉強会 in 大都会岡山 -2019 Winter-](https://gbdaitokai.connpass.com/event/145272/)
-- [Japan Go community events 2019](https://talks.godoc.org/github.com/qt-luigi/talks/2019/.japan-go-community-events-2019.slide) in [合同勉強会 in 大都会岡山 -2019 Winter-](https://gbdaitokai.connpass.com/event/145272/)
+- [Japan Go community events 2019](https://talks.godoc.org/github.com/qt-luigi/talks/2019/japan-go-community-events-2019.slide) in [合同勉強会 in 大都会岡山 -2019 Winter-](https://gbdaitokai.connpass.com/event/145272/)
 - [GDG Shikoku and me](https://talks.godoc.org/github.com/qt-luigi/talks/2019/gdgshikoku-and-me.slide) in [GDG四国10周年記念 DevFest 四国 2019](https://gdgshikoku.connpass.com/event/152670/)
 - [Using Go Plugins](https://talks.godoc.org/github.com/qt-luigi/talks/2019/using-go-plugins.slide) in [Go Conference 2019 Autumn](https://gocon.connpass.com/event/148602/)
 - [Go入門ハンズオン [04:改造編]](https://talks.godoc.org/github.com/qt-luigi/talks/2019/go-intro-hands-on-04-remodeling.slide) in [はじめてのGo言語教室[改造編]9月](https://gdgshikoku.connpass.com/event/143932/)
