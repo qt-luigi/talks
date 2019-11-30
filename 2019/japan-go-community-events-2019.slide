@@ -1,0 +1,103 @@
+Japan Go community events 2019
+合同勉強会 in 大都会岡山 -2019 Winter-
+30 Nov 2019
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image japan-go-community-events-2019/img/qt_luigi250.png 300 300
+
+Twitter
+
+.link http://twitter.com/qt_luigi @qt_luigi
+
+* Okayama.go (Organizer)
+
+日本の岡山県周辺のGoコミュニティです! q@w@p
+
+.link https://okayamago.connpass.com/
+
+.image japan-go-community-events-2019/img/okayamago.png 450 720
+
+* Advent Calendar三昧！
+
+Qiita Advent Calendarのプログラミング言語カテゴリーで、7までは最多(のはず)
+
+- Go Advent Calendar 2019 ([[https://qiita.com/advent-calendar/2019/go][URL]])
+- Go2 Advent Calendar 2019 ([[https://qiita.com/advent-calendar/2019/go2][URL]])
+- Go3 Advent Calendar 2019 ([[https://qiita.com/advent-calendar/2019/go3][URL]])
+- Go4 Advent Calendar 2019 ([[https://qiita.com/advent-calendar/2019/go4][URL]])
+- Go5 Advent Calendar 2019 ([[https://qiita.com/advent-calendar/2019/go5][URL]])
+- Go6 Advent Calendar 2019 ([[https://qiita.com/advent-calendar/2019/go6][URL]])
+- Go7 Advent Calendar 2019 ([[https://qiita.com/advent-calendar/2019/go7][URL]])
+
+25 (日) × 6 (カレンダー) = 150 + アルファ(Go7) の記事が量産されることに！
+
+* Colabo三昧！
+
+東京&福岡を中心に各地のGoコミュニティをハングアウトで繋いでイベントを開催！
+
+02.12 [福岡, 岡山]
+
+- Fukuoka.go#13+Okayama.go ([[https://fukuokago.connpass.com/event/112073/][URL]])
+- Okayama.go#1+Fukuoka.go ([[https://okayamago.connpass.com/event/112138/][URL]]) *[会場:株式会社アイネット様]*
+
+03.23 [東京, 岡山, 仙台]
+
+- golang.tokyo #22+Okayama.go/Sendai.go ([[https://golangtokyo.connpass.com/event/122263/][URL]])
+- Okayama.go#2+golang.tokyo ([[https://okayamago.connpass.com/event/123433/][URL]])
+- Sendai.go#4 + golang.tokyo ([[https://techplay.jp/event/723010][URL]])
+
+10.25 [福岡, 梅田]
+
+- Fukuoka.go#14+Umeda.go ([[https://fukuokago.connpass.com/event/146447/][URL]])
+- Umeda.go 2019 Autumn ([[https://umedago.connpass.com/event/145782/][URL]])
+
+* Party三昧！
+
+2019年8月23日にTokyoを中心に日本各地のGoコミュニティをハングアウトで繋いで「Go 1.13 Release Party」が開催！
+
+- [東京] Go 1.13 Release Party in Tokyo ([[https://gocon.connpass.com/event/139024/][URL]])
+- [岡山] Go 1.13 Release Party in Okayama ([[https://okayamago.connpass.com/event/139882/][URL]]) *[会場:クラスメソッド@岡山様]*
+- [梅田] Go 1.13 Release Party in Umeda ([[https://umedago.connpass.com/event/140197/][URL]])
+- [福岡] Go 1.13 Release Party in Fukuoka /w Tokyo ([[https://fukuokago.connpass.com/event/139929/][URL]])
+- [仙台] Go 1.13 Release Party in Sendai /w Tokyo ([[https://techplay.jp/event/742699][URL]])
+- [沖縄] Okinawa.go #12 ~Go 1.13 Release Party~ ([[https://okinawa-go.doorkeeper.jp/events/95414][URL]])
+
+静岡は前日の2019年8月22日に先行開催
+
+- [静岡] Go 1.13 Release Party in Shizuoka ([[https://shizuoka-go.connpass.com/event/140162/][URL]])
+
+* GoCon三昧！
+
+2019年の「[[https://gocon.connpass.com/][Go Conference]]」は初めて尽くし！
+
+初の年3回の開催！
+
+05.18 [東京] Go Conference 2019 Spring ([[https://gocon.connpass.com/event/124530/][URL]]) - 初の3トラック！
+
+- 発表資料: Golang JP Google+ Community Survey Results ([[https://talks.godoc.org/github.com/qt-luigi/talks/2019/survey-results.slide#1][URL]])
+
+07.13 [福岡] Go Conference'19 Summer in Fukuoka ([[https://fukuokago.connpass.com/event/130797/][URL]]) - 初の東京以外 (福岡)！
+
+- 発表資料: How to Write Go CLI Tools ([[https://talks.godoc.org/github.com/qt-luigi/talks/2019/go-cli-tools.slide#1][URL]])
+
+10.28 [東京] Go Conference 2019 Autumn ([[https://gocon.connpass.com/event/148602/][URL]]) - 初の有料化！
+
+- LT資料: Using Go Plugins ([[https://talks.godoc.org/github.com/qt-luigi/talks/2019/using-go-plugins.slide#1][URL]])
+
+* Hands-on三昧！
+
+「はじめてのGo言語教室」は2018年9月に香川から始まった初心者向けGo入門ハンズオンで、皆様駆動で開催されています！
+
+- 09.07 [香川] はじめてのGo言語教室[改造編](9月) ([[https://gdgshikoku.connpass.com/event/143932/][URL]])
+- 09.14 [福岡] 「はじめてのGo言語教室」晩夏の岩田プロ福岡出張スペシャル ([[https://fukuokago.connpass.com/event/143986/][URL]])
+- 10.05 [岡山] はじめてのGo言語教室(岡山) ([[https://okayamago.connpass.com/event/145462/][URL]]) *[会場:株式会社クレオフーガ様]*
+- 10.27 [茅ヶ崎] はじめてのGo言語教室(茅ヶ崎) ([[https://fgstudy.connpass.com/event/151334/][URL]])
+- 11.09 [愛媛] はじめてのGo言語教室 in 愛媛 ([[https://gdgshikoku.connpass.com/event/146866/][URL]])
+- 12.21 [大阪] Umeda.go はじめてのGo言語教室 ([[https://umedago.connpass.com/event/156742/][URL]])
+
+岡山でも「参加したかった」との声が聞こえたので、2回目を開催したい！

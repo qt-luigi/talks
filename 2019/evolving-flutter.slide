@@ -1,0 +1,237 @@
+Evolving Flutter
+合同勉強会 in 大都会岡山 -2019 Winter-
+30 Nov 2019
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image evolving-flutter/img/qt_luigi250.png 300 300
+
+Twitter
+
+.link http://twitter.com/qt_luigi @qt_luigi
+
+* Flutter Japan User Group (Co-Organizer)
+
+主に東京を中心に活動するFlutterアプリ開発者コミュニティです。
+
+.link https://flutter-jp.connpass.com/
+
+.image evolving-flutter/img/FJUG.png 540 864
+
+* Flutter - Build beautiful native apps in record time
+
+"Flutter is Google's mobile app SDK for crafting high-quality native interfaces on iOS and Android in record time."
+
+.link https://flutter.io/
+
+.image evolving-flutter/img/flutter_io.png 430 765
+
+* Flutter - Beautiful native apps in record time
+
+"Flutter is Google’s UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase."
+
+.link https://flutter.dev/
+
+.image evolving-flutter/img/flutter_dev.png 432 691
+
+* Mobile
+
+.link https://flutter.dev/docs
+
+AndroidおよびiOSのネイティブアプリを作成可能。
+
+対応OSバージョン
+
+- Android: 4.1 以上
+- iOS: 8 以上
+
+* Web (開発中)
+
+.link https://flutter.dev/web
+
+Flutterで作成したアプリをWebブラウザー上で動作させる。
+
+- FlutterはDartで書かれている。
+- DartはJavaScriptへ変換できる。
+- 作成したFlutterアプリをDartでWebアプリに変換。
+
+開発中ではあるが、公式サイトには随時ドキュメントが掲載されてきている。
+
+* サンプルサイト
+
+Flutter Gallery
+
+.link https://flutter.github.io/samples/gallery/
+
+Flutter for web samples
+
+.link https://flutter.github.io/samples/
+
+* Desktop (開発中)
+
+.link https://github.com/flutter/flutter/wiki/Desktop-shells
+
+Flutterで作成したアプリをデスクトップ上で動作させる。
+
+- macOS
+- Windows
+- Linux
+- Chrome OS
+- (Fuchsia)
+
+* Embedded (開発中)
+
+Flutterで作成したアプリを組み込みデバイス上で動作させる。
+
+- Raspberry Pi
+- Google Nest Hub（スマートディスプレイ）
+
+* システムレイヤー
+
+.link https://flutter.dev/docs/resources/technical-overview#layer-cakes-are-delicious
+
+- Engine(Dart, Skia(2Dレンダリング) など)が各プラットフォームに合わせて変化。
+
+.image evolving-flutter/img/diagram-layercake.png 447 817
+
+* 特徴
+
+* マテリアルデザインを採用
+
+デザインが統一されることで、異なるプラットフォームでも違和感なく使える。
+
+- Develop for Flutter - Material Design
+
+.link https://material.io/develop/flutter/
+
+逆に言えば、マテリアルデザインを外れたものは作成しづらい。
+
+最近はマルチプラットフォーム化が進み、2D/3Dの表示も可能に。
+
+* 開発環境
+
+対象OS
+
+- macOS, Windows, Linux
+
+コーディングは統合開発環境で行い、公式からは以下のプラグインが提供されている。
+
+- Visual Studio Code
+- Android Studio
+- IntelliJ
+
+アプリのコンパイルや起動などはコマンドラインツール「flutter」で行われる。
+
+* ホットリロード機能
+
+アプリを起動させたままコードを変更して即反映できる。
+
+アプリを起動＆停止させる必要がないため、サクサクと開発できる。
+
+* コーディング
+
+画面は「Widget」と呼ばれるコンポーネントで階層的に構築していく。
+
+- Webアプリだと、HTML+CSSに近い。
+
+処理の部分はDart構文で記述する。
+
+- Webアプリだと、JavaScriptに近い。
+
+* これなら私にもできるかも!?
+
+公式サイトには他のプラットフォームから来られる方向けのドキュメントが用意されている。
+
+- Flutter for Android devs ([[https://flutter.dev/docs/get-started/flutter-for/android-devs][URL]])
+- Flutter for iOS devs ([[https://flutter.dev/docs/get-started/flutter-for/ios-devs][URL]])
+- Flutter for React Native devs ([[https://flutter.dev/docs/get-started/flutter-for/react-native-devs][URL]])
+- Flutter for web devs ([[https://flutter.dev/docs/get-started/flutter-for/web-devs][URL]])
+- Flutter for Xamarin.Forms devs ([[https://flutter.dev/docs/get-started/flutter-for/xamarin-forms-devs][URL]])
+
+* Widget
+
+Flutterでは全てをWidgetでコーディングする。
+
+- 画面コンポーネント、テキスト、色、レイアウト、状態管理、など
+
+「Widgetを制する者がFlutter開発を制する」と言っても過言ではない。
+
+* ネイティブ機能にもアクセス可能
+
+FlutterとモバイルOSのAPIを橋渡しする部分をチャンネル機能として実装。
+
+- Android：JavaまたはKotlinで作成
+- iOS：Objective-CまたはSwiftで作成
+
+* 参考資料
+
+* 書籍
+
+2019年下期に入って２冊が発刊されました。
+
+- 12.10 基礎から学ぶ Flutter
+
+.link https://www.amazon.co.jp/dp/4863542941/
+
+- 10.31 Flutter モバイルアプリ開発バイブル
+
+.link https://www.amazon.co.jp/dp/4839970874/
+
+2018年に1冊目が発刊されました。
+
+- 09.14 Android/iOSクロス開発フレームワーク Flutter入門
+
+.link https://www.amazon.co.jp/dp/4798055832/
+
+* 入門ハンズオン資料（公式）
+
+Write your first Flutter app, part 1 - Flutter
+
+.link https://flutter.dev/docs/get-started/codelab
+
+Write Your First Flutter App, part 2
+
+.link https://codelabs.developers.google.com/codelabs/first-flutter-app-pt2/#0
+
+* 入門ハンズオン資料（公開）
+
+Flutter はじめの一歩 - Flutter 🇯🇵 - Medium
+
+.link https://medium.com/flutter-jp/first-step-9b7f2c74fb08
+
+Flutter入門 - 簡単なアプリを作ってUI宣言やホットリロードなど便利機能の使い方を理解しよう - エンジニアHub｜若手Webエンジニアのキャリアを考える！
+
+.link https://employment.en-japan.com/engineerhub/entry/2019/08/06/103000
+
+* イベントコミュニティ（東京）
+
+- Flutter Japan User Group ([[https://flutter-jp.connpass.com/][URL]])
+- Flutterもくもく自習室 in スタディプラス ([[https://connpass.com/search/?q=Flutter%E3%82%82%E3%81%8F%E3%82%82%E3%81%8F%E8%87%AA%E7%BF%92%E5%AE%A4+in+%E3%82%B9%E3%82%BF%E3%83%87%E3%82%A3%E3%83%97%E3%83%A9%E3%82%B9][URL]])
+- Flutterもくもく会@ネイン渋谷オフィス ([[https://connpass.com/search/?q=Flutter%E3%82%82%E3%81%8F%E3%82%82%E3%81%8F%E4%BC%9A%40%E3%83%8D%E3%82%A4%E3%83%B3%E6%B8%8B%E8%B0%B7%E3%82%AA%E3%83%95%E3%82%A3%E3%82%B9][URL]])
+- Flutterもくもく勉強会 ([[https://connpass.com/search/?q=Flutter%E3%82%82%E3%81%8F%E3%82%82%E3%81%8F%E5%8B%89%E5%BC%B7%E4%BC%9A&prefectures=tokyo][URL]])
+
+* イベントコミュニティ（東京以外）
+
+- [北海道] Flutterいいかい? ([[https://flutter-iikai-sapporo.connpass.com/][URL]])
+- [大阪] Flutterもくもく勉強会 ([[https://connpass.com/search/?q=flutter%E3%82%82%E3%81%8F%E3%82%82%E3%81%8F%E4%BC%9A&start_from=2019%2F08%2F01&prefectures=osaka][URL]])
+- [福岡] Flutter勉強会 in 福岡 ([[https://connpass.com/search/?q=Flutter%E5%8B%89%E5%BC%B7%E4%BC%9A+in+%E7%A6%8F%E5%B2%A1][URL]])
+
+近畿地方では、GDG神戸さんやGDG&WTM京都さんが単発で開催。
+
+* 私が主催したイベント
+
+2018年に2つほど開催。
+
+- 6.23 [大阪] Flutter Meetup Osaka #1
+
+.link https://flutter-jp.connpass.com/event/89623/
+
+- 12.09 [岡山] Flutter 1.0 Release Party in Okayama
+
+.link https://flutter-jp.connpass.com/event/112352/
+
+機会があれば入門ハンズオンや読書会を開催したいところ。
