@@ -1,0 +1,92 @@
+Mashup! My favorite Google techs
+GDG DevFest Osaka 2019
+8 Dec 2019
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image mashup-my-favorite-google-techs/img/qt_luigi250.png 300 300
+
+Twitter
+
+.link https://twitter.com/qt_luigi @qt_luigi
+
+* My favorite Google techs
+
+- q@v@p Flutter
+- q@n@p Google Cloud Platform
+- q@w@p Go
+
+* Flutter - Beautiful native apps in record time
+
+"Flutter is Google’s UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase."
+
+.link https://flutter.dev/
+
+.image mashup-my-favorite-google-techs/img/flutter_dev.png 432 691
+
+* Cloud Computing Services  |  Google Cloud
+
+"Tap into Google's world-class infrastructure and robust set of solutions to build, operate, and grow your business in today's complex, multi-cloud environment."
+
+.link https://cloud.google.com/
+
+.image mashup-my-favorite-google-techs/img/cloud_google.png 432 691
+
+* The Go Programming Language
+
+"Go is an open source programming language that makes it easy to build simple, reliable, and efficient software."
+
+.link https://golang.org/
+
+.image mashup-my-favorite-google-techs/img/golang_org.png 432 691
+
+* I want to build these mashuped system!
+
+* Client
+
+Go mobile (Android: .aar file)
+
+- Flutter - Go
+
+* Server (Mobile base)
+
+Cloud Functions (HTTP Functions)
+
+- Flutter - Cloud Functions - Go
+
+Firebase (Firebase Admin Go SDK)
+
+- Flutter - Firebase - Go
+
+Firebase (Trigger) + Cloud Functions (Background functions)
+
+- Flutter - Firebase - Cloud Functions - Go
+
+*[unmatch]* Cloud Functions for Firebase
+
+- Functions can be written in JavaScript or TypeScript.
+
+* Server (Web base)
+
+App Engine (Web server app / App Engine app)
+
+- Flutter - App Engine - Go
+
+Compute Engine (Web server app)
+
+- Flutter - Compute Engine - Go
+
+Kubernetes Engine (Web server app)
+
+- Flutter - Kubernetes Engine - (Docker) - Go
+
+Cloud Run (Web server app)
+
+- Flutter - Cloud Run - (Docker) - Go
+
+* Mashup it! Let's try!
+
