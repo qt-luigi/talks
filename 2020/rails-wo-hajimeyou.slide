@@ -1,0 +1,503 @@
+"Railsをはじめよう"を真似てみた
+第22回 岡山Ruby, Ruby on Rails勉強会
+29 Feb 2020
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image rails-wo-hajimeyou/img/qt_luigi250.png 300 300
+
+Twitter
+
+.link http://twitter.com/qt_luigi @qt_luigi
+
+* はじめに
+
+2020年1月、GoでWebアプリの入門ハンズオンの資料を作成するにあたり、参考としてRuby on Rails（以降 "Rails"）の入門ガイドのアプリをGoで実装してみました。
+
+程なくして2年ぶりとなる「[[https://okaruby.connpass.com/event/161062/][第22回 岡山Ruby, Ruby on Rails勉強会]]」の開催が告知されました。
+
+このタイミングでの開催は何かの縁だと思い、個人的ながらせっかく知り得たRailsについて、初めてRailsを触った人の目線で発表します。
+
+初心者は同じ目線で、熟練者は当時を懐かしんで、暖かい目で見守ってください。
+
+- 当方、Rubyでのコーディング経験はほぼゼロで、Railsは今回が初めてです。
+- そのため、入門ガイドのアプリはRuby/Railsではコーディングしていません。
+- 今回、Goの話やコードは登場しません。
+
+* なぜ「Rails」を選択したのか？
+
+周囲にRails経験者が多く、その存在を認識していた。
+
+- 不明点などがあった際にすぐに＆気軽に質問できる安心感。
+
+入門ハンズオンが開催されるなど、最初のWebアプリを作成しやすそうだった。
+
+- 未経験者にはもってこい。
+
+* Rails をはじめよう - Railsガイド
+
+.link https://railsguides.jp/getting_started.html
+
+.image rails-wo-hajimeyou/img/rails_guide.png 522 835
+
+* なぜ「Railsガイド」を選択したのか？
+
+CC BY-SA 4.0ライセンスである。
+
+- 本資料を作成する上でのサイト内容の引用などが自由に行える。
+
+Railsのバージョン6に対応している。
+
+- 以前、Railsはバージョンアップでの機能変更が激しいと聞いていたので、なるべく最新版を追っておきたかった。
+
+情報量がそこまで多くなく、未経験者でも読みやすそうだった。
+
+- 参考として軽めに知り得たかったため。
+
+* 真似た範囲
+
+- 1.本ガイドの前提条件
+- 2.Railsとは何か
+- 3.Railsプロジェクトを新規作成する
+- 4.Hello, Rails!
+- 5.アプリケーションの実装と実行
+
+以降、この章立てに従って私が知り得た内容をピックアップ。
+
+* Rails をはじめよう
+
+* Rails をはじめよう
+
+ガイドの内容説明にて。
+
+"Railsアプリケーションの一般的なレイアウト"
+
+- ファイルや機能の構成が学べることを期待。
+
+"MVC (モデル・ビュー・コントローラ) およびRESTfulデザインの基礎"
+
+- MVCは、システム開発経験で知り得ているため、学習しやすそう。
+- RESTfulは、JSONを返すぐらいで、何かしら学べることを期待。
+
+* 1.本ガイドの前提条件
+
+* 1 本ガイドの前提条件
+
+”読者にRailsの経験がないことを前提としています。”
+
+- まさに自分向け
+
+* 2.Railsとは何か
+
+* 2 Railsとは何か
+
+Rails哲学での2つの主要な基本理念。
+
+"同じことを繰り返すな (Don't Repeat Yourself: DRY)"
+
+- ソフトウェア開発においては一般的な話。
+
+"設定より規約が優先される (Convention Over Configuration)"
+
+- 「Rails」たる所以かと。具体的に知ることができる機会。
+
+* 3.Railsプロジェクトを新規作成する
+
+* 3.1 Railsのインストール
+
+Rubyも最新化しようと公式サイトにいくが、実行バイナリーがない！？
+
+.link https://www.ruby-lang.org/ja/downloads/
+
+- ソースコードはダウンロードできる。
+- Windows版は有志にて提供。
+- Windows版以外はパッケージ管理ツール経由。
+
+Railsにおいては、SQLite3も必要。
+
+- デフォルトのデータベースに指定されている。
+
+* 3.2 ブログアプリケーションを作成する (1/3)
+
+コマンドでアプリの雛形を作成。
+
+  $ rails new blog
+
+他のサイトをみると「blog」の部分や、その後の実装内容が異なっている。
+
+もしやアプリの種類毎に雛形が用意されている？
+
+- 「blog」ならブログアプリ
+- 「book」なら本棚アプリ
+
+有識者に確認したところ「blog」の部分は単なるアプリ名であって、作成されるのは空の雛形。
+
+* 3.2 ブログアプリケーションを作成する (2/3)
+
+雛形内には機能名でディレクトリーが作成される。
+
+  .ruby-version
+  .ruby-gemset
+  Gemfile
+  Gemfile.lock
+  README.md
+  Rakefile
+  app/
+  bin/
+  config/
+  config.ru
+  db/
+  lib/
+  log/
+  package.json
+  public/
+  storage/
+  test/
+  tmp/
+  vendor/
+
+.caption 引用元：[[https://www.srockstyle.com/develop/3641/][Rubyの2.6とRails6のbetaが出たのでrails newした。 | srockstyle]]
+
+* 3.2 ブログアプリケーションを作成する (3/3)
+
+app/配下
+
+  app/
+    assets/
+    channels/
+    controllers/
+    helpers/
+    javascript/
+    jobs/
+    mailers/
+    models/
+    views/
+
+.caption 引用元：[[https://www.srockstyle.com/develop/3641/][Rubyの2.6とRails6のbetaが出たのでrails newした。 | srockstyle]]
+
+どの機能をどこに実装すればよいかわかりやすい作り。
+
+ファイルの構成を知ることができた。
+
+* 4.Hello, Rails!
+
+* 4.2 Railsで「Hello」と表示する (1/2)
+
+処理の流れ
+
+- リクエスト
+- ルーティング
+- コントローラー
+- アクション
+- ビュー
+- レスポンス
+
+* 4.2 Railsで「Hello」と表示する (2/2)
+
+コントローラー（Welcome）とアクション（index）をコマンドで作成。
+
+  $ rails generate controller Welcome index
+
+コントローラー以外に、
+
+- ビュー（HTMLテンプレート）
+- テストユニット
+- ヘルパー
+- アセット
+
+なども作成される。
+
+* 4.3 アプリケーションのHomeページを設定する
+
+ルーティングファイル「config/routes.rb」をDSL(Domain Specific Language)で記述。
+
+  Rails.application.routes.draw do
+    get 'welcome/index'
+  
+    // 凡例：'コントローラー名#アクション名'
+    root 'welcome#index'
+  end
+
+getメソッドで、URLパスと連動するコントローラーとアクションを指定する。
+
+- 'welcome/index' は内部で 'welcome#index' と解釈。
+
+rootメソッドで、ルートパス('/')で動作するコントローラーとアクションを指定する。
+
+* 5.アプリケーションの実装と実行
+
+* 5 アプリケーションの実装と実行 (1/3)
+
+resourcesメソッドで、RESTリソース（CRUD機能）への標準的なルーティングを宣言。
+
+  Rails.application.routes.draw do
+    get 'welcome/index'
+   
+    resources :articles
+   
+    root 'welcome#index'
+  end
+
+指定したコントローラー名（articles）が単数形か複数形かで作成されるコントローラーのファイルやルーティングが変わってくる！？
+
+* 5 アプリケーションの実装と実行 (2/3)
+
+コマンドでルーティングを確認できる。
+
+  $ rails routes
+         Prefix Verb   URI Pattern                  Controller#Action
+         // ---------- getメソッドで定義した内容 ----------
+  welcome_index GET    /welcome/index(.:format)     welcome#index
+         // ---------- resourcesメソッドで定義した内容 ----------
+       articles GET    /articles(.:format)          articles#index
+                POST   /articles(.:format)          articles#create
+    new_article GET    /articles/new(.:format)      articles#new
+   edit_article GET    /articles/:id/edit(.:format) articles#edit
+        article GET    /articles/:id(.:format)      articles#show
+                PATCH  /articles/:id(.:format)      articles#update
+                PUT    /articles/:id(.:format)      articles#update
+                DELETE /articles/:id(.:format)      articles#destroy
+         // ---------- rootメソッドで定義した内容 ----------
+           root GET    /                            welcome#index
+
+HTTPリクエストメソッド（Verb）とURL（URI Pattern）の組み合わせで、動作するコントローラーとアクション（Controller#Action）が決まる。
+
+* 5 アプリケーションの実装と実行 (3/3)
+
+RESTfulについて学べた。
+
+- GETやPUT以外のHTTPリクエストメソッドも使われている。
+- URLルーティングを採用している。
+
+メソッドの記述順に注意！：[[https://qiita.com/shizukacode/items/c39293237703ae81faec][Rails routes.rbに書く順番 - Qiita]]
+
+- config/routes.rbに書かれた順番にルーティングが作成される。
+- リクエストはルーティングの上から順にみていく。
+
+* 5.1 土台を設置する (1/2)
+
+コマンドでコントローラー（Articles）だけを作成。
+
+  $ rails generate controller Articles
+
+app/controllers/articles_controller.rb
+
+  class ArticlesController < ApplicationController
+    def new
+    end
+  end
+
+コントローラーはApplicationControllerを継承したクラス。
+
+コントローラーで定義されたpublicメソッドがアクションになる。
+
+* 5.1 土台を設置する (2/2)
+
+アクションには対となるビューが存在することが前提。
+
+ビューのファイル名
+
+- app/views/articles/new.html.erb
+
+ファイル名の書式
+
+- アクション名.フォーマット.ハンドラー
+
+ハンドラー
+
+- erb：Embedded Ruby
+- builder：XMLテンプレート
+- coffee：CoffeeScript
+
+* 5.2 最初のフォーム
+
+テンプレート内ではerbで処理を記述でき、最終的にはHTMLへ変換される。
+
+  <%= form_with scope: :article, local: true do |form| %>
+    <p>
+      <%= form.label :title %><br>
+      <%= form.text_field :title %>
+    </p>
+   
+    <p>
+      <%= form.label :text %><br>
+      <%= form.text_area :text %>
+    </p>
+   
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
+
+form_withメソッドのデフォルトでは、Ajaxでフォームを送信する。
+
+* 5.3 記事を作成する
+
+URLパラーメーターの値はparamsメソッドで取得する。
+
+- `username=dhh` なら `params[:username]` で `dhh` を取得。
+
+* 5.4 Articleモデルを作成する (1/2)
+
+コマンドでモデルを生成。
+
+  $ rails generate model Article title:string text:text
+
+モデル名は単数形（Article）で指定。
+
+その後に属性を"名前:型"（title:string text:text）で指定。
+
+作成されるモデルファイル
+
+- app/models/article.rb
+
+* 5.4 Articleモデルを作成する (2/2)
+
+他にマイグレーションファイルも作成される。
+
+- db/migrate/20140120191729_create_articles.rb
+
+  class CreateArticles < ActiveRecord::Migration[6.0]
+    def change
+      create_table :articles do |t|
+        t.string :title
+        t.text :text
+   
+        t.timestamps
+      end
+    end
+  end
+
+timestampsマクロにて、作成用と更新用のタイムスタンプ項目が付与される。
+
+- レコードの排他制御用？
+
+* 5.5 マイグレーションを実行する
+
+コマンドでマイグレーションファイルを実行してデータベースにテーブルを作成。
+
+  $ rails db:migrate
+
+テーブル名は複数形モデル名になる。
+
+一連の機能はActive Record マイグレーションで行われる。
+
+Active RecordはO/Rマッパーの位置付け？
+
+* 5.6 コントローラでデータを保存する
+
+publicメソッドはprivateより前に配置することになる。
+
+- 「private」と書かれた行より後に定義されたメソッドがprivateになるため。
+
+  def create
+    @article = Article.new(article_params)
+  end
+   
+  private
+    def article_params
+      params.require(:article).permit(:title, :text)
+    end
+
+アクセス修飾子別の定義順が自然と定まる？
+
+requireメソッドやpermitメソッドで使用できるモデル項目を選別。
+
+- セキュリティ強化。
+
+* 5.7 記事を表示する
+
+コントローラーにはCRUDに対応したアクション（メソッド）を実装する。
+
+- Create: new()、create()
+- Read: index()、show()
+- Update: edit()、update()
+- Delete: destroy()
+
+インスタンス変数（@付き変数名）はすべてビューに渡される。
+
+  def show
+    @article = Article.find(params[:id])
+  end
+
+* 5.9 リンクの追加
+
+リンク制御はlink_toメソッドで。
+
+  <%= link_to 'My Blog', controller: 'articles' %>
+  
+  <%= link_to 'New article', new_article_path %>
+  
+  <%= link_to 'Back', articles_path %>
+
+* 5.10 バリデーションの追加
+
+モデル内にvalidatesメソッドを記述。
+
+検証項目や条件はパラメーターで指定。
+
+app/models/article.rb
+
+  class Article < ApplicationRecord
+    validates :title, presence: true,
+                      length: { minimum: 5 }
+  end
+
+一連の機能はActive Record バリデーションで行われる。
+
+* 5.12 パーシャルでビューの重複コードを解消する
+
+テンプレートを別のテンプレートに埋め込むことができる。
+
+パーシャルファイル：app/views/articles/_form.html.erb
+
+  <%= form_with model: @article, local: true do |form| %>
+    <% if @article.errors.any? %>
+    ...
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
+
+呼び出し元：app/views/articles/new.html.erb
+
+  <h1>New article</h1>
+   
+  <%= render 'form' %>
+   
+  <%= link_to 'Back', articles_path %>
+
+* さいごに
+
+* 知り得た点
+
+RESTfulのWebアプリを実装しやすい。
+
+コマンドによる自動生成でコーディング量を削減できる。
+
+- ビジネスロジックの実装に集中できる。
+
+記法やメソッドが高機能なため、コーディング量が少なくなる。
+
+- コードが見やすくなる。
+
+* 学習コストは以外と高い！？
+
+規約を学ぶ必要がある。
+
+コマンドを知る必要がある。
+
+Ruby以外の記法を学ぶ必要がある。
+
+- ルーティングでのDSL
+- テンプレートでのerb
+
+Active Recordについて学ぶ必要がある。
+
+記法やメソッドが高機能な分、使い方や挙動を知る必要がある。
+
+- コードだけではわからない。
