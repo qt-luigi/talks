@@ -1,0 +1,444 @@
+What's new Go 1.14?
+Go 1.14 Release Party in Japan
+25 Feb 2020
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image whats-new-go-114/img/qt_luigi250.png 300 300
+
+Twitter
+
+.link http://twitter.com/qt_luigi @qt_luigi
+
+* Go 1.14 Release Notes
+
+* Introduction to Go 1.14
+
+Go modules
+
+- 本番利用レベルに到達。
+- 今後のモジュール依存管理では、どんどん使って行きましょう！q@w@p
+
+* Changes to the language
+
+Overlapping Interfaces
+
+- 同じmethodを持ったinterfaceを埋め込み可能に。(以前はduplicate methodエラー)
+
+  type Okayama interface {
+          Publish()
+  }
+
+  type Umeda interface {
+          Publish()
+  }
+
+  type TokyoToJapan interface {
+          Okayama
+          Umeda
+          Publish()
+  }
+
+(ブログ記事) Changes to interfaces in Go1.14 - Dylan Meeus - Medium
+
+.link https://medium.com/@meeusdylan/changes-to-interfaces-in-go1-14-821ab533f62
+
+* Ports
+
+* Ports (1/4)
+
+[Darwin]
+
+- macOS 10.11 El Capitan および 32ビットバイナリーの最終サポート。
+
+[Windows]
+
+- データ実行防止 (DEP: Data Execution Prevention) が有効に。
+
+* Ports (2/4)
+
+[WebAssembly]
+
+js.Value
+
+- Goから参照されたJavaScript値がガーベジコレクトされるように。
+- 比較方法が"=="演算子からEqualsメソッドに変更。
+- 空判定メソッドが追加に。(IsUndefined, IsNull, IsNaN)
+
+* Ports (3/4)
+
+[RISC-V]
+
+- 64ビットRISC-VのLinux (linux/riscv64) を実験的サポート。
+
+[FreeBSD]
+
+- 64ビットARM (freebsd/arm64) をサポート。
+
+* Ports (4/4)
+
+[Native Client (NaCl)]
+
+- 前回 (Go 1.13) のアナウンス通り、サポート終了。
+
+[Illumos]
+
+ランタイムは、zone.cpu-cap資源制御を尊重。
+
+- runtime.NumCPU
+- GOMAXPROCSの初期値
+
+* Tools
+
+* Tools (1/16)
+
+[Vendoring (1/3)]
+
+-mod=vendor フラグ
+
+次の条件でデフォルト値となり、vendorディレクトリーからモジュールを読み込む。
+
+リポジトリー直下のディレクトリー内において、
+
+- vendor ディレクトリーが存在する。（go mod vendor で作成）
+- go.mod ファイルの go ディレクティブで 1.14 以上が指定。
+
+vendor/modules.txt ファイルと go.mod ファイルの整合性も確認するように。
+
+* Tools (2/16)
+
+[Vendoring (2/3)]
+
+-mod=mod フラグ
+
+- 新設。従来通りモジュールキャッシュからモジュールを読み込む。
+
+* Tools (3/16)
+
+[Vendoring (3/3)]
+
+go list -m コマンド
+
+- vendor ディレクトリーにパッケージを提供しない推移的な依存関係を暗黙的に省略しないように。
+- -mod=vendor 指定で vendor/modules.txt に記載されていないモジュール情報が要求されると明示的に失敗するように。
+
+* Tools (4/16)
+
+[Flags (1/4)]
+
+go get コマンド
+
+- -mod フラグが廃止に。
+
+* Tools (5/16)
+
+[Flags (2/4)]
+
+-mod=readonly フラグ
+
+次の条件でデフォルト値となり、go.mod や go.sum ファイルへのモジュール依存関係の自動更新を停止。
+
+リポジトリー直下のディレクトリー内において、
+
+- vendor ディレクトリーが存在しない。
+- go.mod ファイルが読み取り専用である。
+
+* Tools (6/16)
+
+[Flags (3/4)]
+
+-modcacherw フラグ
+
+- 新規作成ディレクトリーを読み取り専用とせずモジュールキャッシュに残す。
+- モジュールキャッシュは rm -rf で削除する。
+
+* Tools (7/16)
+
+[Flags (4/4)]
+
+-modfile=file フラグ
+
+- トップレベルのディレクトリー以外の go.mod や go.sum ファイルを指定可能に。
+
+* Tools (8/16)
+
+[Environment variables]
+
+GOINSECURE 環境変数
+
+- 新設。特定のモジュールを提供元から取得する際にHTTPS接続をしないように証明書の検証をスキップ。
+- GOPRIVATE 変数と同じく glob パターンのコンマ区切りリスト。
+
+(ブログ記事) A Go Module Testbed « null program
+
+.link https://nullprogram.com/blog/2020/02/13/
+
+* Tools (9/16)
+
+[Commands outside modules (1/2)]
+
+モジュールコマンド
+
+次の条件で機能制限される。
+
+- モジュールモード (GO111MODULE=on) である。
+- go.mod ファイルが存在しない。
+
+* Tools (10/16)
+
+[Commands outside modules (2/2)]
+
+制限内容
+
+- go build, go run, その他のビルドコマンドは、標準パッケージとコマンドラインで指定した .go ファイルのパッケージのみビルド可能。
+
+- go get や、バージョン指定した go mod download と go list -m は従来通り。
+
+* Tools (11/16)
+
+[+incompatible versions (1/2)]
+
+go get コマンド
+
+次の条件の場合、互換性のないメジャーバージョンにはアップグレードしない。
+
+- モジュールの最新バージョンに go.mod ファイルが存在する。
+- go.mod ファイルでバージョンが明示的に指定されていない。
+
+* Tools (12/16)
+
+[+incompatible versions (2/2)]
+
+go list コマンド
+
+互換性のないメジャーバージョンは、
+
+- リポジトリーサーバーから直接取得すると、省略される。
+- プロキシーサーバーを経由して取得すると、含まれる。
+
+* Tools (13/16)
+
+[go.mod file maintenance (1/2)]
+
+go mod tidy 以外の go コマンド
+
+- require ディレクティブを削除しない。
+
+- 表面的な変更の場合、ファイルを編集しない。
+
+* Tools (14/16)
+
+[go.mod file maintenance (2/2)]
+
+-mod=readonly フラグ
+
+- go ディレクティブがなかったり、誤った間接コメントなどでは、失敗しない。
+
+* Tools (15/16)
+
+[Module downloading]
+
+go コマンド
+
+- モジュールモードで、Subversionリポジトリーをサポート。
+
+- モジュールプロキシーや他のHTTPサーバーからのプレーンテキストエラーメッセージ (UTF-8、絵文字、スペースで構成) のスニペットが含まれるように。
+
+* Tools (16/16)
+
+[Testing]
+
+go test -v コマンド
+
+- t.Log出力は、すべてのテスト終了時でなく、発生した時に。
+
+* Runtime
+
+* Runtime (1/4)
+
+defer
+
+- パフォーマンスが向上し、オーバーヘッドがほぼゼロに。
+
+(ブログ記事) Inlined defers in Go · Go, the unwritten parts
+
+.link https://rakyll.org/inlined-defers/
+
+* Runtime (2/4)
+
+Goroutines
+
+- 非同期でプリエンプティブ可能に (windows&darwin/arm, js/wasm, plan9/* 以外)
+- LinuxやmacOSを含むUnixシステムでは、以前のGoでビルドされたプログラムよりも多くのシグナルを受信可能に。
+
+* Runtime (3/4)
+
+ページアロケーター
+
+- 効率化され、GOMAXPROCS値が高い時のロック競合が大幅に減少。
+
+* Runtime (4/4)
+
+内部タイマー
+
+- ロック競合やコンテキストスイッチが減少して効率的に。
+- time.After, time.Tick, net.Conn.SetDeadline などで使用。
+
+* Compiler
+
+* Compiler (1/7)
+
+[-d=checkptr (1/2)]
+
+コンパイルオプション
+
+- 新設。unsafe.Pointer セーフティールールに従っていることを確認。
+- 標準ライブラリーで誤ったアラートを引き起こすためwindowsは対象外。
+- -race または -msan フラグで有効に。
+- -gcflags=all=-d=checkptr=0 で無効に。
+
+* Compiler (2/7)
+
+[-d=checkptr (2/2)]
+
+チェック機能
+
+- unsafe.Pointer を *T に変換する場合、結果のポインターはTに対して適切に位置合わせすること。
+- ポインター演算の結果がGoヒープオブジェクトを指す場合、unsafe.Pointer 型のオペランドの1つが同じオブジェクトを指すこと。
+
+* Compiler (3/7)
+
+-json フラグ
+
+- インライン化、エスケープ解析、境界チェック除去、nilチェック除去を含めた、キー最適化のマシン可読ログを出力。
+
+* Compiler (4/7)
+
+-m=2 (詳細なエスケープ解析診断)
+
+- 以前にリリースされた新しいエスケープ解析の実装から削除されていたが、再び機能するように。
+
+* Compiler (5/7)
+
+macOSバイナリー
+
+- プラットフォームの規則に従って、すべてのGoシンボルがアンダースコアで始まるように。
+
+* Compiler (6/7)
+
+ファジング用にコンパイラーがカバレッジ計測を挿入
+
+- 実験的サポート。将来のリリースで変更される可能性あり。
+
+* Compiler (7/7)
+
+境界チェック除去 (BCE: Bounds check elimination)
+
+- スライス作成からの情報が使用され、intより小さい型のインデックスのチェックを省略できるように。
+
+* Core library
+
+* Core library (1/3)
+
+New byte sequence hashing package
+
+[hash/maphash]
+
+- 任意のバイト文字列のハッシュ値を取得。
+
+  $ cat main.go
+  package main
+  
+  import (
+          "fmt"
+          "hash/maphash"
+  )
+  
+  func main() {
+          h := &maphash.Hash{}
+          s := h.Sum([]byte{'G', 'o'})
+          fmt.Println(s)
+  }
+
+  $ go run main.go
+  [71 111 131 139 153 73 230 26 132 249]
+
+* Core library (2/3)
+
+Minor changes to the library
+
+[testing]
+
+- T.CleanupまたはB.Cleanupを呼び出すことにより、テストまたはベンチマークの終了後に呼び出されるクリーンアップ関数をサポート。
+
+(ブログ記事) What's New In Go 1.14: Test Cleanup
+
+.link https://www.gopherguides.com/articles/test-cleanup-in-go-1-14/
+
+(ブログ記事) Testing in Go: Clean Tests Using t.Cleanup - Ilija Eftimov
+
+.link https://ieftimov.com/post/testing-in-go-clean-tests-using-t-cleanup/
+
+* Core library (3/3)
+
+詳細は「Release Notes」にて m(--)m
+
+* 参考資料
+
+* 参考資料 (1/4)
+
+[Public]
+
+Go 1.14 Release Notes - The Go Programming Language
+
+.link https://golang.org/doc/go1.14
+
+DRAFT
+
+.link https://tip.golang.org/doc/go1.14
+
+* 参考資料 (2/4)
+
+[English]
+
+What's coming in Go 1.14 - Google Slide
+
+.link https://docs.google.com/presentation/d/1HfIwlVTmVWQk94OLKfTGvXpQxyp0U4ywG1u5j2tjiuE/edit#slide=id.g550f852d27_228_0
+
+Go 1.14 focuses on runtime, compiler | InfoWorld
+
+.link https://www.infoworld.com/article/3512622/go-114-focuses-on-runtime-compiler.html
+
+The State of Go 2020 - Speaker Deck
+
+.link https://speakerdeck.com/campoy/the-state-of-go-2020
+
+* 参考資料 (3/4)
+
+[Japanese (1/2)]
+
+Go1.14で来るGo Modules関連の変更を見てみる - Qiita
+
+.link https://qiita.com/pi9min/items/9dac44c6663e0e933968
+
+Go 1.14 リリースノート 日本語訳 - Qiita
+
+.link https://qiita.com/c-yan/items/3dd0c63ea4c3041728cc
+
+Go1.14のcontextは何が変わるのか - Qiita
+
+.link https://qiita.com/tutuz/items/963a6118cec63a4cd2f3
+
+* 参考資料 (4/4)
+
+[Japanese (2/2)]
+
+「The State of Go 2020」のGo 1.14部分の日本語要約
+
+- mattnさんはTwitterを使っています 「Go 1.14 だけにスポットすると インタフェースのオーバーラップ。同じメソッドを持ったインタフェースが合成できる。」 / Twitter
+
+.link https://twitter.com/mattn_jp/status/1224154914156212227
