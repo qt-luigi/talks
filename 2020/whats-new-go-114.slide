@@ -66,7 +66,7 @@ Overlapping Interfaces
 js.Value
 
 - Goから参照されたJavaScript値がガーベジコレクトされるように。
-- 比較方法が"=="演算子からEqualsメソッドに変更。
+- 比較方法が"=="演算子からEqualメソッドに変更。
 - 空判定メソッドが追加に。(IsUndefined, IsNull, IsNaN)
 
 * Ports (3/4)
