@@ -275,6 +275,10 @@ Goroutines
 - 非同期でプリエンプティブ可能に (windows&darwin/arm, js/wasm, plan9/* 以外)
 - LinuxやmacOSを含むUnixシステムでは、以前のGoでビルドされたプログラムよりも多くのシグナルを受信可能に。
 
+2020.02.25 YouTube配信にて Inada Naoki 様からの助言（ありがとうございます！）
+
+.image whats-new-go-114/img/signal.png 298 696
+
 * Runtime (3/4)
 
 ページアロケーター
