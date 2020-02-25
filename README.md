@@ -2,7 +2,7 @@
 
 ## 2020
 
-- [What's new Go 1.14?] (https://talks.godoc.org/github.com/qt-luigi/talks/2020/whats-new-go-114.slide) in [Go 1.14 Release Party in Japan](https://gocon.connpass.com/event/167301/)
+- [What's new Go 1.14?](https://talks.godoc.org/github.com/qt-luigi/talks/2020/whats-new-go-114.slide) in [Go 1.14 Release Party in Japan](https://gocon.connpass.com/event/167301/)
 
 ## 2019
 
