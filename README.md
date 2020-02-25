@@ -1,5 +1,9 @@
 # Talks
 
+## 2020
+
+- [What's new Go 1.14?] (https://talks.godoc.org/github.com/qt-luigi/talks/2020/whats-new-go-114.slide) in [Go 1.14 Release Party in Japan](https://gocon.connpass.com/event/167301/)
+
 ## 2019
 
 - [Mashup! My favorite Google techs](https://talks.godoc.org/github.com/qt-luigi/talks/2019/mashup-my-favorite-google-techs.slide) in [GDG DevFest Osaka 2019](https://gdgosaka.connpass.com/event/150645/)
