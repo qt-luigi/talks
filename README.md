@@ -2,6 +2,7 @@
 
 ## 2020
 
+- ["Railsをはじめよう"を真似てみた](https://talks.godoc.org/github.com/qt-luigi/talks/2020/rails-wo-hajimeyou.slide) in [第22回 岡山Ruby, Ruby on Rails勉強会](https://okaruby.connpass.com/event/161062/)
 - [What's new Go 1.14?](https://talks.godoc.org/github.com/qt-luigi/talks/2020/whats-new-go-114.slide) in [Go 1.14 Release Party in Japan](https://gocon.connpass.com/event/167301/)
 
 ## 2019
