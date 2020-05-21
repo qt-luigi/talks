@@ -1,0 +1,761 @@
+Install Android Virtual Device to macOS on command line interface
+Flutter Meetup Osaka #3
+22 May 2020
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image install-avd-to-macos-on-cli/img/qt_luigi250.png 300 300
+
+Twitter
+
+.link http://twitter.com/qt_luigi @qt_luigi
+
+* なぜコマンドラインでAndroid仮想デバイスをインストールしたいのか？
+
+* 低スペックの開発機でFlutter開発をしたいため
+
+Android StudioではなくVisual Studio Codeを使いたい。
+
+* Visual Studio Code
+
+Flutterから公式エクステンションもリリースされている。
+
+メリット
+
+- ディスク使用量が少ない。
+- 動作が軽い。
+
+デメリット
+
+- Android仮想デバイスを別途インストールする必要がある。
+
+* Android仮想デバイスをインストールするには？
+
+インターネットや書籍でもAndroid Studioを使った解説がほとんど。
+
+これだけのためにAndroid Studioをインストールするのは本末転倒かと...
+
+- ディスク使用量が増える。
+
+* コマンドラインでAndroid仮想デバイスだけをインストールしよう！
+
+本資料がお役に立てれば、と。
+
+* 作業の流れ
+
+* 作業の流れ
+
+インストール
+
+- Flutter
+- Java
+- Android Tools
+- Android仮想デバイス
+
+セットアップ
+
+- Androidライセンス認証
+
+作成
+
+- Android仮想デバイス作成
+- Flutterアプリ作成
+
+* 注意点
+
+macOSはCatalina 10.15.4で、コマンドシェルはzshです。
+
+- 内容的にはWindowsやLinuxでも対応可能なのでチャレンジを！
+
+作業ディレクトリーは「ホーム」です。
+
+  % pwd
+  /Users/ユーザー名
+
+対象ファイルは.pkgファイルよりも.zip/.tar.gzファイルを優先しています。
+
+* Flutter
+
+* ダウンロード
+
+.link https://flutter.dev/docs/development/tools/sdk/releases?tab=macos
+
+[対象ファイル] flutter_macos_1.17.1-stable.zip
+
+.image install-avd-to-macos-on-cli/img/flutter.png 450 720
+
+* インストール
+
+ダウンロードしたファイルをダブルクリックして展開。
+
+  % unzip Downloads/flutter_macos_1.17.1-stable.zip
+
+展開された「flutter/」を「アプリケーション/」配下に移動。
+
+  % mv flutter/ Applications/
+
+* セットアップ
+
+任意のエディターで.zshrcファイルを開き、パスを追加して保存。
+
+  export PATH=$PATH:/Users/ユーザー名/Applications/flutter/bin
+
+zshrcファイルを読み直す。
+
+  % source .zshrc
+
+動作を確認。
+
+  % flutter --version
+  Flutter 1.17.1 • channel stable • https://github.com/flutter/flutter.git
+  Framework • revision f7a6a7906b (3 days ago) • 2020-05-12 18:39:00 -0700
+  Engine • revision 6bc433c6b6
+  Tools • Dart 2.8.2
+
+* Java
+
+* バージョンと種類
+
+Android開発ではバージョン8が必要。
+
+「独自JDK」と「OpenJDK」があるが、どちらでもよい。
+
+* 入手可能な実行バイナリー形式のmacOS版 JDK 8
+
+独自JDK
+
+- Oracle JDK（Oracleプロファイルへのサインインが必要）
+
+OpenJDK
+
+- AdoptOpenJDK
+- Zulu Community
+
+* Oracle JDK
+
+.link https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+
+[対象ファイル] jdk-8u251-macosx-x64.dmg
+
+.image install-avd-to-macos-on-cli/img/oraclejdk.png 450 720
+
+* AdoptOpenJDK - ダウンロード
+
+.link https://adoptopenjdk.net/releases.html
+
+[対象ファイル] OpenJDK8U-jdk_x64_mac_hotspot_8u252b09.tar.gz
+
+.image install-avd-to-macos-on-cli/img/adoptopenjdk.png 450 720
+
+* AdoptOpenJDK - インストール
+
+ダウンロードしたファイルをダブルクリックして展開。
+
+  % tar zxvf Downloads/OpenJDK8U-jdk_x64_mac_hotspot_8u252b09.tar.gz 
+
+展開された「jdk8u252-b09/」を「アプリケーション/」配下に移動。
+
+  % mv jdk8u252-b09/ Applications/
+
+* AdoptOpenJDK - セットアップ
+
+任意のエディターで.zshrcファイルを開き、JAVA_HOMEとパスを追加して保存。
+
+  export JAVA_HOME=/Users/ユーザー名/Applications/jdk8u252-b09/Contents/Home
+  export PATH=$PATH:$JAVA_HOME/bin
+
+zshrcファイルを読み直す。
+
+  % source .zshrc
+
+動作を確認。
+
+  % java -version
+  openjdk version "1.8.0_252"
+  OpenJDK Runtime Environment (AdoptOpenJDK)(build 1.8.0_252-b09)
+  OpenJDK 64-Bit Server VM (AdoptOpenJDK)(build 25.252-b09, mixed mode)
+
+* Zulu Community - ダウンロード
+
+.link https://www.azul.com/downloads/zulu-community/
+
+[対象ファイル] zulu8.46.0.19-ca-jdk8.0.252-macosx_x64.tar.gz
+
+.image install-avd-to-macos-on-cli/img/zuluopenjdk.png 450 720
+
+* Zulu Community - インストール
+
+ダウンロードしたファイルをダブルクリックして展開。
+
+  % tar zxvf Downloads/zulu8.46.0.19-ca-jdk8.0.252-macosx_x64.tar.gz
+
+展開された「zulu8.46.0.19-ca-jdk8.0.252-macosx_x64/」を「アプリケーション/」配下に移動。
+
+  % mv zulu8.46.0.19-ca-jdk8.0.252-macosx_x64/ Applications/
+
+* Zulu Community - セットアップ
+
+任意のエディターで.zshrcファイルを開き、JAVA_HOMEとパスを追加して保存。
+
+  export JAVA_HOME=/Users/ユーザー名/Applications/zulu8.46.0.19-ca-jdk8.0.252-macosx_x64
+  export PATH=$PATH:$JAVA_HOME/bin
+
+zshrcファイルを読み直す。
+
+  % source .zshrc
+
+動作を確認。
+
+  % java -version
+  openjdk version "1.8.0_252"
+  OpenJDK Runtime Environment (Zulu 8.46.0.19-CA-macosx) (build 1.8.0_252-b14)
+  OpenJDK 64-Bit Server VM (Zulu 8.46.0.19-CA-macosx) (build 25.252-b14, mixed mode)
+
+* Android Tools
+
+* 事前作業
+
+「アプリケーション/」配下に「android-sdk/」ディレクトリーを作成。
+
+  % mkdir Applications/android-sdk/
+
+* セットアップ
+
+任意のエディターで.zshrcファイルを開き、ANDROID_HOMEとANDROID_SDK_ROOTを追加して保存。
+
+  export ANDROID_HOME=/Users/ユーザー名/Applications/android-sdk
+  export ANDROID_SDK_ROOT=/Users/ユーザー名/Applications/android-sdk
+
+zshrcファイルを読み直す。
+
+  % source .zshrc
+
+内容を確認。
+
+  % echo $ANDROID_HOME
+  /Users/ユーザー名/Applications/android-sdk
+
+  % echo $ANDROID_SDK_ROOT
+  /Users/ユーザー名/Applications/android-sdk
+
+* 対象ファイル
+
+- SDK Tools
+- SDK Platform Tools
+- emulator
+
+* SDK Tools - ダウンロード
+
+.link https://developer.android.com/studio#cmdline-tools
+
+[対象ファイル] commandlinetools-mac-6200805_latest.zip
+
+.image install-avd-to-macos-on-cli/img/commandlinetools.png 450 720
+
+* SDK Tools - インストール
+
+ダウンロードしたファイルをダブルクリックして展開。
+
+  % unzip Downloads/commandlinetools-mac-6200805_latest.zip
+
+展開された「tools/」を「アプリケーション/android-sdk/」配下に移動。
+
+  % mv tools/ Applications/android-sdk/
+
+* SDK Tools - セットアップ
+
+任意のエディターで.zshrcファイルを開き、パスを追加して保存。
+
+  export PATH=$PATH:$ANDROID_SDK_ROOT/tools
+  export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
+
+zshrcファイルを読み直す。
+
+  % source .zshrc
+
+動作を確認。
+
+  % sdkmanager --sdk_root=$ANDROID_SDK_ROOT --version
+  3.6.0
+
+* SDK Platform Tools - ネットワークインストール
+
+sdkmanagerにて、"platform-tools"をネットワークインストール。
+
+  % sdkmanager --sdk_root=$ANDROID_SDK_ROOT "platform-tools"
+  [=======================================] 100% Unzipping... platform-tools/systr
+
+* [参考] SDK Platform Tools - ダウンロード
+
+.link https://developer.android.com/studio/releases/platform-tools#downloads
+
+[対象ファイル] platform-tools_r30.0.1-darwin.zip
+
+.image install-avd-to-macos-on-cli/img/platform-tools.png 450 720
+
+* [参考] SDK Platform Tools - インストール
+
+ダウンロードしたファイルをダブルクリックして展開。
+
+  % unzip platform-tools_r30.0.1-darwin.zip
+
+展開された「platform-tools/」を「アプリケーション/android-sdk/」配下に移動。
+
+  % mv platform-tools/ Applications/android-sdk/
+
+* SDK Platform Tools - セットアップ
+
+任意のエディターで.zshrcファイルを開き、パスを追加して保存。
+
+  export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+
+zshrcファイルを読み直す。
+
+  % source .zshrc
+
+動作を確認。
+
+  % adb version
+  Android Debug Bridge version 1.0.41
+  Version 30.0.1-6435776
+  Installed as /Users/ユーザー名/Applications/android-sdk/platform-tools/adb
+
+* emulator - ネットワークインストール
+
+sdkmanagerにて、"emulator"をネットワークインストール。
+
+  % sdkmanager --sdk_root=$ANDROID_SDK_ROOT emulator
+  [=======================================] 100% Unzipping... emulator/lib/pc-bios
+
+* emulator - セットアップ
+
+任意のエディターで.zshrcファイルを開き、パスを追加して保存。
+
+  export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+
+zshrcファイルを読み直す。
+
+  % source .zshrc
+
+動作を確認。
+
+  % emulator -version 
+  Android emulator version 30.0.12.0 (build_id 6466327) (CL:N/A)
+  Copyright (C) 2006-2017 The Android Open Source Project and many others.
+  This program is a derivative of the QEMU CPU emulator (www.qemu.org).
+  ...
+
+* [最終結果] .zshrcファイルへの追加内容
+
+  % cat .zshrc
+  export PATH=$PATH:/Users/ユーザー名/Applications/flutter/bin
+  
+  export JAVA_HOME=/Users/ユーザー名/Applications/jdk8u252-b09/Contents/Home
+  #export JAVA_HOME=/Users/ユーザー名/Applications/zulu8.46.0.19-ca-jdk8.0.252-macosx_x64
+  export PATH=$PATH:$JAVA_HOME/bin
+  
+  export ANDROID_HOME=/Users/ユーザー名/Applications/android-sdk
+  export ANDROID_SDK_ROOT=/Users/ユーザー名/Applications/android-sdk
+  export PATH=$PATH:$ANDROID_SDK_ROOT/tools
+  export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
+  export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+  export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+
+* Android仮想デバイス
+
+* APIレベルの確認
+
+今回ターゲットにしたい端末は「Nexus 7 (2013)」でAndroid 6.0.1。
+
+.link https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels
+
+上記サイトから、Android 6.0のAPIレベルは「23」であることを確認。
+
+.image install-avd-to-macos-on-cli/img/apilevels.png 396 634
+
+* 対象ファイルの確認
+
+sdkmanagerにて、APIレベルが23のファイルをリストアップ。
+
+  % sdkmanager --sdk_root=$ANDROID_SDK_ROOT --list | grep 23 
+    add-ons;addon-google_apis-google-23               | 1      | Google APIs                                                         
+    build-tools;23.0.1                                | 23.0.1 | Android SDK Build-Tools 23.0.1                                      
+    build-tools;23.0.2                                | 23.0.2 | Android SDK Build-Tools 23.0.2                                      
+    build-tools;23.0.3                                | 23.0.3 | Android SDK Build-Tools 23.0.3                                      
+    platforms;android-23                              | 3      | Android SDK Platform 23                                             
+    sources;android-23                                | 1      | Sources for Android 23                                              
+    system-images;android-23;android-tv;armeabi-v7a   | 12     | Android TV ARM EABI v7a System Image                                
+    system-images;android-23;android-tv;x86           | 19     | Android TV Intel x86 Atom System Image                              
+    system-images;android-23;android-wear;armeabi-v7a | 6      | Android Wear ARM EABI v7a System Image                              
+    system-images;android-23;android-wear;x86         | 6      | Android Wear Intel x86 Atom System Image                            
+    system-images;android-23;default;armeabi-v7a      | 6      | ARM EABI v7a System Image                                           
+    system-images;android-23;default;x86              | 10     | Intel x86 Atom System Image                                         
+    system-images;android-23;default;x86_64           | 10     | Intel x86 Atom_64 System Image                                      
+    system-images;android-23;google_apis;armeabi-v7a  | 32     | Google APIs ARM EABI v7a System Image                               
+    system-images;android-23;google_apis;x86          | 32     | Google APIs Intel x86 Atom System Image                             
+    system-images;android-23;google_apis;x86_64       | 32     | Google APIs Intel x86 Atom_64 System Image                          
+
+* 対象ファイル
+
+- build-tools
+- platforms
+- system-images
+
+* build-tools - ネットワークインストール
+
+sdkmanagerにて、"build-tools;23.0.3"をネットワークインストール。
+
+  % sdkmanager --sdk_root=$ANDROID_SDK_ROOT "build-tools;23.0.3" 
+  [=======================================] 100% Unzipping... android-6.0/zipalign
+
+* platforms - ネットワークインストール
+
+sdkmanagerにて、"platforms;android-23"をネットワークインストール。
+
+ライセンスへの同意が求められた場合、yを入力して[enter]キーを押下して続行。
+
+  % sdkmanager --sdk_root=$ANDROID_SDK_ROOT "platforms;android-23"
+  License android-sdk-license:            ] 10% Computing updates...              
+  ---------------------------------------
+  Terms and Conditions
+  
+  This is the Android Software Development Kit License Agreement
+  ...
+  January 16, 2019
+  ---------------------------------------
+  Accept? (y/N): y
+  [=======================================] 100% Unzipping... android-6.0/source.p
+
+* system-images - ネットワークインストール
+
+sdkmanagerにて、"system-images;android-23;default;x86_64"をネットワークインストール。
+
+  % sdkmanager --sdk_root=$ANDROID_SDK_ROOT "system-images;android-23;default;x86_64"
+  [=======================================] 100% Unzipping... x86_64/system.img
+
+* Flutterに必要なAPIレベル
+
+flutter doctorにて、FlutterにはAPIレベルが「28」のものが必要であることを確認。
+
+  % flutter doctor -v
+  ...
+  [!] Android toolchain - develop for Android devices (Android SDK version 23.0.3)
+      • Android SDK at /Users/ユーザー名/Applications/android-sdk
+      ✗ Flutter requires Android SDK 28 and the Android BuildTools 28.0.3
+        To update using sdkmanager, run:
+          "/Users/ユーザー名/Applications/android-sdk/tools/bin/sdkmanager" "platforms;android-28" "build-tools;28.0.3"
+        or visit https://flutter.dev/docs/get-started/install/macos#android-setup for detailed instructions.
+  ...
+
+* Flutter用 - ネットワークインストール
+
+sdkmanagerにて、ネットワークインストール。
+
+- "platforms;android-28"
+- "build-tools;28.0.3"
+
+  % sdkmanager --sdk_root=$ANDROID_SDK_ROOT "platforms;android-28" "build-tools;28.0.3"
+  [=======================================] 100% Unzipping... android-9/zipalign
+
+または
+
+  % sdkmanager --sdk_root=$ANDROID_SDK_ROOT "platforms;android-28"
+  [=======================================] 100% Unzipping... android-9/framework.
+
+  % sdkmanager --sdk_root=$ANDROID_SDK_ROOT "build-tools;28.0.3"
+  [=======================================] 100% Unzipping... android-9/zipalign
+
+* Androidライセンス認証
+
+* 確認
+
+flutter doctorにて、Androidライセンス認証ができていないことを確認。
+
+  % flutter doctor
+  ...
+  [!] Android toolchain - develop for Android devices (Android SDK version 28.0.3)
+      ✗ Android license status unknown.
+        Try re-installing or updating your Android SDK Manager.
+        See https://developer.android.com/studio/#downloads or visit visit https://flutter.dev/docs/get-started/install/macos#android-setup for detailed instructions.
+  ...
+
+「--android-licenses」オプションを指定して実行するも、解消されない。
+
+  % flutter doctor --android-licenses
+  ...
+  [!] Android toolchain - develop for Android devices (Android SDK version 28.0.3)
+      ✗ Android license status unknown.
+        Try re-installing or updating your Android SDK Manager.
+        See https://developer.android.com/studio/#downloads or visit visit https://flutter.dev/docs/get-started/install/macos#android-setup for detailed instructions.
+  ...
+
+* 原因
+
+flutter doctorでは、内部でsdkmanagerを呼び出しているが、その時に
+
+- --sdk_root=$ANDROID_SDK_ROOT
+
+オプションなしで実行されているため、エラーとなっている。
+
+これはcommandlinetools-6200805になってからの不具合の模様。
+
+* 対策
+
+sdkmanagerに「--sdk_root=$ANDROID_SDK_ROOT」オプションを埋め込む。
+
+ファイルのアクセス権限を確認する。（-r-xr-xr-x@：書き込み不可）
+
+  % ls -l $ANDROID_SDK_ROOT/tools/bin/sdkmanager 
+  -r-xr-xr-x@ 1 ユーザー名  staff  5318  1  1  2010 /Users/ユーザー名/Applications/android-sdk/tools/bin/sdkmanager
+
+chmodにて、ファイルのアクセス権限を「書き込み可能」に変更する。
+
+  % chmod 755 $ANDROID_SDK_ROOT/tools/bin/sdkmanager
+
+ファイルのアクセス権限の変更を確認する。（-rwxr-xr-x@：書き込み可能）
+
+  % ls -l $ANDROID_SDK_ROOT/tools/bin/sdkmanager    
+  -rwxr-xr-x@ 1 ユーザー名  staff  5318  1  1  2010 /Users/ユーザー名/Applications/android-sdk/tools/bin/sdkmanager
+
+* 対策
+
+任意のエディターでsdkmanagerを開く。
+
+  % vim $ANDROID_SDK_ROOT/tools/bin/sdkmanager
+
+最終行を書き換えて保存する。
+
+- 変更前
+
+  exec "$JAVACMD" "$@"
+
+- 変更後
+
+  exec "$JAVACMD" "$@" --sdk_root=$ANDROID_SDK_ROOT
+
+* 再確認
+
+flutter doctorにて、警告がAndoridライセンス認証不足に変わっていることを確認。
+
+  % flutter doctor
+  ...
+  [!] Android toolchain - develop for Android devices (Android SDK version 28.0.3)
+      ! Some Android licenses not accepted.  To resolve this, run: flutter doctor --android-licenses
+  ...
+
+sdkmanagerにて、Andoridライセンス認証を行う。
+
+ライセンスへの同意が求められた場合、yを入力して[enter]キーを押下して続行。
+
+  % sdkmanager --licenses
+  6 of 7 SDK package licenses not accepted. 100% Computing updates...             
+  Review licenses that have not been accepted (y/N)? y
+  ...
+  Accept? (y/N): y
+  All SDK package licenses accepted
+
+* 再確認
+
+flutter doctorにて、Android toolchainのセットアップ完了を確認。
+
+  % flutter doctor       
+  ...
+  [✓] Android toolchain - develop for Android devices (Android SDK version 28.0.3)
+  ...
+
+* Android仮想デバイス作成
+
+* デバイスIDの確認
+
+avdmanagerにて、"Nexus 7 2013"のデバイスIDが「13」であることを確認。
+
+  % avdmanager list device | grep "Nexus 7" 
+  id: 13 or "Nexus 7 2013"
+      Name: Nexus 7
+  id: 14 or "Nexus 7"
+      Name: Nexus 7 (2012)
+
+* 既存の仮想デバイスの削除
+
+仮想デバイス名を「Nexus_7_2013」とする。
+
+avdmanagerにて、同名のイメージがあれば削除。
+
+  % avdmanager delete avd -n Nexus_7_2013
+  Deleting file /Users/ユーザー名/.android/avd/Nexus_7_2013.ini
+  Deleting folder /Users/ユーザー名/.android/avd/Nexus_7_2013.avd
+  
+  AVD 'Nexus_7_2013' deleted.
+
+* 仮想デバイスの作成
+
+avdmanagerにて、デバイスID「13」で仮想デバイス「Nexus_7_2013」を作成。
+
+  % avdmanager create avd -n Nexus_7_2013 -d 13 -k "system-images;android-23;default;x86_64"
+  ...
+  Warning: Observed package id 'emulator' in inconsistent location '/Users/ユーザー名/Applications/android-sdk/emulator' (Expected '/Users/ユーザー名/Applications/emulator')
+  ...
+  Auto-selecting single ABI x86_64========] 100% Fetch remote repository...       
+
+Androidツール類のインストール場所について警告が出るが、作成には問題なし。
+
+* 仮想デバイスの設定ファイルの修正
+
+任意のエディターで仮想デバイスのconfig.iniファイルを開く。
+
+  % vim .android/avd/Nexus_7_2013.avd/config.ini 
+
+image.sysdir.1の値を修正。
+
+- 変更前
+
+  image.sysdir.1=android-sdk/system-images/android-23/default/x86_64/
+  
+- 変更後
+  
+  image.sysdir.1=system-images/android-23/default/x86_64/
+
+* 仮想デバイスの起動
+
+emulatorにて、仮想デバイスを起動。
+
+  % emulator -avd Nexus_7_2013
+
+または
+
+  % emulator @Nexus_7_2013
+
+* 仮想デバイスの停止
+
+仮想デバイスの右側のボタン列から「Close」または「Power」のボタンをクリック。
+
+.image install-avd-to-macos-on-cli/img/emulator.png 547 362
+
+* Flutterアプリ作成
+
+* Flutterアプリ作成
+
+flutter createにて、myappプロジェクトを作成。
+
+  % flutter create myapp
+  Creating project myapp...
+    ...
+  Running "flutter pub get" in myapp...                               2.3s
+  Wrote 72 files.
+  
+  All done!
+  ...
+  
+  Run "flutter doctor" for information about installing additional components.
+  
+  In order to run your application, type:
+  
+    $ cd myapp
+    $ flutter run
+  
+  Your application code is in myapp/lib/main.dart.
+
+* Flutterアプリ起動
+
+myappディレクトリー内に移動。
+
+  % cd myapp
+
+flutter runにて、アプリを起動。→ 接続デバイスなし。
+
+  % flutter run
+  No supported devices connected.
+
+flutter devicesにて、接続可能なデバイスが存在するか確認。
+
+  % flutter devices
+  No devices detected.
+  
+  Run "flutter emulators" to list and start any available device emulators.
+  
+  If you expected your device to be detected, please run "flutter doctor" to diagnose potential issues. You may also try increasing the time to wait
+  for connected devices with the --timeout flag. Visit https://flutter.dev/setup/ for troubleshooting tips.
+
+* Flutterアプリ起動
+
+flutter emulatorsにて、仮想デバイス「Nexus_7_2013」を起動する。
+
+  % flutter emulators --launch Nexus_7_2013
+
+flutter devicesにて、接続可能なデバイスとして存在していることを確認。
+
+  % flutter devices          
+  1 connected device:
+  
+  Android SDK built for x86 64 • emulator-5554 • android-x64 • Android 6.0 (API 23) (emulator)
+
+* Flutterアプリ起動
+
+flutter runにて、アプリを起動。
+
+  % flutter run
+  Using hardware rendering with device Android SDK built for x86 64. If you get graphics artifacts, consider enabling software rendering with "--enable-software-rendering".
+  Launching lib/main.dart on Android SDK built for x86 64 in debug mode...
+  Running Gradle task 'assembleDebug'...                                  
+  Running Gradle task 'assembleDebug'... Done                        51.8s
+  ✓ Built build/app/outputs/apk/debug/app-debug.apk.
+  Installing build/app/outputs/apk/app.apk...                         3.4s
+  Syncing files to device Android SDK built for x86 64...            431ms
+  
+  Flutter run key commands.
+  r Hot reload. 🔥🔥🔥
+  R Hot restart.
+  h Repeat this help message.
+  d Detach (terminate "flutter run" but leave application running).
+  c Clear the screen
+  q Quit (terminate the application on the device).
+  An Observatory debugger and profiler on Android SDK built for x86 64 is available at: http://127.0.0.1:58266/hL5wRDO6rZo=/
+
+仮想デバイスが起動してアプリが表示されるまでに、数分〜数十分かかる場合あり。
+
+* 完成！q@v@p
+
+.image install-avd-to-macos-on-cli/img/vscode_emulator.png 576 922
+
+* まとめ
+
+* ハマり処
+
+commandlinetools-6200805に同梱されているsdkmanagerの挙動が怪しい
+
+- 本資料の方法でsdkmanagerを修正するか、次のバージョンのリリースを待つ。
+
+  exec "$JAVACMD" "$@" --sdk_root=$ANDROID_SDK_ROOT
+
+仮想デバイスが起動しない
+
+- config.iniファイル内のsystem-imagesのパスを本資料の内容で修正してみる。
+
+  image.sysdir.1=system-images/android-23/default/x86_64/
+
+* 今回の作業によるディスク使用量：約11GB
+
+- 確認コマンド
+
+  % du -k [ディレクトリー名]
+
+- 実行結果（単位：KB）
+
+  // Flutter
+  2143328   Applications/flutter
+  416       myapp
+
+  // Android
+  193996    Applications/jdk8u252-b09
+  5159496   Applications/android-sdk
+  3717340   .android
+
+- [参考] Visual Studio Code：約250MB（Flutter＆Dartエクステンションを含む）
+
+  // Visula Studio Code
+  245480    /Applications/Visual Studio Code.app
+  9948      .vscode
