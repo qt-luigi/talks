@@ -1,0 +1,117 @@
+Introduce Flutter Japan activities
+Flutter Meetup Osaka #3
+22 May 2020
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image introduce-flutter-japan-activities/img/qt_luigi250.png 300 300
+
+Twitter
+
+.link http://twitter.com/qt_luigi @qt_luigi
+
+* はじめに
+
+皆様の活動も含め、日本でのFlutter活動が活発になってきていると感じませんか？
+
+そこで、"Flutter"と、"Japan"および"JP"をキーワードに持つ
+
+- コミュニティ
+- サイト
+
+について、調べてみました。
+
+※ 各活動は、開始日が古い順に紹介しています。
+
+* コミュニティ
+
+* Flutter Japan User Group (活動期間: 2018年4月5日〜)
+
+イベントの開催で活動しているユーザーグループ。累計参加者数は約1,900名。
+Tokyo開催が多かったが最近はOsaka開催が増加中！(他にはOkayamaがあり)
+
+connpass: [[https://flutter-jp.connpass.com/]]
+
+.image introduce-flutter-japan-activities/img/FJUG.png 396 634
+
+* Flutter Japan User Group - Tokyo
+
+「Flutter Meetup Tokyo (発表形式:13回)」を開催。ライブ配信視聴枠がありTokyo以外からも参加可能。YouTubeでは第11,12,13回が公開中。
+
+Twitter: [[https://twitter.com/fluttertokyo]]
+YouTube: [[https://www.youtube.com/channel/UCuxMTyir8TUq0qO6nUvjhPw]]
+
+.image introduce-flutter-japan-activities/img/FJUG-Tokyo-YouTube.png 396 634
+
+* Flutter Japan User Group - Osaka
+
+「Flutter Meetup Osaka (ハンズオン:1回、発表形式:2回)」「Flutter Handson Osaka (ハンズオン:2回)」「Flutterもくもく会 (もくもく会:5回)」を開催。
+
+Site: [[https://flutter-osaka.netlify.app/]]
+Slack: [[https://flutter-osaka.slack.com]]
+
+.image introduce-flutter-japan-activities/img/Flutter-Osaka.png 396 634
+
+* Flutter Users JP (活動期間: 2019年6月6日〜)
+
+チャットツール「Discord」にて、オンラインで活動しているユーザーグループ。
+参加者数は約340名。チャンネル数は約20個。質疑応答や情報交換など様々。
+
+Site: [[https://sites.google.com/view/flutterusersjp]]
+Twitter: [[https://twitter.com/FlutterUsersJP]]
+
+.image introduce-flutter-japan-activities/img/Flutter-Users-JP.png 396 634
+
+* [終了] Flutter JP - Google+ Community (2018年4月7日〜2019年4月2日)
+
+SNS「Google+」にて活動していたユーザーグループ。
+
+Google+: https://plus.google.com/communities/101822628763858843669
+
+.image introduce-flutter-japan-activities/img/Flutter-JP-Google-plus.png 396 634
+
+* サイト
+
+* Flutter 🇯🇵 (活動期間: 2018年12月17日〜)
+
+monoさんがFlutterに関する日本語記事を投稿されています。
+パフォーマンスやアーキテクチャーといった専門的な記事も多数あり。
+
+Medium: [[https://medium.com/flutter-jp]]
+Twitter: [[https://twitter.com/_mono]]
+
+.image introduce-flutter-japan-activities/img/Flutter-🇯🇵.png 396 634
+
+* Flutter Doc JP (活動期間: 2019年2月?日〜)
+
+lebexcさんが手掛けている日本語ドキュメントサイト。
+多くのウィジェットをサンプルコードを交えて解説されています。
+
+Site: [[https://flutter.ctrnost.com/]]
+Twitter: [[https://twitter.com/FCtrnost]]
+
+.image introduce-flutter-japan-activities/img/Flutter-Doc-JP.png 396 634
+
+* Flutter-jp (活動期間: 2019年10月2日〜)
+
+工事中らしくコンテンツは空です。
+*[注意]* GitHubのOrganizations名がFJUGですが、先のコミュニティとは *別物* です。
+
+Site: [[https://flutter-jp.com/#/]]
+GitHub: [[https://github.com/flutter-jp/website]]
+
+.image introduce-flutter-japan-activities/img/Flutter-jp.png 396 634
+
+* flutter-study.dev (活動期間: 2020年5月1日〜)
+
+「Flutterで始めるアプリ開発」がタイトルの入門チュートリアルサイト。
+FlutterとFirebaseを組み合わせたアプリ開発を順番に学べます。
+
+Site: [[https://www.flutter-study.dev/]]
+Twitter: [[https://twitter.com/flutter_study]]
+
+.image introduce-flutter-japan-activities/img/flutter-study-dev.png 396 634
