@@ -1,0 +1,64 @@
+大都会岡山の南端で、Goをさけぶ
+de:code夏まつり ～よりコミュニティを楽しくするためのコミュニティのすすめ #3
+8 Jul 2020
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Goは趣味でやっており、微力ながら普及に努めています。
+
+- イベントへの参加、主催（Okayama.go）、登壇（Go Conference、など）
+
+- 「はじめてのGo言語教室」開催（香川、福岡、岡山、愛媛、神奈川、大阪）
+
+.image why-am-i-here/img/go-class.png 450 700
+
+* マイクロソフトはOSSに絶賛アプローチ中！
+
+* Go製OSSは主にAzureコンテナーで使われていますが、
+
+Azure Kubernetes Service (AKS)での使用例
+
+- Docker
+- Kubernetes
+- Terraform
+- Prometheus
+
+* Goへのサポートはまだ弱い...
+
+例）Azure developer documentation | Microsoft Docs
+
+.image why-am-i-here/img/azure-dev-doc.png 450 750
+
+.caption https://docs.microsoft.com/en-us/azure/developer/
+
+* 「Goもしっかりサポートして欲しい！」
+
+* ある時は、Goのサポート情報を発信し、
+
+.image why-am-i-here/img/sakebi/20151027.png 400 800
+
+* またある時は、Goのサポートをお願いする日々。
+
+.image why-am-i-here/img/sakebi/20180213.png 350 800
+
+* 何ならde:codeでGoを発表したい！
+
+* de:code 2018「LTがあれば、発表したい！」
+
+.image why-am-i-here/img/decode/20180213.png 320 850
+
+* de:code 2019「田舎者だけど、発表したい！」
+
+.image why-am-i-here/img/decode/20181120.png 320 850
+
+* de:code 2020「いやホント、発表したい！」
+
+.image why-am-i-here/img/decode/20200624.png 320 850
+
+* ...
+
+* まさに奇跡！q@w@p
+
+.image why-am-i-here/img/20200625.png 550 950
