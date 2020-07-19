@@ -1,0 +1,306 @@
+AzureとSDKとGoと私
+de:code夏まつり ～よりコミュニティを楽しくするためのコミュニティのすすめ #3
+8 Jul 2020
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image azure-sdk-for-go-and-me/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* Go
+
+* The Go Programming Language
+
+Google社発のオープンソースの汎用プログラミング言語。
+
+.image azure-sdk-for-go-and-me/img/golang-org.png 460 780
+
+.caption [[https://golang.org/]]
+
+* リリース履歴
+
+2009年11月：オープンソースプロジェクトとして公開。
+2012年3月：Go 1 メジャーリリース。
+
+- 公開当初は、Linux版とmacOS版のみ。
+- Windows版は世界中の開発者によって開発。
+
+* 毎年2月と8月にリリース
+
+2020年2月：Go 1.14.0 リリース。
+2020年8月：Go 1.15.0 リリース予定。
+
+* 静的型付けのコンパイル言語
+
+- コンパイル：ソースコードをコンピュータが理解しやすい内容に変換する時に、
+- 静的型付け：データの型（数値や文字列など）が決まっている必要がある言語。
+
+* コンパイル速度は速い
+
+- Google社でも、プロジェクトのコンパイル時間増大は問題視。
+- 答えのひとつとして、Goが誕生することに。
+
+* ランタイムを含んだ実行バイナリー（exeファイル）を生成
+
+- 生成されるexeファイルに .NET Framework が含まれているイメージ。
+- ランタイム：ガーベジコレクター、型システム、並行処理制御など。
+
+* 実行速度も速い方
+
+- ガーベジコレクターが動作する分、ネイティブ系（C/C++）には劣る。
+
+* シンプルな言語仕様
+
+- 予約語は25個。
+- 変数は宣言した時点でゼロ値（"", 0, false, など）で初期化。
+- 条件 (三項) 演算子はなくて if 文のみ。
+- while 文はなくて for 文のみ。
+- クラスなし。try-catch なし。
+
+* 標準パッケージが充実
+
+- archive/zip, crypto/aes, net/http, database/sql,
+- encoding/json, image/png, syscall/js, など。
+
+.image azure-sdk-for-go-and-me/img/golangorg-pkg.png 400 700
+
+.caption [[https://golang.org/pkg/]]
+
+* 標準ツールが充実
+
+- ビルド、ドキュメント、テスト、ベンチマーク、
+- フォーマッター、コード生成、コードチェッカー、など。
+
+.image azure-sdk-for-go-and-me/img/go-help.png 450 650
+
+* 並行処理を実装しやすい
+
+- ゴルーチン：スレッドに近いもの。軽量。関数を並行実行させる仕組み。
+- チャネル：ゴルーチン（スレッド）間でデータでやりとりする仕組み。
+
+.image azure-sdk-for-go-and-me/img/tottie-en.png 360 800
+
+.caption Go Gopher designed by renee french / This illustration drawn by [[https://twitter.com/tottie_designer][@tottie_designer]]
+
+* ソースコード
+
+例）コンソール画面に "Hello, de:code 2020!" を標準出力するプログラム。
+
+- ファイル名：main.go
+
+  package main
+  
+  import (
+  	"fmt"
+  )
+  
+  func main() {
+  	fmt.Println("Hello, de:code 2020!")
+  }
+
+* コンパイル＆実行
+
+実行バイナリーを作成せずに実行（開発時はサクサクと）
+
+  $ go run main.go
+
+コンパイルして実行バイナリーを生成（デプロイ時はシッカリと）
+
+  $ go build -o decode2020 main.go
+
+クロスコンパイルも可能
+
+- 例）Windows (64ビット) 用の実行バイナリー「decode2020.exe」を生成。
+
+  GOOS=windows GOARCH=amd64 go build -o decode2020.exe main.go
+
+* まずはココから始めてみよう！
+
+A Tour of Go（Go言語基礎文法最速マスター）
+
+.image azure-sdk-for-go-and-me/img/a-tour-of-go.png 450 750
+
+.caption [[https://go-tour-jp.appspot.com/welcome/1]]
+
+* Azure
+
+* Azureを管理する手段
+
+- Azure Portal ([[http://portal.azure.com/]])
+
+- Azure PowerShell (Az モジュール)
+
+- Azure CLI (az コマンド)
+
+- Azure SDK (プログラミング)
+
+* その実体は
+
+いずれもHTTPS通信でAzureのREST API (ARM) にアクセス。
+
+ユーザーや権限の認証は、ARMからAzure ADに問い合わせ。
+
+.image azure-sdk-for-go-and-me/img/azure-kousei.png 400 750
+
+.caption フリーで使えそうな図を見つけ出せず...チラ裏 de すみませんm(--)m
+
+* Azure REST API
+
+AzureのREST API 仕様書はOpen API形式で公開。
+
+.image azure-sdk-for-go-and-me/img/azure-rest-api-specs.png 450 750
+
+.caption [[https://github.com/Azure/azure-rest-api-specs]]
+
+* Azure SDK
+
+* Azure SDK
+
+Azureを管理する手順を「プログラミング」して、REST API にアクセスする仕組み。
+
+.image azure-sdk-for-go-and-me/img/chomado-programming.png 450 750
+
+* 管理の例
+
+- 仮想マシンの作成
+- ストレージからファイルを取得、など。
+
+* 対応しているプログラミング言語
+
+- .NET, Java, JavaScript&TypeScript, Python, Go, C++, C, Android, iOS, PHP, Ruby
+
+.image azure-sdk-for-go-and-me/img/azure-sdk.png 450 750
+
+.caption [[https://azure.microsoft.com/ja-jp/downloads/]]
+
+* Azure/autorest
+
+Open API 形式の仕様書からHTTP クライアント ライブラリーを自動生成するツール。
+
+- PowerShall, C#, Python, Java, TypeScript, Go, Ruby
+
+.image azure-sdk-for-go-and-me/img/autorest.png 400 700
+
+.caption [[https://github.com/Azure/autorest]]
+
+* Azure SDK for Go
+
+* Azure SDK for Go
+
+Goで「プログラミング」してAzureを管理するオープンソースのSDK。
+
+.image azure-sdk-for-go-and-me/img/azure-sdk-for-go-doc.png 450 750
+
+.caption [[https://docs.microsoft.com/ja-jp/azure/developer/go/]]
+
+* リリース履歴
+
+2014年10月：v1.0 ベータ公開。
+2018年2月：v14.0.0 にて正式リリース。
+
+- Storage系のパッケージが出たり入ったり。
+- ASMからARMへの対応。
+
+* 毎月メジャーバージョンがリリース
+
+2020年7月：v44.0.0 リリース。
+
+* Azure/go-autorest
+
+REST APIへのHTTPS通信をゴルーチン対応して並行アクセスを可能にしたパッケージ。
+
+その他に、Azure AD 認証や型サポートなどの機能も担う。
+
+.link https://github.com/Azure/go-autorest
+
+.image azure-sdk-for-go-and-me/img/tottie-ja.png 360 800
+
+.caption Go Gopher designed by renee french / This illustration drawn by [[https://twitter.com/tottie_designer][@tottie_designer]]
+
+* その他のパッケージ
+
+開発しやすいように、本家とは別のリポジトリーで管理。
+
+- Storage Blobs - Azure/azure-storage-blob-go
+- Storage Files - Azure/azure-storage-file-go
+- Storage Queues - Azure/azure-storage-queue-go
+- Service Bus - Azure/azure-service-bus-go
+- Event Hubs - Azure/azure-event-hubs-go
+- Application Insights - Microsoft/ApplicationInsights-go
+
+* 私
+
+* 日本初(?)のGoでのMVP アワード受賞を目指しています！
+
+- Developer Technologies カテゴリーに「Go」を入れて欲しい！
+- Microsoft Azure カテゴリーに「SDK support on Azure (GO)」の文字が！
+
+.image azure-sdk-for-go-and-me/img/mvp-award-category.png 430 700
+
+.caption [[https://mvp.microsoft.com/ja-jp/pages/mvp-award-update]]
+
+* 2020年上期の活動内容
+
+ツイート
+
+- ハッシュタグ：[[https://twitter.com/hashtag/azuregojp?f=live][#azuregojp]]
+
+ブログ記事
+
+- [Qiita] [[https://qiita.com/tags/azuregojp]] (8)
+- [ブログ] [[http://qt-luigi.blogspot.com/search/label/azuregojp]] (8+2)
+
+発表 (1)
+
+- [[https://msdevjp.connpass.com/event/175983/][de:code夏まつり ～よりコミュニティを楽しくするためのコミュニティのすすめ #3]]
+
+* 2020年上期の活動内容 (GitHub)
+
+翻訳 (2)
+
+- [[https://github.com/qt-luigi/azure-sdk-for-go-docs-jp][Azure/azure-sdk-for-goのREADMEの日本語訳]]
+- [[https://github.com/qt-luigi/go-autorest-docs-jp][Azure/go-autorestのREADMEの日本語訳]]
+
+コントリビュート (1)
+
+- [[https://github.com/Azure/azure-sdk-for-go/pull/10142]]
+
+
+* まつりの後の夢...
+
+* 前回の「de:code夏まつり #2」にて...
+
+.image azure-sdk-for-go-and-me/img/quiz.png 450 700
+
+* Azure Functions for Go は、ありま〜す（ただし Private Preview）
+
+興味のある方は「Azure Go Functions Private Preview Signup」から申し込みを！
+
+.image azure-sdk-for-go-and-me/img/azure-funcs-go-signup.png 450 750
+
+.caption [[https://aka.ms/goazurefunctions]]
+
+* それまでは Custom Handlers で！（こちらは Public Preview）
+
+Azure Functions のカスタム ハンドラー (プレビュー) | Microsoft Docs
+
+.image azure-sdk-for-go-and-me/img/custom-handlers.png 450 750
+
+.caption [[https://docs.microsoft.com/ja-jp/azure/azure-functions/functions-custom-handlers]]
+
+* Goなサンプル
+
+functions-custom-handlers/go · Azure-Samples/functions-custom-handlers · GitHub
+
+.link https://github.com/Azure-Samples/functions-custom-handlers/tree/master/go
+
+Azure Functions で Go 言語を使おう（Go 1.14.2 待ち） - Qiita
+
+.link https://qiita.com/okazuki/items/e0f24afb00a01eff541d
