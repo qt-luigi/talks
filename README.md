@@ -2,7 +2,7 @@
 
 ## 2020
 
-- [AzureとSDKとGoと私](https://talks.godoc.org/github.com/qt-luigi/talks/2020/.azure-sdk-for-go-and-me.slide) in [de:code夏まつり ～よりコミュニティを
+- [AzureとSDKとGoと私](https://talks.godoc.org/github.com/qt-luigi/talks/2020/azure-sdk-for-go-and-me.slide) in [de:code夏まつり ～よりコミュニティを
 楽しくするためのコミュニティのすすめ #3](https://msdevjp.connpass.com/event/175983/)
 - [大都会岡山の南端で、Goをさけぶ](https://talks.godoc.org/github.com/qt-luigi/talks/2020/why-am-i-here.slide) in [de:code夏まつり ～よりコミュニティを楽しくするためのコミュニティのすすめ #3](https://msdevjp.connpass.com/event/175983/)
 - [Install Android Virtual Device to macOS on command line interface](https://talks.godoc.org/github.com/qt-luigi/talks/2020/install-avd-to-macos-on-cli.slide) in [Flutter Meetup Osaka #3](https://flutter-jp.connpass.com/event/169452/)
