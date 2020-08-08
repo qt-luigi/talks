@@ -1,0 +1,230 @@
+I am gaining the skills I want! 〜What inspired me to take one step for being a "Go MVP" through de:code and summer festival〜
+de:code夏まつり ～よりコミュニティを楽しくするためのコミュニティのすすめ the FINAL
+8 Aug 2020
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image decode-summer-festival-final/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* はじめに
+
+* 前回の「de:code夏まつり #3」では
+
+ちょまどさんにお声掛け頂き、念願のde:code関連イベントでGoを語れることに！
+
+.image decode-summer-festival-final/img/decode-sf-3.png 480 600
+
+.caption [[https://twitter.com/chomado/status/1280820310866931712]]
+
+* GoでMVP アワード(Azure カテゴリー)の受賞を目指して！
+
+マイクロソフトの皆さまにもGoを知って使って頂きたく。
+
+.image decode-summer-festival-final/img/go-mvp.png 480 800
+
+.caption [[https://www.slideshare.net/qt-luigi/azuresdkgo/34]]
+
+* 今回の「de:code夏まつり the FINAL」では
+
+なりたい自分のために
+
+- GoでMVP アワードを受賞するために
+
+必要なスキルを「de:code」を通じて
+
+- Azure関連の情報を「de:code」のセッションなどから
+
+何をどのように知り得たかなどを
+
+- 私なりの判断基準で知り得た内容や感想などを
+
+Go紹介させて頂きます！
+
+- Goの紹介を交えてお伝えします！q@w@p
+
+* The Go Programming Language
+
+Google社発のオープンソースの汎用プログラミング（静的型付けコンパイル）言語。
+
+.image decode-summer-festival-final/img/golang-org.png 480 760
+
+.caption [[https://golang.org/]]
+
+* 「de:code」2020
+
+* 9つのトラック、109のセッション
+
+1セッション、約20〜40分。
+
+- 基調講演 (8)
+- Apps and Infrastructure (23)
+- Data and AI (20)
+- Modern Workplace (18)
+- Business Applications (11)
+- Mixed Reality and IoT (9)
+- Security (10)
+- Community (5)
+- Advancing Tech Intensity (5)
+
+* どれを見れば良い？
+
+私は次の観点からチョイス
+
+- Azureを知れるもの
+- 存じている方のもの
+- 知り合いの方のもの
+
+* Azureを知れるもの
+
+* 昔を懐かしむ
+
+A11 | Azure 10 周年の節目に見直したい、Azure インフラのちょっと大事な話
+
+.link https://www.microsoft.com/ja-jp/events/decode/2020session/detail.aspx?sid=A11&tk=A
+
+- 当時は「Windows Azure」を理解できず、新しいOSかと(^^;)
+- ポータル、リージョン、メンテナンス時間の変遷を知り得る。
+- ここでの「大事な話」とは「サービスの可用性の確保」だと認識。
+
+* 全体を把握する
+
+A04 | Azure ならこうする、こうできる！ ～ AWS 技術者向け Azure サービス解説 de:code 2020 Edition ～
+
+.link https://www.microsoft.com/ja-jp/events/decode/2020session/detail.aspx?sid=A04&tk=A
+
+D33 | Microsoft Azure データ関連サービスの紹介
+
+.link https://www.microsoft.com/ja-jp/events/decode/2020session/detail.aspx?sid=D33&tk=D
+
+- ウェビナー「Microsoft Azure Virtual Training Day: Fundamentals」に近い内容。
+- 私も「クラウドバイリンガル」「マルチクラウド」はアリかと。
+- Goにはクラウド開発キット「Go CDK」なるオープンソースプロジェクトが存在。
+
+* 存じている方のもの
+
+* Toru Makabe さん
+
+A03 | Azure トラブルシューティング道場 ～どこかがおかしくなりました～
+
+.link https://www.microsoft.com/ja-jp/events/decode/2020session/detail.aspx?sid=A03&tk=A
+
+- TwitterやAzure SDK for Goのissueなどでお見かけ。
+- クラウドでもオンプレミスでも、やるべきことは同じ。
+- 決定的な違いは「スピード」。私的には「責任の所在」も。
+
+* さとうなおき さん
+
+D15 | Azure Cosmos DB - Build 2020 アップデート
+
+.link https://www.microsoft.com/ja-jp/events/decode/2020session/detail.aspx?sid=D15&tk=D
+
+- Twitterや直近では7月の「Hack Azure! #2」でお見かけ。
+- ふらりと参加した「Hack Azure! #2」にて、初めてAzure Cosmos DBを知る。
+- おかげで「なるほど わからん」ながらも「チョット ワカル」ところも。
+
+* とくあや さん（セッションは森下さんと共に）
+
+C02 | あらゆるエンジニアを支援！ VS Code Meetup の紹介とハンズオンで活躍するテクニック集
+
+.link https://www.microsoft.com/ja-jp/events/decode/2020session/detail.aspx?sid=C02&tk=C
+
+- VS Codeのrelease notesを日本語化されていたのをお見かけ。
+- 私も見習ってAzure SDK for Go関連のREADME.mdなどを日本語化。
+- VS Codeのコミュニティやハンズオン環境構築を知り得る。
+- Go入門ハンズオンをVS Codeベースで開催しているので、機会があれば。
+- 2020年7月9日、Goエクステンション開発がMicrosoftからGoチームへ移管。
+
+* 知り合いの人のもの
+
+* てらだよしお さん
+
+A16 | Build 2020 最新情報 ～コンテナ関連アップデート～
+
+.link https://www.microsoft.com/ja-jp/events/decode/2020session/detail.aspx?sid=A16&tk=A
+
+- 以前から大都会岡山でのITイベントに参加されており、その時などに。
+- 個人でAzureを学んだり相談できるサービス、ACRとAKSの最新情報を知り得る。
+- Docker, Kubernetes, TerraformなどはGo製OSSで、コンテナー界隈で力を発揮。
+
+* ちょまど さん
+
+A02 | Azure Bot Services を使って Teams bot を開発する
+
+.link https://www.microsoft.com/ja-jp/events/decode/2020session/detail.aspx?sid=A02&tk=A
+
+- 6月末にTwitterにて。絶対的存在。(q@w@p っ)3 ごふぁぎょ！
+- ローカルで開発してAzureにデプロイ＆稼働させる流れやngrokを知り得る。
+- Goで作ってみようとしたが「Bot Framework SDK」はGoを未サポート(T_T)
+
+* おだしょー さん
+
+C05 | Are you gaining the skills you want? 〜 Self-actualization through community 〜
+
+.link https://www.microsoft.com/ja-jp/events/decode/2020session/detail.aspx?sid=C05&tk=C
+
+- 「de:code夏まつり #3」でオンラインにて。新参者の私にも分け隔てなく。
+- Communityトラックが用意されてということは、重要視されている証拠。
+- 私もGoのコミュニティ活動が多いので、主催側と参加側の共感が満載。
+
+* 「de:code」夏まつり
+
+* 参加者さんたちがワイワイ！
+
+- オンラインなので場所やレベルに関係なく参加しやすい！
+- コンテンツを見たり、ツイートをしたりと様々。
+- 楽しんだもの勝ち？私もワイワイと！
+
+* 主催者さんたちもワイワイ！
+
+- 発表関連はもちろん、サプライズ企画、Techクイズ、など
+- まさかの the FINAL 開催まで！
+- 参加者の皆さんに楽しんで頂こうとアイデア満載！
+- YouTube配信や企画準備など、見えないところでも多くの方々が！m(--)m
+- （たださん、Noriさん、りんなの保護者会の達、など）
+
+* もちろんTech系もワイワイ！
+
+- 「よちよち」から「つよつよ」まで
+- 幅広い分野から
+- たくさんの方々の
+- 発表やトークの数々！！
+
+* さいごに
+
+* 私の「de:code夏まつり」
+
+まさか一度ならず二度までも参加＆登壇させて頂くことになるとは...(^^;)
+
+新しい世界を見知りしたり、新しい人たちと繋がったりすることができました。
+
+引き続きGo MVPをまったり目指しつつ「Microsoft x Go」の橋渡し役を q@w@p
+
+皆さんと一緒に楽しい時間を過ごせました＆夏休みの良い思い出ができました！
+
+.image decode-summer-festival-final/img/decode-sf.png 270 660
+
+.caption connpassのイベントタイトル画像、とてもマッチしていてお気に入りでした！
+
+* 追伸
+
+本プレゼンは [[https://twitter.com/MS_odasho][@MS_odasho]] さんに捧げます。
+
+- 「Are you gaining the skills you want?」へのアンサープレゼンです。
+
+本スライドの副題は [[https://twitter.com/Rie_Moriguchi][@Rie_Moriguchi]] さんからの頂き物 m(--)m
+
+- 〜de:codeを通じて"Go MVP"になるための一歩を踏み出したきっかけ〜
+
+そして、こちらの世界に誘ってくださった [[https://twitter.com/chomado][@chomado]] さん
+
+- すべての始まりであり、まさに奇跡。
+
+皆さん、感謝ありがとう！
