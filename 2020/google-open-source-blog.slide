@@ -1,0 +1,171 @@
+Go articles from Google Open Source Blog at August 27, 2020
+Go 1.15 Release Party in Japan
+31 Aug 2020
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image whats-new-go-115/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* Google Open Source Blog
+
+* Thursday, August 27, 2020
+
+Goに関する2つの記事が相次いで投稿。
+
+Recapping major improvements in Go 1.15 and bringing the Go community together
+
+- Go 1.15の主な改善点を要約し、Goコミュニティをまとめる
+
+New Case Studies About Google’s Use of Go
+
+- GoogleのGoの使用に関する新しいケーススタディ
+
+* Recapping major improvements in Go 1.15 and bringing the Go community together
+
+* Goの最新バージョンがリリース
+
+2020年2月のGo 1.14に引き続き、今回のGo 1.15でもビルドのパフォーマンスを向上
+
+- バイナリーサイズを約5％削減
+- ビルドを約20％高速化
+- メモリが平均30％削減
+
+実例:
+
+- Over社: サービスの1つにて、ビルドが30%高速化。
+- Google社: Kubernetesにて、メモリが30％削減、ビルドが20％高速化。
+
+* Go開発者のためのより良い体験
+
+過去数か月間、Goエコシステムの改善にも尽力。
+
+2020年7月に、VS CodeのGoエクステンションが正式にGoプロジェクトに参加。
+
+- その後、更新をいくつか公開。
+
+[[https://pkg.go.dev/]] (Goパッケージとモジュールの中心的な情報源サイト)
+
+- ブラウジングをより快適にするための機能的な改善
+- サイト全体を微調整 （新しいかわいいgopherも登場！q@w@p)
+
+[[https://go.dev/]] (Go開発者のためのハブサイト)
+
+- サイト内を移動しやすく。
+- 企業でのGoの使用例を見つけやすく。
+
+今後、数か月以内にGoエコシステムをさらに改善する予定。
+
+* オープンソースとGoogle Open Source Liveへの取り組み
+
+引き続き、オープンソースコミュニティ全体のつながりを維持したい。
+
+Googleは来年までに毎月、無料の仮想イベント「Google Open Source Live」を開催。
+ 
+.link https://opensourcelive.withgoogle.com/
+
+日本時間の11月6日の午前2時〜4時に、Goチームのメンバーが「Go Day」を担当。
+
+- コミュニティの最新情報
+- これまでに行ったことのいくつかの内容
+- Goの使い始めに関するいくつかのベストプラクティス
+
+.link https://opensourcelive.withgoogle.com/events/go
+
+* New Case Studies About Google’s Use of Go
+
+* Goの起源
+
+Goは2007年9月のRobert Griesemer、Ken Thompson、Rob Pikeらの話し合いが起源。
+
+- Googleの同僚が日々の仕事で直面していたエンジニアリングの課題に取り組むための新しい言語について。
+
+当時、作成していたソフトウェアは、
+
+- ネットワークサーバー（他の何百ものサーバーと対話する単一のプログラム）で、
+- 何千人ものプログラマーがその作成と保守に関与していくものであった。
+
+しかし、使用していた既存の言語は、
+
+- この複雑な環境で直面した問題を解決する適切なツールを提供できていない。
+
+そこで、ある日の午後に席に座って、別のアプローチについて話し合いを開始。
+
+* Goは受け入れられるのか？
+
+2009年11月に最初のGoを一般公開。
+
+- 広く採用されるのか？
+- 将来の言語に影響を与えるのか？
+
+2020年から振り返ると、Goはその両方で成功したと言える。
+
+- Googleの内外で、広く使用されている。
+- ネットワークの同時実行性とソフトウェアエンジニアリングへのアプローチは、他の言語とそのツールに顕著な影響を与えた。
+
+また、Goは、予想よりもはるかに広がっているがわかった。
+
+- 業界での成長は驚異的であり、Googleの多くのプロジェクトを支えてきた。
+
+* Google内でのGoの採用実績
+
+Google内にて、最も早いGoのプロダクションは2011年に登場。
+
+- App EngineでGoのサービス開始。
+- Vitessを使ったYouTubeデータベーストラフィックのサービス開始。
+
+当時、Vitessの作者は、Goがなければシステムを構築できなかったとコメント。
+
+- ネットワークプログラミングのしやすさ
+- 効率的な実行
+- 迅速な開発の組み合わせ
+
+2012年には、Sawzallで書かれていたGoogleの検索品質分析をGoで置き換え。
+
+2014年には、Googleと共にKubernetesの立ち上げに貢献。
+
+* ケーススタディについて
+
+過去1年間における、世界中のエンドユーザーからの16のケーススタディを投稿。 
+
+- Goを使用して高速で信頼性が高く効率的なソフトウェアを大規模に構築する方法について
+
+.link https://go.dev/solutions#case-studies
+
+本日、Google内のチームからの3つの新しいケーススタディを追加。
+
+* コアデータソリューション
+
+Googleのコアデータチームは、
+
+- C++のモノリシックインデックスパイプラインをマイクロサービスシステムに変更。
+- マイクロサービスの大部分はGoで記述され、Google検索をサポート。
+
+* Google Chrome
+
+ライトモードのGoogle Chromeのモバイルユーザーは、
+
+- Chrome最適化ガイドサーバーを使用して、
+- 地理的領域にある有名なサイトのページ読み込みを最適化するヒントを提供。
+
+Goで記述されたサーバーは、
+
+- ページの読み込みを高速化し、
+- データ使用量を数百万人のユーザーに毎日提供。
+
+* Firebase
+
+Google Cloudのお客様は、
+
+- モバイルおよびウェブホスティングプラットフォームとしてFirebaseを利用。
+
+Googleに参加した後、
+
+- 同時＆効率的な実行のため、バックエンドサーバーをNode.jsからGoに完全移行。
