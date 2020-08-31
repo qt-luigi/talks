@@ -1,0 +1,395 @@
+What's new Go 1.15?
+Go 1.15 Release Party in Japan
+31 Aug 2020
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image whats-new-go-115/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* Go 1.15 Release Notes
+
+* Introduction to Go 1.15
+
+今回のトピックス
+
+- リンカーの大幅な改善
+- コア数の多い時の小さなオブジェクトの割り当ての改善
+- X.509 CommonName の廃止
+- `GOPROXY` にてエラーを返すプロキシーのスキップ
+- 新しい埋め込み `time/tzdata` パッケージの追加
+
+* Ports
+
+* Darwin
+
+macOS 10.12 Sierra 以降をサポート。
+
+32ビット版（`darwin/386`, `darwin/arm`）はサポート終了。
+
+- 今後は64ビット版（`darwin/amd64`, `darwin/arm64`）をサポート。
+
+* Windows
+
+`-buildmode=pie` フラグがデフォルト指定に。
+
+- デフォルトで ASLR バイナリーが生成。
+
+`-race` と `-msan` フラグは `-d=checkptr` が有効化され、`unsafe.Pointer` が安全規則に従っているか動的にチェックするように。
+
+- 他のアーキテクチャーは、Go 1.14で有効化。
+
+Goでビルドした DLL は、シグナル ( `Ctrl-C` など) 受信時にプロセスを終了させないように。
+
+[捕捉] ASLR (Address Space Layout Randomization) 
+
+- 脆弱性を悪用した不正なコードの実行を難しくする仕組み。
+
+.link https://docs.microsoft.com/ja-jp/security-updates/planningandimplementationguide/19871867
+
+* Android
+
+バイナリーのリンク時に、NDKにおいて利用可能な最新のlldリンカーを明示的に選択。
+
+- lldリンカー: 一部のデバイスでのクラッシュを回避し、将来はデフォルトのNDKリンカーになる予定。
+
+[捕捉] NDK (Native Development Kit)
+
+- Android で C や C++ のコードを使用できるようにするツールセット。
+
+.link https://developer.android.com/ndk/guides?hl=ja
+
+* OpenBSD
+
+OpenBSD 6.7 の `GOARCH` のサポートに `arm` と `arm64` が追加 (既存: `386`, `amd64`)
+
+* RISC-V
+
+64ビット版 Linux (`GOOS=linux` `GOARCH=riscv64`) の安定性とパフォーマンスが向上。
+
+- 非同期プリエンプションもサポート。
+
+* 386
+
+x87 のみの浮動小数点ハードウェア (`GO386=387`) のサポートは今回まで。
+
+- 今後は SSE2 が必要。
+- 最小CPU: Intel Pentium 4 または AMD Opteron/Athlon 64
+
+[捕捉] 
+
+- x87: x86 アーキテクチャー命令セットの浮動小数点数のサブセット
+- SSE2 (Streaming SIMD Extensions 2): SIMD拡張命令セットのバージョン2。
+
+* Tools
+
+* Goコマンド
+
+`GOPROXY` 環境変数で、エラーを返すプロキシーをスキップするように。
+
+プロキシー URL の区切り文字であるコンマ(,)とパイプ(|)に意味合いを持たせた。
+
+プロキシー URL の後にコンマ(,)が続く場合:
+
+- HTTP ステータスが 404 または 410 の場合のみ、次のプロキシー URL を試行。
+
+プロキシー URL の後にパイプ(|)が続く場合:
+
+- HTTP ステータスに関係なく、次のプロキシーを試行。
+
+`GOPROXY` のデフォルト値である `https://proxy.golang.org,direct` は対象外。
+
+* Goコマンド - go test
+
+`-timeout` フラグの値を変更すると、キャッシュされたテスト結果が無効になる。
+
+- 以前は、タイムアウトが長いテストを実行した後に、タイムアウトが短いテストを実行すると、合格になっていた。
+
+* Goコマンド - フラグのパース
+
+`go` `test` と `go` `vet` のフラグ解析に関する問題が修正。
+
+- `GOFLAGS` で指定されたフラグはより一貫して処理されるように。
+- `-outputdir` フラグは、goコマンドの作業ディレクトリー（個々のテストの作業ディレクトリーではなく）に対する相対パスを解釈するすように。
+
+* Goコマンド - モジュールキャッシュ
+
+`GOMODCACHE` 環境変数で格納場所を変更可能に。
+
+- デフォルト値: `GOPATH[0]/pkg/mod`
+
+Windows にて、ファイルシステムを同時にスキャンする外部プログラムが原因で発生する、モジュールキャッシュにアクセスするgoコマンドの "Access is denied" エラー (Issue #36568) の回避に対応。 
+
+1.14.2 および 1.13.10 より前のバージョンの Go が、同じモジュールキャッシュで同時に実行されている場合、この回避策はデフォルトで無効。
+
+- 環境変数 `GODEBUG=modcacheunzipinplace=1` を設定すると有効に。
+
+[補足] #36568「cmd/go: 'Access is denied' when renaming module cache directory」
+
+.link https://github.com/golang/go/issues/36568
+
+* Vet - 新しい警告: string(x) (1/4)
+
+`string(x)` 形式の変換について警告するようになった。
+
+- ここでの `x` は、rune または byte 以外の整数型。
+
+Goの経験から、この形式の多くの変換では、`string(x)` が整数 `x` の文字列表現に評価されると誤って認識されていることがわかった。
+
+実際には `x` の値の UTF-8 エンコーディングを含む文字列に評価される。
+
+- `string(9786)` は文字列 "9786" に評価されない。
+- 文字列 "\xe2\x98\xba" または "☺" に評価される。
+
+* Vet - 新しい警告: string(x) (2/4)
+
+`string(x)` を正しく使用しているコードは、 `string(rune(x))` に書き直せる。
+
+場合によっては、適切なバイトスライス `buf` を使用して `utf8.EncodeRune(buf,` `x)` を呼び出すことが適切な解決策になり得る。
+
+文字列評価したい時は、`strconv.Itoa` または `fmt.Sprint` を使用する必要がある。
+
+* Vet - 新しい警告: string(x) (3/4)
+
+`go` `test` を使用すると、この新しい `vet` チェックはデフォルトで有効になっている。
+
+* Vet - 新しい警告: string(x) (4/4)
+
+Goの将来のリリースでは、変換を禁止することを検討している。
+
+つまり、`x` の型が `rune` または `byte` の場合、言語は整数 `x` の `string(x)` のみを許可するように変更される。
+
+このような言語の変更は下位互換性がないため、言語の変更に向けた最初の試験段階として、この vet チェックを使用している。
+
+* Vet - 新しい警告: 不可能なインターフェース変換 (1/4)
+
+型アサーションが常に失敗する場合、vet ツールは、あるインターフェース型から別のインターフェース型への型アサーションについて警告するように。
+
+- 両方のインターフェース型にて、同じ名前で異なる型シグネチャーを持つメソッドを実装する場合に発生。
+
+  type GoCon interface {
+          hold(int)
+  }
+
+  type OkayamaGo interface {
+          hold(float64)
+  }
+
+* Vet - 新しい警告: 不可能なインターフェース変換 (2/4)
+
+常に失敗する型アサーションを作成する理由はないため、この vet チェックをトリガーとしてすべてのコードを書き直す必要がある。
+
+* Vet - 新しい警告: 不可能なインターフェース変換 (3/4)
+
+`go` `test` を使用すると、この新しい vet チェックはデフォルトで有効になっている。
+
+* Vet - 新しい警告: 不可能なインターフェース変換 (4/4)
+
+Go の将来のリリースでは、不可能なインターフェース型のアサーションを禁止することを検討している。
+
+このような言語の変更は下位互換性がないため、言語の変更に向けた最初の試験段階として、この vet チェックを使用している。
+
+* Runtime
+
+* Runtime (1/5)
+
+次の型から派生した型（例: `type` `Digit` `unit8` ）の値でパニックが呼び出された場合は、 アドレスだけでなく値も出力される。
+
+- `bool`
+- `complex64`, `complex128`
+- `float32`, `float64`
+- `int`, `int8`, `int16`, `int32`, `int64`
+- `string`
+- `uint`, `uint8`, `uint16`, `uint32`, `uint64`
+- `uintptr`
+
+以前は、これらの型の値にのみ。
+
+* Runtime (2/5)
+
+Unix システムで `kill` コマンドまたは `kill` システムコールを使用して
+
+- `SIGSEGV`, `SIGBUS`, `SIGFPE` シグナルを Go プログラムに送信したが、
+- シグナルが `os/signal.Notify` を介して処理されていない場合、
+
+Go プログラムは スタックトレースで確実にクラッシュする。
+
+- 以前のリリースでは、動作は予測できなかった。
+
+* Runtime (3/5)
+
+小さいオブジェクトの割り当ては、
+
+- コア数が多い場合のパフォーマンスが向上し、
+- 最悪の場合のレイテンシーは低下に。
+
+* Runtime (4/5)
+
+小さい整数値をインターフェース値に変換しても、割り当てが発生しないように。
+
+* Runtime (5/5)
+
+閉じたチャネルでの非ブロッキング受信が、開いたチャネルでの非ブロッキング受信と同様に実行されるように。
+
+* Compiler
+
+* Compiler (1/6)
+
+`unsafe` パッケージの安全規則では、特定の関数を呼び出すときに `unsafe.Pointer` を `uintptr` に変換できる。
+
+以前は、場合によっては、コンパイラーは複数の連鎖変換を許可していたが、
+
+- 例: `syscall.Syscall(…,` `uintptr(uintptr(ptr)),` `…)`
+
+今回から正確に1つの変換を要求する様になったため、複数の変換を使用したコードは安全規則を満たすように変更する必要がある。
+
+* Compiler (2/6)
+
+特定の型のGCメタデータを排除し、未使用の型メタデータをさらに積極的に排除することで、Go 1.14 と比較して一般的なバイナリーサイズを約5％削減。
+
+* Compiler (3/6)
+
+ツールチェーンは、関数を32バイト境界に合わせてジャンプ命令をパディングすることにより `GOARCH=amd64` 上の Intel CPU の誤作動 (SKX102) を緩和。
+
+- このパディングによってバイナリーサイズが増加するが、前出のバイナリーサイズの改善によって補われた以上のものに。
+
+[補足] SKX102
+
+.link https://www.intel.co.jp/content/www/jp/ja/support/articles/000055650/processors.html
+
+* Compiler (4/6)
+
+`-spectre` フラグがコンパイラーとアセンブラーの両方に追加され、Spectre を緩和。
+
+- ほとんど必要になることはなく、主に"多層防御"メカニズムとして提供される。
+- 詳細については、Spectre wiki ページを参照。
+
+.link https://github.com/golang/go/wiki/Spectre
+
+[補足] Spectre
+
+- 投機的実行機能やアウトオブオーダー実行機能を持つ CPU に対してサイドチャネル攻撃を行う手法のひとつ。
+
+* Compiler (5/6)
+
+無意味な `//go:` コンパイラーディレクティブの宣言は "misplaced compiler directive" エラーで拒否。
+
+- 以前は誤って適用されたディレクティブは壊れていたが、今回からは黙って無視。
+
+* Compiler (6/6)
+
+`-json` 最適化ロギングは、128バイトを超える大きなコピーを報告し、エスケープ分析の決定の説明を含む。
+
+* Linker
+
+* Linker (1/5)
+
+大幅な改善があり、リンカーのリソース使用量 (時間とメモリの両方) が削減され、コードの堅牢性/保守性が向上。
+
+* Linker (2/5)
+
+大規模なGoプログラムの代表的なセットの場合、amd64 アーキテクチャーで動作する ELF ベースの OS:
+
+- `Linux`, `FreeBSD`, `NetBSD`, `OpenBSD`, `Dragonfly`, `Solaris`
+
+のリンクで、
+
+- 平均で20％の高速化
+- メモリ使用量を30％減少
+
+他のアーキテクチャーと OS の組み合わせにも、わずかに改善の恩恵あり。
+
+[補足] ELF (Executable and Linkable Format) 
+
+- 実行ファイルフォーマットのひとつ。
+
+* Linker (3/5)
+
+パフォーマンス向上の主な要因:
+
+- 新しく再設計されたオブジェクトファイル形式
+- 同時実行性を高めるための内部フェーズの改良（たとえば、シンボルへの再配置の並列適用）
+
+そのため、Go 1.14 のオブジェクトファイルよりもわずかに大きくなっている。
+
+* Linker (4/5)
+
+これらの変更は、Go リンカーを最新化するマルチリリースプロジェクトの一環。
+
+- 将来のリリースで追加のリンカーの改善が期待される。
+
+* Linker (5/5)
+
+デフォルトで `linux/amd64` および `linux/arm64` の `-buildmode=pie` の内部リンクモードに設定されているため、これらの構成では C リンカーは不要。
+
+- 外部リンクモード (Go 1.14 では `-buildmode=pie` のデフォルト) は `-ldflags=-linkmode=external` フラグを使用して要求できる。
+
+* Objdump
+
+* Objdump
+
+`-gnu` フラグ: Go アセンブラーを逆アセンブルした GNU アセンブラー構文を出力。
+
+  usage: go tool objdump [-S] [-gnu] [-s symregexp] binary [start end]
+  
+    -S	print Go code alongside assembly
+    -gnu
+      	print GNU assembly next to Go assembly (where supported)
+    -s string
+      	only dump symbols matching this regexp
+
+* Core library
+
+* New embedded tzdata package
+
+新しい `time/tzdata` パッケージは、タイムゾーンデータベースをプログラムに埋め込むことが可能。
+
+このパッケージをインポートすると、ローカルシステムでタイムゾーンデータベースが利用できない場合でも、プログラムはタイムゾーン情報を見つけることができる。
+
+  import _ "time/tzdata"
+
+`-tags` `timetzdata` を指定してビルドすることでも、タイムゾーンデータベースを埋め込むこともできる。
+
+どちらの方法でも、プログラムのサイズが約800KB増加する。
+
+* Cgo
+
+Go 1.15 では、C の `EGLConfig` 型は Go の `uintptr` 型に変換。
+
+この変更は、Go 1.12 以降での
+
+- C の `EGLDisplay` 型
+- Darwin での CoreFoundation や Java の JNI 型
+
+をどのように扱うかに似ており、詳細についてはcgoのドキュメントを参照。
+
+.link https://golang.org/cmd/cgo/#hdr-Special_cases
+
+[補足] EGL (Embedded-System Graphics Library)
+
+- ネイティブプラットフォームと OpenGL を仲介するグラフィックライブラリー。
+
+* X.509 CommonName deprecation
+
+X.509 証明書にて、従来のサブジェクトの別名が存在しない場合に CommonName フィールドをホスト名として扱う非推奨の動作が、デフォルトで無効に。
+
+- `GODEBUG` 環境変数に `x509ignoreCN=0` を追加することで、一時的に有効化可能。
+
+CommonName が無効なホスト名の場合、`GODEBUG` の設定に関係なく無視される。
+
+- 無効なホスト名: 文字、数字、ハイフン、アンダースコア以外の文字を含む名前、空のラベル、末尾にドットを含む名前。
+
+* Minor changes to the library
+
+いつものように、Go 1 互換性の約束を念頭に置いて、ライブラリーにはさまざまな小さな変更と更新が。
+
+今回は省略。詳細は公式リリースノートにて。
+
+.link https://golang.org/doc/go1.15#minor_library_changes
