@@ -1,0 +1,489 @@
+Join Azure Using Go (10 items)
+★祝★Japan Azure User Group 10周年
+30 Sep 2020
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image jazug-decade/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* はじめに
+
+* JAZUG 7周年総会
+
+2017年9月9日(土)に東京にて開催。
+
+- 当時、体調を崩して泣く泣くキャンセルに。
+
+.image jazug-decade/img/jazug7.png 420 672
+
+.caption [[https://jazug.connpass.com/event/64609/]]
+
+* ★祝★Japan Azure User Group 10周年
+
+2020年9月30日(土)にオンラインにて開催。
+
+- 10周年、おめでとうございます！
+
+.image jazug-decade/img/jazug10.png 420 672
+
+.caption [[https://jazug.connpass.com/event/186235/]]
+
+* 本セッションについて
+
+タイトルの「Join Azure Using Go」は「GoでAzureの世界に飛び込む」を意識しており、略して「JAZUG」となっております。また「10周年」ということで、発表項目を「10項目」としています。
+
+7周年総会で作成した私のLT登壇資料「Just Azure Using Go (7 items)」を元に、10周年までの3年間の差分を交えつつ、GoにまつわるAzureサービスを紹介して行きます。
+
+.image jazug-decade/img/just-azure-using-go.png 300 480
+
+.caption [[https://www.slideshare.net/qt-luigi/just-azure-using-go-7-items]]
+
+* お品書き
+
+はじめに
+1. Go
+2. Compute Service
+3. Database Service
+4. Container Service
+5. Azure SDK for Go
+6. Open Source Software
+7. CLI Tools
+8. Product Documents
+9. MVP
+10. My Azure Actibity
+さいごに
+
+* 1. Go
+
+* The Go Programming Language
+
+Google社発のオープンソースの汎用プログラミング言語。
+
+.image jazug-decade/img/golang-org.png 460 736
+
+.caption [[https://golang.org/]]
+
+* Goのバージョン
+
+毎年2月と8月にリリース。
+
+- 2017年08月 Go 1.9 ← 7周年
+- 2018年02月 Go 1.10
+- 2018年08月 Go 1.11
+- 2019年02月 Go 1.12
+- 2019年09月 Go 1.13
+- 2020年02月 Go 1.14
+- 2020年08月 Go 1.15 ← 10周年
+
+* 特徴 (1/2)
+
+静的型付け言語＆コンパイル方式
+
+- シングルバイナリーを出力（例： `azure.exe` ）
+- コンパイルが速い。シングルバイナリーの実行も速い方。
+
+クロスコンパイル対応
+
+- Windows、Linux、macOS、BSD系、など
+- 例： `GOOS=windows` `GOARCH=amd64` `go` `build` `-o` `azure.exe` `main.go`
+
+ツールチェーンが充実
+
+- フォーマッター（ `go` `fmt` ）、パッケージ取得（ `go` `get` ）、など
+
+* 特徴 (2/2)
+
+文法がシンプル
+
+- 予約語は25個
+- 条件演算子なし、繰り返し文はfor文のみ、など
+
+並行処理を実装しやすい。
+
+- ゴルーチン：呼び出した関数を並行実行（例： `go` `azure()` ）
+- チャネル：並行処理間でデータを受け渡しを制御
+
+エラー時に対処しやすい。
+
+- エラーメッセージが読みやすい。
+- エラー箇所が明確 (x行 y文字目)
+
+* サンプルコード
+
+main.go
+
+  package main
+  
+  import (
+  	"fmt"
+  )
+  
+  func main() {
+  	var msg string = "Azure"
+  	fmt.Println("Hello, " + msd)
+  }
+
+実行結果
+
+  $ go run main.go 
+  # command-line-arguments
+  ./main.go:9:26: undefined: msd
+
+* Why Go - go.dev
+
+Goを採用している16の企業のケーススタディを紹介。
+
+.image jazug-decade/img/why-go.png 460 736
+
+.caption [[https://go.dev/solutions#case-studies]]
+
+* マイクロソフトの取り組み
+
+_"マイクロソフトがGoのサポートにどのように貢献したか、およびGoを使用してクラウドインフラストラクチャの一部を強化する方法について説明します。"_
+
+- Ready, Set, Go lang: Brian Ketelsen explains Go’s fast growing popularity
+
+.image jazug-decade/img/why-go-microsoft.png 380 608
+
+.caption [[https://cloudblogs.microsoft.com/opensource/2018/02/21/go-lang-brian-ketelsen-explains-fast-growth/]]
+
+* 2. Compute Service
+
+* App Service
+
+LinuxまたはWindowsの仮想マシン上でWebアプリを稼働させる。
+
+- サポート言語: .NET/Core, Node.js, PHP, Java, Python, Ruby on Rails
+
+当初Goはベータ版として稼働していたが、サポート対象外に。
+
+.image jazug-decade/img/app-service.png 360 576
+
+.caption [[https://azure.microsoft.com/ja-jp/services/app-service/]]
+
+* Web App for Containers
+
+LinuxまたはWindows (プレビュー) のコンテナー上でWebアプリを稼働させる。
+
+当初の製品ドキュメントには、Goを対象に書かれていたモノが多かった。
+
+.image jazug-decade/img/web-app-for-containers.png 420 672
+
+.caption [[https://azure.microsoft.com/ja-jp/services/app-service/containers/]]
+
+* Azure Functions
+
+Webアクセスや対象Azureサービスからのイベントをトリガーに、Web APIとして実装された関数アプリを、単体または対象Azureサービスと連動して稼働させる。
+
+- サポート言語: C#, JavaScript, F#, Java, PowerShell, Python, TypeScript
+
+当初Goはアルファ版として準備が進んでいたが、サポート対象外に。
+
+.image jazug-decade/img/auzre-functions.png 320 512
+
+.caption [[https://azure.microsoft.com/ja-jp/services/functions/]]
+
+* Azure Functions Custom Handler (Preview)
+
+内部的に用意された簡易HTTPサーバー上に、Web APIとして実装された関数アプリをデプロイして、Azure Functionsから呼び出して稼働させる。
+
+- Go, Rust, Deno, R など、非サポート言語に対応。
+
+.image jazug-decade/img/custom-handler.png 380 608
+
+.caption [[https://docs.microsoft.com/ja-jp/azure/azure-functions/functions-custom-handlers]]
+
+* 3. Database Service
+
+* 変わらないモノ
+
+当然、製品自体のバージョンアップなどは行われている。
+
+Azure Database for PostgreSQL / MySQL
+
+- GoからはPostgreSQL / MySQL用ドライバーでアクセス。
+
+Azure Cosmos DB
+
+- GoからはMongoDBまたはCassandra用ドライバーでアクセス。
+
+.image jazug-decade/img/cosmosdb.png 250 400
+
+.caption [[https://azure.microsoft.com/ja-jp/services/cosmos-db/]]
+
+* Azure Database for MariaDB
+
+マネージド MariaDB サービス。
+
+- Goでは、MySQL用ドライバーにてアクセス。
+
+.image jazug-decade/img/mariadb.png 420 672
+
+.caption [[https://azure.microsoft.com/ja-jp/services/mariadb/]]
+
+* Azure SQL Database
+
+マネージド SQL Server サービス。
+
+- Goでは、SQL Server用ドライバーにてアクセス。
+
+.image jazug-decade/img/sqldatabase.png 420 672
+
+.caption [[https://azure.microsoft.com/ja-jp/services/sql-database/]]
+
+* 4. Container Service
+
+* Azure Kubernetes Service (AKS)
+
+2020年1月31日に終了した「Azure Container Service」と入れ替わり登場。
+
+Kubernetes, Docker, Prometheus, Terraformなど関連製品にはGo製OSSが多数。
+
+.image jazug-decade/img/aks.png 420 672
+
+.caption [[https://azure.microsoft.com/ja-jp/services/kubernetes-service/]]
+
+* Azure Red Hat OpenShift
+
+OpenShiftは、Red Hat社のエンタープライズ向け Kubernetes プラットフォーム。
+
+[[https://github.com/openshift/openshift-azure][openshift/openshift-azure]] にて、Azureにデプロイするコマンド群がGoで開発。
+
+.image jazug-decade/img/openshift.png 420 672
+
+.caption [[https://azure.microsoft.com/ja-jp/services/openshift/]]
+
+* 5. Azure SDK for Go
+
+* Azure/azure-sdk-for-go
+
+GoでAzureを扱うためのSoftware Developer Kit (SDK)
+
+.image jazug-decade/img/azure-sdk-for-go.png 470 752
+
+.caption [[https://github.com/Azure/azure-sdk-for-go]]
+
+* Azure/go-autorest
+
+AutoRest生成のGoコードをゴルーチン対応に。Azure AD認証なども含むパッケージ。
+
+.image jazug-decade/img/go-autorest.png 470 752
+
+.caption [[https://github.com/Azure/go-autorest]]
+
+* ベータ版 から 一般提供版 に
+
+2018年2月12日のv14.0.0で正式リリースに。
+
+- Azure で Go アプリを構築: Azure SDK for Go の一般提供を開始 | Azure のブログと更新プログラム | Microsoft Azure
+
+.image jazug-decade/img/azure-sdk-for-go-ga.png 380 608
+
+.caption [[https://azure.microsoft.com/ja-jp/blog/build-go-apps-for-azure-with-the-go-sdk-now-generally-available/]]
+
+* Storage 系
+
+Storage - Blobs
+
+.link github.com/Azure/azure-storage-blob-go
+
+Storage - Files
+
+.link github.com/Azure/azure-storage-file-go
+
+Storage - Queues
+
+.link github.com/Azure/azure-storage-queue-go
+
+* Storage 系以外 (1/2)
+
+Service Bus
+
+.link github.com/Azure/azure-service-bus-go
+
+Event Hubs
+
+.link github.com/Azure/azure-event-hubs-go
+
+Application Insights
+
+.link github.com/Microsoft/ApplicationInsights-go
+
+* Storage 系以外 (2/2)
+
+Microsoft Azure Data Explorer Public Preview (Kusto)
+
+- Go用のAzure Data Explorer データ プレーン SDK。
+
+.link https://github.com/Azure/azure-kusto-go
+
+* 6. Open Source Software
+
+* Azure/draft
+
+コードからアプリ生成、コンテナー化、Kubernetesデプロイまでを一括するツール。
+
+2018年8月のv0.16.0を最後に終了。後継機能なし。
+
+.image jazug-decade/img/draft.png 420 672
+
+.caption [[https://github.com/Azure/draft]]
+
+* Azure/acs-engine
+
+Azure Container Service用のARM (Azure Resource Manager) テンプレートを生成。
+
+2018年12月のv0.26.3を最後に終了。
+
+.image jazug-decade/img/acs-engine.png 420 672
+
+.caption [[https://github.com/Azure/acs-engine]]
+
+* Azure/aks-engine
+
+Azure/acs-engine の後継機能。
+
+Azure Kubernetes Service用のARM (Azure Resource Manager) テンプレートを生成。
+
+.image jazug-decade/img/aks-engine.png 420 672
+
+.caption [[https://github.com/Azure/aks-engine]]
+
+* 7. CLI Tools
+
+* acr
+
+Azure Container Registryのコマンドラインツール。
+
+.image jazug-decade/img/acr.png 470 752
+
+.caption [[https://github.com/Azure/acr-cli]]
+
+* azcopy
+
+ストレージアカウント間でBLOBまたはファイルをコピーするコマンドラインツール。
+
+.image jazug-decade/img/azcopy.png 470 752
+
+.caption [[https://github.com/Azure/azure-storage-azcopy]]
+
+* 8. Product Documents
+
+* Azure での Go | Microsoft Azure
+
+ついに？やっと！？Goの公式ページが誕生！
+
+.image jazug-decade/img/azure-sdk-for-go-site.png 470 752
+
+.caption [[https://azure.microsoft.com/ja-jp/develop/go/]]
+
+* Go 開発者向けの Azure | Microsoft Docs
+
+Azure SDK for Goの製品ドキュメントも正式登場。
+
+.image jazug-decade/img/azure-sdk-for-go-doc.png 470 752
+
+.caption [[https://docs.microsoft.com/ja-jp/azure/developer/go/]]
+
+* 9. MVP
+
+* Most Valuable Professional
+
+現在Goでの取得となると「Microsoft Azure」カテゴリーの一択のみ。
+
+- 「Developer Technologies」カテゴリーにGoを入れて欲しい！
+
+.image jazug-decade/img/mvp.png 420 672
+
+.caption [[https://mvp.microsoft.com/ja-jp/Pages/mvp-award-update]]
+
+* 10. My Azure Actibity
+
+* 情報発信
+
+「Microsoft/Azure x Go」に関わる気付きなどを発信。
+
+Twitter
+
+- ハッシュタグ「[[https://twitter.com/hashtag/azuregojp][#azuregojp]]」
+
+Gophers Slack
+
+- チャンネル「#azure-sdk-for-go」
+
+* 技術情報
+
+Azure SDK for Goを進めて行く上で知り得た情報などをアウトプット。
+
+Qiita (※自分のブログにも同じ内容の記事を投稿)
+
+- タグ「[[https://qiita.com/tags/azuregojp][azuregojp]]」
+
+.image jazug-decade/img/azuregojp-qiita.png 360 576
+
+.caption [[https://qiita.com/tags/azuregojp]]
+
+* コントリビュート
+
+「Microsoft/Azure x Go」に関わるOSSプロジェクトにPull RequestやFile Issueなど。
+
+MicrosoftDocs/azure-dev-docs
+
+- [[https://github.com/MicrosoftDocs/azure-dev-docs/issues/140][Replaced words to match #140]]
+
+Azure/azure-sdk-for-go
+
+- [[https://github.com/Azure/azure-sdk-for-go/pull/10142][Fix typo in README.md #10142]]
+
+Azure/azure-sdk
+
+- [[https://github.com/Azure/azure-sdk/pull/1713][Fix a method name of WidgetPager #1713]]
+
+- [[https://github.com/Azure/azure-sdk/pull/1726][delete duplicated word #1726]]
+
+* ITイベント登壇
+
+7月8日 - [[https://msdevjp.connpass.com/event/175983/][de:code夏まつり #3]]
+
+- 「[[https://www.slideshare.net/qt-luigi/azuresdkgo][AzureとSDKとGoと私]]」
+
+8月8日 - [[https://msdevjp.connpass.com/event/183747/][de:code夏まつり the FINAL]]
+
+- 「[[https://www.slideshare.net/qt-luigi/i-am-gaining-the-skills-i-want-what-inspired-me-to-take-one-step-for-being-a-go-mvp-through-decode-and-summer-festival][I am gaining the skills I want!]]」
+
+9月12日 - [[https://shizuoka-go.connpass.com/event/186969/][Shizuoka.go Vol.16]]
+
+- 「Goでイケる！Azureサービスの紹介」
+
+9月30日 - [[https://jazug.connpass.com/event/186235/][JAZUG 10周年]]
+
+- 「Join Azure Using Go (10 items)」
+
+11月3日 - [[https://gbdaitokai.connpass.com/event/189232/][合同勉強会 in 大都会岡山 -2020 Winter Online-]]
+
+- タイトル未定
+
+* さいごに
+
+* 謝辞
+
+[[https://twitter.com/sao_a][Saori Ando]] 様
+
+- 申し込み当初での突然の問い合わせに対応して頂き、ありがとうございました。
+
+[[https://twitter.com/yuiashikaga][yuiashikaga]] 様
+
+- 申し込み直前においての問い合わせに対応して頂き、ありがとうございました。
+- 改めまして、7周年総会のLT申し込み時にもお世話になりました。
+
+* 引き続き
+
+勝手ながら「Microsoft/Azure × Go」の橋渡し役をまったりと (q@w@p っ)3
