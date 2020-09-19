@@ -1,0 +1,277 @@
+Goでイケる！Azureサービスの紹介
+Shizuoka.go Vol.16
+12 Sep 2020
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image shizuokago16/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* はじめに
+
+* Shizuoka.go Vol.16
+
+オンラインという形ながら、ついに初参加！q@w@p
+
+今回のテーマは
+
+- クラウド(GoogleCloudPlatform)を利用したGo言語での開発
+
+ということで、GCP/Go脳をリフレッシュさせようと一般参加。
+
+したのですが [[https://twitter.com/hogedigo][@hogedigo]] さんからお声掛け頂き、AzureにてLTをば (q@w@p っ)3
+
+- 当方、以前にGCPは触っており、Azureは今年から始めました。
+
+* 本発表について
+
+GoコミュニティにてAzureでの発表は「日本初」では！？q@w@p
+
+- 間違っていたら、スミマセンm(_ _)m
+
+今回は、Azureサービスにおいて
+
+- Go製アプリが動作するモノやGoで動作させるモノ
+
+を、私の勝手ながらでGo紹介させて頂きます。
+
+* 私の勝手なGCPとAzureのイメージ
+
+* Google Cloud Platform
+
+- Stratup
+- Development Driven
+
+.image shizuokago16/img/gcp.png 420 662
+
+.caption https://cloud.google.com/
+
+* Microsoft Azure
+
+- Enterprise
+- Operations Driven
+
+.image shizuokago16/img/azure.png 420 662
+
+.caption https://azure.microsoft.com/ja-jp/
+
+* 私の勝手なAzureらしさ
+
+* Government
+
+- 米国政府機関とそのパートナー向け。
+
+.image shizuokago16/img/government.png 420 662
+
+.caption https://azure.microsoft.com/ja-jp/global-infrastructure/government/
+
+* Compliance
+
+- 約90にものぼる対応数。
+- ナショナル クラウド: 米国, ドイツ, 中国に合わせたソリューションも。
+
+.image shizuokago16/img/compliance.png 420 662
+
+.caption https://azure.microsoft.com/ja-jp/overview/trusted-cloud/compliance/
+
+* Hybrid Cloud
+
+- プライベートクラウドとパブリッククラウドの良いとこ取り。
+- Azure Stack: オンプレミスとAzureを繋ぐソリューション。
+
+.image shizuokago16/img/azure-stack.png 420 662
+
+.caption https://azure.microsoft.com/ja-jp/overview/azure-stack/
+
+* Go製アプリを稼働させるComputeサービス
+
+* Azure Virtual Machines
+
+- IaaS。仮想マシンサービス。
+- Goでは、OS (WindowsおよびLinux) に依存したアプリやシステムを稼働させる。
+
+.image shizuokago16/img/virtual-machines.png 420 662
+
+.caption https://azure.microsoft.com/ja-jp/services/virtual-machines/
+
+* Web App for Containers
+
+- ネイティブ環境として「Web App」があるが、Goは対象外。
+- Goでは、コンテナー化したWebアプリを稼働させる。
+
+.image shizuokago16/img/app-service-containers.png 420 662
+
+.caption https://azure.microsoft.com/ja-jp/services/app-service/containers/
+
+* Azure Kubernetes Service (AKS)
+
+- マネージド Kubernetes サービス。
+- Goでは、コンテナー化したアプリをKubernetesで運用する。
+
+.image shizuokago16/img/kubernetes-service.png 420 662
+
+.caption https://azure.microsoft.com/ja-jp/services/kubernetes-service/
+
+* Azure Functions Custom Handler (Preview)
+
+- ネイティブ環境として「Azure Functions」があるが、Goは対象外。
+- Goでは、コンテナー化したWeb関数を呼び出す。
+
+.image shizuokago16/img/functions-custom-handlers.png 420 662
+
+.caption https://docs.microsoft.com/ja-jp/azure/azure-functions/functions-custom-handlers
+
+* Go製アプリで接続できるDatabaseサービス
+
+* Azure Database for PostgreSQL
+
+- マネージド PostgreSQL サービス。
+- Goでは、PostgreSQL用ドライバーにてアクセス。
+
+.image shizuokago16/img/postgresql.png 420 662
+
+.caption https://azure.microsoft.com/ja-jp/services/postgresql/
+
+* Azure Database for MySQL
+
+- マネージド MySQL サービス。
+- Goでは、MySQL用ドライバーにてアクセス。
+
+.image shizuokago16/img/mysql.png 420 662
+
+.caption https://azure.microsoft.com/ja-jp/services/mysql/
+
+* Azure Database for MariaDB
+
+- マネージド MariaDB サービス。
+- Goでは、MySQL用ドライバーにてアクセス。
+
+.image shizuokago16/img/mariadb.png 420 662
+
+.caption https://azure.microsoft.com/ja-jp/services/mariadb/
+
+* Azure SQL Database
+
+- マネージド SQL Server サービス。
+- Goでは、SQL Server用ドライバーにてアクセス。
+
+.image shizuokago16/img/sql-database.png 420 662
+
+.caption https://azure.microsoft.com/ja-jp/services/sql-database/
+
+* Azure Cosmos DB
+
+- No SQL データベース。
+- Goでは、MongoDB用およびCassandra用ドライバーにてアクセス。
+
+.image shizuokago16/img/cosmos-db.png 420 662
+
+.caption https://azure.microsoft.com/ja-jp/services/cosmos-db/
+
+* Go製アプリでAzureを扱う
+
+* Azure/azure-sdk-for-go
+
+- GoでAzureサービスを扱うためのSDK。
+
+.image shizuokago16/img/azure-sdk-for-go.png 420 662
+
+.caption https://github.com/Azure/azure-sdk-for-go
+
+* Azure/go-autorest
+
+- GoでAzureへの認証などを行うためのライブラリー。
+
+.image shizuokago16/img/go-autorest.png 420 662
+
+.caption https://github.com/Azure/go-autorest
+
+* Go用SDKでアクセスできるStorageサービス
+
+* Blob Storage
+
+- オブジェクト ストレージ サービス。
+- Go SDK: [[https://github.com/Azure/azure-storage-blob-go]]
+
+.image shizuokago16/img/storage-blobs.png 420 662
+
+.caption https://azure.microsoft.com/ja-jp/services/storage/blobs/
+
+* Azure Files
+
+- ファイル 共有 サービス。
+- Go SDK: [[https://github.com/Azure/azure-storage-file-go]]
+
+.image shizuokago16/img/storage-files.png 420 662
+
+.caption https://azure.microsoft.com/ja-jp/services/storage/files/
+
+* Queue Storage
+
+- キュー サービス。
+- Go SDK: [[https://github.com/Azure/azure-storage-queue-go]]
+
+.image shizuokago16/img/storage-queues.png 420 662
+
+.caption https://azure.microsoft.com/ja-jp/services/storage/queues/
+
+* Go用SDKでアクセスできるその他のサービス
+
+* Service Bus
+
+- メッセージング サービス。
+- Go SDK: [[https://github.com/Azure/azure-service-bus-go]]
+
+.image shizuokago16/img/service-bus.png 420 662
+
+.caption https://azure.microsoft.com/ja-jp/services/service-bus/
+
+* Event Hubs
+
+- イベント (データ) 振り分け サービス。
+- Go SDK: [[https://github.com/Azure/azure-event-hubs-go]]
+
+.image shizuokago16/img/event-hubs.png 420 662
+
+.caption https://azure.microsoft.com/ja-jp/services/event-hubs/
+
+* Application Insights
+
+- モニタリング サービス「Azure Monitor」内でのアプリ 監視 サービス。
+- Go SDK: [[https://github.com/Microsoft/ApplicationInsights-go]]
+
+.image shizuokago16/img/app-insights-overview.png 420 662
+
+.caption https://docs.microsoft.com/ja-jp/azure/azure-monitor/app/app-insights-overview
+
+* 私の勝手なまとめ
+
+* GoでWebアプリを作成することで
+
+マルチクラウドでデプロイ＆稼働できる！
+
+- Goアプリ向けサービスは、コンテナー上でHTTP通信させるモノが主流。
+
+当然、各サービス依存の部分は書き換えや対応が必要。
+
+- RDBMSサービスでは、PostgreSQL/MySQLを選択することで依存度を最小限に。
+
+net/httpパッケージの存在＆恩恵のデカさ！
+
+- 標準パッケージで対応可能なのは嬉しい。
+
+* Go CDK (Cloud Development Kit)
+
+- Goにおけるマルチクラウド対応への挑戦。
+- 各社の共通的なクラウドサービスをシームレスに扱う。
+
+.image shizuokago16/img/go-cdk.png 420 662
+
+.caption [[https://gocloud.dev/]]
