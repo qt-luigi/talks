@@ -2,6 +2,7 @@
 
 ## 2020
 
+- [Join Azure Using Go (10 items)](https://talks.godoc.org/github.com/qt-luigi/talks/2020/jazug-decade.slide) in [★祝★Japan Azure User Group 10周年](https://jazug.connpass.com/event/186235/)
 - [Go articles from Google Open Source Blog at August 27, 2020](https://talks.godoc.org/github.com/qt-luigi/talks/2020/google-open-source-blog.slide) in [Go 1.15 Release Party in Japan](https://gocon.connpass.com/event/186317/)
 - [What's new Go 1.15?](https://talks.godoc.org/github.com/qt-luigi/talks/2020/whats-new-go-115.slide) in [Go 1.15 Release Party in Japan](https://gocon.connpass.com/event/186317/)
 - [I am gaining the skills I want! 〜What inspired me to take one step for being a "Go MVP" through de:code and summer festival〜](https://talks.godoc.org/github.com/qt-luigi/talks/2020/decode-summer-festival-final.slide) in [de:code夏まつり ～よりコミュニティを楽しくするためのコミュニティのすすめ the FINAL](https://msdevjp.connpass.com/event/183747/)
