@@ -1,0 +1,185 @@
+日本のGoコミュニティ活動状況 [2020年10月版]
+GDG DevFest 2020 LT大会
+17 Oct 2020
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image devfest2020/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* 本セッションのねらい
+
+2020年、コロナ禍でのITイベントの開催にも大きな変化が。
+
+日本のGoコミュニティの活動状況から、気付きやヒントを得て頂ければ。
+
+* The Go Programming Language
+
+Google社発のオープンソースの汎用プログラミング言語。
+
+.image devfest2020/img/golang-org.png 475 760
+
+.caption [[https://golang.org/]]
+
+* 2020年の日本全国のGoイベント状況
+
+* 1月
+
+例年通り、各コミュニティが現地にて開催。
+
+.image devfest2020/img/202001.png 475 602
+
+.caption [[https://golangjp.blogspot.com/2019/12/20201go.html]]
+
+* 2月
+
+COVID-19の影響を考慮して、中止するイベントが出始める。
+
+.image devfest2020/img/202002.png 475 453
+
+.caption [[https://golangjp.blogspot.com/2020/01/20202go.html]]
+
+* 3月
+
+ほとんどのイベントが中止またはオンラインに。
+
+.image devfest2020/img/202003.png 475 580
+
+.caption [[https://golangjp.blogspot.com/2020/02/20203go.html]]
+
+* 4月
+
+開催イベント数が減少。
+
+.image devfest2020/img/202004.png 475 700
+
+.caption [[https://golangjp.blogspot.com/2020/04/20204go.html]]
+
+* 5〜8月
+
+全てのイベントが完全オンライン化。
+
+.image devfest2020/img/202007.png 475 468
+
+.caption [[https://golangjp.blogspot.com/2020/06/20207go.html]]
+
+* 9〜10月
+
+集会の規制緩和で、現地＋オンラインのハイブリッド開催が登場。
+
+.image devfest2020/img/202009.png 475 428
+
+.caption [[https://golangjp.blogspot.com/2020/08/20209go.html]]
+
+* 100人を超えるGoイベント状況
+
+* Go Conference
+
+年1,2回開催される日本最大のGoイベント。
+
+- 東京の有志にて、東京で現地開催。
+
+2019年 - Go Conference‘19 Summer in Fukuoka
+
+- Fukuoka.goの有志にて、福岡で現地開催（初の東京以外）
+
+2020年 - Go Conference’20 in Autumn SENDAI
+
+- Sendai.goの有志にて、仙台＆動画配信で開催（初のハイブリッド）
+
+.image devfest2020/img/gocons.png 200 944
+
+.caption [[https://gocon.jp/]] & [[https://fukuoka.gocon.jp/]] & [[https://sendai.gocon.jp]]
+
+* Go Release Party
+
+Goは毎年2月と8月にリリースされ、それを祝うイベント。
+
+これまで
+
+- 日本各地の現地に集まり、各地をオンラインで中継して開催。
+
+2020年
+
+- 東京を中心に、日本各地からのオンライン発表を動画配信。
+
+.image devfest2020/img/go-release-party.png 250 766
+
+.caption [[https://okayamago.connpass.com/event/167273/]] & [[https://gocon.connpass.com/event/186317/]]
+
+* 毎月開催中のGoイベント事例
+
+* Gophers Office Hours
+
+主催：メルカリグループ有志社員
+内容：Go技術のテーマでトーク、質問を募集して回答、など。
+ツール：Google Meet（主催側）、YouTube Live（配信）
+
+.image devfest2020/img/mercari.png 400 640
+
+.caption [[https://mercari.connpass.com/event/191408/]]
+
+* Women Who Go Tokyo
+
+主催：有志
+内容：Goのハンズオンやもくもく会
+ツール：Discord（チャットおよび音声形式）
+
+.image devfest2020/img/womenwhogo-tokyo.png 400 640
+
+.caption [[https://womenwhogo-tokyo.connpass.com/]]
+
+* 『プログラミング言語Go』オンライン読書会
+
+主催：訳者
+内容：Goの書籍を参加者で読み合わせ。
+ツール：Zoom（対話形式）
+
+.image devfest2020/img/gpl-reading.png 400 640
+
+.caption [[https://gpl-reading.connpass.com/]]
+
+* Go Language Specification輪読会
+
+主催：有志
+内容：Go公式サイトの仕様ドキュメントを参加者で読み合わせ。
+ツール：Google Meet（対話形式）
+
+.image devfest2020/img/gospecreading.png 400 640
+
+.caption [[https://gospecreading.connpass.com/]]
+
+* Kyoto.go
+
+主催：有志
+内容：Uber社のGoスタイルガイドを参加者で読み合わせ。
+ツール：Zoom 無料枠（対話形式）
+
+.image devfest2020/img/kyotogo.png 400 640
+
+.caption [[https://kyotogo.connpass.com/]]
+
+* GDG DevFest 2020
+
+* Goセッションは2つ！q＠w＠p
+
+2020年10月18日(日) [Day 2] [Track1]
+
+16:20 - Goでコード生成をはじめよう
+
+- 上田拓也 (tenntenn) / Ueda Takuya
+
+17:00 - Goではじめる！アルゴリズムとデータ構造入門
+
+- 富永良子 / Tominaga Ryoko
+
+.image devfest2020/img/devfest-go.png 250 783
+
+.caption [[https://tokyo.gdgjapan.org/devfest2020/schedule/2]]
