@@ -1,0 +1,293 @@
+Microsoft AzureのGo紹介
+合同勉強会 in 大都会岡山 -2020 Winter Online-
+3 Nov 2020
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image gbdaitokai2020winter/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* はじめに
+
+* 本セッションについて
+
+2020年3月から「Azure SDK for Go」について本格的に学習を開始。
+
+その過程において、Azureについて知っておかないと進むのが難しい場面も。
+
+知らない単語やサービスなどを、一つずつ調べながら進めて行くことに。
+
+.image gbdaitokai2020winter/img/qiita-azuregojp.png 150 472
+
+.caption [[https://qiita.com/tags/azuregojp]]
+
+気が付けば、基礎的な部分ながらAzureの知識が身に付いていることを実感。
+
+これまでの「合同勉強会 in 大都会岡山」でもAzure関連のセッションがありました。
+
+始めて半年ちょいの人ながら「Microsoft Azure」について、Go紹介させて頂きます。
+
+* Microsoft Azure
+
+* Microsoft Azure
+
+Microsoft社が提供しているパブリッククラウドサービス。
+
+.image gbdaitokai2020winter/img/azure.png 475 760
+
+.caption [[https://azure.microsoft.com/ja-jp/overview/]]
+
+* Public Cloud
+
+プロバイター管理のコンピューティングをインターネット経由で必要に応じて利用。
+
+.image gbdaitokai2020winter/img/public-cloud.png 475 760
+
+.caption [[https://azure.microsoft.com/ja-jp/overview/what-is-a-public-cloud/]]
+
+* Azure features I recognize
+
+* For Business
+
+個人的には「個人よりは企業」「開発よりは運用」のイメージ。
+
+.image gbdaitokai2020winter/img/azure-solutions.png 475 760
+
+.caption [[https://azure.microsoft.com/ja-jp/solutions/]]
+
+* Compliance
+
+グローバル、米国政府機関、業種、地域を合わせて92のコンプライアンスに準拠。
+
+.image gbdaitokai2020winter/img/compliance.png 475 760
+
+.caption [[https://docs.microsoft.com/ja-jp/microsoft-365/compliance/offering-home?view=o365-worldwide]]
+
+* Hybrid Cloud
+
+Azure Stack：オンプレミスのプライベートクラウドでパブリックのAzureを利用する。
+
+.image gbdaitokai2020winter/img/azure-stack.png 475 760
+
+.caption [[https://azure.microsoft.com/ja-jp/overview/azure-stack/]]
+
+* Available services
+
+* Over 200 services
+
+Compute, Network, DB, Storage, Analytics, AI+ML, ID, IoT, DevOps, Security, Blockchain...
+
+.image gbdaitokai2020winter/img/azure-services.png 475 760
+
+.caption [[https://azure.microsoft.com/ja-jp/services/]]
+
+* Preview: Static Web Apps
+
+静的サイトホスティング。GitHub ActionsやAzure Functionsとの連携も。Hugoも対応。
+
+.image gbdaitokai2020winter/img/static-web-apps.png 475 760
+
+.caption [[https://azure.microsoft.com/ja-jp/services/app-service/static/]]
+
+* Preview: Azure Communication Services
+
+Teamsのプラットフォームでビデオ通話やチャットの機能をAPIで扱えるサービス。
+
+.image gbdaitokai2020winter/img/azure-communication.png 475 760
+
+.caption [[https://azure.microsoft.com/ja-jp/services/communication-services/]]
+
+* Azure that you don't know
+
+* Azure Space
+
+宇宙や衛星の事業にAzureを対応＆活用するサービス。SpaceX社との提携など。
+
+.image gbdaitokai2020winter/img/azure-space.png 475 760
+
+.caption [[https://news.microsoft.com/azurespace/]]
+
+* Azure Base
+
+日本各地にAzureと触れ合えるDX拠点を展開。現在12箇所：近場は大阪, 神戸, 広島。
+
+.image gbdaitokai2020winter/img/azure-base.png 475 760
+
+.caption [[https://www.microsoft.com/ja-jp/events/azurebase/]]
+
+* Azure Rock Star
+
+Azureで活動している日本国内の技術(12)やビジネス(4)のコミュニティを支援＆紹介。
+
+.image gbdaitokai2020winter/img/azure-rock-star.png 475 760
+
+.caption [[https://www.microsoft.com/ja-jp/events/top/azure-rock-star.aspx]]
+
+* Japan Azure User Group
+
+日本最大級のAzureユーザー会。MVPの[[https://twitter.com/yuiashikaga][@yuiashikaga]]さんらが主催。今年で10周年に。
+
+.image gbdaitokai2020winter/img/jazug.png 475 760
+
+.caption [[https://jazug.connpass.com/]]
+
+* Learn Azure
+
+* Microsoft Learn / TV
+
+公式のeラーニングサイト。日本語コンテンツも充実。学習の経験値が獲得できる。
+
+.image gbdaitokai2020winter/img/ms-learn.png 475 760
+
+.caption [[https://docs.microsoft.com/ja-jp/learn/]]
+
+* Japan Microsoft Learn User Group
+
+日本のMS Learnユーザー会。MVPの[[https://twitter.com/__akiyoshi__][@__akiyoshi__]]さんらが主催。もくもく会などを実施。
+
+.image gbdaitokai2020winter/img/mslearn.png 475 760
+
+.caption [[https://mslearn.connpass.com/]]
+
+* クラウドデベロッパーちゃんねる
+
+公式のYouTubeチャンネルのひとつ。クラウドやAzureに関する技術情報を提供。
+
+.image gbdaitokai2020winter/img/cloud-developer-channel.png 475 760
+
+.caption [[https://www.youtube.com/channel/UCMmRHq3E_9Hc9noZeo3zDCw]]
+
+* Azureテクノロジ入門 2019
+
+日本マイクロソフト社員の方々が執筆。Azureやサービスを紹介した入門書。
+
+.image gbdaitokai2020winter/img/azure-book.png 475 760
+
+.caption [[https://www.nikkeibp.co.jp/atclpubmkt/book/18/P53850/]]
+
+* しくみがわかるKubernetes Azureで動かしながら学ぶコンセプトと実践知識
+
+日本マイクロソフト社員の方々が執筆。Kubernetesの基本をAKSで紹介した書籍。
+
+.image gbdaitokai2020winter/img/shikumi-k8s.png 440 760
+
+.caption [[https://www.shoeisha.co.jp/book/detail/9784798157849]]
+
+* Hack Everything.
+
+"Hack Azure"を開催。MVPの[[https://twitter.com/kazuyukimiyake][@kazuyukimiyake]]さんらが主催。濃ゆいAzureを堪能。
+
+.image gbdaitokai2020winter/img/hack-everything.png 475 760
+
+.caption [[https://hack-everything.connpass.com/]]
+
+* Go
+
+* The Go Programming Language
+
+Google社発のオープンソースの静的型付けコンパイル形式の汎用プログラミング言語。
+
+.image gbdaitokai2020winter/img/golang-org.png 475 760
+
+.caption [[https://golang.org/]]
+
+* Azure SDK for Go
+
+GoでプログラミングしてAzureサービスを利用する仕組み。私はココがスタート。
+
+.image gbdaitokai2020winter/img/azure-sdk-for-go.png 475 760
+
+.caption [[https://docs.microsoft.com/ja-jp/azure/developer/go/]]
+
+* Using Go at Azure
+
+コンテナーサービスにおいてGo製OSSを活用。
+
+- Docker（コンテナーエンジン）
+- Kubernetes（コンテナーオーケストレーション）
+- Prometheus（サービス監視）
+- Terraform（インフラ構成管理）、など
+
+Go製のコマンドラインツールも。
+
+- azcopy（ストレージアカウント間でBLOBやファイルをコピーするCLI）
+- acr（Azure Container RegistryのCLI）、など
+
+* Microsoft x Go (Japan Community)
+
+* de:code夏まつり
+
+de:code 2020のコミュニティイベント。Go多めで初登壇。次では[[https://twitter.com/hogegashi][@hogegashi]]さんも。
+
+.image gbdaitokai2020winter/img/decode-summer-fes.png 475 760
+
+.caption [[https://msdevjp.connpass.com/event/175983/]]
+
+* Code Polaris
+
+女性向け技術コミュニティ。MVPの[[https://twitter.com/dz_][@dz_]]さんなどが主催。Goな人との交流にも期待。
+
+.image gbdaitokai2020winter/img/code-polaris.png 475 760
+
+.caption [[https://code-polaris.connpass.com/]]
+
+* Shizuoka.go Vol.16
+
+静岡のGoコミュニティ。Azure/Goで登壇依頼が。GoイベントでAzureの話は日本初!?
+
+.image gbdaitokai2020winter/img/shizuoka-go-16.png 475 760
+
+.caption [[https://shizuoka-go.connpass.com/event/186969/]]
+
+* さいごに
+
+* ご清聴ありがとうございました
+
+今回、Azureな人たちとも繋がれたことで、新しい文化や視点なども知り得えました。
+
+勝手ながら「Microsoft/Azure x Go」の橋渡し役を、やって行こうかと。
+
+AzureもGoも（以前に紹介したGCPやFlutterも）仕事では使えていませんが...
+
+せっかくのIT業界、いくつになっても新しい技術を知る＆学ぶことは悪くないかと。
+
+知り得たことがあれば「合同勉強会 in 大都会岡山」にて、皆様にお裾分けを！
+
+.image gbdaitokai2020winter/img/gbdaitokai.png 200 624
+
+P.S. 今回はGo成分が少なめになってしまった...(q@w@p っ)3
+
+* 大岩田常務「施されなくても施し返す...感謝ありがとう！」
+
+大都会岡山の皆様へのご紹介をもって、かまってもらっている...
+もとい、お世話になっているマイクロソフトな皆様への「恩返し」に m(_ _)m
+
+[[https://twitter.com/MS_odasho][@MS_odasho]]さん:「くらでべ」な人。
+[[https://twitter.com/Rie_Moriguchi][@Rie_Moriguchi]]さん:「Azure Rock Star」な人。
+[[https://twitter.com/szkn27][@szkn27]]さん:「コミュニティ活動」な人。
+[[https://twitter.com/birdstrikehsmt][@birdstrikeHSMT]]さん:「Azure Base」な人。
+[[https://twitter.com/_dr_asa][@_Dr_ASA]]さん:「しくみがわかるKubernetes」な人。
+
+[[https://twitter.com/yuiashikaga][@yuiashikaga]]さん:「Japan Azure Uesr Group」な人。
+[[https://twitter.com/__akiyoshi__][@__akiyoshi__]]さん:「Japan MS Learn User Group」な人。
+[[https://twitter.com/kazuyukimiyake][@kazuyukimiyake]]さん:「Hack Everything.」な人。
+[[https://twitter.com/dz_][@dz_]]さん:「Code Polaris」な人。
+
+[[https://twitter.com/hogegashi][@hogegashi]]さん:「AzureとGoでの登壇」な人。
+
+* 2019年でのお二人へ
+
+[[https://twitter.com/chomado][@chomado]]さん
+
+- 画面越しから1年、お声掛けから4ヶ月、地元でAzureを発表できました。
+
+[[https://twitter.com/yoshioterada][@yoshioterada]]さん
+
+- 僭越ながら、今回は代わりを務める意気込みで、Azureで発表させて頂きました！
