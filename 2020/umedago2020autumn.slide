@@ -1,0 +1,337 @@
+Goをやり直そう！
+Umeda.go 2020 Autumn Online
+14 Nov 2020
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image umedago2020autumn/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* はじめに
+
+* Umeda Goレンジャー（運営チーム）の皆様
+
+オンラインながら、ついに？やっと？発表にて参加させて頂くことができました！
+
+- 約1年ぶり。前回も山盛りお世話になりました m(_ _)m
+
+.image umedago2020autumn/img/umedagoranger.png 420 672
+
+.caption [[https://umedago.connpass.com/event/193373/participation/]]
+
+* 今回の発表テーマのキッカケ
+
+[[https://twitter.com/a_know][@a_know]]さんのツイートがヒントに。
+
+- Mackerel社のCREさん。mackerelエージェントのプラグインはGoで作成。
+
+.image umedago2020autumn/img/a-know.png 250 930
+
+.caption [[https://twitter.com/a_know/status/1324285694500462597]]
+
+* a_knowさんの場合
+
+積読状態だった書籍「改訂2版 みんなのGo言語」を読み返すことに。
+
+- 初版は読み切っていたが、内容カブりにかまけていた（あ、私もw）
+
+.image umedago2020autumn/img/minnanogo2.png 420 672
+
+.caption [[https://gihyo.jp/book/2019/978-4-297-10727-7]]
+
+* 他のGopherさん達は？
+
+* 第6回『プログラミング言語Go』オンライン読書会 にて
+
+放課後に残られていた参加者の方々にも聞いてみました。
+
+- しばっとさん＆回答者の皆様、Go協力ありがとうGoざいました！q@w@p
+
+.image umedago2020autumn/img/gpl6.png 420 672
+
+.caption [[https://gpl-reading.connpass.com/event/191145/]]
+
+* yujin3iさん
+
+書籍「プログラミング言語Go」を何回も読み直している（ちなみに、私は3周目）
+
+- バイブル的な書籍。
+
+* 書籍「プログラミング言語Go」について
+
+訳者のyoshiki_shibataさん曰く「読み進められるが、理解するのが難しい。」
+
+- 難しいのは「題材」や「練習問題」などの部分かと。
+
+.image umedago2020autumn/img/gpl.png 420 672
+
+.caption [[https://www.maruzen-publishing.co.jp/item/?book_no=295039]]
+
+* Yasuhiro ARAKAWAさん
+
+自サイト [[https://baldanders.info/][baldanders.info]] の「[[https://text.baldanders.info/golang/nil-is-nil/][nil は nil]]」へのアクセスが多い（皆さんハマってる!?）
+
+- ご自身は標準パッケージの [[https://golang.org/pkg/unsafe/][unsafe]] と [[https://golang.org/pkg/reflect/][reflect]] をやり直したい（私も避けてますねw）
+
+.image umedago2020autumn/img/nilisnil.png 420 672
+
+.caption [[https://text.baldanders.info/golang/nil-is-nil/]]
+
+* Mikkeさん
+
+何に詰まっているか、わからなくなっている。
+
+- Udamyを受講してみたり。
+- ハンズオンを受講してみたり。
+- コミュニティに参加してみたり。
+
+* 今度「Gopher道場」に入門してみようかと
+
+tenntennさんが開設した、実践的なGoを体系的に学べる場。（私も入門済）
+
+- 自習室には、10時間以上の講義動画や受講者同士でのフォローアップの場が。
+
+.image umedago2020autumn/img/gopherdojo.png 420 672
+
+.caption [[https://gopherdojo.org/]]
+
+* ならば「プログラミング言語Go完全入門」の紹介も
+
+tenntennさん作。Gopher道場の資料のベースとしたスライド資料。
+
+- tenntennさん曰く「盆栽いじりのごとく」更新されている。現在14章まで。
+
+.image umedago2020autumn/img/goforbeginners.png 420 672
+
+.caption [[https://engineering.mercari.com/blog/entry/goforbeginners/]]
+
+* Inoさん
+
+初心者Gopherさんらしく、
+
+- 関数やファイルの分け方に悩んでいる。
+- Goらしい書き方が分からず。
+
+いくつかの例で見ていきましょう。
+
+* 分ける判断基準：名前で考えてみる
+
+同じ単語が何度も出てきている場合、重複を避けるのが「Goらしさ」
+
+  /
+  +--hogeItem.go
+  +--fugaItem.go
+  +--main.go
+
+だと、
+
+  /
+  +--item/
+  |  +--hoge.go
+  |  +--fuga.go
+  +--main.go
+
+とすることで、重複をなくしてitemパッケージを切り出せる予感が!?
+
+* 分ける判断基準：機能で考えてみる (1/2)
+
+  github.com/qt-luigi/webapp/
+  +--main.go
+
+main.go
+
+  package main
+
+  // データの構造体
+  type dataAccess struct {
+      db *sql.DB
+  }
+
+  func main() {
+      // データの初期処理
+      dataAccess.db, err := sql.Open("hoge", "fuga")
+      ...
+      // Webサーバーの処理
+      http.HandleFunc("/", rootHandler)
+      log.Fatal(http.ListenAndServe("localhost:8000", nil))
+  }
+
+データに関する機能を、別のファイルやパッケージに切り出す。
+
+* 分ける判断基準：機能で考えてみる (2/2)
+
+  github.com/qt-luigi/webapp/
+  +--data/
+  |  +--db.go
+  +--main.go
+
+main.go
+
+  package main
+
+  import (
+      "github.com/qt-luigi/webapp/data"
+  )
+
+  func main() {
+      // データの初期処理
+      db, err := data.create()
+      ...
+      // Webサーバーの処理
+      http.HandleFunc("/", rootHandler)
+      log.Fatal(http.ListenAndServe("localhost:8000", nil))
+  }
+
+* Goらしさ：panic()の扱い方
+
+panic()は、プログラムを停止せざるを得ないような致命的な場面で使うもの。
+
+- 大域脱出など、カジュアルにpanic()してはダメ！q＠w＠p
+
+  func main() {
+      db, err := sql.Open("hoge", "fuga")
+      if err != nil {
+          panic(err) // 外部リソースであるデータベースが閉じられない可能性ががが！
+      }
+      ...
+  }
+
+* プロフェッショナル Goの流儀「エラー処理も、プログラミングする」
+
+想定できているエラーでの不具合の発生を防げる。
+
+Webアプリの場合の例：logパッケージを使う。
+
+    if err != nil {
+    	log.Fatal(err) // 本関数の中ではos.Exit()が呼ばれるため、プログラムが停止することに注意！
+    }
+    
+コマンドラインの場合の例：fmt.Fprint系を使う。
+
+    if err != nil {
+        fmt.Fprintln(os.Stderr, err) // エラーメッセージは標準エラーに出力すること！
+    }
+
+* Goらしさ：accessor
+
+getter: 関数名やメソッド名の最初に、"Get" は *付けない*
+
+  func (h *hoge) GetName() string { ... }
+
+  よりは
+
+  func (h *hoge) Name() string { ... }
+
+setter: 関数名やメソッド名の最初に、"Set" は 付ける
+
+  func (h *hoge) SetName(name string) { ... }
+
+* Goらしさ：頭字語（とうじGo）の記述
+
+複数の単語の頭文字を集めた単語は、
+
+全て大文字か
+
+  userID
+
+全て小文字で
+
+  userid
+
+の記述で正解！
+
+* 公式サイト、見直してますか？
+
+* なぜ公式サイトなのか？
+
+一次リソースだから正しい＆間違いがない。
+
+- 自信や確信を持てるので、Gopherとしてブレない。
+- 結果、巷のGoな雑音や情報に振り回されなくなる。
+
+.image umedago2020autumn/img/golang-org.png 370 592
+
+.caption [[https://golang.org/]]
+
+* Tutorials
+
+Go 1.13から正式採用された「[[https://github.com/golang/go/wiki/Modules][Go Modules]]」にも対応した内容。
+
+- Getting started："Hello, World!"のコーディングと実行、外部パッケージ呼び出し。
+- Create a module：モジュール、エラー、スライスやマップ、テスト、コンパイル。
+- A Tour of Go：Goの基本的な構文やデータ構造などをインタラクティブに学習。
+
+.image umedago2020autumn/img/go-tutorials.png 320 512
+
+.caption [[https://golang.org/doc/tutorial/]]
+
+* How to Write Go Code
+
+Goでのコードの書き方の *基本形* が学べる（Go 1.12以前は"[[https://golang.org/doc/gopath_code.html][(with GOPATH)]]"版で）
+
+- 私曰く：ココを読まずにツイートしないこと！q@w@p
+
+.image umedago2020autumn/img/go-howtowritegocode.png 420 672
+
+.caption [[https://golang.org/doc/code.html]]
+
+* The Go Programming Language Specification
+
+Goの仕様書。Gopherなら一度は読んでおくべし！
+
+- リリース毎の変更や差異も反映されているので、抜かりなく。
+
+.image umedago2020autumn/img/go-specification.png 420 672
+
+.caption [[https://golang.org/ref/spec]]
+
+* Effective Go
+
+より深くGoを知りたい人は、読んでおきましょう。
+
+- 内容によっては最近のGoな流行りから遅れ始めているモノも。
+
+.image umedago2020autumn/img/go-effectivego.png 420 672
+
+.caption [[https://golang.org/doc/effective_go.html]]
+
+* Frequently Asked Questions (FAQ)
+
+ちゃんと読んでおくと「Go通」になれるかも!?
+
+- 「Genericsガー」や「オブジェクト指向ガー」などの答えは、最初からココに。
+
+.image umedago2020autumn/img/go-faq.png 420 672
+
+.caption [[https://golang.org/doc/faq]]
+
+* The Go Blog
+
+Goチームから、まとまった形での最新情報を受け取れる。
+
+- リアルタイムで端的な情報は、Twitterの[[https://twitter.com/golang][@golang]]アカウントから。
+
+.image umedago2020autumn/img/go-blog.png 420 672
+
+.caption [[https://blog.golang.org/]]
+
+* まとめ
+
+* Goをやり直すには？
+
+特になければ、まずは公式サイト「[[https://golang.org/][golang.org]]」の見直しがオススメ。
+
+インターネット上で公開＆提供されているGoなコンテンツを活用するのもよし。
+
+Goの書籍を読み直すのもよし。挫折しそうなら読書会への参加や開催とかも。
+
+イベント的なモノでの対応や要望があれば umeda.go さんへGo相談するのも。
+
+早速、今日のGoGoから始めてみては如何でしょうか？q@w@p
