@@ -2,6 +2,7 @@
 
 ## 2020
 
+- [今こそ始めようGoケーション！](https://talks.godoc.org/github.com/qt-luigi/talks/2020/abcd2020a.slide) in [Android Bazaar and Conference Diverse 2020 Autumn](https://japan-android-group.connpass.com/event/192378/)
 - [Goをやり直そう！](https://talks.godoc.org/github.com/qt-luigi/talks/2020/umedago2020autumn.slide) in [Umeda.go 2020 Autumn Online](https://umedago.connpass.com/event/193373/)
 - [Microsoft AzureのGo紹介](https://talks.godoc.org/github.com/qt-luigi/talks/2020/gbdaitokai2020winter.slide) in [合同勉強会 in 大都会岡山 -2020 Winter Online-](https://gbdaitokai.connpass.com/event/189232/)
 - [日本のGoコミュニティ活動状況(2020年10月版)](https://talks.godoc.org/github.com/qt-luigi/talks/2020/devfest2020.slide) in [GDG DevFest 2020](https://gdgosaka.connpass.com/event/190066/)

@@ -1,0 +1,278 @@
+今こそ始めようGoケーション
+Android Bazaar and Conference Diverse 2020 Autumn
+21 Nov 2020
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image devfest2020/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* はじめに
+
+* 「ワーケーション」と聞いて
+
+最初に思い浮かべるのが、
+
+- Guido van Rossumさんが
+- クリスマス休暇を利用して
+- プログラミング言語「Python」を開発
+
+したお話ですが、今回は、
+
+- 「ワーケーション」で何か新しいことを始めたい方へ
+- プログラミング言語「Go」の始め方をGo紹介。
+
+させて頂きます。
+
+* Goとは
+
+* The Go Programming Language
+
+Google社発のオープンソースの静的型付けコンパイル形式の汎用プログラミング言語。
+
+.image devfest2020/img/golang-org.png 475 760
+
+.caption [[https://golang.org/]]
+
+* Goは、オープンソースプロジェクト
+
+どなたでも開発に参加できる。
+
+- GoはGoで書かれているため、Goを学べばGoを開発できる！
+
+.image abcd2020a/img/go-googlesource-com.png 420 672
+
+.caption [[https://go.googlesource.com/go]]
+
+* Goは、静的型付け言語
+
+動的型付け言語
+
+- 変数に、任意の型の値を設定できる。
+
+  age = "20"  // 「文字型」の値を代入 
+  print(age)  // 20 が標準出力される
+
+  age = 30    // 「数値型」の値を代入
+  print(age)  // 30 が標準出力される
+
+静的型付け言語
+
+- 変数を宣言する時に、型を指定する。
+
+  var age string   // ageを「文字型」で宣言
+
+  age = "20"       // 「文字型」の変数に「文字型」の値を代入 
+  fmt.Println(age) // 20 が標準出力される
+
+  age = 30         // 「文字型」の変数に「数値型」の値を代入
+  fmt.Println(age) // エラー： cannot use 30 (type untyped int) as type string in assignment
+
+* Goは、コンパイル形式（だけどインタープリター風な動作も）
+
+インタープリター形式
+
+- ソースコードを一行ずつ実行する。
+- 動作確認しやすい。逐次実行なので実行速度は早くない。
+
+  // 開発時はインタープリター風に動作させて、サクサクと。
+  go run main.go
+
+コンパイル形式
+
+- ソースコードからバイナリーを作成し、バイナリーを実行する。
+- バイナリーはコンピューター寄りなので、実行速度が速い。
+
+  // テストや本番時はコンパイルして、シッカリと。
+  go build -o main.exe main.go
+  ./main.exe
+
+* Goは、汎用プログラミング言語
+
+標準パッケージ
+
+- コマンドラインツール
+- 共有ライブラリー
+- Webアプリ
+- WASM (WebAssembly)
+
+外部パッケージ
+
+- モバイル (Android、iOS)
+- 組み込み (Gobot)
+- JavaScript変換 (GopherJS)
+
+など。
+
+* Goに触れてみる
+
+* The Go Playground
+
+Goを試し書きして実行できる公式サイト。
+
+- URLを作成できるので、試し書きしたコードの共有も簡単。
+
+.image abcd2020a/img/go-playground.png 420 672
+
+.caption [[https://play.golang.org/]]
+
+* Goを始めるための準備
+
+* Go
+
+- 公式サイトから、インストールバイナリーやソースコードを取得。
+- 有志の作成物を、パッケージ管理ツールやコンテナーでインストール。
+
+.image abcd2020a/img/go-downloads.png 420 672
+
+.caption [[https://golang.org/dl/]]
+
+* 公式で対応しているOS
+
+インストールバイナリーが用意されているOS
+
+- Linux
+- macOS
+- Windows
+- FreeBSD
+
+ソースコードからビルド＆インストールできるOS
+
+- 各種BSD
+- Solaris系
+- Plan 9
+
+Goは、クロスコンパイル（例：macOS上でWindowsのexeファイルを作成）が可能。
+
+* エディター
+
+BOM (Byte Order Mark) なしのUTF-8に対応していること。
+
+テキストエディター
+
+- Vim
+- Emacs
+
+コードエディター
+
+- Atom
+- Sublime Text
+
+など
+
+* 統合開発環境 (IDE)
+
+Goの拡張機能が豊富。
+
+- Visual Studio Code (オープンソース)
+- GoLand (有償)
+
+.image abcd2020a/img/vscode.png 370 761
+
+.caption [[https://code.visualstudio.com/]]
+
+* バージョン管理システム
+
+ソースコードや外部パッケージは、バージョン管理システムに登録されている。
+
+- ソースコードをコンパイルや実行した時に、自動で取得される。
+- 明示的にgo get コマンドで取得。
+
+  go get github.com/qt-luigi/resizepng
+
+* 対応しているバージョン管理システム
+
+主要なモノは、GitHubに登録されていることが多い。
+
+- そのため、Git (git) は必須。
+
+他には、次がサポートされている。
+
+- Subversion (svn)
+- Mercurial (hg)
+- Bazaar (bzr)
+- Fossil (fossil)
+
+* Goを学び始める
+
+* A Tour of Go
+
+入門チュートリアルサイト。
+
+- 英語版は公式、日本語版も含めて各国版は有志。
+- 演習問題の中には難しいモノもあるので、飛ばしても大丈夫。
+
+.image abcd2020a/img/a-tour-of-go.png 370 592
+
+.caption [[https://tour.golang.org/welcome/1]]
+
+* Goの書き方を知る
+
+公式サイトの「How to Write Go Code」を *手を動かしながら* 読み進める。
+
+- Goコードの書き方、パッケージ、テストまでの基礎を網羅。
+- ココを読んでいないため、つまずいている初学者が多い。
+
+.image abcd2020a/img/how-to-write-go-code.png 370 592
+
+.caption [[https://golang.org/doc/code.html]]
+
+* インターネットに繋がらなくても
+
+* go doc
+
+標準で付いてくるドキュメント参照コマンド。
+
+- goコマンドや標準パッケージや関数について調べられる。
+
+  $ go doc strconv Atoi 
+  package strconv // import "strconv"
+  
+  func Atoi(s string) (int, error)
+      Atoi is equivalent to ParseInt(s, 10, 0), converted to type int.
+
+- 他のコマンドと組み合わせて効率的に調べられる。
+
+  $ go doc fmt | grep Fprint
+  In Printf, Sprintf, and Fprintf, the default behavior is for each formatting
+  func Fprint(w io.Writer, a ...interface{}) (n int, err error)
+  func Fprintf(w io.Writer, format string, a ...interface{}) (n int, err error)
+  func Fprintln(w io.Writer, a ...interface{}) (n int, err error)
+
+* 公式サイトのコンテンツ群
+
+事前にインストールして、ローカルサーバーとして起動＆アクセス可能に。
+
+インストールできる公式サイト
+
+- 公式サイト
+- 公式ブログ
+- A Tour of Go、など。
+
+* ワーケーション先でGoを知る
+
+* 主なGo当地コミュニティ
+
+コロナ禍の影響でオンラインでのイベント開催が増えていますが。
+
+宮城：Sendai.go
+東京：golang.tokyo, Women Who Go Tokyo, Akiba.go, Otemachi.go
+神奈川：Kamakura.go
+静岡：Shizuoka.go
+愛知：Nagoya.go
+京都：Kyoto.go
+大阪：Umeda.go
+島根：Shimane.go
+岡山：golang cafe, Okayama.go
+香川：香川Go言語勉強会
+福岡：Fukuoka.go
+沖縄：Okinawa.go
+
+他にも、企業やコミュニティが多くのGoイベントを開催！
