@@ -1,0 +1,155 @@
+私のExam AZ-900: Microsoft Azure Fundamentals学習記
+第30回 Tokyo Jazug Night (Online)
+16 Dec 2020
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image tokyo-jazug-night-30/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* Exam AZ-900: Microsoft Azure Fundamentals
+
+マイクロソフト認定「Azure Fundamentals」を取得するためのオンライン試験教科。
+
+.image tokyo-jazug-night-30/img/AZ-900.png 470 752
+
+.caption https://docs.microsoft.com/ja-jp/learn/certifications/exams/az-900
+
+* 3月〜：Azure SDK for Goへの取り組みを開始
+
+- Azure SDK：プログラミングでAzureサービスを扱うための仕組み。
+- Go：Google社発のオープンソースの汎用プログラミング言語。
+
+ますは公式ドキュメントの読み進めから。
+
+.image tokyo-jazug-night-30/img/azure-sdk-for-go-doc.png 360 576
+
+.caption https://docs.microsoft.com/ja-jp/azure/developer/go/
+
+* いざ始めてみたものの
+
+Azureは初めてということもあり、知らない言葉や仕組みが次々と...(T_T)
+
+一つずつ調べながら進めて行って、結果はQiitaさんなどに投稿（タグ：azuregojp）
+
+.image tokyo-jazug-night-30/img/qiita-azuregojp.png 410 656
+
+.caption https://qiita.com/tags/azuregojp
+
+* 6〜8月：READMEの翻訳
+
+Azure SDK for Go関連のドキュメントを日本語訳することで、Azureの理解も深まる。
+
+- 6月7日：[[https://qiita.com/qt-luigi/items/48e7073f1217e0a665f6][Azure SDK for GoのGitHubのREADMEの日本語訳をv43.0.0に最新化]]
+- 6月13日：[[https://qiita.com/qt-luigi/items/14469f0c66516edb6b45][GitHubのAzure/go-autorestのREADME(v14.1.1)を日本語訳]]
+- 8月16日：[[https://qiita.com/qt-luigi/items/057d7c323f47654979cc][Azure SDKsのGo Guidelines(現在ドラフト版)を日本語訳]]
+
+.image tokyo-jazug-night-30/img/japanese.png 310 496
+
+.caption https://github.com/qt-luigi/azure-sdk-for-go-docs-jp#パッケージの更新
+
+* 6月：Microsoft Azure Virtual Training Day: Fundamentals を受講
+
+Azureの基礎を体系的に学べる無料セミナーということで、6月25,26日に受講。
+
+- 講義は事前録画だが、スライドだけでなくホワイトボードも使ってわかりやすく。
+- 当日用のチャットが用意されており、リアルタイムで質疑応答が可能に。
+
+AZ-900を無料で受験できる特典付きだったため、少し受験も意識するキッカケに。
+
+.image tokyo-jazug-night-30/img/azure-virtual-training-day.png 310 453
+
+.caption https://www.microsoft.com/ja-jp/events/top/training-days.aspx?activetab=a1:primaryr4#primaryR3
+
+* 7月〜：ITイベントで登壇
+
+Microsoft/Azure x Goを広めるべく、Azure SDK for Goでの学びを登壇でアウトプット。
+
+発表資料を作成するための調査で、コアサービスを中心としたAzureの理解が深まる。
+
+- 7月8日：[[https://msdevjp.connpass.com/event/175983/][de:code夏まつり #3]]
+- 8月8日：[[https://msdevjp.connpass.com/event/183747/][de:code夏まつり the FINAL]]
+- 9月12日：[[https://shizuoka-go.connpass.com/event/186969/][Shizuoka.go Vol.16（オンライン）]]
+- 9月30日：[[https://jazug.connpass.com/event/186235/][★祝★Japan Azure User Group 10周年]]
+- 11月3日：[[https://gbdaitokai.connpass.com/event/189232/][合同勉強会 in 大都会岡山 -2020 Winter Online-]]
+- 12月16日：[[https://jazug.connpass.com/event/197139/][第30回 Tokyo Jazug Night (Online)]]
+
+* 7月〜：ITイベントに参加
+
+とにかく見聞きすることで、Azure SDK for Go関連以外での情報を知り得ることに。
+
+- 7月23日：[[https://msdevjp.connpass.com/event/182455/][Hack Azure! #2 Ask the Geeks - Cosmos DB 編]]
+- 8月1,2日：[[https://www.microsoft.com/ja-jp/events/decode/2020/default.aspx][de:code 2020]]（開催期間：6月17日 – 7月17日）
+- 9月25日：[[https://hack-everything.connpass.com/event/189771/][Hack Azure! #3 Catch up Ignite 2020 Azure updates]]
+- 9月26日：[[https://azurerockstar.connpass.com/event/186812/][Azure Rock Star Community Day #1 - Hello World!]]
+- 11月20日：[[https://azure-tech-love.connpass.com/event/193791/][Azure Tech Lab #8 - Re:Born]]
+
+* 11月：受験を決意
+
+仕事が落ち着いて、考える時間や学習する時間ができた。
+
+- 12月21日ごろに日本語版の試験内容が少し変更になる。
+- 6月の無料セミナーで頂いた受験無料特典の期限が迫る。
+
+これまでの活動を通じて得られた自分のAzure力を測るべく、受験を決意。
+
+* 11〜12月：試験に関するMicrosoft Learnの受講を開始
+
+AZ-900に関するラーニングパスに取り組み。
+
+- 旧版：[[https://docs.microsoft.com/ja-jp/learn/paths/azure-fundamentals/][Azure の基礎ラーニング パス - Learn | Microsoft Docs]]
+- 新版：[[https://docs.microsoft.com/ja-jp/users/microsoftazuretrainingandcertifications/collections/0kjyh8rn5x76j6][Master the basics of Azure: Fundamentals]]
+
+.image tokyo-jazug-night-30/img/learn-fundamentals.png 360 576
+
+.caption https://docs.microsoft.com/ja-jp/users/microsoftazuretrainingandcertifications/collections/0kjyh8rn5x76j6
+
+* 挫折しそうになった時は
+
+[[https://mslearn.connpass.com/][Japan Microsoft Learn User Group]] 主催のもくもく会に参加して、学習機会を確保。
+
+- 10月31日：[[https://mslearn.connpass.com/event/191850/][【オンライン開催】Microsoft Learn Day Online #6]]
+- 11月28日：[[https://mslearn.connpass.com/event/195462/][【オンライン開催】Microsoft Learn Day Online #7]]
+
+.image tokyo-jazug-night-30/img/JMLUG.png 360 576
+
+.caption https://mslearn.connpass.com/
+
+* 11〜12月：書籍「合格対策 Microsoft認定 AZ-900:Microsoft Azure Fundamentals テキスト＆問題集」に取り組む
+
+試験対策本を謳っているが、個人的にはAzureの基礎を体系的に学べる良書かと。
+
+- 受験までに4周。Azure SDK for Go, イベント, セミナー, Learn以外の情報を回収。
+
+.image tokyo-jazug-night-30/img/book.png 380 608
+
+.caption http://www.ric.co.jp/book/contents/book_1231.html
+
+* 12月：受験
+
+自宅でも受験可能だがカメラ設置や音声遅延など大変らしく、試験会場にて受験。
+
+- 12月11日：Azure Fundamentals 取得
+
+.image tokyo-jazug-night-30/img/badge.png 410 656
+
+.caption https://www.youracclaim.com/badges/c838c73e-8744-44dd-a267-b63c32dbd1ad
+
+* まとめ
+
+私の学習法：無理なく、自然に
+
+- Azure SDK for Goや成果発表への取り組みで、コアサービス関連の知識を習得。
+- Microsoft Learnや書籍で、コアサービス以外の知識を補完。
+
+AZ-900：たかが基礎、されど基礎
+
+- Microsoft社員にも取得が推奨されている認定資格。
+- 結果的に「Azureの基礎」を「体系的」に学べる。

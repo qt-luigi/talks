@@ -2,6 +2,7 @@
 
 ## 2020
 
+- [私のExam AZ-900: Microsoft Azure Fundamentals学習記](https://talks.godoc.org/github.com/qt-luigi/talks/2020/tokyo-jazug-night-30.slide) in [第30回 Tokyo Jazug Night (Online)](https://jazug.connpass.com/event/197139/)
 - [今こそ始めようGoケーション！](https://talks.godoc.org/github.com/qt-luigi/talks/2020/abcd2020a.slide) in [Android Bazaar and Conference Diverse 2020 Autumn](https://japan-android-group.connpass.com/event/192378/)
 - [Goをやり直そう！](https://talks.godoc.org/github.com/qt-luigi/talks/2020/umedago2020autumn.slide) in [Umeda.go 2020 Autumn Online](https://umedago.connpass.com/event/193373/)
 - [Microsoft AzureのGo紹介](https://talks.godoc.org/github.com/qt-luigi/talks/2020/gbdaitokai2020winter.slide) in [合同勉強会 in 大都会岡山 -2020 Winter Online-](https://gbdaitokai.connpass.com/event/189232/)
