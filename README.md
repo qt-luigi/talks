@@ -12,6 +12,7 @@
 - [Go articles from Google Open Source Blog at August 27, 2020](https://talks.godoc.org/github.com/qt-luigi/talks/2020/google-open-source-blog.slide) in [Go 1.15 Release Party in Japan](https://gocon.connpass.com/event/186317/)
 - [What's new Go 1.15?](https://talks.godoc.org/github.com/qt-luigi/talks/2020/whats-new-go-115.slide) in [Go 1.15 Release Party in Japan](https://gocon.connpass.com/event/186317/)
 - [I am gaining the skills I want! 〜What inspired me to take one step for being a "Go MVP" through de:code and summer festival〜](https://talks.godoc.org/github.com/qt-luigi/talks/2020/decode-summer-festival-final.slide) in [de:code夏まつり ～よりコミュニティを楽しくするためのコミュニティのすすめ the FINAL](https://msdevjp.connpass.com/event/183747/)
+- [「Gopher道場 #8」で知り得たこと](https://talks.godoc.org/github.com/qt-luigi/talks/2020/gopher-dojo-8.slide) in [Gopher道場#8 LT大会&卒業式](https://gopherdojo.connpass.com/event/183672/)
 - [AzureとSDKとGoと私](https://talks.godoc.org/github.com/qt-luigi/talks/2020/azure-sdk-for-go-and-me.slide) in [de:code夏まつり ～よりコミュニティを楽しくするためのコミュニティのすすめ #3](https://msdevjp.connpass.com/event/175983/)
 - [大都会岡山の南端で、Goをさけぶ](https://talks.godoc.org/github.com/qt-luigi/talks/2020/why-am-i-here.slide) in [de:code夏まつり ～よりコミュニティを楽しくするためのコミュニティのすすめ #3](https://msdevjp.connpass.com/event/175983/)
 - [Install Android Virtual Device to macOS on command line interface](https://talks.godoc.org/github.com/qt-luigi/talks/2020/install-avd-to-macos-on-cli.slide) in [Flutter Meetup Osaka #3](https://flutter-jp.connpass.com/event/169452/)
