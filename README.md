@@ -8,6 +8,7 @@
 - [Microsoft AzureのGo紹介](https://talks.godoc.org/github.com/qt-luigi/talks/2020/gbdaitokai2020winter.slide) in [合同勉強会 in 大都会岡山 -2020 Winter Online-](https://gbdaitokai.connpass.com/event/189232/)
 - [日本のGoコミュニティ活動状況(2020年10月版)](https://talks.godoc.org/github.com/qt-luigi/talks/2020/devfest2020.slide) in [GDG DevFest 2020](https://gdgosaka.connpass.com/event/190066/)
 - [Join Azure Using Go (10 items)](https://talks.godoc.org/github.com/qt-luigi/talks/2020/jazug-decade.slide) in [★祝★Japan Azure User Group 10周年](https://jazug.connpass.com/event/186235/)
+- [Goでイケる！Azureサービスの紹介](https://talks.godoc.org/github.com/qt-luigi/talks/2020/shizuokago16.slide) in [Shizuoka.go Vol.16（オンライン）](https://shizuoka-go.connpass.com/event/186969/)
 - [Go articles from Google Open Source Blog at August 27, 2020](https://talks.godoc.org/github.com/qt-luigi/talks/2020/google-open-source-blog.slide) in [Go 1.15 Release Party in Japan](https://gocon.connpass.com/event/186317/)
 - [What's new Go 1.15?](https://talks.godoc.org/github.com/qt-luigi/talks/2020/whats-new-go-115.slide) in [Go 1.15 Release Party in Japan](https://gocon.connpass.com/event/186317/)
 - [I am gaining the skills I want! 〜What inspired me to take one step for being a "Go MVP" through de:code and summer festival〜](https://talks.godoc.org/github.com/qt-luigi/talks/2020/decode-summer-festival-final.slide) in [de:code夏まつり ～よりコミュニティを楽しくするためのコミュニティのすすめ the FINAL](https://msdevjp.connpass.com/event/183747/)
