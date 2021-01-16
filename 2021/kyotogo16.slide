@@ -1,0 +1,170 @@
+GoでAzureのRDBMSサービスを操作
+Kyoto.go remote #16 あけましてLT会
+16 Jan 2021
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image kyotogo16/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* Azure SDK for Go のドキュメント
+
+.link https://docs.microsoft.com/ja-jp/azure/developer/go/
+
+クイックスタート（DB関連）
+
+- Azure Database for PostgreSQL
+- Azure Database for MySQL
+- Azure SQL Database
+
+[補足]
+
+- Azure Database for MariaDB もある。
+- Azure SQL Database の RDBMS は SQL Server。
+
+* サンプル コード（抜粋）
+
+* 差異
+
+データベース
+
+- ドライバー
+- 接続文字列
+- プレースホルダー
+- （SQL文）
+
+Azure
+
+- サーバーのドメイン名
+
+* Azure Database for PostgreSQL
+
+  import _ "github.com/lib/pq"
+
+  const (
+      HOST     = "mydemoserver.postgres.database.azure.com"
+      DATABASE = "mypgsqldb"
+      USER     = "mylogin@mydemoserver"
+      PASSWORD = "<server_admin_password>"
+  )
+
+  func main() {
+      var connectionString string = fmt.Sprintf(
+            "host=%s user=%s password=%s dbname=%s sslmode=require",
+            HOST, USER, PASSWORD, DATABASE)
+
+      db, err := sql.Open("postgres", connectionString)
+      ...
+
+      _, err = db.Exec("DELETE FROM inventory WHERE name = $1;", "orange")
+      ...
+  }
+
+* Azure Database for MySQL (MariaDB)
+
+  import _ "github.com/go-sql-driver/mysql"
+
+  const (
+      host     = "mydemoserver.mysql.database.azure.com"
+      database = "quickstartdb"
+      user     = "myadmin@mydemoserver"
+      password = "yourpassword"
+  )
+
+  func main() {
+      var connectionString = fmt.Sprintf(
+          "%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true",
+          user, password, host, database)
+
+      db, err := sql.Open("mysql", connectionString)
+      ...
+
+      rows, err := db.Exec("DELETE FROM inventory WHERE name = ?", "orange")
+      ...
+  }
+
+* Azure SQL Database
+
+  import _ "github.com/denisenkom/go-mssqldb"
+
+  const (
+      server   = "<your_server.database.windows.net>"
+      port     = 1433
+      user     = "<your_username>"
+      password = "<your_password>"
+      database = "<your_database>"
+  )
+
+  func main() {
+      var connectionString = fmt.Sprintf(
+          "server=%s;user id=%s;password=%s;port=%d;database=%s;",
+          server, user, password, port, database)
+
+      db, err = sql.Open("sqlserver", connectionString)
+      ...
+
+      tsql := fmt.Sprintf("DELETE FROM TestSchema.Employees WHERE Name = @Name;")
+      result, err := db.ExecContext(ctx, tsql, sql.Named("Name", name))
+      ...
+  }
+
+* ２種類のdbメソッド
+
+* db.HogeContext()
+
+Go 1.8から登場。第１引数に context.Context を受け取る。
+
+- context パッケージは、Go1.7から登場。
+
+  // ExecContext executes a query without returning any rows.
+  // The args are for any placeholder parameters in the query.
+  func (db *DB) ExecContext(ctx context.Context, query string, args ...interface{}) (Result, error) {
+      var res Result
+      var err error
+      for i := 0; i < maxBadConnRetries; i++ {
+          res, err = db.exec(ctx, query, args, cachedOrNewConn)
+          if err != driver.ErrBadConn {
+              break
+          }
+      }
+      if err == driver.ErrBadConn {
+          return db.exec(ctx, query, args, alwaysNewConn)
+      }
+      return res, err
+  }
+
+.caption https://golang.org/src/database/sql/sql.go?s=41930:42027#L1514
+
+* db.Hoge()
+
+Go 1.8からは、第１引数が context.Background() の db.HogeContext() 呼び出しに。
+
+  // Exec executes a query without returning any rows.
+  // The args are for any placeholder parameters in the query.
+  func (db *DB) Exec(query string, args ...interface{}) (Result, error) {
+      return db.ExecContext(context.Background(), query, args...)
+  }
+
+.caption https://golang.org/src/database/sql/sql.go?s=42425:42494#L1531
+
+* Go 1 promise of compatibility.
+
+- Go 1.8より前のソースコードでも、
+- Go 1.8以降でコンパイルすれば、
+- コード変更なしで context の恩恵を受けられる！
+
+.link https://golang.org/doc/go1compat
+
+* まとめ
+
+* 「GoでAzureのRDBMSサービスを操作」するには？
+
+- 標準パッケージ「database/sql」での操作でよい。
+- 別途 SDK などは不要。
