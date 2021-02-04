@@ -3,6 +3,7 @@
 ## 2021
 
 - [2021年はGoを始めよう！](https://talks.godoc.org/github.com/qt-luigi/talks/2021/gdgtokyo-ny-lt-2021.slide) in [GDG Tokyo New Year LT大会 2021](https://gdg-tokyo.connpass.com/event/201523/)
+- [GoでAzureのRDBMSサービスを操作](https://talks.godoc.org/github.com/qt-luigi/talks/2021/kyotogo16.slide) in [Kyoto.go remote #16 あけましてLT会](https://kyotogo.connpass.com/event/199400/)
 
 ## 2020
 
