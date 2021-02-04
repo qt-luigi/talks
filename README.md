@@ -1,5 +1,9 @@
 # Talks
 
+## 2021
+
+- [2021年はGoを始めよう！](https://talks.godoc.org/github.com/qt-luigi/talks/2021/gdgtokyo-ny-lt-2021.slide) in [GDG Tokyo New Year LT大会 2021](https://gdg-tokyo.connpass.com/event/201523/)
+
 ## 2020
 
 - [私のExam AZ-900: Microsoft Azure Fundamentals学習記](https://talks.godoc.org/github.com/qt-luigi/talks/2020/tokyo-jazug-night-30.slide) in [第30回 Tokyo Jazug Night (Online)](https://jazug.connpass.com/event/197139/)

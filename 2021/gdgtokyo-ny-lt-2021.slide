@@ -1,0 +1,184 @@
+2021年はGoを始めよう！
+GDG Tokyo New Year LT大会 2021
+4 Feb 2021
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image gdgtokyo-ny-lt-2021/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* The Go Programming Language
+
+オープンソース。シンプルで信頼性が高く、効率的なソフトウェアを簡単に構築可能。
+
+.image gdgtokyo-ny-lt-2021/img/golang-org.png 470 752
+
+.caption https://golang.org/
+
+* 今月はGo 1.16のリリース月！q@w@p
+
+Goは毎年2月と8月にリリース。日本のGoコミュニティでは毎回リリースを祝う「Go Release Party」を開催。（※ 画像は前回8月のGo 1.15 Release Partyの募集ページ）
+
+.image gdgtokyo-ny-lt-2021/img/go115party.png 430 688
+
+.caption https://gocon.connpass.com/event/186317/
+
+* そんなGoを始めましょう！
+
+* 公式サイトのドキュメント
+
+.image gdgtokyo-ny-lt-2021/img/document.png 520 832
+
+.caption https://golang.org/doc/
+
+* Goのダウンロードとインストール
+
+[Download and install]：[[https://golang.org/doc/install]]
+
+1. 公式サイトから、インストーラーをダウンロード。
+2. インストーラーを起動して、Goをインストール。
+3. コンソール画面にて、バージョン表示で動作を確認。
+
+  % go version
+  go version go1.16rc1 darwin/amd64
+
+* Goプログラミングを体験してみる
+
+[Getting started]：[[https://golang.org/doc/tutorial/getting-started]]
+
+1. Hello, worldをコーディング。
+
+  package main
+  
+  import "fmt"
+  
+  func main() {
+      fmt.Println("Hello, World!")
+  }
+
+2. goコマンドでコードを実行。
+
+  % go run .
+  Hello, World!
+
+3. 外部バッケージの検索、インポート、関数を呼び出す方法を学ぶ。
+
+* Goプログラミングの流れを学ぶ
+
+[Create a Go module]：[[https://golang.org/doc/tutorial/create-module]]
+
+- 少しボリュームがあるので、じっくりと。
+- 先に次ページの「A Tour of Go」を学ぶ手もある。
+
+1.別モジュールから呼び出せる関数を含む小さなモジュールの作成
+2.新しいモジュールをインポートして使用
+3.簡単なエラー処理を追加
+4.データをスライスで処理（Goの動的サイズの配列）
+5.キーと値のペアをマップに保存
+6.Goの組み込み単体テスト機能を使用したコードのテスト
+7.コードをローカルでコンパイルしてインストール
+
+* Goの基礎文法を学ぶ
+
+[A Tour of Go]：[[https://tour.golang.org/welcome/1]]（日本語サイトへの案内あり）
+
+- Webブラウザー上で、コードを動作させながら学習できる。
+- 難しいと感じた練習問題は、飛ばして進んでO.K.
+
+.image gdgtokyo-ny-lt-2021/img/a-tour-of-go.png 360 576
+
+.caption https://tour.golang.org/welcome/1
+
+* コード例
+
+* テキストファイル内の文字列を置換
+
+参考元：[[https://github.com/qt-luigi/replacer]]
+
+置換前のテキストファイル「sample.txt」の内容を表示
+
+  % cat sample.txt
+  The Golang Programming Language
+  Golang is an open source programming language.
+
+テキストファイル「sample.txt」内の文字列「Golang」を「Go」に置換
+
+  % ./replacer sample.txt Golang Go
+
+置換後のテキストファイル「sample.txt」の内容を表示
+
+  % cat sample.txt 
+  The Go Programming Language
+  Go is an open source programming language.
+
+* ソースコード（Go 1.16以降 ※1）
+
+  package main
+  
+  import (
+      "bytes"
+      "os"
+  )
+  
+  func main() {
+      src, err := os.ReadFile(os.Args[1])    // 第１引数（ファイル名）のファイルを読み込んでsrcに格納
+      if err != nil {
+          os.Exit(1)                         // exitコードを1でプログラムを終了
+      }
+
+      var oldStr []byte = []byte(os.Args[2]) // 第２引数（置換前文字列）をバイト配列に変換 [変数：型を指定]
+      newStr := []byte(os.Args[3])           // 第３引数（置換後文字列）をバイト配列に変換 [変数：型を推測]
+
+      data := bytes.Replace(src, oldStr, newStr, -1)               // src内の置換前後バイト配列を置換
+      if err := os.WriteFile(os.Args[1], data, 0666); err != nil { // srcの内容をファイルに上書き
+          os.Exit(1)
+      }
+  }
+
+※1 ReadFile()やWriteFile()の関数のパッケージが、ioutilからos推奨に変更。
+
+* スリープする
+
+参考元：[[https://github.com/qt-luigi/sleep]]
+
+カレントプロセスを、3秒間スリープする。
+
+  % ./sleep 3
+  （3秒後にコマンドプロンプトが表示される）
+
+範囲外の秒数を指定した場合は、エラー。
+
+  % ./sleep -1
+  sec range over [0-36400]
+
+* ソースコード
+
+  package main
+  
+  import (
+    // 省略（"fmt"、"os"、"strconv"、"time"）
+  )
+
+  const rangeErrMsg = "sec range over [0-36400]"
+  
+  func main() {
+      sec, err := strconv.Atoi(os.Args[1])         // 第１引数を文字列から整数値に変換してsecに格納
+      if err != nil {
+          fmt.Fprintln(os.Stderr, err)             // errを標準エラー出力
+          os.Exit(1)
+      }
+
+      if sec < 0 || sec > 36400 {                  // secの範囲チェック
+          fmt.Fprintln(os.Stderr, rangeErrMsg)     // rangeErrMsgを標準エラー出力
+          os.Exit(1)
+      }
+
+      time.Sleep(time.Duration(sec) * time.Second) // 「sec * 秒」の間、スリープ実行
+  }
