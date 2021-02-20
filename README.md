@@ -2,6 +2,7 @@
 
 ## 2021
 
+- [受験の予約は余裕を持って](https://talks.godoc.org/github.com/qt-luigi/talks/2021/azurerockstar3_2.slide) in [To be certified! MS認定資格あるあるLT大会!!](https://azurerockstar.connpass.com/event/202301/)
 - [私のExam AI-900: Microsoft Azure AI Fundamentals学習記](https://talks.godoc.org/github.com/qt-luigi/talks/2021/azurerockstar3_1.slide) in [To be certified! MS認定資格あるあるLT大会!!](https://azurerockstar.connpass.com/event/202301/)
 - [2021年はGoを始めよう！](https://talks.godoc.org/github.com/qt-luigi/talks/2021/gdgtokyo-ny-lt-2021.slide) in [GDG Tokyo New Year LT大会 2021](https://gdg-tokyo.connpass.com/event/201523/)
 - [GoでAzureのRDBMSサービスを操作](https://talks.godoc.org/github.com/qt-luigi/talks/2021/kyotogo16.slide) in [Kyoto.go remote #16 あけましてLT会](https://kyotogo.connpass.com/event/199400/)
