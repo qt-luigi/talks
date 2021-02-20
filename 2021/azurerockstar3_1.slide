@@ -1,0 +1,138 @@
+私のExam AI-900: Microsoft Azure AI Fundamentals学習記
+To be certified! MS認定資格あるあるLT大会!!
+20 Feb 2021
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image azurerockstar3_1/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* Exam AI-900: Microsoft Azure AI Fundamentals
+
+マイクロソフト認定「Azure AI Fundamentals」を取得するためのオンライン試験。
+
+.image azurerockstar3_1/img/ai-900.png 470 752
+
+.caption https://docs.microsoft.com/ja-jp/learn/certifications/exams/ai-900
+
+* 経済産業省：巣ごもりDX ステップ講座情報ナビ
+
+AI-900の他にAI-100、AZ-900と104が紹介されています。
+
+.image azurerockstar3_1/img/meti.png 470 752
+
+.caption https://www.meti.go.jp/policy/it_policy/jinzai/sugomori/073.html
+
+* 2020年10月：Microsoft Ignite Cloud Skills Challenge 2020に参加
+
+Azure学習として「Azure Apps & Infrastructure Challenge」に挑戦＆完了。
+
+- 特典：コレクションを完了すれば、無料の認定資格試験の資格が得られる。
+
+.image azurerockstar3_1/img/ignite-challenge.png 420 672
+
+.caption https://csc.docs.microsoft.com/ignite/registration
+
+* 2020年12月：受験を決意
+
+Igniteの無料試験の有効期限が 2021年1月31日 と迫っていた。
+
+12月前半にAZ-900を取得したので、次はAI-900？DP-900？
+
+[Azure Fundamentals]
+
+- [[https://docs.microsoft.com/ja-jp/learn/certifications/exams/az-900][AZ-900: Microsoft Azure Fundamentals]]
+- [[https://docs.microsoft.com/ja-jp/learn/certifications/exams/ai-900][AI-900: Microsoft Azure AI Fundamentals]]
+- [[https://docs.microsoft.com/ja-jp/learn/certifications/exams/dp-900][DP-900: Microsoft Azure Data Fundamentals]]
+
+基礎だし学習するなら新しい分野をと、AI-900を受験することに。
+
+* 資格試験一覧：Become Microsoft Certified
+
+.link https://aka.ms/TrainCertPoster
+
+.image azurerockstar3_1/img/TrainCertPoster.png 470 752
+
+* 2020年12月：All Around Azure: Developers Guide to AI を発見＆視聴
+
+2020年11月17日に日英仏語で開催されたマイクロソフトAI関連技術の入門イベント。
+Azure AI Fundamentals 認定資格への準拠が謳われている。
+
+.image azurerockstar3_1/img/AllAroundAzure.png 430 688
+
+.caption https://adevelopersguidetoai-japanese.splashthat.com/
+
+* 日本語セッションは「くらでべ」で視聴できます！
+
+.link https://www.youtube.com/watch?v=rjtt6y_1Nak
+
+.image azurerockstar3_1/img/kuradebe.png 470 752
+
+* 2020年12月〜2021年2月：試験に関するMicrosoft Learnを受講
+
+実質テキストとなるものは試験ページのラーニングパスのみ。
+受験までに10周近く、繰り返しました。
+
+.image azurerockstar3_1/img/ai-900-path.png 440 450
+
+.caption https://docs.microsoft.com/ja-jp/learn/certifications/exams/ai-900
+
+* 2021年2月：受験
+
+テストセンターを制すものは試験を制す!! 試験会場にて受験。
+
+- 2021年2月9日：Azure AI Fundamentals 取得
+
+.image azurerockstar3_1/img/aaclaim.png 420 672
+
+.caption https://www.youracclaim.com/badges/b03bb786-54a9-4857-b5c5-c3de7d7d7c3f
+
+* 学習のヒント
+
+* Microsoft 資格 AI-900 / DP-100 勉強法 - Qiita
+
+必読。マイクロソフト社員のJunichi Annoさんの記事。勘所やヒントが満載。
+
+.link https://qiita.com/junichia/items/0f13dd5d5f19081be2b5
+
+.image azurerockstar3_1/img/qiita.png 450 720
+
+* 分類とクラスタリングの違いがよくわからず...
+
+ラーニングパスの後に「機械学習アルゴリズム」ページを読んだら理解できました。
+
+.link https://azure.microsoft.com/ja-jp/overview/machine-learning-algorithms/
+
+.image azurerockstar3_1/img/algorithms.png 450 720
+
+* 混同行列の理解がなかなか進まず...
+
+インターネットでよく見かける図とラーニングパスの図とで軸が逆なのが原因では!?
+
+- インターネット：縦軸が「実際の結果」、横軸が「機械学習の予測」
+- ラーニングパス：縦軸が「機械学習の予測」、横軸が「実際の結果」
+
+.image azurerockstar3_1/img/confusion-matrix.png 232 264
+
+.caption 「分類モデルを評価する - Learn | Microsoft Docs」の混同行列の図
+
+ラーニングパスに合わせた軸で検索した結果で学習することで、理解が捗りました。
+
+* ラーニングパスをしゃぶり尽くせ！
+
+試験サイトのラーニングパス学習で、何とか行けそう。
+
+- 中の動画も英語ながら字幕をONにして一度はちゃんと見ておいた方が良いかも。
+
+ラーニングパスの量に反比例して、Conversational AIの問いが多かったような。
+
+ラーニングパスで英語表記が残っているものは、それも覚えておくと良いかも。
+
+- 「Azure Machine Learning を使用したコードなしの予測モデルの作成」とか
