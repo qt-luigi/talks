@@ -1,0 +1,125 @@
+卒業Goは何してた？
+Gopher道場 同窓会2021
+10 Mar 2021
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image gopherdojo_dosokai2021/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* はじめに
+
+* ちょ、おま、何年よ？
+
+2020年7月5日に入門した（末広がりの）8期生です！
+
+- Gopher道場#8
+
+.link https://gopherdojo.connpass.com/event/178532/
+
+同年同月31日に晴れて卒業できました！
+
+- Gopher道場#8 LT大会&卒業式
+
+.link https://gopherdojo.connpass.com/event/183672/
+
+q＠w＠p「俺ら、動画世代っスよ！ポンポーン！」
+
+- 「Gopher道場 自習室」で視聴できる動画に参加しながら受講しました。
+
+* 卒業Goは何してた？
+
+* Goはと言えば
+
+2020年8月 Go 1.15 リリース
+
+- リンカーの改善
+- 複数CPUコアでの小さいオブジェクトの割り当ての改善
+- X.509 CommonNameの無効化
+- 標準パッケージ更新（追加：time/tzdata）
+
+2021年2月 Go 1.16 リリース
+
+- 静的ファイル組み込み（//go:embed）
+- Go modules デフォルト化（GO111MODULE=on）
+- 標準パッケージ更新（追加：io/fs、非推奨：io/ioutil、crypto/dsa）
+
+* いわゆるGenericsが始動
+
+- 2021年1月 ドラフトデザイン「Type Parameters」公開。
+
+.link https://go.googlesource.com/proposal/+/refs/heads/master/design/go2draft-type-parameters.md
+
+- 2021年2月 so accepted.
+
+.link https://github.com/golang/go/issues/43651#issuecomment-776944155
+
+q@w@p「Go 1.18での最初の実装を目指して」
+
+* 一方、私と言えば
+
+Go、できてません！(T_T)
+
+2020年8月 - 2020年11月：業務が忙しかった。
+
+- 初のTypeScriptで、Webフロントエンド開発
+
+2021年12月 - 2021年2月：Microsoft資格の取得
+
+- 試験 AZ-900: Microsoft Azure Fundamentals
+- 試験 AI-900: Microsoft Azure AI Fundamentals
+
+q@w@p「言い訳は、いいわけよ」
+
+* そんな中でのGoな活動
+
+* Azure SDK for Go いじり
+
+Microsoft AzureをGoで扱うためのSDK。サンプルコードを試している段階。
+
+.link https://qiita.com/tags/azuregojp
+
+q@w@p「唯一のGoコーディング時間」
+
+.image gopherdojo_dosokai2021/img/azuregojp.png 380 608
+
+* Goでの登壇（Goコミュニティ）
+
+- Go 1.15 Release Party in Japan「What's new Go 1.15?」
+- Shizuoka.go Vol.16「Goでイケる！Azureサービスの紹介」
+- Umeda.go 2020 Autumn Online「Goをやり直そう！」
+- Kyoto.go remote #16 あけましてLT会「GoでAzureのRDBMSサービスを操作」
+
+q@w@p「他にGDG、ABCD、Azure、地元などでいくつか」
+
+* Goイベントへの参加
+
+- 『プログラミング言語Go』オンライン読書会
+- Humans (Women) Who Go Tokyo
+- Go Conference '20 in Autumn SENDAI
+- Software Design 1月号 Goプログラミングスキルをレベルアップ執筆者座談会
+- Go Language Specification輪読会 / 入門Go言語仕様輪読会
+- Go 1.16リリース＆ジェネリクスプロポーザル承認祝パーティ
+
+q@w@p「せめてインプットだけでも」
+
+* オンライン開催ならでは
+
+地方民としては大助かり。
+
+- 東京でしか開催されていなかったイベントにも参加可能に。
+- もとい、全国各地で開催されているイベントに参加可能に。
+
+主催側にもメリットが。
+
+- スピーカーを招待しやすい＆集客アップが見込める
+- 新規参加者によるコミュニティの活性化。
+
+q@w@p「おかげさまで本日私もこの場にいられます」
