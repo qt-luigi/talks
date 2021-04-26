@@ -1,0 +1,640 @@
+Learn with Azure SDK for Go for Web client implementation in go
+Go Conference 2021 Spring
+24 Apr 2021
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image gocon2021spring/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* Azureについて
+
+* Microsoft Azure
+
+Microsft社が提供するパブリッククラウドサービス。
+
+.image gocon2021spring/img/azure.png 460 720
+
+.caption https://azure.microsoft.com/
+
+* Azureへの接続方法
+
+- GUI : Azure Portal
+- CUI : Azure CLI, Azure PowerShell, Azure Cloud Shell
+- IDE : Visual Studio / Code
+- API : Azure API Management, Azure SDK
+
+* Azure SDK
+
+Azureサービスをプログラミングで管理・操作するためのライブラリー
+
+.image gocon2021spring/img/azuresdk.png 460 720
+
+.caption https://azure.microsoft.com/ja-jp/downloads/
+
+* Azure SDKs
+
+リリース情報やSDK作成ガイドラインが提供されている。
+
+.image gocon2021spring/img/azuresdks.png 460 720
+
+.caption https://azure.github.io/azure-sdk/releases/latest/index.html
+
+* Azure構成図
+
+Clients
+
+↓
+
+Azure Frontend
+
+- Azure REST API
+- Azure Resource Manager
+- Azure Active Directory
+
+↓
+
+Azure Services
+
+* Azure SDKを作るモノ
+
+* Azure/azure-rest-api-specs
+
+AzureのREST API 仕様書。OpenAPI形式。
+
+.image gocon2021spring/img/azure-rest-api-specs.png 460 720
+
+.caption https://github.com/Azure/azure-rest-api-specs
+
+* Azure/autorest
+
+OpenAPI 仕様書からクライアントコードを生成する汎用ツール。
+
+Azure/azure-rest-api-specsから各言語のAzure SDKを生成する。
+
+.image gocon2021spring/img/autorest.png 410 656
+
+.caption https://github.com/Azure/autorest
+
+* Azure/autorest.go
+
+autorestでSDKを生成する際に、Azure/Go固有の機能を追加する。
+
+.image gocon2021spring/img/autorest-go.png 460 720
+
+.caption https://github.com/Azure/autorest.go
+
+* Azure SDKを使うモノ（Go製）
+
+* Azure/go-autorest
+
+Azureへの認証やAzure/Goの型変換などを行うパッケージ。goroutineで並行アクセス。
+
+.image gocon2021spring/img/go-autorest.png 460 720
+
+.caption https://github.com/Azure/go-autorest
+
+* Azure/azure-sdk-for-go
+
+GoでAzureサービスを管理・操作するためのパッケージ。
+
+.image gocon2021spring/img/azure-sdk-for-go.png 460 720
+
+.caption https://github.com/Azure/azure-sdk-for-go
+
+* Azure/azure-sdk-for-go 以外
+
+個別で使う/使いやすいサービスは別パッケージ化。
+
+Storage系
+
+- Azure/azure-storage-blob-go
+- Azure/azure-storage-file-go
+- Azure/azure-storage-queue-go
+
+Bus/Hub/Insight系
+
+- Azure/azure-service-bus-go
+- Azure/azure-event-hubs-go
+- Microsoft/ApplicationInsights-go
+
+* Azure-Samples/azure-sdk-for-go-samples
+
+GoでAzureサービスを扱うためのサンプルコード集。
+
+.image gocon2021spring/img/azure-sdk-for-go-samples.png 460 720
+
+.caption https://github.com/Azure-Samples/azure-sdk-for-go-samples
+
+* Azure SDK for Goについて
+
+* ライセンス
+
+- Apache License, Version 2.0 から MIT License に変更。
+- 全てのOSSコミュニティとの互換性を保つため。
+- 2021年4月3日リリースのv53.0.0から。
+
+.link https://github.com/Azure/azure-sdk-for-go/issues/14412
+
+* 依存関係管理
+
+- 当初からdepを使用。
+- Go 1.16でのデフォルト化で、API部分のGo Modulesへの移行を調整を開始。
+- API以外の部分ではいくつか導入済。
+
+.link https://github.com/Azure/azure-sdk-for-go/issues/14387
+
+* パッケージ構成
+
+安定版と開発版の二部構成。
+
+- services (安定版) : 通常はこちらを使用する。
+- profiles (開発版) : 他のAzureシステムとの互換性、最新版、プレビュー版。
+
+  github.com/Azure/azure-sdk-for-go/
+
+    services/
+      aad/mgmt/2017-04-01/aad/
+      ...
+      windowsiot/mgmt/2019-06-01/windowsiot/
+
+    profiles/
+      2017-03-09/
+      ...
+      2020-09-01/
+      latest/
+      preview/
+
+* バージョン管理 : SDK
+
+- SemVer 形式 (最新版 : v53.4.0)
+
+- 毎月末にメジャーバージョンがバンプアップ (今月末 : v54.0.0)
+
+.image gocon2021spring/img/releases.png 410 656
+
+.caption https://github.com/Azure/azure-sdk-for-go/releases
+
+* バージョン管理 : API
+
+- YYYY-MM-DD 形式
+
+  import (
+      "github.com/Azure/azure-sdk-for-go/services/compute/mgmt/2017-12-01/compute"
+      "github.com/Azure/azure-sdk-for-go/services/network/mgmt/2017-09-01/network"
+  )
+
+- Go Modules化で想定される形式（例：v53）
+
+  import (
+      "github.com/Azure/azure-sdk-for-go/v53/services/compute/mgmt/compute"
+      "github.com/Azure/azure-sdk-for-go/v53/services/network/mgmt/network"
+  )
+
+* Azure SDK for Goの機能
+
+* APIサーバーへのアクセス
+
+1. services パッケージから機能をインポート。
+
+  import "github.com/Azure/azure-sdk-for-go/services/network/mgmt/2017-09-01/network"
+
+2. 機能の New*Client() 関数でクライアントを作成。
+
+  c := network.NewVirtualNetworksClient(...)
+
+3. クライアントに認証情報を設定。
+
+	authorizer, err := auth.NewAuthorizerFromEnvironment()
+	if err == nil {
+		c.Authorizer = authorizer
+	}
+
+4. クライアントにて各APIメソッドを呼び出す。
+
+  res, err := c.CreateOrUpdate(...)
+
+5. レスポンス(res)とエラー(err)を処理。
+
+* 認証 : 多彩な種類と方法
+
+種類
+
+- X.509 証明書
+- クライアント資格情報
+- Azure リソースのマネージド ID
+- デバイス トークン
+- ユーザー名/パスワード
+
+方法
+
+- 環境変数
+- 承認ファイル
+- 認証クライアント
+- デバイス トークン
+
+* ロギング
+
+環境変数で制御
+
+- ログメッセージの詳細: AZURE_GO_SDK_LOG_LEVEL
+
+  INFO  : メッセージボディなし
+  DEBUG : メッセージボディあり
+
+- ログの出力先: AZURE_GO_SDK_LOG_FILE
+
+  指定なし : 標準エラーに出力
+  指定あり : 指定されたファイルに出力
+
+* トレースとメトリック
+
+Azure/go-autorestの機能で OpenCensus をサポート。
+
+  import _ "github.com/Azure/go-autorest/tracing/opencensus"
+
+census-instrumentation/opencensus-goを使って実装可能。
+
+参考情報:
+
+現在のOpenCensusはOpenTracingと統合されてOpenTelemetryに。いずれはこっち？
+
+- OpenTelemetryについての現状まとめ （2020年6月版） - YAMAGUCHI::weblog
+
+.link https://ymotongpoo.hatenablog.com/entry/2020/06/01/164221
+
+* 再試行ポリシー
+
+リクエストに失敗した時の再試行ポリシーを指定できる。
+
+同期操作
+
+- RetryAttempts: 失敗したリクエストを再試行する回数
+- RetryDuration: 再試行間の待機時間
+
+非同期操作
+
+- PollingDelay: ポーリングリクエスト間の待機時間
+- PollingDuration: タイムアウトする前に非同期リクエストをポーリングする合計時間
+
+* 自分で実装するとなると？
+
+* まずはやってみようの心意気で
+
+APIサーバーへのアクセス
+
+- 何はともあれnet/httpパッケージ（今回はインスタンス化は間に合わず）。
+
+認証
+
+- サーバー要件に合わせる必要があるので今回はパス。
+
+ロギング
+
+- まずはlogパッケージで。
+
+トレースとメトリック
+
+- すぐに自作とかは難しそうなので今回はパス。
+
+再試行ポリシー
+
+- チョット違うかもだけどcontextパッケージで何か。
+
+* APIサーバー（単純なJSONを返却）: server.go
+
+  package main
+    
+  import (
+          "fmt"
+          "net/http"
+          "time"
+  )
+
+  const json = `[
+    { "code": 101, "name": "AAAAA" },
+    { "code": 202, "name": "BBBBB" }
+  ]`
+
+  func handler(w http.ResponseWriter, r *http.Request) {
+          time.Sleep(2 * time.Second)
+          fmt.Fprintln(w, json)
+  }
+
+  func main() {
+          http.HandleFunc("/", handler)
+          http.ListenAndServe(":8080", nil)
+  }
+
+* APIサーバーへのアクセス
+
+* client_http.go (1/2)
+
+  package main
+
+  import (
+          "fmt"
+          "io"
+          "net/http"
+          "os"
+  )
+
+  const url = "http://127.0.0.1:8080"
+
+  func main() {
+          if err := get(url); err != nil {
+                  fmt.Fprintln(os.Stderr, err)
+                  os.Exit(1)
+          }
+  }
+
+* client_http.go (2/2)
+
+  func get(url string) error {
+          resp, err := http.Get(url)
+          if err != nil {
+                  return err
+          }
+          defer resp.Body.Close()
+
+          body, err := io.ReadAll(resp.Body)
+          if err != nil {
+                  return err
+          }
+
+          fmt.Println(string(body))
+
+          return nil
+  }
+
+* 実行結果
+
+  % go run client_http.go 
+  [
+    { "code": 101, "name": "AAAAA" },
+    { "code": 202, "name": "BBBBB" }
+  ]
+
+* ロギング
+
+* client_log.go (1/2)
+
+  package main
+  
+  // "fmt"と"os"を削除して"log"を追加
+  import (
+          "io"
+          "log"
+          "net/http"
+  )
+
+  const url = "http://127.0.0.1:8080"
+
+  func main() {
+          if err := get(url); err != nil {
+                  // エラーメッセージをログ形式で標準エラー出力にしてEXITコード1でプログラムを終了
+                  log.Fatal(err)
+          }
+  }
+
+* client_log.go (2/2)
+
+  func get(url string) error {
+          resp, err := http.Get(url)
+          if err != nil {
+                  return err
+          }
+          defer resp.Body.Close()
+
+          body, err := io.ReadAll(resp.Body)
+          if err != nil {
+                  return err
+          }
+
+          // ボディの内容をログ形式で標準出力
+          log.Println(string(body))
+
+          return nil
+  }
+
+* 実行結果
+
+  % go run client_log.go 
+  2021/04/23 20:44:23 [
+    { "code": 101, "name": "AAAAA" },
+    { "code": 202, "name": "BBBBB" }
+  ]
+
+* 再試行ポリシー
+
+* client_context.go (1/2)
+
+  package main
+  
+  // "context"と"time"を追加
+  import (
+          "context"
+          "io"
+          "log"
+          "net/http"
+          "time"
+  )
+
+  const url = "http://127.0.0.1:8080"
+
+  func main() {
+          // タイムアウト待ち時間(秒)
+          wtm := 3
+
+          // 引数にコンテキストと待ち時間を追加
+          if err := get(context.Background(), url, wtm); err != nil {
+                  log.Fatal(err)
+          }
+  }
+
+* client_context.go (2/2)
+
+  // 引数にコンテキストと待ち時間を追加
+  func get(ctx context.Context, url string, wtm int) error {
+          // コンテキストにてタイムアウト待ち時間を設定
+          ctx, cancel := context.WithTimeout(ctx, time.Duration(wtm)*time.Second)
+          defer cancel()
+
+          // コンテキストを指定してリクエストを生成（HTTPメソッドはGET）
+          req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
+          if err != nil {
+                  return err
+          }
+
+          // リクエストを元へ通信
+          resp, err := http.DefaultClient.Do(req)
+          if err != nil {
+                  return err
+          }
+          defer resp.Body.Close()
+
+          ...
+  }
+
+* 実行結果
+
+  % go run client_context.go
+  2021/04/23 20:46:46 [
+    { "code": 101, "name": "AAAAA" },
+    { "code": 202, "name": "BBBBB" }
+  ]
+
+* 環境変数から値を取得
+
+* client_env.go (1/2)
+
+  package main
+
+  // "os"と"strconv"を追加
+  import (
+          "context"
+          "io"
+          "log"
+          "net/http"
+          "os"
+          "strconv"
+          "time"
+  )
+
+  const url = "http://127.0.0.1:8080"
+
+* client_env.go (2/2)
+
+  func main() {
+          // 環境変数 WAIT_TIME からタイムアウト待ち時間を取得
+          t := os.Getenv("WAIT_TIME")
+          if t == "" {
+                  log.Fatal("No setting WAIT_TIME")
+          }
+
+          // 取得した待ち時間をint型に変換
+          wtm, err := strconv.Atoi(t)
+          if err != nil {
+                  log.Fatal(err)
+          }
+
+          if err := get(context.Background(), url, wtm); err != nil {
+                  log.Fatal(err)
+          }
+  }
+
+  func get(ctx context.Context, url string, wtm int) error {
+    ...
+  }
+
+* 実行結果
+
+  % go run client_env.go 
+  2021/04/23 20:55:50 No setting WAIT_TIME
+  exit status 1
+
+環境変数 WAIT_TIME を設定
+
+  % export WAIT_TIME=1  
+  % go run client_env.go
+  2021/04/23 20:59:17 Get "http://127.0.0.1:8080": context deadline exceeded
+  exit status 1
+
+  % export WAIT_TIME=2  
+  % go run client_env.go
+  2021/04/23 20:59:30 Get "http://127.0.0.1:8080": context deadline exceeded
+  exit status 1
+
+  % export WAIT_TIME=3  
+  % go run client_env.go
+  2021/04/23 20:59:51 [
+    { "code": 101, "name": "AAAAA" },
+    { "code": 202, "name": "BBBBB" }
+  ]
+
+* 受信したJSONを扱う
+
+* client_json.go (1/2)
+
+  package main
+
+  // "encoding/json"と"fmt"を追加
+  import (
+          "context"
+          "encoding/json"
+          "fmt"
+          "io"
+          "log"
+          "net/http"
+          "os"
+          "strconv"
+          "time"
+  )
+
+  const url = "http://127.0.0.1:8080"
+
+  // ユーザー構造体
+  type User struct {
+          Code int    `json:"code"`
+          Name string `json:"name"`
+  }
+
+* client_json.go (2/2)
+
+  func main() {
+          ...
+  }
+
+  func get(ctx context.Context, url string, wtm int) error {
+          ...
+
+          log.Println(string(body))
+
+          // JSON文字列を構造体スライスに変換
+          var users []User
+          if err := json.Unmarshal(body, &users); err != nil {
+                  return err
+          }
+
+          // 構造体スライスの内容を標準出力
+          for _, v := range users {
+                  fmt.Println(v.Code, v.Name)
+          }
+
+          return nil
+  }
+
+* 実行結果
+
+  % go run client_json.go
+  2021/04/23 21:09:33 [
+    { "code": 101, "name": "AAAAA" },
+    { "code": 202, "name": "BBBBB" }
+  ]
+
+  101 AAAAA
+  202 BBBBB
+
+* その他に考慮すべき点
+
+* セキュリティ
+
+- 通信経路の暗号化（HTTPS, QUICなど）
+- 認証情報の取り扱い
+
+* 実装形態の多様性
+
+- サーバーマシン
+- クライアントPC
+
+- Webブラウザー（WASM, GopherJS）
+- モバイル端末（gomobile）
+
+- マイクロサービス
