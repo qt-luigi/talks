@@ -1,0 +1,360 @@
+Goについて
+はじめてのGo言語教室
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image the-first-go-room-about-go/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* Goとは？
+
+* The Go Programming Language
+
+"Goはオープンソースのプログラミング言語であり、シンプルで信頼性が高く、効率的なソフトウェアを簡単に構築できます。"
+
+.image the-first-go-room-about-go/img/golang-org.png 440 704
+
+.caption [[https://golang.org/]]
+
+* Gopher（ごーふぁー）
+
+1. 公式マスコットキャラクター。著者はRenée Frenchさん。
+　CC BY 3.0ライセンスのため、著者名の表記で加工自由＆商用利用可能。
+
+2. Goを書く人や使う人の愛称。初学者はBaby Gopherとも言われる。
+
+.image the-first-go-room-about-go/img/modelsheet.jpg 380 676
+
+.caption [[https://blog.golang.org/gopher]]
+
+* 簡単な歴史
+
+毎年2月と8月にリリースされる。
+
+2007年9月20日：Google社内で新しいプログラミング言語の話し合いが始まる。
+
+- Rob Pike, Ken Thompson, Robert Griesemerの3名
+
+2007年9月25日：Rob Pike氏から"Go"という名前が提案される。
+
+2009年11月10日：オープンソースプロジェクトとして公開（Goの誕生日）
+
+2012年3月28日：[1.0] メジャーバージョンGo 1リリース。
+
+- Windows版はコミュニティによって開発された。OSS万歳！
+
+2015年8月19日：[1.5] Go自身がGoで書かれる（セルフホスティング）
+
+…
+
+2021年2月16日：[1.16] モジュール機能が正式化（現時点で最新版）
+
+* 特徴
+
+* 強い静的型付けコンパイル形式の汎用プログラミング言語
+
+強い：値に対して暗黙の型変換を行わない。
+
+- 20(数値型)＋"21"(文字型)を、勝手に 41 や "41" や 2021 や "2021" にしない。
+
+静的型付け：プログラム実行前に型が決まっている。
+
+- 文字型で宣言した変数に数値は代入できない。
+
+コンパイル形式：ソースコードをコンピューターが実行しやすい形に変換。
+
+- ソースコードを逐次解釈して実行するのがインタープリター形式。
+
+汎用プログラミング言語：様々な分野で使えるプログラミング言語。
+
+- クラウド専用、サーバーサイドのみ、Webアプリだけ、とかではない。
+
+メリット：
+
+プログラム実行前に人的ミスを防げて、実行速度が速くて、様々な用途に使える。
+
+* ガベージコレクターを搭載
+
+メモリの確保や解放をランタイムが行う仕組み。
+
+GCによる処理の停止時間は、マイクロ秒。
+
+メリット：
+
+メモリの確保や解放に関するデザインやコーディングが不要。
+
+- 人的要因によるメモリリーク（確保され続ける問題）を防げる。
+
+* 実行バイナリーを生成
+
+プロダクションにおけるアプリケーションの差し替えが容易。
+
+- 配布が容易（ファイルひとつ）
+- 停止時間が短い（コピぺでO.K.）
+
+事前のセットアップ作業が不要。
+
+- VM(仮想マシン)や実行ランタイムなどのインストールやパラメータ設定が不要。
+
+ネイティブコードなので、実行速度が速い。
+
+- [高速] GCなしネイティブ > Go > VM/実行ランライム > インタープリター [低速]
+
+デメリット：
+
+実行(GC)ランタイムが含まれるため、ファイルサイズが大きくなる。
+
+* コンパイルが速い
+
+Goが大事にしている部分のひとつ。
+
+当時Google社では巨大なC/C++プロダクトのコンパイル時間の遅さに悩まされていた。
+
+それらを解消すべく、Goが設計＆誕生することに。
+
+* マルチCPU/マルチコア対応
+
+Goのウリとされている部分のひとつ。
+
+CPUは複数化＆マルチコア化しており、それらを生かせるようコーディングしやすくするために、CSPをベースとしたgoroutine/channel機構を実装。
+
+- goroutine：関数を並列実行させる仕組み。
+- channel：goroutine間でデータを送受信させる仕組み。
+
+メリット：
+
+goroutineは軽量のため数百個の関数を同時に並列実行させても問題ない。
+
+いわゆるスレッド間でデータをやりとりする仕組みがchannelとして標準装備。
+
+* マルチプラットフォーム対応
+
+公式インストーラーとしてはLinux, macOS, Windows, FreeBSD用が用意されている。
+
+  $GOOS         $GOARCH
+  ------------  ------------------------
+  aix           ppc64
+  android       386,amd64,arm,arm64
+  darwin        amd64,arm64
+  dragonfly     amd64
+  freebsd       386,amd64,arm
+  illumos       amd64
+  ios           arm64
+  js            wasm
+  linux         386,amd64,arm,arm64,ppc64,ppc64le,mips,mipsle,mips64,mips64le,riscv64,s390x
+  netbsd        386,amd64,arm
+  openbsd       386,amd64,arm,arm64
+  plan9         386,amd64,arm
+  solaris       amd64
+  windows       386,amd64
+
+.caption https://golang.org/doc/install/source#environment
+
+* クロスコンパイルが可能
+
+同じソースファイルから異なるアーキテクチャーの実行バイバリーを生成する仕組み。
+
+マシンパワーを考慮してRaspberry PI (linux/arm64)のようなシングルボートコンピューター用の実行バイナリーをデスクトップ機 (windows/amd64)で作成する、など。
+
+パブリッククラウド上のLinux仮想マシンインスタンスで、配布用の各OS向け（Linux, macOS, Windows, FreeBSDなど）の実行バイナリーを生成して用意する、など。
+
+メリット：
+
+実行バイナリー作成のために各OSのマシンを用意しなくて良い。
+
+* 文法がシンプル
+
+予約語は25個。
+
+  break        default      func         interface    select
+  case         defer        go           map          struct
+  chan         else         goto         package      switch
+  const        fallthrough  if           range        type
+  continue     for          import       return       var
+
+クラスや継承なし。
+
+例外処理（try-catch句）なし。
+
+条件(三項)演算子なし。
+
+反復はfor文のみ。
+
+仕様書もコンパクト（らしい）
+
+.link https://golang.org/ref/spec
+
+* ツールチェーンが充実
+
+標準機能で出来ること（抜粋）
+
+go build：ソースコードのコンパイル。
+
+go doc：ソースコードのコメントからリファレンスを作成。
+
+go fmt：ソースコードを所定のフォーマットに整形。
+
+go get：公開リポジトリー（GitHubなど）から外部パッケージを取得。
+
+go run：ソースコードの実行。
+
+go test：ユニットテストの実行、ベンチマークの取得。
+
+go tool pprof：プロファイリング。
+
+go vet：疑わしいコーディングのレポートを出力。
+
+*  Go 1 互換性
+
+バージョン1の間は、以前のバージョンで書かれたソースコードは変更なしで上位のバージョンでコンパイルできることを保証している。
+
+Go 2の議論が始まっているが、機能追加は数個程度としたり、必要なら移行ツールを用意するなど、バージョンアップによる弊害を極力抑える対策がとられている。
+
+メリット：
+
+プログラミング言語のバージョンアップに伴うソースコードの書き換えコストがゼロ。
+
+* cgo
+
+CやC++で書かれたコードやライブラリーをGoで呼び出す仕組み。
+
+メリット：
+
+C/C++の資産流用が可能。
+
+デメリット：
+
+並列処理の仕組みが使えない。
+
+GCが使えないため、自力でメモリの確保と解放を行う必要がある。
+
+C/C++のソースコードを含めてコンパイルする場合、時間がかかる。
+
+* 何ができるの？
+
+* 作成できるもの
+
+コマンドラインツール
+
+- コマンドラインシェル上で動作する実行コマンドを作成。
+
+共有ライブラリー
+
+- WindowsのDLLファイルやLinuxのsoファイルを生成。
+
+Webアプリケーション
+
+- HTTPサーバー/クライアントを作成。
+
+WebAssembly
+
+- Webブラウザー上で動作する実行バイナリーを生成。
+
+モバイルアプリケーション
+
+- Andorid（Go 1.4）とiOS（Go 1.5）の実行ライブラリーを作成。
+
+* 使われ処は？
+
+* 使われ処
+
+クラウド
+
+- コンテナー（DockerやKubernetes）、仮想イメージ、インフラ管理、など。
+
+マイクロサービス
+
+- ワンバイナリーの扱いやすさ、Web機能の実装のしやすさ、gRPC対応、など。
+
+ブロックチェーン
+
+- 暗号化(crypto)機能の実装のしやすさ。イーサリアムのクライアントはGo製。
+
+組み込みシステム
+
+- 低レイヤー対応。ロボティクスフレームワーク（Gobot：ラズパイやドローンなど）
+
+ゲーム
+
+- 2Dゲームフレームワーク（ebiten）、バックグラウンド処理、など。
+
+* どうやって学ぶの？
+
+* インターネットで学ぶ
+
+公式サイトのGoスタートアップ集。
+
+- Getting started - Documentation - The Go Programming Language
+
+.link https://golang.org/doc/#getting-started
+
+Microsoft社のオンライン学習サイトのGo入門コンテンツ。
+
+- Go の最初の手順 - Learn | Microsoft Docs
+
+.link https://docs.microsoft.com/ja-jp/learn/paths/go-first-steps/
+
+tenntennさん主催のGo自習室。
+
+- Gopher道場 自習室 - Gopher道場
+
+.link https://gopherdojo.org/studyroom/
+
+* 書籍で学ぶ
+
+ここでは物理本を紹介。
+
+2021年3月6日：Go言語 ハンズオン
+2020年10月29日：たった1日で基本が身に付く! Go言語 超入門
+2020年4月1日：やさしいGo言語入門
+2019年8月1日：改訂2版 みんなのGo言語
+2019年5月13日：入門Goプログラミング
+2018年10月26日：Go言語による並行処理
+2018年6月16日：Go言語でつくるインタプリタ
+2017年10月23日：Goならわかるシステムプログラミング
+2017年3月17日：Goプログラミング実践入門
+2016年6月20日：プログラミング言語Go
+2016年4月15日：スターティングGo言語
+2016年1月22日：Go言語によるWebアプリケーション開発
+2015年7月17日：改訂2版 基礎からわかる Go言語
+
+* Goイベントに参加
+
+昨今はオンライン開催が主流なので、日本全国どこからでも！
+
+Gophers Japan
+
+- Go Conference, Go Release Party, など
+
+企業主催
+
+- CA, DeNA, Gunosy, LINE, mercari, Wantedly, など
+
+有志主催
+
+- 東京：Women Who Go Tokyo, golang.tokyo, ほか多数！
+- 地方：Sendai, Kyoto, Umeda, Shimane, Okayama, Fukuoka, Okinawa, 香川Go言語, など
+- 読会：プログラミング言語Go読書会, Go Language Specification 輪読会, 横浜Go読書会, など
+
+* さいごに
+
+* 楽しみ方は色々！q@w@p
+
+Goで楽しむ
+
+- サービスやアプリの作成、ライブラリーやフレームワークの開発、など。
+
+Goを楽しむ
+
+- 静的解析、仕様書、コントリビュート、など。
+
+周りで楽しむ
+
+- 同人誌、あみぐるみ、イベント開催、など。
