@@ -28,7 +28,7 @@ Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
 1. 公式マスコットキャラクター。著者はRenée Frenchさん。
 　CC BY 3.0ライセンスのため、著者名の表記で加工自由＆商用利用可能。
 
-2. Goを書く人や使う人の愛称。初学者はBaby Gopherとも言われる。
+2. Goを書く人や使う人の愛称。
 
 .image the-first-go-room-about-go/img/modelsheet.jpg 380 676
 
@@ -287,7 +287,7 @@ WebAssembly
 
 * どうやって学ぶの？
 
-* インターネットで学ぶ
+* インターネットで学ぶ (テキスト)
 
 公式サイトのGoスタートアップ集。
 
@@ -301,11 +301,20 @@ Microsoft社のオンライン学習サイトのGo入門コンテンツ。
 
 .link https://docs.microsoft.com/ja-jp/learn/paths/go-first-steps/
 
+* インターネットで学ぶ (動画)
+
+Shizuoka.goさんが「A Tour of Go」を解説。
+
+- A Tour of Go - YouTube
+
+.link https://www.youtube.com/playlist?list=PL6fOO2RfONsU7E_Z80mPs-UYc437tLTkl
+
 tenntennさん主催のGo自習室。
 
 - Gopher道場 自習室 - Gopher道場
 
 .link https://gopherdojo.org/studyroom/
+
 
 * 書籍で学ぶ
 
