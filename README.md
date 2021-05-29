@@ -1,5 +1,10 @@
 # Talks
 
+## はじめてのGo言語教室
+
+- [Goについて](https://talks.godoc.org/github.com/qt-luigi/talks/2021/the-first-go-room-about-go.slide#1)
+- [Go入門ハンズオン [基礎編]](https://talks.godoc.org/github.com/qt-luigi/talks/2021/the-first-go-room-basic.slide#1)
+
 ## 2021
 
 - [Azure SDK for Goで学ぶGoでのWebクライアント実装](https://talks.godoc.org/github.com/qt-luigi/talks/2021/gocon2021spring.slide) in [Go Conference 2021 Spring](https://gocon.connpass.com/event/208896/)
