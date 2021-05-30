@@ -1,0 +1,424 @@
+私の趣味Tech活動報告
+赤煉瓦ライトニングトーク（Akarenga.LT）第9回
+29 May 2021
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image akarenga-lt-9/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* はじめに
+
+* きっかけ
+
+2021年4月7日 田中 聡至(@ebiflyyyyyyyy)さんから、登壇のお声掛けを頂きました。
+
+- GoかAzureで
+- これから何かを始めたい人向けに
+- ラジオトークの感じで
+
+* 何をお話しする？
+
+身の上話となりますが、
+
+- 私の趣味Techである「Go」と「GCP」と「Flutter」と「Azure」にて
+- これらを始めたキッカケや活動内容をご報告させて頂くことで
+- これから何かを始めたい人向けに
+
+何らかのヒントをご提供できましたら、幸いです。
+
+* q＠w＠p Go
+
+* Goとは？
+
+Google社発のオープンソースの静的型付けコンパイル形式の汎用プログラミング言語。
+
+.image akarenga-lt-9/img/golang-org.png 450 720
+
+.caption [[https://golang.org/]]
+
+* きっかけ
+
+2012年11月23日 岡山で開催された「Appengine ja night Okayama」に参加。
+
+- 懇親会にて、ゲスト講師でGDEの小川信一(@shin1ogawa)さんと主催者の横山隆司(@ttyokoyama)さんとの会話の中で初めて「Go」という言葉を聞く。
+
+2013年3月21日 Twitterを始める。
+
+- この頃、ICT勉強会で知り合った尾古 豊明(@patorash)さんがKotlinを推していた。
+- 私も「自分ならコレ」というものが欲しいなぁと思い、Goを始めることに。
+
+2013年7月27日 香川で開催された「Google Apps Script勉強会」に参加。
+
+- 行きのフェリーで書籍「基礎からわかるGo言語」の写経を開始、8月12日に完了。
+
+* Golang JP Google+ Community
+
+2013年8月25日 初投稿。
+
+2014年3月15日 香川で開催された「春の Google 勉強会 2014」に参加。
+
+- コミュニティオーナーであったGoogleの山口 能迪(@ymotongpoo)さんと出会う。
+
+2014年4月6日 京都で開催された「GDG DevFest Japan 2014 Spring」に参加。
+
+- 偶然にも山口さんと再会。今しかない！と管理者メンバー入りをお願いする。
+
+2014年4月8日 管理者メンバーとして活動開始。
+
+- 当時、約1,500名ほどが参加していた日本最大のGoコミュニティ。
+
+2019年4月2日の一般向けGoogle+のサービス終了まで、Goの日本向け情報を提供。
+
+* Golang Cafe
+
+2013年10月27日 横山さんが岡山で「Golang Cafe #1」を開催＆参加。
+
+- この日から１年間、毎週日曜日に欠かさず開催＆参加。
+
+2014年10月4日 第50回記念ということで、横山さんが山口さんにお願いして、横山さんと皆勤賞のはぎのたかのぶ(@taknb2nch)さんと私とで、Google東京オフィスにて「Golang Cafe #50」を開催。
+
+- 人生初東京。GDE/Goの上田 拓也(@tenntenn)さんや、LayerXの松本 勇気(@y_matsuwitter)さんらに出会う。
+
+2019年12月22日 岡山で開催された「Golang Cafe #94」の後、停滞中。
+
+* Go Conference
+
+上田さんを筆頭に開催される日本最大のGoイベント。年1、2回のペースで開催。
+
+2013年10月14日 「Go Conference 2013 autumn」のツイートをTogetterにまとめる。
+
+- これ以降、毎回Go ConferenceのツイートをTogetterにまとめる。
+
+2014年11月30日 「Go Conference 2014 Autumn」にて、初参加＆初登壇。
+
+- Goの父ことRob Pikeさん来日ということで、二度と会えないかも！と参加を決意。
+- これ以降、毎回Go Conferenceに参加（はぎのさんに連れて行ってもらっています）
+
+2019年10月28日 「Go Conference 2019 Autumn」にて、当日スタッフ活動を実施。
+
+2021年4月24日 「Go Conference 2021 Spring」にて、フルでスタッフ活動を実施。
+
+* Okayama.go
+
+2018年11月25日 「Go Conference 2018 Autumn」にて、発表終わりのFukuoka.goの三宅 悠介(@monochromegane)さんにご挨拶。
+
+2018年11月27日 三宅さんからFukuoka.goと岡山でGoイベントの共同開催の話を頂く。
+
+2018年11月28日 急遽、受け皿として「Okayama.go」を発足。
+
+2019年2年12日 Fukuoka.goと繋いで「Okayama.go#1+Fukuoka.go」を開催。
+
+2019年3年23日 golang.tokyoと繋いで「Okayama.go#2+golang.tokyo」を開催。
+
+2019年8年23日 東京を中心に福岡、岡山、梅田、仙台を繋いで「Go 1.13 Release Party」を開催。
+
+2020年2月25日 「Go 1.14 Release Party in Okayama」の後、停滞中。
+
+* 香川Go言語勉強会
+
+2017年の夏ごろ、主催者の山下 武志(@tyama99999)さんから香川でGo勉強会を開催する話を聞き、何かお手伝い出来ればとGo入門ハンズオン資料を作成。
+
+GDG ShikokuオーガナイザーのTam(@tam_x)さんからの依頼でGDG Shikoku名義のイベントとして開催。会場や配信などのサポートを頂く。
+
+2018年9月8日、11月17日、2019年1月12日 「香川Go言語勉強会」を開催。
+2019年4月6日 「e-とぴあ未来博2019」で「はじめてのGo言語教室」として開催。
+
+- 以降、同名にて開催。
+
+2019年8月12日 「はじめてのGo言語教室(8月)」を開催。
+2019年9月7日 「はじめてのGo言語教室[改造編](9月)」を開催。
+
+2021年5月29日 「はじめてのGo言語教室 オンライン(5月)」を開催。
+
+* はじめてのGo言語教室
+
+皆様にお願いをして、日本各地にて開催。
+
+2019年9月14日 「はじめてのGo言語教室 晩夏の岩田プロ福岡出張スペシャル」開催。
+2019年10月5日 「はじめてのGo言語教室(岡山)」を開催。
+
+- 福岡から田中さんが来られて、ビックリ！
+
+2019年10月27日 「はじめてのGo言語教室(茅ヶ崎)」を開催。
+2019年11月9日 「はじめてのGo言語教室 in 愛媛」を開催。
+2019年12月21日 「Umeda.go はじめてのGo言語教室」を開催。
+
+- Umeda.go管理者：畑中 優丞(@hatajoe)さんとは10月28日の「Go Conference 2019 Autumn」の懇親会にて初対面、小野寺 俊也(@decafe09)さんからは12月8日の「GDG DevFest Osaka 2019」にてお声掛け頂き、ビックリ！
+
+* q@n@p GCP
+
+* GCPとは？
+
+Google Cloud Platformの略。Google社が提供しているパブリッククラウドサービス。
+
+.image akarenga-lt-9/img/gcp.png 450 720
+
+.caption [[https://cloud.google.com/]]
+
+* GCPUG Okayama
+
+2015年3月19日 これまでに東京、3月は沖縄、4月は福岡でイベントが開催され「次は中国四国地方かなぁ」とツイートしたところ、周りから私が岡山で開催する流れに!?
+
+2015年4月8日 自分のパブリッククラウド学習にと思い「GCPUG Okayama」を発足。
+
+2015年5月6日 「第4回GCPUG in Okayama! #1」を開催。
+2015年9月4日 社員旅行で東京に行った際に「GCPUG Okayama #5 in 東京」を開催。
+
+- Googleの佐藤 一憲(kazunori_279)さんに色々とお世話になる。
+
+2015年10月4日 「GCPUG岡山 #6」を開催。
+2016年5月1日 「GCPUG岡山 #8」を開催。
+
+- GDE/GCPの石村 真吾(@sinmetal)さんにお願いして、GCPのエントリーレベル研修や米国GCPイベントのフィードバック会などを開催。
+
+* プログラマのためのGoogle Cloud Platform入門
+
+2017年6月8日 書籍「プログラマのためのGoogle Cloud Platform入門」を購入。
+
+- WebアプリのサンプルコードがPythonで読みやすかったのでGoへの移植を開始。
+
+2017年7月8日 app_v1とv2を、7月17日 v3を含めた全ての移植を完了。
+
+- 著者の阿佐 志保(@_Dr_ASA)さんに自分のGitHubに公開してよいか問合せ＆快諾。
+
+2017年9月4日 社員旅行で東京へ行く予定だったが、体調不良のためキャンセル。
+
+- 阿佐さんから、お会いできる機会があれば！とのお声掛けを頂く。
+
+2017年11月4日 「Go Conference 2017 Autumn」に参加すべく東京へ向かう。
+
+- 今しかない！と連絡。FreeGufoの大貫 徹也(@nuki_pon)さんにご協力頂き、お会いする。
+
+* GCPUG Okayama 再起動
+
+2018年夏、GCPUG福岡オーガナイザーの赤星さんを通じて、林田 賢行(@hyshyz)さんとPython実践入門の著者の陶山 嶺(@rhoboro)さんのお二人からGCPUG岡山のオーガナイザーをやりたい！というお声掛けを頂く。
+
+2018年10月27日 オーガナイザー3名体制で「GCPUG in Okayama #11」を開催。
+
+- 複数オーガナイザーならではのイベント運営を体験することができた。
+
+2018年12月15日 Google東京オフィスで開催された「GCPUG オーガナイザー忘年会」にて、お二人の協力を得て無事3人で参加。
+
+- 各支部のオーガナイザーやGCP関係の人たちにお会いすることができた。
+
+その後、林田さんが福岡へ引っ越し。
+
+2019年3月2日 「GCPUG Okayama 春一番GCP」の後、停滞中。
+
+* 社内ICTイベント
+
+2018年9月27日 GCPの概要説明とapp_v1のデプロイデモを実施。
+
+- 「社内にこんなにGCPに詳しい人がいるとは知らなかった」との感想を頂く。
+
+.image akarenga-lt-9/img/1045275385179467776.png 400 352
+
+.caption [[https://twitter.com/qt_luigi/status/1045275385179467776]]
+
+* GCPUGでGo！
+
+2021年3月27日 GCPの情報をリフレッシュさせようと「第10回 GCPUG 女子会 春の Lightning Talk 祭り（オンライン開催）」に参加。
+
+- クロージングにて、発表者だったWomen Who Go TokyoのMiki(@mikisslv09)さんにお声掛け頂く＆Goの人で紹介される。
+- 主催者のグーグルクラウドジャパンの葛木 美紀(@myoshimu)さんにより、あっという間に次回はGo入門ハンズオンで開催することが決定。
+
+2021年5月15日 「第11回 GCPUG 女子会 Go 言語入門（オンライン開催）」にて、Mikiさんのサポートも頂いて、初めてオンラインで「はじめてのGo言語教室」を実施。
+
+* q@v@p Flutter
+
+* Flutterとは？
+
+単一コードベースからモバイル, Web, デスクトップアプリを構築するUIツールキット。
+
+.image akarenga-lt-9/img/flutter-dev.png 450 720
+
+.caption [[https://flutter.dev/]]
+
+* きっかけ
+
+2018年2月3日 香川で開催された「Android Bazaar&Conference, Diverse 2018 UDON県」にGoでLT登壇。
+
+懇親会にて、井上 桂子(@Luz_Network)さんから「Flutterを触り始めたがよくわからない」というお話しを聞く。
+
+出始めの技術で触っている人もおらず、自分もモバイル開発に取り組める良い機会かと思い「私も触ってみて、わかることがあればお答えしますよ」と、触り始めることに。
+
+その後、ちょくちょくお会いしてお伝えできる範囲でのフォローを実施。
+
+* Flutter JP Google+ Community
+
+2018年4月7日 情報も少なく同じやるならと「Flutter JP Google+ Community」を発足。
+
+2019年4月2日の一般向けGoogle+のサービス終了まで、Flutterの日本向け情報を提供。
+
+.image akarenga-lt-9/img/flutter-jp.png 400 712
+
+* Flutter Japan User Group
+
+2018年4月18日 connpassグループ「Flutter Japan User Group」のオーガナイザーであった小和瀬 塁(@rkowase)さんから共同オーガナイザーのお誘いを頂く。
+
+同じタイミングで私も小和瀬さんに「Flutter JP Google+ Community」の共同オーガナイザーをお願いしようとしていたので、ビックリ！
+
+お互いが立ち上げたコミュニティに、お互いがオーガナイザーとして席を置き、お互いに活動していくことに。
+
+2020年4月29日 小和瀬さんがオーガナイザーを退くためconnpassページを引き継ぐ。
+
+* Flutter Meetup Osaka
+
+2018年6月23日 井上さんと知人の井坂 久子(@pechefamille)さんと私とで「Flutter Meetup Osaka #1」を開催。
+
+- 公式の入門チュートリアルのハンズオンを実施。
+
+2019年12月8日 「GDG DevFest Osaka 2019」にGoでLT登壇。
+
+- 懇親会にて「Flutter Meetup Osaka #1」の参加者からお声掛け頂き、ビックリ！
+- 関西でFlutterを広めたい大西 優司(@camdekka)さんから、登壇のお声掛けも。
+
+2020年5月22日 「Flutter Meetup Osaka #3」にLT登壇。
+
+- 個別に出会った井上さん、井坂さん、大西さんらが知らぬ間にイベント管理者として繋がっていたのは、嬉しい限り！
+
+* (q@w@p っ)3 Azure
+
+* Azureとは？
+
+Microsoft社が提供するパブリッククラウドサービス。
+
+.image akarenga-lt-9/img/azure.png 450 720
+
+.caption [[https://azure.microsoft.com/]]
+* きっかけ
+
+2014年2月4日 Satya Nadella氏がCEOに就任して、Microsoftはオープン戦略に。
+
+2015年ごろ、AzureにおいてJavaやPythonなどは順調にサポートが進むが、Goは...
+
+「オープン戦略というならGoも！」という思いがフツフツと。
+
+この頃から、Microsoft/Azure x Goのウォッチを始める。
+
+* Microsoft MVP
+
+Microsoft認定のコミュニティリーダー。
+
+2015年10月10日 AzureカテゴリーにてAzure SDKでGoの存在を確認。
+
+2015年12月22日 当時MVPであったきよくらならみ(@kiyokura)さんから、Microsoft系コミュニティイベントの岡山会場にて、GoとMicrosoftでの登壇のお声掛けを頂く。
+
+2016年2月20日 「Okayama ComCamp 2016 powered by MVPs」に登壇。
+
+* Azure SDK for Go
+
+Azure SDK：プログラミングしてAzureを管理・運用するための仕組み。
+
+2016年7月26日 Azure SDK for Goのリリースのツイートを開始。
+
+- これ以降、リリースされる都度ツイート。
+
+2017年1月23日 GitHub上のAzure/azure-sdk-for-goに初めてPull Request。
+
+- 人生初オープンソースプロジェクトでのプルリク＆マージ。
+- これ以降、主にtypoながらちょくちょくコントリビュート。
+
+※ Goでは、Goプロジェクトにもコントリビュート。
+
+* 2017年、Azure x Goでのイベント登壇に失敗
+
+2017年3月25日 「Go Conference 2017 Spring」にて、CfP落選。
+
+2017年9月7日 「JAZUG 7周年総会」にて、体調不良でキャンセル。
+
+* GoでのMicrosoft MVPアワード受賞に向けて
+
+2019年7月24日 GoでGDE(Google Developer Expert)やMicrosoft MVP(Most Valuable Professional)になりたい旨をツイート。
+
+- 「認定者にならなければ、声が届かないのでは。」という想いから。
+
+2020年2月下旬 Microsoftの寺田 佳央(@yoshioterada)さんに推薦をお願いする。
+
+- 現時点ではMicrosoft/Azureの情報発信が少な過ぎるとのアドバイスを頂く。
+
+2020年3月1日 GoでのMVPアワード受賞を目指してAzure SDK for Goでの活動を開始。
+
+- GitHub上のREADMEを日本語訳、学んだことをQiitaに投稿、など。
+
+* de:code夏まつり
+
+2018年から、日本マイクロソフト社が毎年開催しているICTイベント「de:code」にてGoで発表したい！と度々ツイート。
+
+2020年6月24日 de:codeのコミュニティイベント「de:code夏まつり #2」にて、Goが未サポートのAzureサービスのクイズのツイートを目撃。
+
+- 「いやホントde:codeでGoについて発表したい＆させて欲しい。」とツイート。
+
+2020年6月25日 ヌーラボの河内 一弘(@tamagawaconan)さんから「口にしたことは、実現しますよ。」とのお言葉を頂きながら、ツイートで会話中
+
+- Microsoftの千代田 まどか(@chomado)さんから、次の「de:code夏まつり #3」にAzure SDK for Goでの登壇のお声掛けを頂き、ビックリ！
+
+2020年7月8日 「de:code夏まつり #3」に登壇。
+
+2020年8月8日 「de:code夏まつり the FINAL」にも登壇。
+
+* 2020年、Azure x Goでのイベント登壇に成功
+
+2020年9月21日 「Shizuoka.go Vol.16」にて登壇。
+
+- GoとAzureで登壇のお声掛けを頂く。
+
+2020年9月30日 「Japan Azure User Group 10周年」にて登壇。
+
+- 2017年のキャンセルのリベンジに成功！
+
+2020年11月3日 「合同勉強会 in 大都会岡山 -2020 Winter Online-」にて登壇。
+
+- 2020年のMicrosoft/Azure x Go活動の総まとめ的な内容で発表。
+
+2021年4月24日 「Go Conference 2021 Spring」にて登壇。
+
+- 2017年の落選のリベンジに成功！
+
+* 直接、声を届ける
+
+2020年11月4日 Satya Nadella(@satyanadella)さんに「合同勉強会 in 大都会岡山 -2020 Winter Online-」での発表をお知らせツイート。
+
+- 発表では日本のAzureコミュニティやメンバーの活躍も紹介。知って頂きたく。
+
+2020年12月26日 MVP Award Program(@MVPAward)さんにDeveloperカテゴリーへGoの追加をお願いツイート。
+
+- JavaやPythonなどはあるのに、Goはないため。
+
+いずれも回答なしですが、直接声を届けられる手段がある素晴らしさに、感謝有難う！
+
+※ Goでは、Rob Pikeさんにメールしたりツイートしたり（いずれも回答あり）
+
+* さいごに
+
+* 私のキーワードは「ICTコミュニティ活動」
+
+ICTイベントや懇親会は、出会いやキッカケが見つかる場のひとつ。
+
+- 紹介しきれなかった多くの方々を含めて、皆様に支えられて。
+
+自分駆動（Go, Azure）と他人駆動（GCP, Flutter）
+
+- いずれも大事なキッカケ。自分駆動の方が若干長続き？
+
+選択したTechは、ニッチだったりブルーオーシャンだったり。
+
+- 自分の居場所を見つけられる、存在感を示すことができる、など。
+
+長く続けていくこと＆いることの良さ。
+
+- 無理なく、まったりと。
+
+* このあと何かを始めた人は（いま何かを始めている人も！）
+
+それらを「赤煉瓦ライトニングトーク（Akarenga.LT）」で発表して皆さんと共有を！
+
+.image akarenga-lt-9/img/AkarengaLT.png 425 660
