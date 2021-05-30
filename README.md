@@ -7,7 +7,7 @@
 
 ## 2021
 
-- [私の趣味Tech活動報告](http://127.0.0.1:3999/go/src/github.com/qt-luigi/talks/2021/akarenga-lt-9.slide#1) in [赤煉瓦ライトニングトーク（Akarenga.LT） 第9回](https://engineercafe.connpass.com/event/214009/)
+- [私の趣味Tech活動報告](https://talks.godoc.org/github.com/qt-luigi/talks/2021/akarenga-lt-9.slide#1) in [赤煉瓦ライトニングトーク（Akarenga.LT） 第9回](https://engineercafe.connpass.com/event/214009/)
 - [Azure SDK for Goで学ぶGoでのWebクライアント実装](https://talks.godoc.org/github.com/qt-luigi/talks/2021/gocon2021spring.slide) in [Go Conference 2021 Spring](https://gocon.connpass.com/event/208896/)
 - [卒業Goは何してた？](https://talks.godoc.org/github.com/qt-luigi/talks/2021/gopherdojo_dosokai2021.slide) in [【卒業生限定】Gopher道場 同窓会2021](https://gopherdojo.connpass.com/event/203328/)
 - [受験の予約は余裕を持って](https://talks.godoc.org/github.com/qt-luigi/talks/2021/azurerockstar3_2.slide) in [To be certified! MS認定資格あるあるLT大会!!](https://azurerockstar.connpass.com/event/202301/)
