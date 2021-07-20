@@ -1,0 +1,450 @@
+私の活動報告 [2021年7月編]
+21 Jul 2021
+
+Ryuji Iwata
+Okayama, Japan
+
+* お品書き
+
+- はじめに
+- 自己紹介
+- Microsoft MVP
+- MS MVPを目指した理由
+- MS MVPの活動内容
+- さいごに
+
+* はじめに
+
+* 2021年6月1日
+
+Microsoft Most Valuable Professional Award (Microsoft Azure) 受賞。
+
+.image my-activity-202107/img/profile.jpg 460 656
+
+.caption [[https://mvp.microsoft.com/ja-jp/PublicProfile/5004244]]
+
+* 今回
+
+受賞に至るまでの経緯について、お話しさせて頂くことに。
+
+自己研鑽・やりがいについて、何かひとつでも持ち帰って頂けれたら。
+
+- 自己研鑽：自分自身のスキルや能力などを鍛えて磨きをかけること。([[https://www.weblio.jp/content/%E8%87%AA%E5%B7%B1%E7%A0%94%E9%91%BD][weblio]]より)
+
+* 自己紹介
+
+* 岩田 隆治
+
+1997年入社。5年後に今の職場へ。
+
+客先常駐にて、システム開発（設計、実装、テスト、納品）に従事。
+
+- Webシステム：Java (以前はPython) , TypeScript
+- C/Sシステム：C# (以前はDelphi)
+
+システム環境の構築や設定、採用技術の検証や導入支援、技術や新人の教育など。
+
+* 個人で追っている技術
+
+これまでは、Google社の技術が中心。
+
+- プログラミング言語：Go
+- パブリッククラウド：Google Cloud Platform (GCP)
+- モバイルアプリ開発：Flutter
+
+社内でも、会社の発表会や部署の報告会にて、GoやGCPを紹介。
+
+.image my-activity-202107/img/go-gcp-flutter.jpg 240 1000
+
+.caption [[https://golang.org/][Go]] / [[https://cloud.google.com/][Google Cloud]] / [[https://flutter.dev/][Flutter]]
+
+* 個人で追っている技術
+
+2020年からは、Microsoft社の技術にも着手。
+
+- パブリッククラウド：Microsoft Azure
+- ソフトウェア開発キット：Azure SDK for Go
+
+直近でハマりかけている技術は、
+
+- 分散アプリケーションランタイム：Dapr
+
+.image my-activity-202107/img/azure-asfg-dapr.jpg 240 1000
+
+.caption [[https://azure.microsoft.com/ja-jp/][Azure]] / [[https://docs.microsoft.com/ja-jp/azure/developer/go/][Azure SDK for Go]] / [[https://dapr.io/][Dapr]]
+
+* ICTコミュニティ活動
+
+個人で追っている技術の
+
+- 情報を知り得るため
+- 知り得た情報を共有するため
+
+ICTコミュニティにてイベントの主催、共催、管理、運営、登壇、講師、参加を実施。
+
+.image my-activity-202107/img/connpass.jpg 290 464
+
+.caption [[https://connpass.com/][connpass.com]]
+
+* 主催・共催・管理・運営
+
+主催
+
+- Okayama.go、GCPUG Okayama
+
+共催
+
+- 香川Go言語勉強会（GDG Shikoku）、Golang Cafe（GDG 岡山）
+- Goならわかるシステムプログラミング読書会（岡山システムプログラミング勉強会)
+
+管理
+
+- Flutter Japan User Group
+- [2019年4月に終了] Google+ Community（Golang JP、Flutter JP）
+
+運営
+
+- Go Conference（東京・オンライン）
+
+* 登壇
+
+2013年12月から、これまでに約70回ほど。
+
+主催：日本マイクロソフト, Googleコミュニティ(GDG, GCPUG), 有志コミュニティ
+
+場所：東京, 静岡, 京都, 大阪, 岡山, 広島, 香川, 徳島, 福岡, オンライン
+
+種類：Go, Python, Ruby, GCP, Azure, Flutter, Android, 資格試験, 品質管理, 個人活動
+
+.image my-activity-202107/img/speakerdeck.jpg 290 464
+
+.caption [[https://speakerdeck.com/qt_luigi][Ryuji Iwata on Speaker Deck]]
+
+* 講師
+
+入門ハンズオンにて、これまでに約15回ほど。
+
+場所：東京, 神奈川, 大阪, 岡山, 香川, 愛媛, 福岡, オンライン
+
+種類：Go, Python, GCP, Flutter
+
+.image my-activity-202107/img/go-class.jpg 340 506
+
+.caption [[http://qt-luigi.blogspot.com/2019/08/go.html][はじめてのGo言語教室]]
+
+* 参加
+
+2013年から、これまでに約200回ほど。
+
+場所：登壇＋講師
+
+種類：登壇＋講師, Angular, 読書会, もくもく会
+
+* 活動している理由
+
+技術情報のキャッチアップ
+
+- 仕事だけだと、技術は固定化されやすく、情報の更新も滞り気味。
+- 進化の速い業界において、最新の情報やトレンドを知り得やすい。
+- 興味や感心のない情報でも浴びておくことで、後に役立つことも。
+
+人との出会いや交流
+
+- 仕事だけだと、人脈は固定化されやすく、会話の内容も滞り気味。
+- 社外の技術者と知り合うことができ、新しい視点や知識を得られる。
+- より多くの人に自分自身や活動内容を認知・評価してもらえる。
+
+* 新しく始めてみるなら
+
+例えば：パブリッククラウドサービス
+
+日進月歩で進化している分野。最新トレンドの宝庫。
+
+- インフラ, 仮想化, コンテナー, セキュリティ, ビッグデータ, AI, DevOps, など。
+- 無料枠もあり、個人でも始められる。
+
+例えば：Amazon Web Services (AWS)
+
+- パブリッククラウド業界 No.1 シェアの強さ。
+- 資格試験も有名で、新技術習得の学習にも。
+
+* Microsoft MVP
+
+* Microsoft MVP Award
+
+同社にて、最も優秀で才能のあるテクノロジー コミュニティ リーダーを表彰する制度。
+
+.image my-activity-202107/img/msmvp.jpg 460 736
+
+.caption [[https://mvp.microsoft.com/ja-jp/]]
+
+* Microsoft MVP
+
+定義：自身の知識を熱意をもってコミュニティと共有するテクノロジーの専門家。
+
+2021年7月現在：世界で3,226名、日本で181名 (中国地方は私1名)、Azureで42名。
+
+Microsoft製品/サービスにおける、過去１年間のコミュニティ活動が評価される。
+
+- 講演によるエンゲージメント、ソーシャル メディアへの投稿、書籍の執筆、オンライン コミュニティでの他者への支援、など。
+
+有効期限は１年間。毎年、活動内容を申請＆認定されることで継続可能。
+
+初回申請時は、Microsoft常勤従業員またはMicrosoft MVPからの推薦が必要。
+
+* 参考資料
+
+Microsoft MVP Overview
+
+.link https://mvp.microsoft.com/ja-JP/Overview
+
+Microsoft MVP x DevRel
+
+.link https://www.slideshare.net/RieMoriguchi/microsoft-mvp-x-devrel
+
+Microsoft MVP x Passion for community
+
+.link https://www.slideshare.net/RieMoriguchi/microsoft-mvp-x-passion-for-community
+
+Microsoft MVP について | Microsoft MVP 制度についてのまとめ
+
+.link https://chomado.github.io/MS-MVP/
+
+* MS MVPを目指した理由
+
+* Microsoft/Azure界隈の動向
+
+2014年2月4日 Satya Nadella氏がMicrosoft CEOに就任後、同社はオープン戦略に。
+
+Azureにて、JavaやPythonなどのサポートは順調に進むが、Goは遅れ気味。
+
+「MicrosoftにもっとGoをサポートして欲しい！」という思いが、フツフツと。
+
+* Go界隈の動向
+
+Google発ということもあり、GCPでのサポートは強力。
+
+オープンソースプロジェクトなので、Googleなどに片寄るのはよくない。
+
+「Microsoft界隈でもGoを普及させなければ！」という思いが、フツフツと。
+
+* コミュニティ活動を通じて
+
+Microsoft/Azureには、もっとGoをサポートして頂くために、
+
+Goユーザーには、もっとMicrosoft/Azureを知って頂くために、
+
+「Microsoft/Azure x Goの橋渡し役」を目指すことに。
+
+* 会社の動向
+
+コミュニティ活動については、そこまで評価されてこなかったイメージ。
+
+2020年から新しい評価制度が準備され、2021年から本格稼働。
+
+「これらの活動も正当に評価して頂かねば！」という思いが、フツフツと。
+
+* コミュニティ活動を通じて
+
+社内に向けて実績と信頼を得るべく、社外にて正当に評価して頂ける制度であった
+
+「Microsoft MVP Award 受賞」を目指すことに。
+
+* これらの思いを実現させるべく
+
+Microsoft/Azure x Goの組み合わせは、ニッチでありブルーオーシャン。
+
+少なくとも日本ではGoでのMicrosoft MVP 受賞者はいないはず。
+
+純粋にGoを絡められるのはAzure カテゴリーのAzure SDK エリアのみ。
+
+そこで、Azure SDK for Goを中心に活動を開始。
+
+第一人者となるべく「日本初のGoでのMicrosoft MVP Award 受賞」を目指すことに。
+
+* MS MVPの活動内容
+
+* 主な活動内容
+
+- オープンソースプロジェクトへの貢献
+- 英語ドキュメントの日本語化
+- 調査内容を情報共有サイトに投稿
+- 関連資格の学習/受験/取得
+- ICTコミュニティイベントにて発表
+- 公式コンテンツの修正報告
+
+* オープンソースプロジェクトへの貢献
+
+オープンソースプロジェクトの多くはGitホスティングサービスで公開。
+
+貢献活動（Contribution）を実施。
+
+- コードやドキュメントのミスや修正を報告（Pull Request）
+- 方針や機能の改善などを提案（Issue）、など英文でやりとり。
+
+.image my-activity-202107/img/repo-go-asfg.jpg 300 924
+
+.caption [[https://go.googlesource.com/go][go - Git at Google]] / [[https://github.com/Azure/azure-sdk-for-go][GitHub - Azure/azure-sdk-for-go: Microsoft Azure SDK for Go]]
+
+* 公開ライセンス
+
+公開されているソースコードは、提示されているライセンスに従って利用可能。
+
+- GNU General Public License (GPL)
+- Apache License 2.0
+- MIT License、など。
+
+* Contributor License Agreement (CLA)
+
+企業が絡むOSSに貢献する際には、同意を結ぶ必要があることが多い。
+
+- お互いのOSS活動の行動や範囲を守るため。
+- 個人CLAと企業CLAとが存在。
+
+私は、Microsoft(Azure SDK for Go)は企業CLAで、Google(Go)は個人CLAで契約。
+
+.image my-activity-202107/img/cla-ms-ggl.jpg 300 924
+
+.caption [[https://cla.opensource.microsoft.com/][Microsoft CLA]] / [[https://cla.developers.google.com/][Google CLA]]
+
+* 英語ドキュメントの日本語化
+
+オープンソースプロジェクトのドキュメントは、英語が多い。
+
+そのため、翻訳サイトで日本語化して読むことが多い。
+
+日本語化した文章は、読み直して修正して自分のリポジトリーに保管。
+
+この時、英単語のスペルミスなどを発見できるので、Fix typo報告での貢献チャンス。
+
+.image my-activity-202107/img/fix-typo.jpg 300 480
+
+.caption [[https://github.com/Azure/azure-sdk-for-go/pull/10142/files][Fix typo in README.md · Pull Request #10142 · Azure/azure-sdk-for-go · GitHub]] 
+
+* 調査内容を情報共有サイトに投稿
+
+「[[https://docs.microsoft.com/ja-jp/azure/developer/go/][Go 開発者向けの Azure]]」を読み始めるが、固有の用語が続々と。
+
+理解を深めるために、ひとつずつ調べながら読み進めることに。
+
+Azure x Goの情報は少ないため、月１ペースで情報共有サービス「Qiita」に投稿。
+
+コードを含まない記事は、情報共有コミュニティ「Zenn」に投稿することも。
+
+.image my-activity-202107/img/qiita-zenn.jpg 300 924
+
+.caption [[https://qiita.com/][Qiita]] / [[https://zenn.dev/][Zenn]]
+
+* 関連資格の学習/受験/取得
+
+Azure学習のために、Microsoft認定資格を取得することに。
+
+- ラーニングパス（無料）に取り組むことで、一定の知識を得られる。
+- 会社でのキャリアパス（報奨金対象）にも生かせる。
+
+Microsoft Certified:「Azure Fundamentals」シリーズの取得にチャレンジ。
+
+.image my-activity-202107/img/azure-fundamentals.jpg 220 1000
+
+.caption [[https://docs.microsoft.com/ja-jp/learn/certifications/azure-fundamentals/][Azure Fundamentals]] (取得済) / [[https://docs.microsoft.com/ja-jp/learn/certifications/azure-ai-fundamentals/][Azure AI Fundamentals]] (取得済) / [[https://docs.microsoft.com/ja-jp/learn/certifications/azure-data-fundamentals/][Azure Data Fundamentals]] (学習予定)
+
+* ICTコミュニティイベントにて登壇
+
+資料を作成する際の調査や実験などで、技術の習得が捗る。
+
+「考える」「まとめる」「伝える」などのスキルを磨ける。
+
+主催者や登壇者の方々とお話しできる場合も。
+
+自分自身と活動内容を広く知ってもらえる。
+
+* 2020年6月25日
+
+SNSを通じて、Microsoft社員の方からAzure SDK for Goでの登壇依頼を頂く。
+
+- 日本マイクロソフト主催の年次イベント「de:code」のコミュニティイベント
+
+de:code：2019年までは東京で有料、2020年はオンラインで無料、2021年は中止。
+
+.image my-activity-202107/img/decode-2020.jpg 340 544
+
+.caption [[https://www.microsoft.com/ja-jp/events/decode/2020/default.aspx][de:code (decode) 2020]]
+
+* 日本マイクロソフト / Azureコミュニティ
+
+日本マイクロソフト
+
+- 2020年7月8日 [[https://msdevjp.connpass.com/event/175983/][de:code夏まつり #3]]「AzureとSDKとGoと私」
+- 2020年8月8日 [[https://msdevjp.connpass.com/event/183747/][de:code夏まつり the FINAL]]「I am gaining the skills I want!」
+- 2021年2月20日 [[https://azurerockstar.connpass.com/event/202301/][MS認定資格あるあるLT大会!!]]「私のExam AI-900: Microsoft Azure AI Fundamentals学習記」
+
+Azureコミュニティ
+
+- 2020年9月30日 [[https://jazug.connpass.com/event/186235/][Japan Azure User Group 10周年]]「Join Azure Using Go (10 items)」
+- 2020年12月16日 [[https://jazug.connpass.com/event/197139/][第30回 Tokyo Jazug Night]]「私のExam AZ-900: Microsoft Azure Fundamentals学習記」
+
+* Goコミュニティ / 地元コミュニティ
+
+Goコミュニティ
+
+- 2020年9月12日 [[https://shizuoka-go.connpass.com/event/186969/][Shizuoka.go Vol.16]]「Goでイケる！Azureサービスの紹介」
+- 2021年1月16日 [[https://kyotogo.connpass.com/event/199400/][Kyoto.go remote #16]]「GoでAzureのRDBMSサービスを操作」
+- 2021年4月24日 [[https://gocon.connpass.com/event/208896/][Go Conference 2021 Spring]]「Azure SDK for Goで学ぶGoでのWebクライアント実装」
+
+地元コミュニティ
+
+- 2020年11月3日 [[https://gbdaitokai.connpass.com/event/189232/][合同勉強会 in 大都会岡山 2020 Winter]]「Microsoft AzureのGo紹介」
+- 2021年9月4日 [[https://gbdaitokai.connpass.com/event/216429/][合同勉強会 in 大都会岡山 2021 Summer]]「DaprのGo紹介(仮)」（登壇予定）
+
+* 公式コンテンツの修正報告
+
+Microsoft製品/サービスに関するドキュメントやeラーニングのサイトなど。
+
+ページ毎にドキュメントの問題を報告するリンクが用意されている。
+
+- この後、自分以外の人が閲覧した際に誤った情報を得ないために。
+- 機械翻訳のページが多いので、翻訳元の英語ページに修正を報告することも。
+
+.image my-activity-202107/img/ms-docs-learn.jpg 300 924
+
+.caption [[https://docs.microsoft.com/ja-jp/][Microsoft Docs]] / [[https://docs.microsoft.com/ja-jp/learn/][Microsoft Learn]]
+
+* さいごに
+
+* 私の場合
+
+Microsoft MVP Award 受賞
+
+- 自分のやっていることが認められるのは、やはり嬉しいこと。
+- Microsoft MVPとしての、社会的責任感。
+
+コミュニティ活動を通じて
+
+- 情報、技術、スキル、人脈、モチベーションなどを習得。
+- ICT業界への貢献。社内はもちろん、社外や世界に向けて。
+
+* 心掛けて欲しいこと
+
+最新情報の収集
+
+- ICT業界だからこそ「新しい」を楽しもう！
+- 見えないところで、差が出てくるかも。
+
+出来る範囲で楽しく
+
+- 無理をすると続かない。
+- 仲間と一緒に。社内でも社外でも。
+
+* 意外と大事
+
+資格試験
+
+- 対策本だと、低価格で体系的に学べる。
+- 学習の過程で知識を得られる。
+- 基本情報技術者は、会社で必要な昇進条件。
+
+英語
+
+- なくても困らないが、あると人生がより豊かに。
+- 技術ドキュメントは意外と読みやすい。
+- 社内にもTOEICの受験料補助のサポートあり。
