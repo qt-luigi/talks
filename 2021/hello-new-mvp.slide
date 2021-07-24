@@ -1,0 +1,298 @@
+Hello, I am a new MVP!
+Japan MVP/RD 2021-2022 Kickoff Meetup - Hello, New MVP! LT
+29 Jul 2021
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image hello-new-mvp/img/qt_luigi250.jpg 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* 2021年6月1日
+
+Microsoft Azure カテゴリーで初受賞（日本に約180名：久々の中国地方 MS MVP）
+
+.image hello-new-mvp/img/mvp-profile.jpg 460 656
+
+.caption [[https://mvp.microsoft.com/ja-jp/PublicProfile/5004244]]
+
+* お品書き
+
+- 自己紹介
+- コミュニティ活動のご紹介
+- MVPの受賞を目指した理由
+- MVPを受賞してどうでしたか？
+- これからやってみたいコミュニティ活動
+
+* 自己紹介
+
+* 岩田 隆治
+
+大都会岡山のSIerに勤務。
+
+客先常駐にて、システム開発（設計、実装、テスト、納品）に従事。
+
+- Webシステム：Java (以前はPython) , TypeScript
+- C/Sシステム：C# (以前はDelphi)
+
+システム環境の構築や設定、採用技術の検証や導入支援、技術や新人の教育など。
+
+* 個人で追っている技術
+
+これまでは、Google社の技術が中心。
+
+- プログラミング言語：Go
+- パブリッククラウド：Google Cloud Platform (GCP)
+- UIツールキット：Flutter
+
+.image hello-new-mvp/img/golang-org.jpg 300 480
+
+.caption [[https://golang.org/][The Go Programming Language]]
+
+* 個人で追っている技術
+
+2020年からは、Microsoft社の技術にも着手。
+
+- パブリッククラウド：Microsoft Azure
+- ソフトウェア開発キット：Azure SDK for Go
+
+直近でハマりかけている技術は、
+
+- 分散アプリケーションランタイム：Dapr
+
+.image hello-new-mvp/img/dapr.jpg 240 384
+
+.caption [[https://dapr.io/][Dapr - Distributed Application Runtime]]
+
+* コミュニティ活動のご紹介
+
+* 主催
+
+[[https://okayamago.connpass.com/][Okayama.go]]
+
+[[https://gcpug-okayama.connpass.com/][GCPUG Okayama]]
+
+.image hello-new-mvp/img/okayama-go.jpg 400 640
+
+.caption [[https://okayamago.connpass.com/][Okayama.go - connpass]]
+
+* 共催
+
+[[https://gdgshikoku.connpass.com/][香川Go言語勉強会]]（GDG Shikoku）
+
+[[https://gdgchugoku.connpass.com/][Golang Cafe]]（GDG 岡山）
+
+[[https://okasyspro.connpass.com/][Goならわかるシステムプログラミング読書会]]（岡山システムプログラミング勉強会）
+
+.image hello-new-mvp/img/kagawa-go.jpg 340 544
+
+.caption [[https://gdgshikoku.connpass.com/event/170500/][香川Go言語 オンラインもくもく会 #1 - connpass]]
+
+* 管理
+
+[[https://flutter-jp.connpass.com/][Flutter Japan User Group]]
+
+[2019年4月に終了] Google+ Community
+
+- Golang JP / Flutter JP
+
+.image hello-new-mvp/img/flutter-jp.jpg 340 544
+
+.caption [[https://flutter-jp.connpass.com/][Flutter Japan User Group - connpass]]
+
+* 運営
+
+[[https://gocon.connpass.com/][Go Conference]]（東京・オンライン）
+
+.image hello-new-mvp/img/gocon.jpg 450 720
+
+.caption [[https://gocon.connpass.com/event/213865/][Go Conference 2021 Autumn (Online) - connpass]]
+
+* 登壇
+
+2013年12月から、これまでに約70回ほど（[[https://www.slideshare.net/qt-luigi/presentations][SlideShare]] / [[https://speakerdeck.com/qt_luigi][Speaker Deck]]）
+
+主催：日本マイクロソフト, Googleコミュニティ(GDG, GCPUG), 有志コミュニティ, 自社
+
+場所：東京, 静岡, 京都, 大阪, 岡山, 広島, 香川, 徳島, 福岡, オンライン
+
+種類：Go, Python, Ruby, GCP, Azure, Flutter, Android, 資格試験, 品質管理, 個人活動
+
+.image hello-new-mvp/img/slideshare.jpg 280 448
+
+.caption [[https://www.slideshare.net/qt-luigi/presentations][Ryuji Iwata’s Presentations on SlideShare]]
+
+* 講師
+
+入門ハンズオンにて、これまでに約15回ほど。
+
+場所：東京, 神奈川, 大阪, 岡山, 香川, 愛媛, 福岡, オンライン
+
+種類：Go, GCP, Flutter, Python
+
+.image hello-new-mvp/img/go-class.jpg 340 506
+
+.caption [[http://qt-luigi.blogspot.com/2019/08/go.html][はじめてのGo言語教室]]
+
+* 参加
+
+2013年から、これまでに約200回ほど（[[https://connpass.com/user/qt_luigi/][connpass]] / [[https://www.doorkeeper.jp/users/ft71lnaxf6v9tw502fyhmcmo63gfj0][Doorkeeper]]）
+
+場所：登壇＋講師
+
+種類：登壇＋講師, Angular, 読書会, もくもく会
+
+.image hello-new-mvp/img/connpass-user.jpg 340 544
+
+.caption [[https://connpass.com/user/qt_luigi/][Ryuji Iwataさんのプロフィール（申し込みイベント一覧） - connpass]]
+
+* MVPの受賞を目指した理由
+
+* Microsoft/Azure界隈の動向
+
+2014年2月4日 Satya Nadella氏がMicrosoft CEOに就任後、オープン戦略にシフト。
+
+Azureにて、JavaやPythonなどのサポートは順調に進むが、Goは遅れ気味。
+
+「MicrosoftにもっとGoをサポートして欲しい！」という思いが、フツフツと。
+
+.image hello-new-mvp/img/azure-developer.jpg 340 544
+
+.caption [[https://docs.microsoft.com/ja-jp/azure/developer/][Azure 開発者向けドキュメント | Microsoft Docs]]
+
+* Go界隈の動向
+
+Google発ということもあり、GCPでのサポートは強力。
+
+オープンソースプロジェクトなので、Googleなどに片寄るのはよくない。
+
+「Microsoft界隈でもGoを普及させなければ！」という思いが、フツフツと。
+
+.image hello-new-mvp/img/gcp-go.jpg 340 544
+
+.caption [[https://cloud.google.com/go][Go プログラミング言語  |  Google Cloud]]
+
+* コミュニティ活動を通じて
+
+Microsoft/Azureには、もっとGoをサポートして頂くために、
+
+Goユーザーには、もっとMicrosoft/Azureを知って頂くために、
+
+「Microsoft/Azure x Goの橋渡し役」を目指すことに。
+
+.image hello-new-mvp/img/ms-azure-go-tweet.jpg 238 655
+
+.caption [[https://twitter.com/qt_luigi/status/1369661802301194240][Ryuji IwataさんはTwitterを使っています / Twitter]]
+
+* 会社の動向
+
+コミュニティ活動については、そこまで評価されていない。
+
+Microsoft社には、個人のコミュニティ活動を評価・認定する制度がある。
+
+「自分の活動を第三者から正当に評価して欲しい！」という思いが、フツフツと。
+
+* これらの思いを実現させるべく
+
+純粋にGoを絡められるカテゴリーは、Microsoft AzureのAzure SDK エリアのみ。
+
+そのため、Azure SDK for Goを中心に活動を開始。
+
+また、少なくとも日本ではGoでのMicrosoft MVP 受賞者はいなかったはず。
+
+そこで「日本初のGoでのMicrosoft MVP 受賞」を目指すことに。
+
+.image hello-new-mvp/img/mvp-go.jpg 280 448
+
+.caption [[https://www.slideshare.net/qt-luigi/azuresdkgo#34][AzureとSDKとGoと私]]
+
+* MVPを受賞してどうでしたか？
+
+* 今のところ
+
+実生活においては、特に変化なし。
+
+- コミュニティ活動など、これまで通り。
+
+Twitterで受賞ツイートをした時、フォロワーが二桁増加。
+
+- ネームバリューの大きさに驚く。
+
+* 会社に報告
+
+最初、上司からは「何ですか、それは？」(T_T)
+
+その後、自己アピール＆上司の計らいで、
+
+- 社内ブログにて、Microsoft MVP 受賞の記事を掲載して頂く。
+- 新人研修にて、Microsoft MVP 受賞とコミュティ活動について特別講話。
+
+.image hello-new-mvp/img/my-activity-202107.jpg 300 480
+
+.caption [[https://talks.godoc.org/github.com/qt-luigi/talks/2021/my-activity-202107.slide#29][私の活動報告 [2021年7月編] ]]
+
+* 変わったこと
+
+意識向上。
+
+- 「Microsoft MVP」として見られることの責任感。
+- 良い意味での「緊張感」がプラスされることに。
+
+* これからやってみたいコミュニティ活動
+
+* イベントの開催
+
+Microsoft/Azure x Goに関するイベントの開催。
+
+.image hello-new-mvp/img/ideyo-ms-azure-go-tweet.jpg 364 757
+
+.caption [[https://twitter.com/qt_luigi/status/1416679830880354307][Ryuji IwataさんはTwitterを使っています / Twitter]]
+
+* 入門ハンズオンの開催
+
+GoでWebアプリを作成。
+
+Azure コンピューティング サービスにデプロイ。
+
+- Web App for Containers（Goはネイティブ Wep App 非サポート T_T）
+- Azure Functions Custom Handler（Goはネイティブ Functions 非サポート T_T）
+
+その他、
+
+- Azure Pipelinesでのデプロイ。
+- Azure データベース サービスでのデータ管理。
+- Azure AI サービスの利用。
+- Daprでのマイクロサービス構築、など。
+
+* 「クラウドデベロッパーちゃんねる」に出演
+
+Microsoft/Azure x Goに関するコンテンツを提供。例えば、
+
+- [[https://www.youtube.com/watch?v=tu93qn_b6ek][Azure で Python の Web アプリを手軽に公開! | Azure 入門 28 [#くらでべ] ]]
+
+があるなら「Azure で Go の Web アプリを手軽に公開!」があっても良いのでは！
+
+.image hello-new-mvp/img/kuradebe.jpg 340 544
+
+.caption [[https://www.youtube.com/channel/UCMmRHq3E_9Hc9noZeo3zDCw][クラウドデベロッパーちゃんねる - YouTube]]
+
+* Microsoft Flagship Eventsでの登壇
+
+Microsoft/Azure x Goに関するテーマで。
+
+- Japan：de:code（開催だ、開催！）
+- Global：Build, Ignite（英語だ、英語！）
+
+.image hello-new-mvp/img/flagship-events.jpg 340 544
+
+.caption [[https://www.microsoft.com/ja-jp/events/flagshipevent.aspx][Microsoft Events and Seminars flagship events - Microsoft Events and Seminars]]
+
+* 引き続き
+
+「Microsoft/Azure x Goの橋渡し役」として！ (q@w@p っ)3
