@@ -1,0 +1,502 @@
+DaprのGo紹介 [機能紹介編]
+合同勉強会 in 大都会岡山 -2021 Summer Online-
+4 Sep 2021
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image gbdaitokai2021summer/img/qt_luigi250.png 300 300
+
+Twitter：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+Microsoft MVP for Microsoft Azure：[[https://mvp.microsoft.com/ja-jp/PublicProfile/5004244]]
+
+* お品書き
+
+Daprとは？
+
+任意の開発言語やフレームワークで開発
+
+- サイドカー パターン
+- 開発言語と公式SDK
+
+ベストプラクティスのビルディングブロックを提供
+
+- ビルディングブロックとコンポーネント
+- 提供されるビルディングブロック
+
+まとめ
+
+* Daprとは？
+
+* Dapr
+
+クラウドネイティブアプリ開発の簡素化を目指した分散アプリケーションランタイム
+
+.image gbdaitokai2021summer/img/dapr.jpg 460 736
+
+.caption [[https://dapr.io/][Dapr - Distributed Application Runtime]]
+
+* クラウドネイティブの定義
+
+以下、原文「[[https://github.com/cncf/toc/blob/main/DEFINITION.md#%E6%97%A5%E6%9C%AC%E8%AA%9E%E7%89%88][CNCF Cloud Native Definition v1.0 (日本語版)]]」より
+
+クラウド環境にて、スケーラブルなアプリケーションの構築および実行が可能に。
+
+アプローチの代表例：
+
+- コンテナー、サービス メッシュ、マイクロサービス、イミュータブル インフラストラクチャー、宣言型 API、など。
+
+これにより、回復性、管理力、および可観測性のある 疎結合システム を実現。
+
+堅牢な自動化と組み合わせて、変更を最小限の労力で頻繁かつ予測通りに実行する。
+
+* ネーミング
+
+製品名は「 *D* istributed *Ap* plication *R* untime」の各単語の頭文字から。
+
+読み方は "Dapper"
+
+.image gbdaitokai2021summer/img/pronounce.png 350 552
+
+.caption [[https://twitter.com/daprdev/status/1184934948756570112]]
+
+* リリース履歴
+
+2019年09月21日 GitHubへのinitial commit
+2019年10月16日 [[https://cloudblogs.microsoft.com/opensource/2019/10/16/announcing-dapr-open-source-project-build-microservice-applications/][Microsoft社からオープソースプロジェクトとして公開]]（ver.0.1.0）
+
+2021年02月17日 メジャーバージョン 1.0.0 リリース
+2021年04月02日 バージョン 1.1.0 リリース
+2021年05月27日 バージョン 1.2.0 リリース
+2021年07月27日 バージョン 1.3.0 リリース（← イマココ！）
+2021年09月14日 バージョン 1.4.0 リリース予定
+
+リリースサイクルはまだ決まっておらず、1.5〜2ヶ月のペース。
+
+※ 2021年06月21日 私がDaprを知った日
+
+* 目指すところ
+
+- *任意の開発言語やフレームワークで分散アプリを開発できるようにする。*
+- *ベストプラクティスのビルディングブロックを提供して開発の悩みを解決。*
+
+今回は、主に上記の２点について紹介します。
+
+.link https://github.com/dapr/dapr#goals
+
+- コミュニティ主導であり、オープンであり、ベンダーに中立であること。
+- 新しい貢献者を獲得する。
+- オープンAPIを通じて一貫性と移植性を提供する。
+- クラウドとエッジ全体でプラットフォームにとらわれない。
+- 拡張性を採用し、ベンダーロックインなしでプラグ可能なコンポーネントを提供。
+- 高性能で軽量であることにより、IoTとエッジシナリオを実現。
+- 実行時の依存関係なしに、既存のコードから段階的に採用可能に。
+
+* 任意の開発言語やフレームワークで開発
+
+* サイドカー パターン (1/2)
+
+分散システムにおけるデザインパターンのひとつ。
+
+バイクにサイドカーを取り付けるように、アプリケーションに機能を追加する。
+
+- 処理を行うアプリケーション（バイク）
+- それを機能拡張するアプリケーション（サイドカー）
+
+それぞれ別のプロセスやコンテナーで動作させる。
+
+.image gbdaitokai2021summer/img/sidecar-pattern.png 240 384
+
+.caption [[https://docs.microsoft.com/ja-jp/azure/architecture/patterns/sidecar][サイドカー パターン - Cloud Design Patterns | Microsoft Docs]]
+
+* サイドカー パターン (2/2)
+
+それぞれのアプリケーションは、
+
+- 同一マシン上で動作するため、通信の遅延やコストは最小。
+- 別々の開発言語やランタイムで作成できる。
+
+サイドカーは、
+
+- バイク側のアプリケーションと生死を共にする。
+- バイク側のアプリケーションのリソースにアクセスできるため、監視を行える。
+- 既存のアプリケーションに対しても、機能拡張を追加できる。
+
+* Daprにおけるサイドカー アーキテクチャー
+
+処理アプリケーション（バイク）とDapr（サイドカー）は、HTTPまたはgRPCで通信。
+
+どちらかを喋らせることができる開発言語であれば、処理アプリの開発は可能。
+
+.image gbdaitokai2021summer/img/sidecar.jpg 400 631
+
+.caption [[https://docs.dapr.io/concepts/overview/#sidecar-architecture]]
+
+* 公式SDK
+
+ビルディングブロックやサービスの呼び出し、アクターの構築、など。
+
+- 安定版：.NET, Python, Java, Go, PHP
+- 開発版：C++, Rust, JavaScript
+
+.image gbdaitokai2021summer/img/sdk.png 350 631
+
+.caption [[https://docs.dapr.io/developing-applications/sdks/#sdk-languages]]
+
+* ベストプラクティスのビルディングブロックを提供
+
+* ビルディングブロック (1/2)
+
+一般的には、アーキテクチャーを構成する要素のこと。
+
+Daprでは、作成できるマイクロサービスの機能のこと。
+
+マイクロサービスの機能に関するベストプラクティスとパターンを体系化。
+
+既存のビルディングブロックの入れ替えや新しいビルディングブロックの追加が可能。
+
+* ビルディングブロック (2/2)
+
+コード機能的には、1つ以上のコンポーネントを使用するHTTPまたはgRPCのAPI。
+
+.image gbdaitokai2021summer/img/building-block.png 460 736
+
+.caption [[https://docs.dapr.io/concepts/building-blocks-concept/]]
+
+* コンポーネント (1/4)
+
+ビルディングブロックで使用される機能モジュール。
+
+1つまたは複数のコンポーネントを使用可能。
+
+インターフェースが用意されており、これに合わせて機能を実装。
+
+機能の内容は、対応する外部アプリケーションの操作など。
+
+* コンポーネント (2/4)
+
+バージョン 1.3 の時点で、用意されているコンポーネント
+
+- State stores, Service discovery, Middleware, Pub/sub brokers, Bindings, Secret stores
+
+.image gbdaitokai2021summer/img/components.png 400 640
+
+.caption [[https://docs.dapr.io/concepts/components-concept/]]
+
+* コンポーネント (3/4)
+
+Daprは、Goで書かれており、コンポーネントもGoでコーディングする。
+
+リポジトリー：GitHub - dapr/components-contrib
+
+.link https://github.com/dapr/components-contrib
+
+.image gbdaitokai2021summer/img/components-contrib.jpg 350 560
+
+* コンポーネント (4/4)
+
+例：State storesのStoreインターフェース
+
+.image gbdaitokai2021summer/img/store-interface.png 460 736
+
+.caption [[https://github.com/dapr/components-contrib/blob/master/state/store.go]]
+
+* ビルディングブロック
+
+バージョン 1.3 の時点で、7つのビルディングブロックが用意されている。
+
+.image gbdaitokai2021summer/img/building-blocks.jpg 450 1000
+
+.caption [[https://docs.dapr.io/concepts/overview/#microservice-building-blocks-for-cloud-and-edge]]
+
+* 7つのビルディングブロック
+
+1. サービス呼び出し
+2. 状態管理
+3. パブリッシュとサブスクライブ
+4. バインド
+5. アクター
+6. 可観測性
+7. シークレットの管理
+
+* 1. サービス呼び出し (1/3)
+
+サイドカーを通じてサービスを呼び出す機能。
+
+.image gbdaitokai2021summer/img/service-invocation.jpg 450 1000
+
+.caption [[https://docs.dapr.io/developing-applications/building-blocks/service-invocation/service-invocation-overview/#example]]
+
+* 1. サービス呼び出し (2/3)
+
+サイドカー同士の通信はmTLSでセキュア化。
+
+アプリIDによるアクセスコントロールが可能。
+
+- サイドカー同士に同じアプリIDを設定することで同一サービスと認識。
+
+通信エラー時の自動リトライ値を設定可能。
+
+通信相手のサイドカー検出に、名前解決コンポーネントを使用。
+
+- mDNS：ラウンドロビン方式のロードバランスに対応。
+
+デフォルトで、サービス呼び出しのトレースとメトリックの収集が行われる。
+
+* 1. サービス呼び出し (3/3)
+
+.image gbdaitokai2021summer/img/service-invocation.jpg 270 600
+
+1. pythonappは、nodeappへのリクエストをサイドカーAに渡す。
+2. サイドカーAは、名前解決コンポーネントを使用してサイドカーBを見つける。
+3. サイドカーAは、mTLS over HTTPでサイドカーBへリクエストを送信。
+4. サイドカーBは、nodeappにリクエストを渡し、nodeappは処理を実行。
+5. nodeappは、レスポンスをサイドカーBに渡す。
+6. サイドカーBは、mTLS over HTTPでAサイドカーへレスポンスを返却。
+7. サイドカーAは、pythonappにレスポンスを渡し、pythonappは処理を実行。
+
+* 2. 状態管理 (1/4)
+
+アプリケーションが扱うデータをキーと値のペアで管理。
+
+データは、HTTPのPOSTメソッドで保存してGETメソッドで取得。
+
+ストアアプリがRDBMSの場合、データの読み書きをSQLでも操作可能。
+
+.image gbdaitokai2021summer/img/statestore.jpg 340 742
+
+.caption [[https://docs.dapr.io/developing-applications/building-blocks/state-management/state-management-overview/]]
+
+* 2. 状態管理 (2/4)
+
+HTTP レスポンス ヘッダーのETag (Entity Tag) を用いて、データの楽観排他を制御。
+
+- ETagあり：先勝ち、Etagなし：後勝ち
+- ETagが未サポートのストア用には、ETagエミュレーションで対応。
+
+一貫性として、強整合性と結果整合性の両方をサポート。
+
+- 強整合性：全てのデータが書き込まれた時点で、データ参照が可能になる。
+- 結果整合性：最初のデータが書き込まれた時点で、データ参照が可能になる。
+
+デフォルトは、結果整合性。
+
+* 2. 状態管理 (3/4)
+
+サポート（一般）：
+
+.image gbdaitokai2021summer/img/store-generic.png 450 628
+
+.caption [[https://docs.dapr.io/reference/components-reference/supported-state-stores/#generic]]
+
+* 2. 状態管理 (4/4)
+
+サポート（クラウド）：
+
+.image gbdaitokai2021summer/img/store-cloud.png 450 723
+
+.caption [[https://docs.dapr.io/reference/components-reference/supported-state-stores/#amazon-web-services-aws]]
+
+* 3. パブリッシュとサブスクライブ (1/3)
+
+１つのメッセージを異なる複数のサービスに送信する機能。
+
+- パブリッシャー：トピックにメッセージを発行する（送信者）
+- サブスクライバー：トピックからのメッセージを購読する（受信者）
+- メッセージブローカー：パブリッシャーとサブスクライバーをトピックで紐付け。
+
+.image gbdaitokai2021summer/img/pubsub.jpg 280 762
+
+.caption [[https://docs.dapr.io/developing-applications/building-blocks/service-invocation/service-invocation-overview/#example]]
+
+* 3. パブリッシュとサブスクライブ (2/3)
+
+パブリッシャーとサブスクライバーはお互いを知らなくてよい。
+
+Daprでは、トピックをサブスクライブさせる方法が2つ用意されている。
+
+- 外部（yaml）ファイルに設定して読み込む。
+- プログラミングする。
+
+yamlファイルの例：サブスクライバーにapp1とapp2を指定。
+
+  apiVersion: dapr.io/v1alpha1
+  kind: Subscription
+  metadata:
+    name: myevent-subscription
+  spec:
+    topic: deathStarStatus
+    route: /dsstatus
+    pubsubname: pubsub
+  scopes:
+  - app1
+  - app2
+
+* 3. パブリッシュとサブスクライブ (3/3)
+
+他に、メッセージの生存時間の設定やキューイング、最低1回の配信の保証、トピックのアクセスコントロール、なども。
+
+サポート：
+
+.image gbdaitokai2021summer/img/support-pubsub.jpg 360 728
+
+.caption [[https://docs.dapr.io/reference/components-reference/supported-pubsub/]]
+
+* 4. バインド (1/2)
+
+HTTPおよびgRPCを用いて、外部サービスとの連携を設定＆実施する。
+
+入力バインディング：
+
+- 外部サービスからアプリケーションを呼び出す。
+
+出力バインディング：
+
+- アプリケーションから外部サービスを呼び出す。
+
+* 4. バインド (2/2)
+
+バインドを実装するためのロジックやSDKは不要。
+
+接続先URLやリトライ設定などの情報を、yamlファイルに登録。
+
+  apiVersion: dapr.io/v1alpha1
+  kind: Component
+  metadata:
+    name: myevent
+    namespace: default
+  spec:
+    type: bindings.kafka
+    version: v1
+    metadata:
+    - name: topics
+      value: topic1
+    - name: brokers
+      value: localhost:9092
+    - name: consumerGroup
+      value: group1
+
+* 5. アクター (1/2)
+
+計算単位の処理を並行実行させる機能。
+
+アクター：それぞれが独立して稼働するインスタンス。
+
+プレースメント：生成されたアクターや関係性の情報を管理。
+
+.image gbdaitokai2021summer/img/actor1.jpg 340 596
+
+.caption [[https://docs.dapr.io/developing-applications/building-blocks/actors/actors-overview/#actor-placement-service]]
+
+* 5. アクター (2/2)
+
+アクター間の通信はメッセージでやりとり。
+
+Daprは、アクター起動のタイマーやリマインダー、状態やライブサイクルの管理、などの機能を提供。
+
+.image gbdaitokai2021summer/img/actor2.jpg 340 656
+
+.caption [[https://docs.dapr.io/developing-applications/building-blocks/actors/actors-overview/#actor-placement-service]]
+
+* 6. 可観測性 (1/4)
+
+Daprとアプリケーションの両方をデバッグおよび監視するテレメトリー機能。
+
+.image gbdaitokai2021summer/img/distributed-tracing.jpg 450 920
+
+.caption [[https://docs.dapr.io/concepts/observability-concept/#distributed-tracing]]
+
+* 6. 可観測性 (2/4)
+
+テレメトリー：
+
+- 離れた場所にある対象を、遠隔で測定して分析情報を取得すること。
+
+カテゴリー：
+
+- 分散トレース：分散されたサービス間のトラフィックに関する分析情報
+- メトリック：サービスのパフォーマンスやリソースに関する分析情報
+- ログ：サービスの実行状況やエラー状況に関する分析情報
+
+* 6. 可観測性 (3/4)
+
+DaprサイドカーにHTTP/gRPCミドルウェアを実装。
+
+Daprとアプリケーションの全トラフィックをインターセプトしてテレメトリーを抽出。
+
+分散トラフィックを認識＆追跡するIDを自動挿入。
+
+一般的な形式に対応：
+
+- 分散トレース：W3C Trace Contextを使用。
+- テレメトリー：Zipkin と OpenTelemetry に対応。
+
+Daprサイドカー同士は、ヘルスチェクも実施。
+
+* 6. 可観測性 (4/4)
+
+サポート（監視バックエンド）：
+
+- テレメトリー：OpenTelemetry
+- 分散トレース：Zipkin, Jaeger, New Relic, Datadog, Instana, SignalFX
+- 分散トレース (クラウド)：Azure Monitor, Stackdriver
+- メトリック：Prometheus, Grafana
+- ログ：Fluentd, ELK Stack (Elasticsearch + Logstash + Kibana)
+
+* 7. シークレットの管理 (1/2)
+
+外部システムへアクセスするための接続コード、キー、トークンなどを管理。
+
+.image gbdaitokai2021summer/img/secret.jpg 460 736
+
+.caption [[https://docs.dapr.io/developing-applications/building-blocks/secrets/secrets-overview/]]
+
+* 7. シークレットの管理 (2/2)
+
+サポート：
+
+.image gbdaitokai2021summer/img/support-secret.jpg 440 1000
+
+.caption [[https://docs.dapr.io/reference/components-reference/supported-secret-stores/]]
+
+* まとめ
+
+* 本資料にて
+
+- 分散アプリケーション（マイクロサービス）を開発するためのランタイム。
+- マイクロサービス間はHTTPおよびgRPCで接続。
+- ビルディングブロックでベストプラクティスの機能を提供。
+- 各機能のアプリケーション（バイク）は、様々な開発言語で実装。
+- 各機能のコンポーネント（サイドカー内）は、Goで開発可能。
+
+* 補足として
+
+- ローカルマシンとコンテナー上にデプロイ＆動作可能。
+- Daprの開発はコミュニティが主体。ベンダー依存なし。
+- 認証機能は用意されていないので、各自で実装。
+
+* リンク集
+
+ドキュメント：
+
+- Dapr Docs（英語）
+
+.link https://docs.dapr.io/
+
+- .NET 開発者向け Dapr | Microsoft Docs（日本語）
+
+.link https://docs.microsoft.com/ja-jp/dotnet/architecture/dapr-for-net-developers/
+
+手前味噌：
+
+- ローカルマシンでいち早くDaprを動作させる手順 - Qiita
+
+.link https://qiita.com/qt-luigi/items/2e84eca85efa255ddc41
+
+* Daprで、楽しいマイクロサービス開発を！q@w@p

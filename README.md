@@ -7,6 +7,7 @@
 
 ## 2021
 
+- [DaprのGo紹介 [機能説明編]](https://talks.godoc.org/github.com/qt-luigi/talks/2021/gbdaitokai2021summer.slide#1) in [合同勉強会 in 大都会岡山 -2021 Summer Online-](https://gbdaitokai.connpass.com/event/216429/)
 - [私の活動報告 [2021年7月編]](https://talks.godoc.org/github.com/qt-luigi/talks/2021/my-activity-202107.slide#1)
 - [私の趣味Tech活動報告](https://talks.godoc.org/github.com/qt-luigi/talks/2021/akarenga-lt-9.slide#1) in [赤煉瓦ライトニングトーク（Akarenga.LT） 第9回](https://engineercafe.connpass.com/event/214009/)
 - [Azure SDK for Goで学ぶGoでのWebクライアント実装](https://talks.godoc.org/github.com/qt-luigi/talks/2021/gocon2021spring.slide) in [Go Conference 2021 Spring](https://gocon.connpass.com/event/208896/)
