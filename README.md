@@ -5,6 +5,10 @@
 - [Goについて](https://talks.godoc.org/github.com/qt-luigi/talks/2021/the-first-go-room-about-go.slide#1)
 - [Go入門ハンズオン [基礎編]](https://talks.godoc.org/github.com/qt-luigi/talks/2021/the-first-go-room-basic.slide#1)
 
+## 2022
+
+- [Windowsデスクトップアプリケーション開発のための採用技術の検討とその情報の提供 [2022年12月版]](https://talks.godoc.org/github.com/qt-luigi/talks/2022/win-dt-dev.slide#1)
+
 ## 2021
 
 - [DaprのGo紹介 [機能説明編]](https://talks.godoc.org/github.com/qt-luigi/talks/2021/gbdaitokai2021summer.slide#1) in [合同勉強会 in 大都会岡山 -2021 Summer Online-](https://gbdaitokai.connpass.com/event/216429/)
