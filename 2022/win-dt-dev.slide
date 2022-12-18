@@ -1,0 +1,462 @@
+Windowsデスクトップアプリケーション開発のための採用技術の検討とその情報の提供 [2022年12月版]
+
+Ryuji Iwata
+Okayama, Japan
+
+* お品書き
+
+背景
+
+Visual Studio
+
+- Visual Studio 2022
+
+\.NET/Framework
+
+- .NET Framework
+- .NET
+
+アプリケーション
+
+UIデスクトップ技術
+
+配布
+
+* 背景
+
+* これまで
+
+対象OS：Winodws 98, XP, 7
+
+- Delphi 3〜6 (Object Pascal) でのシステム開発を経験。
+- クライアント/サーバー方式。
+- 画面数は50ほどで開発期間は1年ほどの規模を2,3回経験。
+- 帳票はDelphi同梱のQuickReportで作成してプリンターに出力。
+
+対象OS：Winodws 10
+
+- Adobe FlexとHTML+TypeScriptのWebシステム開発を各半年ほど経験。
+- Visual Studio 2015 (C#) で一画面アプリの開発を2,3回経験。
+- Visual Studio 2019 (VB.NET) で10画面ほどのサブ機能の改修を半年ほど経験。
+
+* これから
+
+対象OS：Winodws 10
+
+- Visual Studio 2022 (C#) でのシステム開発を検討。
+- REST API (HTTP通信によるJSON伝送) 方式。
+- 画面数は5ほどで開発期間は数ヶ月の規模。
+- 帳票はサーバーに要求して作成されたPDFをダウンロード。
+- カードリーダーやラベルプリンターなどの入出力機器も制御。
+
+* Visual Studio
+
+* Visual Studio
+
+サポート期間
+
+- 最初の5年間：メインストリーム（機能追加、不具合修正、OS追随、など）
+- 後半の5年間：セキュリティ更新のみ
+
+.link https://learn.microsoft.com/ja-jp/visualstudio/productinfo/vs-servicing Visual Studio の製品ライフサイクルとサービス | Microsoft Learn
+
+* Visual Studio 2022
+
+* バージョン
+
+メジャーバージョン：17
+
+- 17.4：2022年11月8日 〜 2024年7月11日 (最新)
+- 17.2：2022年5月10日 〜 2024年1月9日
+- 17.0：2021年11月8日 〜 2023年7月11日
+
+.link https://learn.microsoft.com/ja-jp/visualstudio/productinfo/vs-servicing#long-term-servicing-channel-ltsc-support 長期サービス チャネル (LTSC) のサポート - Visual Studio の製品ライフサイクルとサービス | Microsoft Learn
+
+* サポートしているWindows
+
+Windows：11, 10, 8.1, 7
+
+.link https://learn.microsoft.com/ja-jp/visualstudio/releases/2022/compatibility#build-apps-that-run-on-windows-clients Windows クライアントで実行されるアプリの構築 - Visual Studio 2022 の互換性 | Microsoft Learn
+
+Windows Server：2019, 2016, 2012 R2, 2012, 2008 R2
+
+.link https://learn.microsoft.com/ja-jp/visualstudio/releases/2022/compatibility#build-apps-that-run-on-windows-server Windows Server で実行されるアプリの構築 - Visual Studio 2022 の互換性 | Microsoft Learn
+
+* サポートしている.NET
+
+\.NET ネイティブ
+
+- 全バージョン：7, 6, 5
+
+\.NET Framework
+
+- 4.8：4.8.1, 4.8
+- 4.7：4.7.2, 4.7.1, 4.7
+- 4.6：4.6.2
+
+.link https://learn.microsoft.com/ja-jp/visualstudio/releases/2022/compatibility#-visual-studio-2022-support-for-net-development Visual Studio 2022 の .NET 開発のサポート - Visual Studio 2022 の互換性 | Microsoft Learn
+
+※ 対象が Windows のため .NET Core と Mono は除く。
+
+* [考察 1]
+
+新プロジェクトの開発、および、既存C#システムのメンテナンスに対応できる。
+
+* .NET/Framework
+
+* 種類 (混在しないこと！)
+
+\.NET Framework
+
+- バージョンは 1 〜 4 まで。
+- 開発の互換性を維持するために提供されている。
+- 各Windowsで追加された機能に対応できない。
+- サポート中のVisual Studioには対応。
+
+\.NET (.NET Frameworkとの互換性なし)
+
+- バージョンは 5 以降。
+- Windowsから独立させる形で新しく設計されている。
+- 6 以降は、Visual Studio 2022 以降が対応。
+
+※ 対象が Windows のため .NET Core と Mono は除く。
+
+* .NET Framework
+
+* サポートされているバージョン
+
+メンテナンスのみで機能更新がない。
+
+- 本資料では、最新の 4.8 系を選択。
+
+4.8.1：2022年8月9日〜未定
+4.8　：2019年4月18日〜未定 (Microsoft 推奨)
+
+4.7.2：2018年4月30日〜未定
+4.7.1：2017年10月17日〜未定
+4.7　：2017年4月5日〜未定
+
+4.6.2：2016年8月2日〜未定
+
+3.5 SP1：2008年11月18日〜2029年1月9日
+
+.link https://dotnet.microsoft.com/ja-jp/download/dotnet-framework .NET Framework のダウンロード | 無料の公式ダウンロード
+
+* サポートしているWindows
+
+4.8.1
+
+- Windows：11, 10 (20H2 以降)
+- Windows Server：2022
+
+.link https://learn.microsoft.com/ja-jp/dotnet/framework/migration-guide/versions-and-dependencies#net-framework-481 .NET Framework 4.8.1 - .NET Framework および Windows OS バージョン - .NET Framework | Microsoft Learn
+
+4.8
+
+- Windows：11, 10 (1607 以降), 8.1, 7
+- Windows Server：2022, 2019, 2016, 2012 R2, 2012, 2008 R2 SP1
+
+.link https://learn.microsoft.com/ja-jp/dotnet/framework/migration-guide/versions-and-dependencies#net-framework-48 .NET Framework 4.8 - .NET Framework および Windows OS バージョン - .NET Framework | Microsoft Learn
+
+* [考察 2] .NET Frameworkを選択する場合、4.8系のバージョンは？
+
+今回のプロジェクト以降を対象とする。
+インストール先の端末がWindows 10 バージョン 20H2 以降である。
+
+- 4.8.1 かと思われます。
+
+今回のプロジェクト以降、および、既存C#システムのメンテナンスも考慮する。
+現時点において、Microsoftが推奨している。
+
+- 4.8 かと思われます。
+
+* .NET
+
+* リリース種別
+
+LTS：長期サポート版 (3年)
+STS：標準サポート版 (1年半)
+
+.link https://dotnet.microsoft.com/ja-jp/platform/support/policy/dotnet-core#release-types リリースの種類 - .NET および .NET Core オフィシャル サポート ポリシー
+
+* サポートされているバージョン
+
+7
+
+- STS：2022年11月8日〜2024年5月14日
+- 最新：7.0.1 (2022年12月13日)
+
+6
+
+- LTS：2021年11月8日〜2024年11月12日
+- 最新：6.0.12 (2022年12月13日)
+
+.link https://dotnet.microsoft.com/ja-jp/platform/support/policy/dotnet-core#lifecycle .NET および .NET Core リリースのライフサイクル - .NET および .NET Core オフィシャル サポート ポリシー
+
+[参考] 8：2023年11月 リリース予定 (LTS)
+
+.link https://dotnet.microsoft.com/ja-jp/platform/support/policy/dotnet-core#cadence .NET リリース周期 - .NET および .NET Core オフィシャル サポート ポリシー
+
+* サポートしているWindows
+
+7
+
+- Windows：11, 10 (1607 以降)
+- Windows Server：2012 以降
+
+.link https://github.com/dotnet/core/blob/main/release-notes/7.0/supported-os.md#net-7---supported-os-versions .NET 7 - Supported OS versions - core/supported-os.md at main · dotnet/core · GitHub
+
+6
+
+- Windows：11, 10 (1607 以降), 8.1, 7 SP 1
+- Windows Server：2012 以降
+
+.link https://github.com/dotnet/core/blob/main/release-notes/6.0/supported-os.md#net-6---supported-os-versions .NET 6 - Supported OS versions - core/supported-os.md at main · dotnet/core · GitHub
+
+* [考察 3] .NET を選択する場合、バージョンは？
+
+6 は長期サポート版で、サポート期間が 7 より長い。
+7 はひと月前のリリースのため、情報不足や安定性の不安がある。
+7 で対応した機能を使う機会がなさそう。
+
+- 6 かと思われます。
+
+* [考察 4] .NET Framework と .NET のどちらを選択するのか？
+
+新規開発であり流用元システムもないため、互換性の考慮が不要。
+今後リリースされる端末やOSへの追随が容易。
+
+- .NET かと思われます。
+
+[参考情報]
+
+Visual Studio 2019 (VB.NET) のプロジェクトでは「.NET Framework 4.8」を採用。
+
+- 以前の.NET Frameworkで稼働している既存システムの延命対応のため。
+
+[補足情報]
+
+既存C#システムはサポートが切れた.NET Framework (4.5 系) で稼働中。
+
+- 端末更新時に .NET Framework 4.8 系への移行の検討や実施をお勧めします。
+- 依存する機能は使っていないため、問題なく移行できるはず。
+
+* アプリケーション
+
+* 種類
+
+- デスクトップ アプリケーション
+- モダン (ストア) アプリケーション
+- Universal Windows Platform (UWP) アプリケーション
+
+* デスクトップ アプリケーション
+
+複数のアプリやウィンドウを表示し、キーボードとマウスの操作が主体。
+
+Windows XP (2001年10月) 以降：
+
+- Windows API (Win32) ベース。
+
+* モダン アプリケーション
+
+単一アプリを全画面で表示し、タッチ操作が主体。
+
+Windows 8 (2012年10月) 以降：
+
+- Windows Runtime (WinRT) ベース。
+- Modern (Metro) UI を採用。
+- 配布経路はMicrosoft ストアのみ。
+
+* Universal Windows Platform (UWP) アプリケーション
+
+デスクトップとモダンの両アプリを再統合させる目的で開発。
+
+Windows 10 (2015年7月) 以降：
+
+- モダン 向け。
+- Windows Runtime (WinRT) ベース。
+- Fluent Design を採用。
+
+Windows 11 (2021年10月) 以降：
+
+- デスクトップ 向け。
+- Windows App SDK ベース（Windows App SDK は WinRT ベース）
+- Windows 10 にも対応。
+
+* [考察 5] 選択するアプリケーションは？
+
+アプリの配布は自前で行う。
+マウスやキーボードの操作が主体。
+
+- デスクトップ、または、デスクトップ向け UWP アプリケーション。
+
+* UIデスクトップ技術
+
+* 種類
+
+1995年：Windows API (Win32)
+2002年：Windows Forms (WinForms)
+2006年：Windows Presentation Foundation (WPF)
+2018年：Windows UI Library 2 (WinUI 2)
+2021年：Windows UI Library 3 (WinUI 3) (C#, C++)
+2022年：.NET Multi-Platform App UI (.NET MAUI) (C#)
+
+* Windows API (Win32)
+
+デスクトップ アプリケーション
+Windows XP 以降
+
+概要
+
+- Windows が提供している低レイヤー API。
+- 以前はクラス ライブラリーとして MFC や VCL (Delphi) をラッパーとして開発。
+
+検討対象：×
+
+- 直接的には C++ でコーディングする必要がある。
+- 実際は .NET/Framework や WinRT をラッパーとして開発するので検討不要。
+
+* Windows Forms (WinForms)
+
+デスクトップ アプリケーション
+Windows XP 以降
+
+概要
+
+- アプリの外観は従来通りで、デザインは変更しにくい。
+- 画面はドラッグ＆ドロップで配置して自動生成したイベントにコーディングする。
+- 開発体験は Delphi や VB 6 に近い。
+
+検討対象：○
+
+- 今ある知識やスキルで開発しやすい。
+- 従来通りのビジネスアプリのデザインで大丈夫か？
+- UWP アプリケーション化しにくい。
+
+* Windows Presentation Foundation (WPF)
+
+デスクトップ アプリケーション
+Windows XP 以降
+
+概要
+
+- アプリの外観はマテリアルっぽく、デザインは変更しやすい。
+- 画面はデザイナーでざっくり配置して調整やイベントを含めてコーディングする。
+- 開発体験は Adobe Flex や HTML+TypeScript に近い。
+
+検討対象：○
+
+- 今ある知識やスキルで開発しやすい。
+- コーディング (XAML) での画面調整を受け入れられるか？
+- UWP アプリケーション化させやすい。
+
+* 参考情報
+
+他社で開発されている受入C#システムは WPF で作成されている。
+
+* Windows UI Library 2 (WinUI 2)
+
+モダン向け UWP アプリケーション
+2.7 以前：Windows 10 バージョン 1703 以降
+2.8 以降：Windows 10 バージョン 1809 以降
+
+概要
+
+- UWP の UI 機能であり Windows 10 SDK に統合されている。
+- 開発体験は WPF に近い。
+
+検討対象：×
+
+- モダン 向けである。
+- Windows 10 に依存している。
+
+* Windows UI Library 3 (WinUI 3)
+
+デスクトップ向け UWP アプリケーション
+Windows 10 バージョン 1809 以降
+
+概要
+
+- Windows App SDK で切り出され、Windows 10 以降で利用可能。
+- 開発体験は WPF に近い。
+
+検討対象：○
+
+- WinForms、WPFから続く正当なデスクトップ アプリ開発の後継。
+- 新しい技術のため、情報の不足や機能改善のリリースが多い。
+- 現在というよりは今後？
+
+* .NET Multi-Platform App UI (.NET MAUI)
+
+モダン向け UWP アプリケーション
+Windows 10 バージョン 1809 以降
+
+概要
+
+- 1つのコードでWin UI 3, macOS, Android, iOSのネイティブ アプリを開発。
+- 開発体験は WPF に近い。
+
+検討対象：×
+
+- モダン 向けである。
+- macOS, Android, iOSの開発ではない (逆にする時は、要検討)
+
+* [考察 6] どのUIデスクトップ技術を選択するのか？
+
+コーディング (XAML) での画面調整を受け入れる余裕がない。
+見た目はこれまでの感じでよい。
+
+- WinForms かと思われます。
+
+コーディング (XAML) での画面調整を受け入れる余裕がある。
+見た目が最近のWindowsに近くてよい。
+
+- WPF かと思われます。
+
+アプリのスタイルもWindows 10 や 11 に合わせる。
+Windows App SDKのインストールや技術情報の調査が可能。
+
+- WinUI 3になります。
+
+* 配布
+
+* パッケージ形式
+
+MSI
+
+- デスクトップ アプリケーションに対応。
+- Windows 7 以前。
+
+APPX
+
+- Microsoft ストアでの配布形式。
+- UWP アプリケーションに対応。
+- Windows 10 バージョン 1803 以前。
+
+MSIX
+
+- デスクトップとUWPの両方のアプリケーションに対応。
+- Windows 10 バージョン 1809 以降。
+
+* 公開Webサーバー経由でのインストール
+
+ダウンロード元をVisual Studioで作成して、公開Webサーバーにデプロイする。
+
+ClickOnce
+
+- これまでの形式。
+
+.link https://learn.microsoft.com/ja-jp/visualstudio/deployment/quickstart-deploy-using-clickonce-folder?view=vs-2022 ClickOnce を使用して .NET Windows デスクトップ アプリケーションを配置する - Visual Studio (Windows) | Microsoft Learn
+
+サイドローディング
+
+- MSIXでの形式。
+- Windows 10 バージョン 1803 以降 + Visual Studio 2017 v15.7 以降
+
+.link https://learn.microsoft.com/ja-jp/windows/msix/app-installer/create-appinstallerfile-vs Visual Studio を使ったアプリ インストーラー ファイルの作成 - MSIX | Microsoft Learn
+
+* [考察 7] どのUIデスクトップ技術を選択するのか？
+
+現行の方法で問題ない。
+
+- ClickOnce と思われます。
