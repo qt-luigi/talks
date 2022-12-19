@@ -416,7 +416,7 @@ Windows 10 バージョン 1809 以降
 アプリのスタイルもWindows 10 や 11 に合わせる。
 Windows App SDKのインストールや技術情報の調査が可能。
 
-- WinUI 3になります。
+- WinUI 3 かと思われます。
 
 * 配布
 
@@ -455,7 +455,7 @@ ClickOnce
 
 .link https://learn.microsoft.com/ja-jp/windows/msix/app-installer/create-appinstallerfile-vs Visual Studio を使ったアプリ インストーラー ファイルの作成 - MSIX | Microsoft Learn
 
-* [考察 7] どのUIデスクトップ技術を選択するのか？
+* [考察 7] どの配布を選択するのか？
 
 現行の方法で問題ない。
 
