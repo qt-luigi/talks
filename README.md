@@ -9,6 +9,7 @@
 
 - [Go入門ハンズオン [準備編]](https://talks.godoc.org/github.com/qt-luigi/talks/2024/the-first-go-room-setup.slide#1)
 - [Go入門ハンズオン [基礎編]](https://talks.godoc.org/github.com/qt-luigi/talks/2024/the-first-go-room-basic.slide#1)
+- [私のEbitengineの第一歩](https://talks.godoc.org/github.com/qt-luigi/talks/2024/ebitengine-puchiconf-3.slide#1) in [Ebitengine ぷちConf #3](https://gocon.connpass.com/event/322222/)
 
 ## 2021
 

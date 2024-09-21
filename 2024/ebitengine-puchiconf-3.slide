@@ -1,0 +1,75 @@
+私のEbitengineの第一歩
+Ebitengine ぷちConf #3
+30 Aug 2024
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image ebitengine-puchiconf-3/img/qt_luigi250.png 300 300
+
+X (Twitter)：[[http://x.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* 作者の星さんとの出会い
+
+- 2019年5月18日(土)に東京で開催された「Go Conference 2019 Spring」が最初。
+- 朝イチの特別企画にトークする側で参加していた際に、会場から質問を頂く。
+
+.link https://gocon.connpass.com/event/124530/
+
+.image ebitengine-puchiconf-3/img/go-conference-2019-spring.jpg 400 600
+
+* Ebiten API Reference
+
+- 夜の懇親会では、持ち合わせておられたAPIリファレンス書籍を手渡しで直購入。
+
+.image ebitengine-puchiconf-3/img/ebiten-api-reference.jpg 500 400
+
+* Ebitengineでのゲーム作りにチャレンジ
+
+- 2021年12月26日(日)の「香川Go言語 わいわい会 (GAMEを作ろう)#3」が最初。
+- 2022年1月8日(土)の「香川Go言語 わいわい会(GAMEを作ろう) #4」で完成。
+
+.link https://gdgshikoku.connpass.com/event/233968/
+
+.image ebitengine-puchiconf-3/img/kagawa-go-waiwai-4.jpg 400 600
+
+* スカッシュゲームを作ろう！
+
+- 小学生の時に購入した、すがやみつる先生の書籍「こんにちはマイコン」に掲載。
+- N60-BASICでスカッシュゲームを作成する流れがマンガで解説されていた。
+- これをEbitengineで実装してみよう！
+
+.link https://csbs.shogakukan.co.jp/book?book_group_id=18598
+
+.image ebitengine-puchiconf-3/img/hello-mycom.jpg 360 540
+
+* こんにちはPython
+
+- 2020年4月29日に書籍「こんにちはマイコン」がPython対応した形で発売。
+- サポートサイトにてPythonのソースコードが公開されている。
+- これをGoに移植する形でEbitengineで実装することに。
+
+.link https://m-sugaya.jp/manga_python/
+
+.image ebitengine-puchiconf-3/img/hello-python-support.jpg 360 540
+
+* 成果物
+
+- スカッシュゲーム
+
+.link https://github.com/qt-luigi/scuash
+
+.image ebitengine-puchiconf-3/img/scuash.jpg 460 800
+
+* せっかく移植したので公開したい！
+
+- すがやみつる先生にお伺いをたてて、了承を頂きました。
+
+.link https://x.com/qt_luigi/status/1480118935962152963
+
+.image ebitengine-puchiconf-3/img/x.jpg 460 800
