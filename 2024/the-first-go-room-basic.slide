@@ -1,0 +1,1078 @@
+Go入門ハンズオン [基礎編]
+はじめてのGo言語教室
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image the-first-go-room-basic/img/qt_luigi250.png 300 300
+
+X (Twitter)：[[http://x.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* お品書き
+
+- 何を作るの？
+- 作業ディレクトリーの準備
+- Hello ”Go" World
+- ソースファイルの解説
+- 配列とスライス
+- 反復
+- 分岐
+- 標準入出力
+- 完成に向けて
+- まとめ
+
+* 何を作るの？
+
+* 成果物
+
+タイピングゲームを作ろう！q@w@p
+
+    $ ./typing 
+    The
+    input : the
+    ×
+    first
+    input : first
+    ○
+    Go
+    input : go
+    ×
+    room
+    input : room
+    ○
+
+* 基本仕様
+
+表示する単語を配列で用意します。
+
+    [ "The", "first", "Go", "room" ]
+
+以下、配列の要素の数だけ、添字（インデックス）の順番に繰り返します。
+
+１．単語を一つ表示します。
+
+    The
+
+２．単語を入力します。
+
+    input : The
+
+３．表示した単語と入力した単語が一致なら○を、不一致なら×を表示します。
+
+    ○
+
+* 作業ディレクトリーの準備
+
+* 作業ディレクトリーの作成
+
+１．cdコマンドでホームディレクトリーに移動。
+
+    $ cd (Windows: cd %HOMEPATH%)
+
+２．mkdirコマンドで作業ディレクトリーを作成（ここではtyping）
+
+    $ mkdir typing
+
+３．cdコマンドで作業ディレクトリーに移動。
+
+    $ cd typing
+
+* 作業ディレクトリーの初期化
+
+go mod initコマンドでGoのプロジェクトとして初期化。
+
+- ひとまずローカルで進める場合（example.com/typing はダミー値）
+
+    $ go mod init example.com/typing
+
+- 本パッケージをGitHub上で管理する場合の例
+
+    $ go mod init github.com/アカウント名/typing
+
+go.modファイルの内容
+
+    module example.com/typing
+
+    go 1.23.1
+
+※ 役割：go.sumファイルと共に、使用する外部パッケージのバージョン管理など。
+
+* Hello ”Go" World
+
+* ソースファイルの作成
+
+テキストエディターにて、以下の内容でファイル名を「main.go」にして保存。
+
+    package main
+    import "fmt"
+    var (
+    msg1="Hello"
+    msg2 string
+    )
+    func main() {
+    msg2="world"
+    fmt.Println(msg1, msg2)
+    }
+
+※ このまま書き写してください。
+
+* ソースファイルの整形
+
+Goでは、ソースファイルを整形（フォーマット）する機能が標準で用意されている。
+
+- コードが同じ形式になるため、誰が書いても誰が見ても一定を保てる。
+- ソースファイルの差分を見たとき、意図した変更点だけを確認できる。
+
+* go fmt コマンドで整形
+
+初期状態
+
+    $ ls (Windows: dir)
+    go.mod  main.go
+
+実行：go fmt ソースファイル名
+
+- 整形されたソースファイルがあれば、そのファイル名が表示される。
+
+    $ go fmt main.go
+    main.go
+
+- 整形されたソースファイルがなければ、何も表示されない。
+
+    $ go fmt main.go
+    （何も表示されない）
+
+※ テキストエディターの設定によっては、保存時に実行させるとかも。
+
+* 実行結果
+
+    package main
+
+    import "fmt"
+
+    var (
+        msg1 = "Hello"
+        msg2 string
+    )
+
+    func main() {
+        msg2 = "world"
+        fmt.Println(msg1, msg2)
+    }
+
+* ソースファイルの実行
+
+実行：go run ソースファイル名
+
+    $ go run main.go
+    Hello world
+
+* ソースファイルの解説
+
+* main.goファイル
+
+    // 実行できるプログラムを書く場合、パッケージ名はmainを指定
+    package main
+
+    // 使用するパッケージを指定
+    import "fmt"
+
+    // 同一パッケージ内で使用できる変数を宣言
+    var (
+        msg1 = "Hello" // 宣言＋初期化
+        msg2 string    // 明示的にstring型で宣言
+    )
+
+    // main()関数
+    // 実行できるプログラムを書く場合、最初に呼び出される関数（エントリーポイント）
+    func main() {
+        msg2 = "world"          // 値を代入
+        fmt.Println(msg1, msg2) // 引数値を半角空白文字で区切って標準出力
+    }
+
+* ソースファイルについて
+
+ファイル拡張子は「.go」
+
+BOMなしのUTF-8（文字コードの一種）で記述。
+
+インデント（字下げ）はハードタブが推奨。
+
+他のパッケージから呼び出せる関数は、名前の頭文字が大文字。
+
+    // fmtパッケージのPrintln()関数の呼び出し
+    fmt.Println(msg1, msg2)
+
+* パッケージ
+
+定数や関数などを、意味のある単位でまとめたもの。
+
+基本、パッケージ名は１単語。
+
+- 型を拡張するものは型名の複数形（bytes, strings, errors, structs, maps, slices）
+
+Goでは、標準パッケージの充実度がウリのひとつ。
+
+- 圧縮、データベース、ネットワーク、暗号化、画像処理、など
+
+.link https://pkg.go.dev/std
+
+    archive        crypto          fmt             log           reflect        sync
+    bufio          database        go              maps          regexp         syscall
+    builtin        debug           hash            math          runtime        testing
+    bytes          embed           hrtml           mine          slices         text
+    cmp            encoding        image           net           sort           time
+    compress       errors          index           os            strconv        unicode
+    container      expvar          io              path          strings        unique
+    context        flag            iter            plugin        structs        unsafe
+
+* グルーピング
+
+先のimport句やvar句、定数のconst句などは、項目が複数になる場合がほとんど。
+
+通常は、丸括弧で括ってグルーピングして、可読性の向上と記述量の削減を図る。
+
+単行：
+
+    import "fmt"
+    import "net/http"
+    import "strconv"
+
+グルーピング：
+
+    import (
+        "fmt"
+        "net/http"
+        "strconv"
+    )
+
+※ 単行とグルーピングは、混在可能。
+
+* グルーピング：import句
+
+go fmtコマンド実行時、パッケージ名が自動で昇順で並び替わるので、オススメ。
+
+実行前：
+
+    import (
+        ”strconv"
+
+        ”fmt"
+        "net/http"
+    )
+
+実行後：
+
+    import (
+        ”fmt"
+        "net/http"
+        ”strconv"
+    )
+
+* [補足] import句
+
+他の宣言よりも先に記述しなければならない。
+
+    import (
+        "fmt" // 標準パッケージの場合：パッケージ名のみ
+
+        "github.com/qt-luigi/typing" // 外部パッケージの場合：ファイルパス形式（最後のtypingがパッケージ名）
+    )
+
+- 慣習：標準パッケージ群、空行１行、外部パッケージ群、の順番に記述。
+
+パッケージ名が重複する場合、別名（ここではmyfmt）をつけて回避する。
+
+    // 単行での記述例
+    import myfmt "github.com/qt-luigi/fmt"
+
+    // グルーピングでの記述例
+    import (
+        myfmt "github.com/qt-luigi/fmt"
+    )
+
+    // 呼び出し例
+    myfmt.Println("Hello!")
+
+* ゼロ値で初期化
+
+変数を宣言すると、ゼロ値で初期化される。
+
+- 文字型（string）: ""
+- 数値型（int, float）: 0
+- 論理型（bool）: false
+- 参照型（slice, map, chan）: nil
+
+メリット：
+
+- 想定していた初期値と異なる値だったことで発生するミスを防げる。
+
+* [補足] 関数
+
+意味のある処理や繰り返し使われる処理を、ひとまとめにしたもの。
+
+Goでは、関数は多値の戻り値を返せる。
+
+    func MultiToStr(x, y int) (int, string) {
+        m := x * y           // 乗算
+        s := strconv.Itoa(m) // 乗算した結果を文字列に変換
+        return m, s          // 乗算した結果とその文字列を返す
+    }
+
+※ 今回はmain()関数のみ使用します。
+
+* 配列とスライス
+
+* 配列
+
+同じ型の複数の値を要素として扱う型。
+
+    // 変数arrayを要素数4のstring型の配列で宣言
+    var array [4]string
+    fmt.Println("初期値は", array)
+
+    // 要素数はlen()組み込み関数で取得
+    fmt.Println("要素数は", len(array))
+
+実行結果
+
+    初期値は [   ] // イメージ：["", "", "", ""]
+    要素数は 4
+
+最初に要素数を決めて変数を宣言するため、後から要素数を変更できない。
+
+* スライス
+
+配列にて、要素数を変化させることができる仕組み。
+
+    // 変数exampleをstring型のスライスで宣言
+    var example []string
+    fmt.Println("初期値は", example)
+
+    // 要素数はlen()組み込み関数で取得
+    fmt.Println("要素数は", len(example))
+
+実行結果
+
+    初期値は []
+    要素数は 0
+
+* [補足] スライス：内部構造
+
+実体は、配列への参照（ポインター）を持つ構造体。
+
+要素数の変化が指示されると、内部で要素数に沿った配列を作成して切り替えている。
+
+.link https://go.dev/blog/slices-intro
+
+.image the-first-go-room-basic/img/slices-intro.jpg 400 500
+
+* [補足] 組み込み関数
+
+あらかじめGoで用意されている関数。
+
+内部・外部問わず、どのパッケージからでも呼び出せる。
+
+関数名のみで小文字で始まっている。
+
+.link https://go.dev/ref/spec#Predeclared_identifiers
+
+    Functions:
+        append cap clear close complex copy delete imag len
+        make max min new panic print println real recover
+
+※ 非推奨：printとprintln
+
+- エラーは標準エラーに出力され、以前から廃止の予定を謳っている。
+- 使うにしても、内部デバッグや書き捨てコードぐらいまでかと。
+
+* 値をまとめて代入
+
+代入値の要素数が配列の要素数より少ない場合、配列の先頭から設定される。
+
+    // 配列の要素数:4 > 代入値の要素数:2
+    array = [4]string{
+        "The",
+        "first", // ”}"の行に要素がない場合、最後の要素には","が必要
+    }
+    fmt.Println("代入値は", array)
+    fmt.Println("要素数は", len(array))
+
+実行結果
+
+    代入値は [The first  ] // イメージ：["The", "first", "", ""]
+    要素数は 4
+
+* 値をまとめて代入：添字を指定
+
+添字を指定すると「最大の添字+1」の範囲内で、指定した位置に値が設定される。
+
+    // 1番目に"The"を、3番目に"first"を、並びを無視して代入
+    example = []string{2: "Go", 0: "The"} // "}"の行に要素がある場合、最後の要素の","は不要
+    fmt.Println("今の値は", example)
+    fmt.Println("要素数は", len(example))
+
+実行結果
+
+    代入値は [The  Go] // イメージ：["The", "", "Go"]
+    要素数は 3
+
+* [補足] 添字で指定できるメリット
+
+要素の順番を気にせずに、特定の要素に初期値を設定できる。
+
+    // Userはユーザーを表す構造体です。
+    type User struct {
+        Id, password string
+        Name         string
+        level        int
+    }
+
+    func main() {
+        // レベルとパスワードは明示的に初期値を設定
+        u := User{level: 99, password: "0000"}
+        fmt.Println(u)
+    }
+
+実行結果
+
+    { 0000  99}
+
+* [補足] 構造体とメソッド
+
+異なる型の項目を意味のある単位にまとめたもの。
+
+    // Userはユーザーを表す構造体です。
+    type User struct {
+        id, password string
+        Name         string
+        level        int
+    }
+
+構造体に対して、構造体の項目に関する処理を行うメソッド（関数）を定義できる。
+
+    func (u User) SetID(id string) {
+        u.id = id
+    }
+
+* 値の追加：スライスのみ
+
+値を追加するにはappend()組み込み関数を使う。
+
+    example = []string{"The", "first"}
+
+    example = append(example, "Go", "room")
+    fmt.Println("追加後は", example)
+    fmt.Println("要素数は", len(example))
+
+実行結果
+
+    追加後は [The first Go room] // イメージ：["The", "first", "Go", "room"]
+    要素数は 4
+
+通常、append()組み込み関数の戻り値と第１引数には、同じスライス名を指定する。
+
+* [補足] append()組み込み関数
+
+追加される要素数が、
+
+- 今の配列の後方の空き要素に収まる場合
+
+１．今の配列の後方の空き要素に、指定された要素の値が設定される。
+２．今の配列の参照（ポインター）を戻り値として返す。
+
+- 今の配列の後方の空き要素を超える場合
+
+１．容量を増やした新しい配列が生成される。
+２．新しい配列に、今の配列の要素の値と指定された要素の値が設定される。
+３．新しい配列の参照（ポインター）を戻り値として返す。
+
+.image the-first-go-room-basic/img/slice-2.jpg 140 380
+
+.caption [[https://go.dev/blog/slices-intro]]
+
+* 値の変更
+
+変更したい要素の位置を添字で指定して値を代入。
+
+    // var省略宣言＋初期化
+    example := [4]string{"The", "first", "Go", "room"}
+    fmt.Println(example)
+
+    // 4番目の "room" を "world" に変更
+    example[3] = "world" // 4番目→添字は3
+    fmt.Println(example)
+
+実行結果
+
+    [The first Go room]
+    [The first Go world]
+
+* 宣言＋初期化
+
+通常は、セイウチ演算子「:=」での書き方がほとんど。
+
+var宣言：処理中に値の再代入が行われる変数に用いられるイメージ。
+
+* 値の取得
+
+開始する添字、終了する添字+1、または、その両方を指定して取得。
+
+    example := [4]string{"The", "first", "Go", "room"}
+
+    // [開始する添字] ひとつの値を取得
+    fmt.Println(example[2]) // 3番目の "Go"
+
+    // [開始する添字:終了する添字+1] 連続した値を取得
+    fmt.Println(example[1:3]) // 2〜3番目の ["first", "Go"]
+
+    // [開始する添字:] それ以降の連続した値を取得
+    fmt.Println(example[2:]) // 3番目以降の ["Go", "room"]
+
+    // [:終了する添字+1] それ以前の連続した値を取得
+    fmt.Println(example[:2]) // 2番目以前の ["The", "first"]
+
+* 課題１
+
+以下の内容でmain.goを編集した後、実行して動作を確認してください。
+
+１−１：
+
+var宣言をグルーピングごと削除した後、次の変数をvar宣言してください。
+
+- 変数名：example
+- 型：string型のスライス
+- 値："The", "first", "Go", "room"
+
+１−２：
+
+main()関数のmsg2を削除した後、exampleを標準出力してください。
+
+* 解答１
+
+    package main
+
+    import "fmt"
+
+    var example = []string{"The", "first", "Go", "room"}
+
+    func main() {
+        fmt.Println(example)
+    }
+
+実行結果
+
+    $ go run main.go 
+    [The first Go room]
+
+* 反復
+
+* for文
+
+ループ変数を使って、ループの継続を制御する。
+
+初期化式
+
+- ループの最初に１度だけ実行される。
+- ループ変数に初期値を設定する。
+
+条件式
+
+- ループごとに実行される。
+- ループ変数の値を判定して、満たしていればループを継続する。
+
+後処理
+
+- ループ内で実行される。
+- ループ変数の値を変化させる。
+
+* 条件を満たす間はループ
+
+[書式]：初期化式; 条件式; 後処理
+
+- 通常
+
+    for i := 1; i < 4; i++ {
+        fmt.Print(i)
+    }
+
+- while文風
+
+    i := 1
+    for i < 4 {
+        fmt.Print(i)
+        i++
+    }
+
+実行結果
+
+  123
+
+* 条件がなければ無限ループ
+
+条件式（ループ変数の値の判定）をなくすことで、無限にループする。
+
+    i := 1
+    for {
+        fmt.Print(i)
+        i++
+    }
+
+実行結果（[control] + [C] キーで停止）
+
+  12345678910111213141516171819202122232425262728293031323334363738394041424344454647484950515253...
+
+* range句
+
+指定された対象において、ループことに1つまたは2つの戻り値が取得できる。
+
+- 配列とスライス：添字と値
+- マップ：キーと値
+- 文字列：添字（バイトインデックス）と値（Unicodeコードポイント）
+- チャネル：値（要素）
+
+※ 今回は配列またはスライスのみ使用します。
+
+* range句：2024年に機能追加
+
+2024年2月：Go 1.22
+
+- 整数値：添字
+
+2024年8月：Go 1.23
+
+- 関数：なし、値、添字（またはキー）と値
+
+※ Goは年2回（2月と8月）、メジャーリリースされます。
+
+* 配列またはスライス：添字と値を取得
+
+第1戻り値変数 (i) と第2戻り値変数 (v) を指定する。
+
+    abc := []string{"a", "b", "c"}
+    for i, v := range abc {
+        fmt.Println(i, v)
+    }
+
+実行結果
+
+    0 a
+    1 b
+    2 c
+
+* 配列またはスライス：添字だけを取得
+
+第1戻り値変数 (i) のみ指定する。
+
+    abc := []string{"a", "b", "c"}
+    for i := range abc {
+        fmt.Println(i)
+    }
+
+実行結果
+
+    0
+    1
+    2
+
+* 配列またはスライス：値だけを取得
+
+第1戻り値変数 (_) と第2戻り値変数 (v) を指定する。
+
+    abc := []string{"a", "b", "c"}
+    for _, v := range abc {
+        fmt.Println(v)
+    }
+
+実行結果
+
+    a
+    b
+    c
+
+* ブランク識別子：_
+
+未使用の変数が宣言されていたり、受け取るべき場所に変数がないと、エラーになる。
+
+そのため、ダミー変数として「 _ 」が用意されている。
+
+- 未使用の変数宣言によるメモリ消費やGCの無用な追跡を防ぐ。
+- 多値の戻り値を受け取る時の変数の数の曖昧さを排除。
+- 構造体の変数定義で、連続したメモリ領域を明示的に確保。
+
+※ GC (Garbage Collection)：プログラムが使用するメモリ領域を調節する機能
+
+* 課題２
+
+以下の内容でmain.goを編集した後、実行して動作を確認してください。
+
+２−１：
+
+main()関数の内の処理を全て削除した後、次の内容に書き換えてください。
+
+１．次の変数をvar宣言してください。
+
+- 変数名：data
+- 型：string型のスライス
+
+２．dataにexampleを代入してください。
+
+３．for文とrange句を使用して、dataの値を順番に標準出力してください。
+
+* 解答２
+
+    package main
+
+    import "fmt"
+
+    var example = []string{"The", "first", "Go", "room"}
+
+    func main() {
+        var data []string
+        data = example
+        for _, v := range data {
+            fmt.Println(v)
+        }
+    }
+
+実行結果
+
+    $ go run main.go
+    The
+    first
+    Go
+    room
+
+* 分岐
+
+* if文
+
+Goでは、条件(三項)演算子（例：lang == "Go" ? 1 : 0）はなし。
+
+他にswitch文があるが、今回は省略。
+
+    v := "GoLang"
+
+    if v == "golang" {
+        fmt.Println("○")
+    } else if v == "GOLANG" {
+        fmt.Println("△")
+    } else {
+        fmt.Println("×")
+    }
+
+    // 変数vはif文の内外からアクセスできる
+    fmt.Println(v)
+
+実行結果
+
+    ×
+    GoLang
+
+* 変数をifブロックに閉じ込める
+
+条件式の前に初期化式を記述できる。
+
+初期化式で宣言した変数は、そのif文内だけで使用できる。
+
+    if v := "GoLang"; v == "golang" {
+        fmt.Println("○")
+    } else if v == "GOLANG" {
+        fmt.Println("△")
+    } else {
+        fmt.Println("×")
+    }
+
+    // 変数vのネームスコープはif文内だけになるため、外からアクセスするとエラー
+    fmt.Println(v)
+
+実行結果
+
+    # command-line-arguments
+    ./main.go:17:17: undefined: v
+
+* 課題３
+
+以下の内容でmain.goを編集した後、実行して動作を確認してください。
+
+３−１：
+
+main()関数のfor文内のfmt.Println(v)の後ろに、次の処理を追加してください。
+
+１．ループ変数vの値を判定するif文を追加してください。
+
+- 値が"Go"なら"○"を標準出力する。
+- それ以外なら"×"を標準出力する。
+
+* 解答３
+
+    package main
+
+    import "fmt"
+
+    var example = []string{"The", "first", "Go", "room"}
+
+    func main() {
+        var data []string
+        data = example
+        for _, v := range data {
+            fmt.Println(v)
+
+            if v == "Go" {
+                fmt.Println("○")
+            } else {
+                fmt.Println("×")
+            }
+        }
+    }
+
+* 解答３
+
+実行結果
+
+    $ go run main.go
+    The
+    ×
+    first
+    ×
+    Go
+    ○
+    room
+    ×
+
+* 標準入出力
+
+* 標準入力
+
+Goでは、関数の引数(値)は関数内にはコピーされて渡される仕組みになっている。
+
+変数名の先頭に&をつけると、その変数では値を参照型（ポインター）で扱う。
+
+fmt.Scanln()関数は、関数内で標準入力された値を引数に格納している。
+
+標準入力された値を関数の外で取得するには、引数を参照型にしておく必要がある。
+
+    // 入力プロンプトを標準出力に表示
+    fmt.Print("入力は？> ")
+
+    var answer string
+    fmt.Scanln(&answer)
+    // fmt.Scanln(answer) // 変数名に&がついていないと値が書き変わらない
+
+    fmt.Printf("入力は %s です\n", answer)
+
+* 例えるなら：ファイルとショートカット
+
+ファイル（値）のコピーを渡す
+
+- コピーされたファイルが変更される。
+- コピー元のファイルを開くと「変更されていない。」
+
+ショートカット（参照）のコピーを渡す
+
+- コピーされたショートカットでファイルが変更される。
+- コピー元のファイルを開くと「変更されている。」
+
+* 実行結果
+
+fmt.Scanln()関数の引数の変数名に、
+
+- &あり
+
+    入力は？> Go
+    入力は Go です
+
+- &なし
+
+    入力は？> 入力は  です
+
+* fmtパッケージ
+
+標準出力、標準入力、標準エラーの関数が体系的に集約されている。
+
+- 最初に読み始めるパッケージとして、見やすいと。
+
+.image the-first-go-room-basic/img/fmt-pkg.jpg 420 650
+
+.caption [[https://pkg.go.dev/fmt#pkg-index]]
+
+* Print系
+
+Print系は主に標準出力
+
+    // 改行させる場合は、改行コード「\n」を含める。
+    fmt.Print("golang ")
+    fmt.Print("2024\n")
+
+    // 最後にf付きは、フォーマット指定で出力。
+    fmt.Printf("%s %d\n", "golang", 2024)
+
+    // 最後にln付きは、文末に改行コードが付く。
+    fmt.Println("golang", "2024")
+
+    // 最初にF付きは、第1引数に出力先を指定（ここでは標準エラー）
+    fmt.Fprintln(os.Stderr, "golang", "2024")
+
+    // 最初にS付きは、文字列を返す
+    fmt.Println(fmt.Sprintf("%s %d", "golang", 2024))
+
+実行結果
+
+    golang 2024
+
+* Scan系 / 標準エラー
+
+Scan系は標準入力で、Print系と同じような命名規則。
+
+標準エラーは、fmt.Errorf()関数や一部のPrint系で対応。
+
+* 課題４
+
+以下の内容でmain.goを編集した後、実行して動作を確認してください。
+
+４−１：
+
+main()関数のfor文内のfmt.Println(v)とif文の間に、次の処理を追加してください。
+
+１．入力プロンプトとしての"input : "を改行なしで標準出力してください。
+
+２．次の変数をvar宣言してください。
+
+- 変数名：answer
+- 型：string型
+
+３．標準入力から値を受け取って、変数answerに格納してください。
+
+４．ループ変数vの値を判定するif文の条件式を書き換えてください。
+
+- vの値がanswerの値と一致なら"○"を標準出力する。
+
+
+* 解答４
+
+    package main
+
+    import "fmt"
+
+    var example = []string{"The", "first", "Go", "room"}
+
+    func main() {
+        var data []string
+        data = example
+        for _, v := range data {
+            fmt.Println(v)
+
+            fmt.Print("input : ")
+            var answer string
+            fmt.Scanln(&answer)
+
+            if v == answer {
+                fmt.Println("○")
+            } else {
+                fmt.Println("×")
+            }
+        }
+    }
+
+* 解答４
+
+実行結果
+
+    $ go run main.go
+    The
+    input : The
+    ○
+    first
+    input : first
+    ○
+    Go
+    input : Go
+    ○
+    room
+    input : loom
+    ×
+
+* 完成に向けて
+
+* 実行バイナリーを生成
+
+初期状態
+
+    $ ls (Windows: dir)
+    go.mod  main.go
+
+実行：go build ソースファイル名
+
+    $ go build main.go 
+    $ ls (Windows: dir)
+    go.mod  main    main.go
+
+- ソースファイル名と同名の実行バイナリー「main」が生成される。
+
+実行：go build -o 実行バイナリー名 ソースファイル名
+
+    $ go build -o typing main.go (Windows: go build -o typing.exe main.go)
+    $ ls (Windows: dir)
+    go.mod  main    main.go typing (Windows: typing.exe)
+
+- 指定した名前の実行バイナリー「typing(.exe)」が生成される。
+
+* 完成！q@w@p
+
+生成された実行バイナリーを実行。
+
+    $ ./typing (Windows: .¥typing.exe)
+    The
+    input : The
+    ○
+    first
+    input : first
+    ○
+    Go
+    input : Go
+    ○
+    room
+    input : room
+    ○
+
+* まとめ
+
+* 学んだこと
+
+Goの基本的なソースコードの構成とプログラミングの流れを学びました。
+
+その際、goコマンドについても学びました。
+
+- go mod init
+- go fmt
+- go run
+- go build
+
+データ構造における配列とスライスについて簡単に学びました。
+
+構造化プログラミングにおける「順接、反復、分岐」の制御構成を学びました。
+
+標準出力と標準入力について簡単に学びました。
+
+* 続きは、公式サイトのコンテンツで
+
+公式のチュートリアルを進めるのが良いかと。
+
+- Tutorials - The Go Programming Language
+
+.link https://go.dev/doc/tutorial/
+
+公式の文法習得ツアーに取り組むも良し。
+
+.link https://go.dev/tour/list
+
+いつでも気軽にGoをコーディング＆実行。
+
+- Go Playground - The Go Programming Language
+
+.link https://go.dev/play/

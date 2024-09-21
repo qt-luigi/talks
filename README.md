@@ -5,9 +5,10 @@
 - [Goについて](https://talks.godoc.org/github.com/qt-luigi/talks/2021/the-first-go-room-about-go.slide#1)
 - [Go入門ハンズオン [基礎編]](https://talks.godoc.org/github.com/qt-luigi/talks/2021/the-first-go-room-basic.slide#1)
 
-## 2022
+## 2024
 
-- [Windowsデスクトップアプリケーション開発のための採用技術の検討とその情報の提供 [2022年12月版]](https://talks.godoc.org/github.com/qt-luigi/talks/2022/win-dt-dev.slide#1)
+- [Go入門ハンズオン [準備編]](https://talks.godoc.org/github.com/qt-luigi/talks/2024/the-first-go-room-setup.slide#1)
+- [Go入門ハンズオン [基礎編]](https://talks.godoc.org/github.com/qt-luigi/talks/2024/the-first-go-room-basic.slide#1)
 
 ## 2021
 

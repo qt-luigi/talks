@@ -1,0 +1,98 @@
+Go入門ハンズオン [準備編]
+はじめてのGo言語教室
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image the-first-go-room-setup/img/qt_luigi250.png 300 300
+
+X (Twitter)：[[http://twitter.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+* お品書き
+
+- 必要なものを揃えよう
+- Goを準備しよう
+
+* 必要なものを揃えよう
+
+* Goのコードを書く人
+
+- 愛称はマスコットキャラクターの名前と同じで「Gopher（ゴーファー）」
+
+.image the-first-go-room-setup/img/go-gopher.jpg 480 720
+
+.caption [[https://go.dev/s/brandbook]]
+
+* Goを動作させるコンピューター
+
+- Windows、macOS、Linux、などOSは最新に近い方が良いです。
+- パソコン上でもクラウド上でも。
+
+* Go
+
+- オープンソースで静的型付けコンパイル形式の汎用プログラミング言語。
+- 標準でCLIコマンド、共有ライブラリー、Webアプリ、モバイルアプリを生成可能。
+- 用途はクラウド、ミドルウェア、組み込み、ゲーム、ブロックチェーン、など。
+
+.image the-first-go-room-setup/img/go-dev.jpg 380 600
+
+.caption [[https://go.dev/]]
+
+* テキストエディター
+
+- コードを書くために必要。
+- 無償だとVisual Studio CodeやVim、有償だとGoLand、など。
+
+.image the-first-go-room-setup/img/vscode.jpg 380 600
+
+.caption [[https://code.visualstudio.com/]]
+
+* Git
+
+- ソースコードを管理するシステムおよびコマンド。
+- 外部パッケージを入手する際に必要で、多くがGitHub上で公開。
+- macOSやLinuxでは標準で対応可能で、Windowsでは別途インストールが必要。
+
+※ 今回は使用しません。
+
+.image the-first-go-room-setup/img/git.jpg 320 540
+
+.caption [[https://git-scm.com/]]
+
+* Goを準備しよう
+
+* ダウンロード＆インストール
+
+基本は、公式サイトから対象OSのGoをダウンロードしてインストール。
+
+.link https://go.dev/dl/
+
+- 基本は「Featured downloads」から選択。
+
+.link https://go.dev/dl/#featured
+
+- 詳しい人は「Stable versions」から選択。
+
+.link https://go.dev/dl/#stable
+
+.image the-first-go-room-setup/img/featured-dls.jpg 180 1000
+
+.caption [[https://go.dev/dl/#featured]]
+
+* 動作確認
+
+１．ターミナル画面を起動。
+
+- Windows：コマンドプロンプト、PowerShell
+- macOS, Linux：ターミナル
+- VS Code：メニューバーから「Terminal」-「New Terminal」を選択
+
+２．go versionコマンドでGoが正常にインストールされていることを確認。
+
+    $ go version
+    go version go1.23.1 darwin/amd64
