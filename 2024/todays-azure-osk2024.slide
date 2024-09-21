@@ -1,0 +1,72 @@
+本日のMicrosoft Azure
+オープンセミナー2024@香川
+19 Sep 2024
+
+Ryuji Iwata
+Okayama, Japan
+@qt_luigi
+
+* Ryuji Iwata
+
+.image todays-azure-osk2024/img/qt_luigi250.png 300 300
+
+X (Twitter)：[[http://x.com/qt_luigi][@qt_luigi]]
+
+Portfolio：[[https://sites.google.com/view/ryuji-iwata-portfolio]]
+
+Microsoft MVP for Microsoft Azure：[[https://mvp.microsoft.com/ja-jp/PublicProfile/5004244]]
+
+* 本日のセッションからのキーワード
+
+- FDW（「FDWを使ってみよう」より）
+- TinyGo（「TinyGo で組込ソフトウェア開発と自作キーボードに入門しよう」より）
+- セキュリティ（「日本でのセキュリティ研究は何故こんなにもえらいのか」より）
+- フィッシングキット（「フィッシングキットを入手する方法」より）
+
+Microsoft Azureとの関係性を見つけてみました。
+
+* FDW (Foreign Data Wrapper)
+
+- PostgreSQLと外部リソースを接続して、SQLでアクセスできる仕組み。
+
+.link https://www.postgresql.org/docs/current/postgres-fdw.html
+
+Azureでは：Azure Database for PostgreSQL
+
+- フレキシブル サーバー（GA：2021年、OS：Linux）で使用可能。
+- [補足]：単一 サーバー（GA：2018年、OS：Windows）では使えない。
+- 受信接続と送信接続の両方をサポート。
+
+* TinyGo
+
+- 小さい場所向けのGoコンパイラー
+
+.link https://tinygo.org/
+
+Azureでは：Azure Kubernetes Service (AKS)
+
+- 2021年10月にWASM (WebAssembly) の動作サポートがパブリック プレビューに。
+- TinyGoでWebアプリをコーディングして、WASMを生成して、AKSにデプロイ。
+
+* セキュリティ
+
+- 日本国内の法律や制度はセキュリティや研究者のことを考慮していない！？
+
+Microsoft Azureでは：クラウドではセキュリティは最重要。
+
+- Microsoft Defender for Cloud
+- Microsoft Entra ID Protection
+- Azure Monitor Logs
+- Azure DDoS Protection
+- Azure Information Protection
+
+など多数。
+
+* フィッシングキット
+
+- フィッシングサイトを容易に構築するためのツール。
+
+Microsoftでは：Digital Crimes Unit
+
+- デジタル犯罪対策部門
+- 2021年7月〜2022年6月、5,400件以上のフィッシング キットに削除措置を指揮。
